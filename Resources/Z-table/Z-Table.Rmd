@@ -1,0 +1,196 @@
+---
+output: html_document
+---
+
+```{r setup, include = F}
+
+library(tidyverse)
+library(glue)
+library(gt)
+
+source("https://raw.githubusercontent.com/kylebutts/templates/master/ggplot_theme/theme_kyle.R")
+
+# opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+	svg(tempfile(), width = width, height = height)
+})
+
+# 538 Theme
+gt_theme_538 <- function(data,...) {
+  data %>%
+  opt_all_caps()  %>%
+  opt_table_font(
+    font = list(
+      google_font("Chivo"),
+      default_fonts()
+    )
+  ) %>%
+    tab_style(
+      style = cell_borders(
+        sides = "bottom", color = "transparent", weight = px(2)
+      ),
+      locations = cells_body(
+        columns = gt::everything(),
+        # This is a relatively sneaky way of changing the bottom border
+        # Regardless of data size
+        rows = nrow(data$`_data`)
+      )
+    )  %>% 
+  tab_options(
+    column_labels.background.color = "white",
+    table.border.top.width = px(3),
+    table.border.top.color = "transparent",
+    table.border.bottom.color = "transparent",
+    table.border.bottom.width = px(3),
+    column_labels.border.top.width = px(3),
+    column_labels.border.top.color = "transparent",
+    column_labels.border.bottom.width = px(3),
+    column_labels.border.bottom.color = "black",
+    data_row.padding = px(3),
+    source_notes.font.size = 12,
+    table.font.size = 16,
+    heading.align = "left",
+    ...
+  ) 
+}
+
+make_gt_title <- function(title) {
+	gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
+}
+
+```
+
+
+
+```{r, echo = F, fig.align="center", fig.width=9, fig.height=5}
+
+dens <- tibble(
+	z = seq(-3, 3, by = 0.001),
+	dens = dnorm(z)
+)
+
+ggplot() +
+	geom_area(data = dens[dens$z < -0.5, ], 
+			  mapping = aes(x = z, y = dens), fill = "#d2382c", alpha = 0.6) +
+	geom_line(data = dens, 
+			  mapping = aes(x = z, y = dens), size = 1.5, color = "black") + 
+	geom_hline(yintercept = 0, size = 1, color = "grey70") + 
+	scale_y_continuous(limits = c(0, NA), expand = c(0,0.1)) +
+	theme_kyle(base_size = 20) +
+	theme(
+		axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+		axis.title.x = element_blank(),
+		axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+		axis.line = element_blank(),
+		panel.grid = element_blank()
+	) +
+	geom_text(data = data.frame(x = c(-2.12), y = c(0.29),
+		      label = c("Area under standard normal curve \n left of the z-score")),
+			  mapping = aes(x = x, y = y, label = label), size = 3.7, 
+			  family = "fira_sans", fontface = 2, inherit.aes = FALSE) +
+	geom_text(data = data.frame(x = -0.57, y = 0.017, label = "z"),
+			  mapping = aes(x = x, y = y, label = label), size = 4.94, 
+			  family = "fira_sans", fontface = 2, inherit.aes = FALSE) +
+	geom_curve(data = data.frame(x = -1.41, y = 0.27, xend = -0.85, yend = 0.235),
+			   mapping = aes(x = x, y = y, xend = xend, yend = yend),
+			   curvature = -0.2, arrow = arrow(30L, unit(0.1, "inches"), "last", "closed"),
+			   inherit.aes = FALSE)
+
+```
+
+
+
+```{r neg-tab, echo = F}
+# Negative z-score
+neg = tibble(
+	val = seq(-3.6, 0, by = 0.1),
+	`0.00` = dnorm(val + 0.00),
+	`0.01` = dnorm(val + 0.01),
+	`0.02` = dnorm(val + 0.02),
+	`0.03` = dnorm(val + 0.03),
+	`0.04` = dnorm(val + 0.04),
+	`0.05` = dnorm(val + 0.05),
+	`0.06` = dnorm(val + 0.06),
+	`0.07` = dnorm(val + 0.07),
+	`0.08` = dnorm(val + 0.08),
+	`0.09` = dnorm(val + 0.09)
+) %>%
+	mutate(val = glue::glue("-{sprintf('%.1f', abs(val))}"))
+
+gt(neg, rowname_col = "val") %>% 
+	gt_theme_538() %>% 
+	tab_stubhead(label = "z") %>% 
+	fmt_number(
+		columns = starts_with("0."), decimals = 4
+	)
+```
+
+
+```{r, echo = F, fig.align="center", fig.width=9, fig.height=5}
+
+dens <- tibble(
+	z = seq(-3, 3, by = 0.001),
+	dens = dnorm(z)
+)
+
+ggplot() +
+	geom_area(data = dens[dens$z < 1.5, ], 
+			  mapping = aes(x = z, y = dens), fill = "#d2382c", alpha = 0.6) +
+	geom_line(data = dens, 
+			  mapping = aes(x = z, y = dens), size = 1.5, color = "black") + 
+	geom_hline(yintercept = 0, size = 1, color = "grey70") + 
+	scale_y_continuous(limits = c(0, NA), expand = c(0,0.1)) +
+	theme_kyle(base_size = 20) +
+	theme(
+		axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+		axis.title.x = element_blank(),
+		axis.text.x = element_blank(),
+        axis.ticks.x = element_blank(),
+		axis.line = element_blank(),
+		panel.grid = element_blank()
+	) +
+	geom_text(data = data.frame(x = c(2.12), y = c(0.29),
+		      label = c("Area under standard normal curve \n left of the z-score")),
+			  mapping = aes(x = x, y = y, label = label), size = 3.7, 
+			  family = "fira_sans", fontface = 2, inherit.aes = FALSE) +
+	geom_text(data = data.frame(x = 1.43, y = 0.017, label = "z"),
+			  mapping = aes(x = x, y = y, label = label), size = 4.94, 
+			  family = "fira_sans", fontface = 2, inherit.aes = FALSE) +
+	geom_curve(data = data.frame(x = 1.41, y = 0.27, xend = 0.85, yend = 0.235),
+			   mapping = aes(x = x, y = y, xend = xend, yend = yend),
+			   curvature = -0.2, arrow = arrow(30L, unit(0.1, "inches"), "last", "closed"),
+			   inherit.aes = FALSE)
+
+```
+
+```{r pos, echo = F}
+# Positive z-score
+pos = tibble(
+	val = seq(0, 3.6, by = 0.1),
+	`0.00` = dnorm(val + 0.00),
+	`0.01` = dnorm(val + 0.01),
+	`0.02` = dnorm(val + 0.02),
+	`0.03` = dnorm(val + 0.03),
+	`0.04` = dnorm(val + 0.04),
+	`0.05` = dnorm(val + 0.05),
+	`0.06` = dnorm(val + 0.06),
+	`0.07` = dnorm(val + 0.07),
+	`0.08` = dnorm(val + 0.08),
+	`0.09` = dnorm(val + 0.09)
+) %>%
+	mutate(val = glue::glue("{sprintf('%.1f', abs(val))}"))
+
+gt(pos, rowname_col = "val") %>% 
+	gt_theme_538() %>% 
+	tab_stubhead(label = "z") %>% 
+	fmt_number(
+		columns = starts_with("0."), decimals = 4
+	)
+```
+
+
