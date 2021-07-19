@@ -1,0 +1,2004 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>ECON 3818</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Kyle Butts" />
+    <meta name="date" content="2021-07-19" />
+    <script src="ch2_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="ch2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="ch2_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="ch2_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# ECON 3818
+## Chapter 2
+### Kyle Butts
+### 19 July 2021
+
+---
+
+exclude: true
+
+
+
+---
+class: clear, middle
+&lt;!-- Custom css --&gt;
+&lt;style type="text/css"&gt;
+@import url(https://fonts.googleapis.com/css?family=Zilla+Slab:300,300i,400,400i,500,500i,700,700i);
+
+/* Create a highlighted class called 'hi'  */
+.hi {
+  font-weight: 600;
+}
+
+.bw {
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+}
+.gw {
+  background-color: #d2d2d2;
+  color: #ffffff;
+}
+
+
+/* Font styling */
+.mono {
+  font-family: monospace;
+}
+.ul {
+  text-decoration: underline;
+}
+.ol {
+  text-decoration: overline;
+}
+.st {
+  text-decoration: line-through;
+}
+.bf {
+  font-weight: bold;
+}
+.it {
+  font-style: italic;
+}
+
+
+/* Font Sizes */
+.bigger {
+  font-size: 125%;
+}
+.huge{
+  font-size: 150%;
+}
+
+.small {
+  font-size: 95%;
+}
+.smaller {
+  font-size: 85%;
+}
+.smallest {
+  font-size: 75%;
+}
+
+.tiny {
+  font-size: 50%;
+}
+
+
+/* Remark customization */
+
+.clear .remark-slide-number {
+  display: none;
+}
+.inverse .remark-slide-number {
+  display: none;
+}
+
+.remark-code-line-highlighted {
+  background-color: rgba(249, 39, 114, 0.5);
+}
+
+.remark-slide-content {
+  background-color: #ffffff;
+  font-size: 24px;
+  /* font-weight: 300; */
+  /* line-height: 1.5; */
+  /* padding: 1em 2em 1em 2em; */
+}
+
+/* Xaringan tweeks */
+
+.inverse {
+  background-color: #23373B;
+  text-shadow: 0 0 20px #333;
+  /* text-shadow: none; */
+}
+
+.title-slide {
+  background-color: #ffffff;
+  border-top: 80px solid #ffffff;
+}
+
+.footnote {
+  bottom: 1em;
+  font-size: 80%;
+  color: #7f7f7f;
+}
+
+
+
+/* Mono-spaced font, smaller */
+.mono-small {
+  font-family: monospace;
+  font-size: 20px;
+}
+.mono-small .mjx-chtml {
+  font-size: 103% !important;
+}
+
+.pseudocode, .pseudocode-small {
+  font-family: monospace;
+  background: #f8f8f8;
+  border-radius: 3px;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.pseudocode-small {
+  font-size: 20px;
+}
+
+.super{
+  vertical-align: super;
+  font-size: 70%;
+  line-height: 1%;
+}
+.sub{
+  vertical-align: sub;
+  font-size: 70%;
+  line-height: 1%;
+}
+
+.remark-code {
+  font-size: 68%;
+}
+
+.inverse &gt; h2 {
+  color: #e64173;
+  font-weight: 300;
+  font-size: 40px;
+  font-style: italic;
+  margin-top: -25px;
+}
+.title-slide &gt; h2  {
+  margin-top: -25px;
+  padding-bottom: -20px;
+  color: rgba(249, 38, 114, 0.75);
+  text-shadow: none;
+  font-weight: 300;
+  font-size: 35px;
+  font-style: normal;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.remark-inline-code {
+  background: #F5F5F5; /* lighter */
+  /* background: #e7e8e2; /* darker */
+  border-radius: 3px;
+  padding: 4px;
+}
+
+/* 2/3 left; 1/3 right */
+.more-left {
+  float: left;
+  width: 63%;
+}
+.less-right {
+  float: right;
+  width: 31%;
+}
+.more-right ~ * {
+  clear: both;
+}
+
+/* 9/10 left; 1/10 right */
+.left90 {
+  padding-top: 0.7em;
+  float: left;
+  width: 85%;
+}
+.right10 {
+  padding-top: 0.7em;
+  float: right;
+  width: 9%;
+}
+
+/* 95% left; 5% right */
+.left95 {
+  padding-top: 0.7em;
+  float: left;
+  width: 91%;
+}
+.right05 {
+  padding-top: 0.7em;
+  float: right;
+  width: 5%;
+}
+
+.left5 {
+  padding-top: 0.7em;
+  margin-left: 0em;
+  margin-right: -0.4em;
+  float: left;
+  width: 7%;
+}
+.left10 {
+  padding-top: 0.7em;
+  margin-left: -0.2em;
+  margin-right: -0.5em;
+  float: left;
+  width: 10%;
+}
+.left30 {
+  padding-top: 0.7em;
+  float: left;
+  width: 30%;
+}
+.right30 {
+  padding-top: 0.7em;
+  float: right;
+  width: 30%;
+}
+
+.thin-left {
+  padding-top: 0.7em;
+  margin-left: -1em;
+  margin-right: -0.5em;
+  float: left;
+  width: 27.5%;
+}
+
+/* Example */
+.ex {
+  font-weight: 300;
+  color: #cccccc !important;
+  font-style: italic;
+}
+
+.col-left {
+  float: left;
+  width: 47%;
+  margin-top: -1em;
+}
+.col-right {
+  float: right;
+  width: 47%;
+  margin-top: -1em;
+}
+
+.clear-up {
+  clear: both;
+  margin-top: -1em;
+}
+
+
+
+/* Format tables */
+table {
+  color: #000000;
+  font-size: 14pt;
+  line-height: 100%;
+  border-top: 1px solid #ffffff !important;
+  border-bottom: 1px solid #ffffff !important;
+}
+th, td {
+  background-color: #ffffff;
+}
+table th {
+  font-weight: 400;
+}
+
+
+/* Extra left padding */
+.pad-left {
+  margin-left: 5%;
+}
+
+/* Extra left padding */
+.big-left {
+  margin-left: 15%;
+  margin-bottom: -0.4em;
+}
+
+/* Attention */
+.attn {
+  font-weight: 500;
+  color: #e64173 !important;
+  font-family: 'Zilla Slab' !important;
+}
+
+/* Note */
+.note {
+  font-weight: 300;
+  font-style: italic;
+  color: #314f4f !important;
+  /* color: #cccccc !important; */
+  font-family: 'Zilla Slab' !important;
+}
+
+/* Question and answer */
+.qa {
+  font-weight: 500;
+  /* color: #314f4f !important; */
+  color: #e64173 !important;
+  font-family: 'Zilla Slab' !important;
+}
+
+
+
+/* Remove orange line */
+hr, .title-slide h2::after, .mline h1::after {
+  content: '';
+  display: block;
+  border: none;
+  background-color: #e5e5e5;
+  color: #e5e5e5;
+  height: 1px;
+}
+&lt;/style&gt;
+
+
+&lt;!-- From xaringancolor --&gt;
+
+&lt;div style = "position:fixed; visibility: hidden"&gt;
+`\(\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}\)`
+`\(\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}\)`
+`\(\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}\)`
+`\(\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}\)`
+`\(\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}\)`
+`\(\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}\)`
+`\(\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}\)`
+`\(\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}\)`
+`\(\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}\)`
+`\(\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}\)`
+`\(\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}\)`
+&lt;/div&gt;
+
+&lt;script type="text/x-mathjax-config"&gt;
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      red_pink: ["{\color{red_pink}{#1}}", 1],
+      turquoise: ["{\color{turquoise}{#1}}", 1],
+      orange: ["{\color{orange}{#1}}", 1],
+      red: ["{\color{red}{#1}}", 1],
+      blue: ["{\color{blue}{#1}}", 1],
+      green: ["{\color{green}{#1}}", 1],
+      grey_light: ["{\color{grey_light}{#1}}", 1],
+      grey_mid: ["{\color{grey_mid}{#1}}", 1],
+      grey_dark: ["{\color{grey_dark}{#1}}", 1],
+      purple: ["{\color{purple}{#1}}", 1],
+      slate: ["{\color{slate}{#1}}", 1]
+    },
+    loader: {load: ['[tex]/color']},
+    tex: {packages: {'[+]': ['color']}}
+  }
+});
+&lt;/script&gt;
+
+&lt;style&gt;
+.red_pink {color: #E64173;}
+.turquoise {color: #20B2AA;}
+.orange {color: #FFA500;}
+.red {color: #FB6107;}
+.blue {color: #3B3B9A;}
+.green {color: #8BB174;}
+.grey_light {color: #B3B3B3;}
+.grey_mid {color: #7F7F7F;}
+.grey_dark {color: #333333;}
+.purple {color: #6A5ACD;}
+.slate {color: #314F4F;}
+&lt;/style&gt;
+
+
+
+
+### Chapter 2: Describing Distribution with Numbers
+
+---
+## Chapter Overview
+	
+	
+-  Population vs. Sample
+-  Measures of Central Tendency
+- Mean
+- Median
+		      
+-  Measures of Variability
+- Quartiles
+- Variance \&amp; Standard Deviation
+
+
+---
+# Population vs Sample
+	
+	
+-  .hi.purple[Population]: the entire entities under the study
+- Examples: all men, all NBA players, all children under 5
+		      
+-  .hi.green[Sample]: subset of the population
+- Can be used to draw inferences about the population
+- Examples: our class, Denver Nuggets players, daycares in Colorado
+		      
+-  Interested in parameters of the .hi.purple[population] distribution, we can estimate these parameters using data from .hi.green[samples] since finding population parameters is infeasible
+	
+
+
+---
+# Population Distribution
+
+The following graph depicts the underlying population distribution
+	
+-  We are interested in its parameters, but are unable collect data on every single observation
+
+		
+&lt;img src="ch2_files/figure-html/population-density-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+	
+
+
+---
+# Population Inference
+
+What we do instead is use a sample of the population and use that sample distribution to determine parameters of interest
+	
+
+
+.center[
+&lt;img style="width:80%;" src="sample_anim.gif"/&gt;
+]
+
+---
+# Parameters of Interest
+	
+	
+Two primary .hi.purple[population] parameters of interest:
+		      
+-   Measures of central tendency:
+	      	      
+	- Population .orange[mean], `\(\mu\)`
+	
+	- Population .red_pink[median]
+	      	      
+-   Measures of variability:
+	      	      
+	-  Population .blue[variance], `\(\sigma^2\)`
+	  
+We will .it.green[estimate] these using the .hi.green[sample] distribution
+	
+	
+
+
+---
+# Measuring Center: the Mean
+	
+	
+The most common measure of center is the arithmetic average, or .hi.orange[mean]
+
+`$${\color{orange} \bar{x}} = \frac{x_1 + x_2 + .... + x_n}{n}$$`
+
+or more compactly:
+
+`$${\color{orange} \bar{x}}=\frac{1}{n}\sum_{i=1}^n x_i$$`
+	
+	
+---
+# Population Inference: Mean
+
+	
+
+
+.center[
+&lt;img style="width:80%;" src="sample_anim_mean.gif"/&gt;
+]
+
+---
+# Measuring Center: the Median
+	
+	
+The .hi.red_pink[median] is the midpoint of a distribution
+		      
+-   Is more resistant to the influence of .hi[extreme observations]
+		      
+How to calculate median:
+		      
+-   Arrange observations from smallest to largest
+-   If there is odd number of observations, the median is the center observation. If there are even number of observations, the median is the average of two center observations
+		      
+	
+
+
+---
+# Mean vs. Median
+	
+	
+-  Although we will primarily be using the mean throughout the semester, the biggest drawback of the mean is that it is not resistant to .hi.purple[outliers]
+		      
+-  The median, however, is resistant to .hi.purple[outliers] so it can be important to calculate for smaller samples 
+
+
+---
+# Mean vs. Median Example
+
+&lt;img src="ch2_files/figure-html/rodman-graph-1.svg" width="90%" style="display: block; margin: auto;" /&gt;
+
+.hi[Median]: 205.5 rebounds and .hi[Mean]: 250.5 rebounds
+
+
+---
+# Clicker Question
+	
+What is the sample average of the participants?
+	
+<div id="hdjoouxlfx" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#hdjoouxlfx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hdjoouxlfx .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hdjoouxlfx .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_col_heading {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hdjoouxlfx .gt_column_spanner_outer {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hdjoouxlfx .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hdjoouxlfx .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hdjoouxlfx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hdjoouxlfx .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hdjoouxlfx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hdjoouxlfx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hdjoouxlfx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hdjoouxlfx .gt_row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hdjoouxlfx .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#hdjoouxlfx .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdjoouxlfx .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hdjoouxlfx .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hdjoouxlfx .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#hdjoouxlfx .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hdjoouxlfx .gt_sourcenote {
+  font-size: 12px;
+  padding: 4px;
+}
+
+#hdjoouxlfx .gt_left {
+  text-align: left;
+}
+
+#hdjoouxlfx .gt_center {
+  text-align: center;
+}
+
+#hdjoouxlfx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hdjoouxlfx .gt_font_normal {
+  font-weight: normal;
+}
+
+#hdjoouxlfx .gt_font_bold {
+  font-weight: bold;
+}
+
+#hdjoouxlfx .gt_font_italic {
+  font-style: italic;
+}
+
+#hdjoouxlfx .gt_super {
+  font-size: 65%;
+}
+
+#hdjoouxlfx .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style><span class='hi slate' style='display: block; margin-bottom: 8px;'>Sample of individuals</span></th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Age</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Sex</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">BMI</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Drinks per week</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">59</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">32.26</td>
+<td class="gt_row gt_left">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right">62</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">25.09</td>
+<td class="gt_row gt_left">2 drinks</td></tr>
+    <tr><td class="gt_row gt_right">60</td>
+<td class="gt_row gt_left">female</td>
+<td class="gt_row gt_right">32.58</td>
+<td class="gt_row gt_left">1 drink</td></tr>
+    <tr><td class="gt_row gt_right">18</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">99.99</td>
+<td class="gt_row gt_left">6 drinks</td></tr>
+    <tr><td class="gt_row gt_right">57</td>
+<td class="gt_row gt_left">female</td>
+<td class="gt_row gt_right">31.88</td>
+<td class="gt_row gt_left">2 drinks</td></tr>
+    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
+<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+
+&lt;ol type="a"&gt;
+	&lt;li&gt;58&lt;/li&gt;
+	&lt;li&gt;51.2&lt;/li&gt;
+	&lt;li&gt;52&lt;/li&gt;
+	&lt;li&gt;49.7&lt;/li&gt;
+&lt;/ol&gt;
+
+
+---
+# Clicker Question
+	
+Which measure of central tendency best describes the age of participants?
+
+<div id="uxhcvgxdpj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#uxhcvgxdpj .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uxhcvgxdpj .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uxhcvgxdpj .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_col_heading {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uxhcvgxdpj .gt_column_spanner_outer {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uxhcvgxdpj .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uxhcvgxdpj .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uxhcvgxdpj .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uxhcvgxdpj .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uxhcvgxdpj .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uxhcvgxdpj .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uxhcvgxdpj .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uxhcvgxdpj .gt_row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uxhcvgxdpj .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#uxhcvgxdpj .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uxhcvgxdpj .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uxhcvgxdpj .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uxhcvgxdpj .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#uxhcvgxdpj .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uxhcvgxdpj .gt_sourcenote {
+  font-size: 12px;
+  padding: 4px;
+}
+
+#uxhcvgxdpj .gt_left {
+  text-align: left;
+}
+
+#uxhcvgxdpj .gt_center {
+  text-align: center;
+}
+
+#uxhcvgxdpj .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uxhcvgxdpj .gt_font_normal {
+  font-weight: normal;
+}
+
+#uxhcvgxdpj .gt_font_bold {
+  font-weight: bold;
+}
+
+#uxhcvgxdpj .gt_font_italic {
+  font-style: italic;
+}
+
+#uxhcvgxdpj .gt_super {
+  font-size: 65%;
+}
+
+#uxhcvgxdpj .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style><span class='hi slate' style='display: block; margin-bottom: 8px;'>Sample of individuals</span></th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Age</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Sex</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">BMI</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Drinks per week</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">59</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">32.26</td>
+<td class="gt_row gt_left">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right">62</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">25.09</td>
+<td class="gt_row gt_left">2 drinks</td></tr>
+    <tr><td class="gt_row gt_right">60</td>
+<td class="gt_row gt_left">female</td>
+<td class="gt_row gt_right">32.58</td>
+<td class="gt_row gt_left">1 drink</td></tr>
+    <tr><td class="gt_row gt_right">18</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">99.99</td>
+<td class="gt_row gt_left">6 drinks</td></tr>
+    <tr><td class="gt_row gt_right">57</td>
+<td class="gt_row gt_left">female</td>
+<td class="gt_row gt_right">31.88</td>
+<td class="gt_row gt_left">2 drinks</td></tr>
+    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
+<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>		
+
+&lt;ol type="a"&gt;
+	&lt;li&gt;Median&lt;/li&gt;
+	&lt;li&gt;Mean&lt;/li&gt;
+&lt;/ol&gt;
+	
+
+---
+# Measuring Variability
+	
+	
+Measures of central tendency do not tell the whole story. To further characterize the distribution, we need to know how the data is spread out
+		      
+- Quartiles
+- Variance
+
+
+---
+# Variability: Quartiles
+	
+	
+-  Measure of center alone can be misleading
+-  How to calculate quartiles:
+		      
+- Arrange observations in increasing order and locate .hi.red_pink[median] 
+- The .hi.green[first quartile] is the median of the observations located to the left of the median
+- The .hi.green[third quartile] is the median of observations located to the right of the median
+              
+&lt;img src="quartiles.png" width="50%" style="display: block; margin: auto;" /&gt;
+		      
+		      
+
+
+---
+# Boxplots
+	
+.hi.blue[five-number summary]: smallest observation (minimum), the first quartile, the median, the third quartile, and the largest observation (maximum)
+
+We can use the .hi.purple[boxplot] using this five number summary to display quantitative data
+
+-  How to make a boxplot:
+		      
+- A central box spans the first and third quartiles 
+- A line in the box marks the median
+- Line extends from the box out to the smallest and largest observations 
+		      
+	
+
+
+---
+# Boxplots
+
+
+&lt;img src="ch2_files/figure-html/rodman-box-1.svg" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+# Interquartile Range
+	
+	
+The .hi.turquoise[interquartile range], IQR, is the distance between the first and third quartiles
+		      
+-   IQR = `\(Q_3 - Q_1\)`
+-   The IQR measures the spread of the data and it also helps to identify outliers
+	      
+Rule for outliers:
+		      
+- An observation is an outlier if it falls more than `\(1.5 \times IQR\)` above the third quartile or below the first
+		      
+
+---
+# Variability: Variance
+	
+	
+.hi.purple[Variance]: denoted, `\(s^2\)`, measures how "spread out" the data are on average
+		     
+`$$s^2 = \frac{(x_1-{\color{orange}\bar{x}})^2 + (x_2-{\color{orange}\bar{x}})^2 + .... + (x_n - {\color{orange}\bar{x}})^2}{n-1},$$`
+or more compactly
+
+$$
+s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - {\color{orange}\bar{x}})^2
+$$
+.hi.purple[Standard deviation]: looks at how far each observation is from the mean; square root of the variance
+
+`$$s=\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2}$$`
+	
+	
+
+
+---
+# Visualizing Standard Deviation
+	
+	
+&lt;img src="ch2_files/figure-html/multiple-vars-1.svg" width="90%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+# Practice Question
+
+Calculate the standard deviation of age?
+
+<div id="fdystepxpp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+html {
+  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#fdystepxpp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: transparent;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: left;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fdystepxpp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 4px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fdystepxpp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 3px;
+  border-top-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_col_heading {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fdystepxpp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: white;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fdystepxpp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fdystepxpp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fdystepxpp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  border-bottom-color: black;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fdystepxpp .gt_group_heading {
+  padding: 8px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fdystepxpp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fdystepxpp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fdystepxpp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fdystepxpp .gt_row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fdystepxpp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 80%;
+  font-weight: bolder;
+  text-transform: uppercase;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 12px;
+}
+
+#fdystepxpp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fdystepxpp .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fdystepxpp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fdystepxpp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding: 4px;
+}
+
+#fdystepxpp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fdystepxpp .gt_sourcenote {
+  font-size: 12px;
+  padding: 4px;
+}
+
+#fdystepxpp .gt_left {
+  text-align: left;
+}
+
+#fdystepxpp .gt_center {
+  text-align: center;
+}
+
+#fdystepxpp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fdystepxpp .gt_font_normal {
+  font-weight: normal;
+}
+
+#fdystepxpp .gt_font_bold {
+  font-weight: bold;
+}
+
+#fdystepxpp .gt_font_italic {
+  font-style: italic;
+}
+
+#fdystepxpp .gt_super {
+  font-size: 65%;
+}
+
+#fdystepxpp .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 65%;
+}
+</style>
+<table class="gt_table">
+  <thead class="gt_header">
+    <tr>
+      <th colspan="4" class="gt_heading gt_title gt_font_normal gt_bottom_border" style><span class='hi slate' style='display: block; margin-bottom: 8px;'>Sample of individuals</span></th>
+    </tr>
+    
+  </thead>
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Age</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Sex</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">BMI</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Drinks per week</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_right">59</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">32.26</td>
+<td class="gt_row gt_left">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right">62</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">25.09</td>
+<td class="gt_row gt_left">2 drinks</td></tr>
+    <tr><td class="gt_row gt_right">60</td>
+<td class="gt_row gt_left">female</td>
+<td class="gt_row gt_right">32.58</td>
+<td class="gt_row gt_left">1 drink</td></tr>
+    <tr><td class="gt_row gt_right">18</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">99.99</td>
+<td class="gt_row gt_left">6 drinks</td></tr>
+    <tr><td class="gt_row gt_right">57</td>
+<td class="gt_row gt_left">female</td>
+<td class="gt_row gt_right">31.88</td>
+<td class="gt_row gt_left">2 drinks</td></tr>
+    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
+<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+---
+# Properties of Standard Deviation, `\(s\)`
+	
+	
+-  `\(n-1\)` is referred to as the degrees of freedom
+-  `\(s\)` measures variability about the mean
+-  `\(s\)` is always greater than or equal to zero, but usually `\(&gt; 0\)`
+  - When would it be `\(=0\)`?
+-  As observations become more variable, `\(s\)` gets larger
+-  `\(s\)` is not resistant in the same way the sample mean is not resistant; a few outliers can change it a lot.
+	
+	
+
+
+---
+# Summary of Summary Statistics
+
+Two basic ways to summarize the center and spread of a distribution
+	
+-  Mean and standard deviation (or variance)
+
+-  The five-number summary
+	
+
+.hi.slate[When to Use Which]
+	
+Use `\(\bar{x}\)` and `\(s\)` when the distribution is reasonably symmetric and free of outliers
+		      
+Use five-number summary if distribution is skewed, or has outliers
+	
+
+
+---
+# Greek Letters and Statistics
+
+.pull-left[
+.hi.purple[Greek Letters]
+
+-  Greek letters like `\(\mu\)` and `\(\sigma^2\)` represent the truth about the population.
+]
+.pull-right[
+.hi.green[Latin Letters]
+
+-  Latin lettes like `\(\bar{x}\)` and `\(s^2\)` are calculations that represent guesses (estimates) at the population values.
+]
+
+The goal for the class is for the latin letters to be good guesses for the greek letters:
+
+$$
+	{\color{green}\text{Data}} \longrightarrow {\color{green}\text{Calculation}} \longrightarrow {\color{green}\text{Estimates}} \longrightarrow^{hopefully!} {\color{purple}\text{Truth}}
+$$
+
+For example, 
+$$
+	{\color{green}X} \longrightarrow {\color{green} \frac{1}{n} \sum_{i=1}^n X_i} \longrightarrow {\color{green}\bar{x}} \longrightarrow^{hopefullly!} {\color{purple}\mu}
+$$
+
+
+
+
+---
+# Install R and R Studio
+	
+.hi[Download R:] [https://www.r-project.org/](https://www.r-project.org/)
+
+- Click "download R" link under "Getting Started"
+- Select a CRAN location (mirror site) and click link
+- I selected the UC Berkeley one, pick one in USA
+- Click on "Download R for Mac/Windows/etc" link at top of page
+- Click on package to download, under "Latest Release"
+- Save the .pkg file, double click open, and follow instructions 
+
+.hi[Download RStudio:] [https://www.rstudio.com/](https://www.rstudio.com/)
+
+- \url{www.rstudio.com} and click "Download RStudio"
+- Click on "download RStudio Desktop"
+	
+
+---
+# How to use R
+	
+		
+&lt;img src="r.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
