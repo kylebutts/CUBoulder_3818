@@ -1,0 +1,511 @@
+---
+title: "ECON 3818"
+subtitle: "Chapter 13"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default', 'metropolis', 'metropolis-fonts']
+nature:
+  highlightStyle: github
+highlightLines: true
+countIncrementalSlides: false
+---
+exclude: true
+
+```{R, setup, include = F}
+
+library(tidyverse)
+library(knitr)
+library(here)
+library(gt)
+library(patchwork)
+library(kfbmisc)
+
+# Knitr options
+opts_chunk$set(
+comment = "#>",
+fig.align = "center",
+fig.height = 7,
+fig.width = 10.5,
+warning = F,
+message = F
+)
+
+# Use svg for figures
+opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+svg(tempfile(), width = width, height = height)
+})
+
+# HTML output for knitr
+options(knitr.table.format = "html")
+
+
+make_gt_title <- function(title) {
+gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
+}
+
+xaringanExtra::use_scribble()
+```
+
+---
+class: clear, middle
+<!-- Custom css -->
+```{css, echo = F, code=xfun::read_utf8(here::here("Lecture Slides", "my-css.css"))}
+```
+
+
+<!-- From xaringancolor -->
+
+<div style = "position:fixed; visibility: hidden">
+$\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}$
+$\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}$
+$\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}$
+$\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}$
+$\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}$
+$\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}$
+$\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}$
+$\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}$
+$\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}$
+$\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}$
+$\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}$
+</div>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      red_pink: ["{\color{red_pink}{#1}}", 1],
+      turquoise: ["{\color{turquoise}{#1}}", 1],
+      orange: ["{\color{orange}{#1}}", 1],
+      red: ["{\color{red}{#1}}", 1],
+      blue: ["{\color{blue}{#1}}", 1],
+      green: ["{\color{green}{#1}}", 1],
+      grey_light: ["{\color{grey_light}{#1}}", 1],
+      grey_mid: ["{\color{grey_mid}{#1}}", 1],
+      grey_dark: ["{\color{grey_dark}{#1}}", 1],
+      purple: ["{\color{purple}{#1}}", 1],
+      slate: ["{\color{slate}{#1}}", 1]
+    },
+    loader: {load: ['[tex]/color']},
+    tex: {packages: {'[+]': ['color']}}
+  }
+});
+</script>
+
+<style>
+.red_pink {color: #E64173;}
+.turquoise {color: #20B2AA;}
+.orange {color: #FFA500;}
+.red {color: #FB6107;}
+.blue {color: #3B3B9A;}
+.green {color: #8BB174;}
+.grey_light {color: #B3B3B3;}
+.grey_mid {color: #7F7F7F;}
+.grey_dark {color: #333333;}
+.purple {color: #6A5ACD;}
+.slate {color: #314F4F;}
+</style>
+
+
+```{r flair_color, echo=FALSE}
+library(flair)
+red_pink <- "#E64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#FB6107"
+blue <- "#3B3B9A"
+green <- "#8BB174"
+grey_light <- "#B3B3B3"
+grey_mid <- "#7F7F7F"
+grey_dark <- "#333333"
+purple <- "#6A5ACD"
+slate <- "#314F4F"
+```
+
+## Chapter 13: General Rules of Probability
+---
+# Basic Rules of Probability
+
+${\color{orange} A}$ is an .orange[event/outcome] and $P({\color{orange} A})$ is the .red_pink[probability] of that outcome, and ${\color{green} S}$ is that .green[state space]
+
+
+- $0 \leq P({\color{orange} A}) \leq 1$ for all ${\color{orange} A} \in {\color{green} S}$
+      
+- $P({\color{green} S})=1$
+      
+- If ${\color{orange} A}$ and ${\color{orange} B}$ are disjoint events 
+
+  $$
+    \implies P({\color{orange} A} \cup {\color{orange} B}) = P({\color{orange} A}) + P({\color{orange} B})
+  $$
+      
+- $P({\color{orange} A}^c) = 1 - P({\color{orange} A})$
+
+
+
+
+---
+# Disjoint versus Not Disjoint
+
+Using Venn diagrams can help us visualize each of the probability rules
+
+
+```{r, echo = F, out.width = "90%"}
+knitr::include_graphics("venndiagram.png")
+```
+
+
+---
+# General Addition Rule
+
+
+If ${\color{orange} A}$ and ${\color{orange} B}$ are disjoint events: $P({\color{orange} A} \cup {\color{orange} B})=P({\color{orange} A})+P({\color{orange} B})$
+      
+For any two events (not necessarily disjoint): 
+  
+  $$
+  P({\color{orange} A} \cup {\color{orange} B}) = P({\color{orange} A}) + P({\color{orange} B})- P({\color{orange} A} \cap {\color{orange} B})
+  $$
+
+- Why does this make sense? What is ${\color{orange} A} \cap {\color{orange} B}$ when ${\color{orange} A}$ and ${\color{orange} B}$ are disjoint?
+
+
+
+
+---
+# Venn Diagram Example
+
+```{r, echo = F, out.width = "60%"}
+knitr::include_graphics("vd1.png")
+```
+
+
+.small[
+If we want to find Soccer $\cup$ Tennis:
+
+- Soccer + Tennis = Alex, Casey, Drew, Hunter, Casey, Drew, Jade 
+
+- Soccer $\cap$ Tennis = Casey, Drew
+
+- Soccer $\cup$ Tennis = Soccer + Tennis - (Soccer $\cap$ Tennis) = Alex, Casey, Drew, Hunter, Jade
+]
+
+
+---
+# Clicker Question
+
+Let $P({\color{orange} A}) = 0.4$, $P({\color{orange} B}) = 0.3$, and $P({\color{orange} A}\cap {\color{orange} B})=0.1$
+
+What is $P({\color{orange} A}\cup {\color{orange} B})$?
+
+<ol type = "a">
+  <li>1.1</li>
+  <li>0.9</li>
+  <li>0.3</li>
+  <li>0.6</li>
+</ol>
+
+
+
+
+---
+# Independence
+
+
+Two events, ${\color{orange} A}$ and ${\color{orange} B}$, are .hi.purple[independent] if knowing that one occurs does not change the probability that the other occurs
+
+- Die lands on a 4 & Broncos win the Super Bowl
+
+- Club is drawn from deck of cards & You get an A on the final exam
+
+
+If ${\color{orange} A}$ and ${\color{orange} B}$ are independent: 
+$$
+    P({\color{orange} A} \cap {\color{orange} B}) = P({\color{orange} A})P({\color{orange} B})
+$$
+
+
+
+---
+# Clicker Question
+
+Let $P({\color{orange} A}) = 0.4$, $P({\color{orange} B}) = 0.3$, and $P({\color{orange} A}\cap {\color{orange} B})=0.1$
+
+Which of the following statements is true:
+<ol type = "a">
+  <li>\({\color{orange} A}\) and \({\color{orange} B}\) are independent because \(P({\color{orange} A} \cap {\color{orange} B}) = P({\color{orange} A})P({\color{orange} B})\)</li>
+  <li>\({\color{orange} A}\) and \({\color{orange} B}\) are independent because \(P({\color{orange} A} \cap {\color{orange} B}) \neq P({\color{orange} A})P({\color{orange} B})\)</li>
+  <li>\({\color{orange} A}\) and \({\color{orange} B}\) are not independent because \(P({\color{orange} A} \cap {\color{orange} B}) = P({\color{orange} A})P({\color{orange} B})\)</li>
+  <li>\({\color{orange} A}\) and \({\color{orange} B}\) are not independent because \(P({\color{orange} A} \cap {\color{orange} B}) \neq P({\color{orange} A})P({\color{orange} B})\)</li>
+</ol>
+
+
+
+---
+# Independent vs. Disjoint
+
+
+Two events being independent is .hi[NOT] the same as them being disjoint:
+
+1. Say event ${\color{orange} A}$ is being 18 or over, and ${\color{orange} B}$ is under 18
+
+  - I cannot be both 18 or over, and under 18. This means ${\color{orange} A}$ and ${\color{orange} B}$ are .it[disjoint]
+
+2. If I am not 18 or over, then I am under 18. That means if ${\color{orange} A}$ isn't true then ${\color{orange} B}$ must be true. 
+
+  - Since event ${\color{orange} A}$ tells me about event ${\color{orange} B}$, ${\color{orange} A}$ and ${\color{orange} B}$ are .it[not independent]
+
+
+
+
+
+---
+# Conditional Probability
+
+ 
+Sometimes one event occurring tells us something about the probability of a different event
+
+.hi.purple[Conditional probability]: probability of an event, ${\color{orange} A}$, given that another event, ${\color{orange} B}$, has already occurred
+
+$$P({\color{orange} A} \ \vert \  {\color{orange} B})= \frac{P({\color{orange} A} \cap {\color{orange} B})}{P({\color{orange} B})}$$
+
+
+
+---
+# Visualizing Conditional Probability
+
+```{r, echo = F, out.width = "70%"}
+knitr::include_graphics("simplevenndiagram.png")
+```
+
+You throw a dart and land in ${\color{orange} B}$. What is the probability that you landed in ${\color{orange} A}$ as well? $P({\color{orange} A} \ \vert \  {\color{orange} B})$. We can now think of ${\color{orange} B}$ as the sample space which changes our likelihood of landing in ${\color{orange} A}$.
+
+
+---
+# Conditional Probability v. Intersection
+
+$P({\color{orange}\text{work in tech}} \cap {\color{orange}\text{live in Boulder}})$ vs. $P({\color{orange}\text{work in tech}} \ \vert \  {\color{orange}\text{live in Boulder}})$
+      
+$P({\color{orange}\text{work in tech}})$ = work in tech/entire US population = relatively small, let's say $7\%$. 
+
+$P({\color{orange}\text{live in Boulder}})$ = Boulder population/entire US population = also small, $<1\%$.
+      
+- This means the probability of BOTH happening is small, because both events are unlikely compared to the .i[state space of the entire US population]
+- But the $P({\color{orange}\text{work in tech}} \ \vert \  {\color{orange}\text{live in Boulder}})$ will be higher because now the .it[state space is Boulder population], which has a greater concentration of high-tech employees
+
+
+
+
+
+
+---
+# Identifying Conditional Probabilities
+In Colorado, the DMV identifies individuals as having either blonde, brunette or red hair. It also has eyes color. For each of the following statements, identify if this is a conditional probability.
+
+1. 2.1% of the drivers are redheads with blue eyes
+2. 45% of blondes have blue eyes                  
+3. 51% of people have brown hair or brown eyes    
+4. 77% of the population is brunette              
+5. 4.7% of people with blue eyes are redheads.    
+
+
+
+
+---
+# Clicker Question
+
+Lactose intolerance causes difficulty digesting dairy products that contain lactose. It is particularly common among people of African and Asian ancestry. In the United States, 82% of the population is white, 14% is black, and 4% is Asian. 
+
+Moreover, 15% of whites, 70% of blacks, and 90% of Asians are lactose intolerance.
+
+Which of the following statements is true?
+
+<ol type = "a">
+  <li>\(P({\color{orange} \text{Asian}} \cap {\color{orange} \text{Lactose Intolerant}}) = 0.9\)</li>
+  <li>\(P({\color{orange} \text{Asian}} \ \vert \ {\color{orange} \text{Lactose Intolerant}}) = 0.9\)</li>
+  <li>\(P({\color{orange} \text{Lactose Intolerant}} \ \vert \ {\color{orange} \text{Asian}}) = 0.9\)</li>
+  <li>\(P({\color{orange} \text{Asian}} \cup {\color{orange}\text{Lactose Intolerant}}) = 0.9\)</li>
+</ol> 
+
+
+---
+# Calculating Conditional Probability
+
+Consider light truck and car sales in the U.S.:
+
+```{r crash-table, echo = F}
+crash_data <- tribble(
+  ~Name, ~Domestic, ~Imported, ~Total,
+  "Light Truck", 712700, 187000, 899700,
+  "Car", 472100, 155500, 627600,
+  "Total", 1184800, 342500, 152730,
+)
+
+crash_tbl <- gt(crash_data, rowname_col = "Name") %>%
+  gt_theme_kyle() %>% 
+  tab_header(title = make_gt_title("Automobile Accidents Cross-table")) %>%
+  fmt_number(columns = c("Domestic", "Imported", "Total"), sep_mark = ",", decimals = 0)
+
+crash_tbl
+```
+
+If we consider .it[only cars], what is the likelihood of a randomly selected sale being a domestic vehicle?
+
+\begin{aligned}
+P({\color{orange} \text{domestic}} \ \vert \  {\color{orange} \text{car}}) &= \frac{P({\color{orange} \text{domestic}} \text{ and } {\color{orange} \text{car}})}{P({\color{orange} \text{car}})} \\
+&= \frac{\frac{472,100}{1,527,300}}{\frac{627,600}{1,527,300}}=\frac{472,100}{627,600}=0.75
+\end{aligned}
+
+
+
+---
+# General Multiplication Rule
+
+Can use the equation for conditional probability to find the probability of two events happening together:
+
+$$P({\color{orange} A}\ \vert \ {\color{orange} B})=\frac{P({\color{orange} A}\cap {\color{orange} B})}{P({\color{orange} B})}$$
+
+If we multiply both sides by $P({\color{orange} B})$ we get:
+
+$$P({\color{orange} A}\cap {\color{orange} B})=P({\color{orange} B})P({\color{orange} A}\ \vert \ {\color{orange} B})$$
+
+
+
+---
+# Clicker Question
+Lactose intolerance causes difficulty digesting dairy products that contain lactose. It is particularly common among people of African and Asian ancestry. In the United States, 82% of the population is white, 14% is black, and 4% is Asian. 
+
+Moreover, 15% of whites, 70% of blacks, and 90% of Asians are lactose intolerance.
+
+What is the probability an individual is Asian and lactose intolerant? 
+
+<ol type = "a">
+  <li>0.036</li>
+  <li>0.044</li>
+  <li>0.9</li>
+  <li>0.004</li>
+</ol>
+
+
+---
+# Conditional Prob. and Independence
+
+If 
+$$P({\color{orange} A}) = P({\color{orange} A} \ \vert \ {\color{orange} B}),$$
+then the probability of ${\color{orange} A}$ is the same conditional on ${\color{orange} B}$ or not, then the two events ${\color{orange} A}$ and ${\color{orange} B}$ are .hi.purple[independent]
+
+
+
+
+---
+# Clicker Question
+Recall we calculated the probability of a car being domestic is 0.75. 
+
+One event is that the vehicle is a car, another event is that the vehicle is domestic. Are these two events independent? 
+
+`r crash_tbl`
+
+<ol type = "a">
+  <li>Yes, they are independent</li>
+  <li>No, they are not independent</li>
+</ol>
+
+
+---
+# Law of Total Probability
+
+Suppose we partition sample space into n different parts, ${\color{orange} B_1}, {\color{orange} B_2}, ..., {\color{orange} B_n}$
+
+If there is an event ${\color{orange} A}$, we can calculate its probability by adding all of its intersections with ${\color{orange} B_i}$'s
+
+
+```{r, echo = F, out.width = "90%"}
+knitr::include_graphics("totalprob.png")
+```
+
+
+---
+# Law of Total Probability
+
+The .hi.slate[Law of Total Probability] states:
+
+$$P({\color{orange} A})=\sum_{i=1}^nP({\color{orange} A} \cap {\color{orange} B_i})$$
+An equivalent formula, uses the multiplication rule to show:
+$$P({\color{orange} A})=\sum_{i=1}^n P({\color{orange} A} \cap {\color{orange} B_i}) = \sum_{i=1}^n P({\color{orange} A}\ \vert \ {\color{orange} B_i})P({\color{orange} B_i})$$
+
+
+
+---
+# Law of Total Probability
+
+The .hi.purple[Law of Total Probability] says that we can calculate the probability of any event by 
+
+<ol type="i">
+  <li>partitioning the entire sample space into disjoint events</li>
+  <li>calculating the probabilities of those disjoint events</li>
+  <li>multiply those by the conditional probabilities, and </li>
+  <li>add them all together.</li>
+</ol>
+
+- Use the law of total probability when you don't know the probability of an event, but you know its occurrence under several disjoint scenarios and the probability of each scenario
+
+
+
+
+---
+# Midterm Example
+Let ${\color{orange} A}$ be the event that a flight from New York to San Francisco arrives on time, and let ${\color{orange} B}$ be the event that it is a clear day in San Francisco.
+
+Suppose the probability of a clear day is $P({\color{orange} B})=0.6$, We also know that the probability that a plane arrives on a sunny day is 0.9, and on a cloudy day it is 0.5
+
+<ol type = "a">
+  <li>What is the probability that the plan lands on time and it is a sunny day?</li>
+  <li>What is the probability that the plane lands on time and it is .it[not] a sunny day?</li>
+  <li>What is the probability the plan does not land on time?</li>
+</ol>
+
+
+---
+# Clicker Question
+Lactose intolerance causes difficulty digesting dairy products that contain lactose. It is particularly common among people of African and Asian ancestry. In the United States, 82% of the population is white, 14% is black, and 4% is Asian. 
+
+Moreover, 15% of whites, 70% of blacks, and 90% of Asians are lactose intolerance.
+
+What percent of the entire population is lactose intolerant? 
+
+<ol type = "a">
+- 22.5%
+- 25.7%
+- 0.04%
+- 0.036%
+</ol>
+
+---
+# Bayes' Law
+
+.hi.purple[Bayes Law]: gives us a different way to calculate conditional probabilities 
+Let ${\color{orange} B_1}, {\color{orange} B_2}, ..., {\color{orange} B_n}$ be a partition of ${\color{green} S}$. Let ${\color{orange} A}$ be an event in ${\color{green} S}$. 
+
+Then:
+$$P({\color{orange} B_i}\ \vert \ {\color{orange} A})=\frac{P({\color{orange} A}\ \vert \ {\color{orange} B_i})P({\color{orange} B_i})}{P({\color{orange} A}\ \vert \ {\color{orange} B_1})P({\color{orange} B_1})+P({\color{orange} A} \ \vert \ {\color{orange} B_2})P({\color{orange} B_2})+...+P({\color{orange} A} \ \vert \ {\color{orange} B_n})P({\color{orange} B_n})}$$
+
+- Bayes rule is used to "flip" a conditional probability 
+
+
+
+
+---
+# Bayes' Law: Example
+
+Suppose testing for a disease is 99% accurate, and 0.5% of people have the diseases. What is the probability that you have the disease, given that the test was positive?
+
+$$ 
+P(Sick \ \vert \  Positive) = \frac{P(Positive \ \vert \  Sick)P(Sick)}{P(Positive \ \vert \  Sick)(Sick) + P(Positive \ \vert \  Healthy)P(Healthy)}
+$$
+
+$$ 
+P(Sick \ \vert \  Positive)= \frac{0.99*0.005}{(0.99*0.005)+(0.01*0.995)} = 0.332
+$$
+
