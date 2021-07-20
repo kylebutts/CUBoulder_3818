@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>ECON 3818</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Kyle Butts" />
+    <meta name="date" content="2021-07-20" />
+    <script src="ch12_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="ch12_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="ch12_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="ch12_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="ch12_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="ch12_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="ch12_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# ECON 3818
+## Chapter 12
+### Kyle Butts
+### 20 July 2021
+
+---
+
+exclude: true
+
+
+
+---
+class: clear, middle
+&lt;!-- Custom css --&gt;
+&lt;style type="text/css"&gt;
+@import url(https://fonts.googleapis.com/css?family=Zilla+Slab:300,300i,400,400i,500,500i,700,700i);
+
+/* Create a highlighted class called 'hi'  */
+.hi {
+  font-weight: 600;
+}
+
+.bw {
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+}
+.gw {
+  background-color: #d2d2d2;
+  color: #ffffff;
+}
+
+
+/* Font styling */
+.mono {
+  font-family: monospace;
+}
+.ul {
+  text-decoration: underline;
+}
+.ol {
+  text-decoration: overline;
+}
+.st {
+  text-decoration: line-through;
+}
+.bf {
+  font-weight: bold;
+}
+.it {
+  font-style: italic;
+}
+
+
+/* Font Sizes */
+.bigger {
+  font-size: 125%;
+}
+.huge{
+  font-size: 150%;
+}
+
+.small {
+  font-size: 95%;
+}
+.smaller {
+  font-size: 85%;
+}
+.smallest {
+  font-size: 75%;
+}
+
+.tiny {
+  font-size: 50%;
+}
+
+
+/* Remark customization */
+
+.clear .remark-slide-number {
+  display: none;
+}
+.inverse .remark-slide-number {
+  display: none;
+}
+
+.remark-code-line-highlighted {
+  background-color: rgba(249, 39, 114, 0.5);
+}
+
+.remark-slide-content {
+  background-color: #ffffff;
+  font-size: 24px;
+  /* font-weight: 300; */
+  /* line-height: 1.5; */
+  /* padding: 1em 2em 1em 2em; */
+}
+
+/* Xaringan tweeks */
+
+.inverse {
+  background-color: #23373B;
+  text-shadow: 0 0 20px #333;
+  /* text-shadow: none; */
+}
+
+.title-slide {
+  background-color: #ffffff;
+  border-top: 80px solid #ffffff;
+}
+
+.footnote {
+  bottom: 1em;
+  font-size: 80%;
+  color: #7f7f7f;
+}
+
+
+
+/* Mono-spaced font, smaller */
+.mono-small {
+  font-family: monospace;
+  font-size: 20px;
+}
+.mono-small .mjx-chtml {
+  font-size: 103% !important;
+}
+
+.pseudocode, .pseudocode-small {
+  font-family: monospace;
+  background: #f8f8f8;
+  border-radius: 3px;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.pseudocode-small {
+  font-size: 20px;
+}
+
+.super{
+  vertical-align: super;
+  font-size: 70%;
+  line-height: 1%;
+}
+.sub{
+  vertical-align: sub;
+  font-size: 70%;
+  line-height: 1%;
+}
+
+.remark-code {
+  font-size: 68%;
+}
+
+.inverse &gt; h2 {
+  color: #e64173;
+  font-weight: 300;
+  font-size: 40px;
+  font-style: italic;
+  margin-top: -25px;
+}
+.title-slide &gt; h2  {
+  margin-top: -25px;
+  padding-bottom: -20px;
+  color: rgba(249, 38, 114, 0.75);
+  text-shadow: none;
+  font-weight: 300;
+  font-size: 35px;
+  font-style: normal;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.remark-inline-code {
+  background: #F5F5F5; /* lighter */
+  /* background: #e7e8e2; /* darker */
+  border-radius: 3px;
+  padding: 4px;
+}
+
+/* 2/3 left; 1/3 right */
+.more-left {
+  float: left;
+  width: 63%;
+}
+.less-right {
+  float: right;
+  width: 31%;
+}
+.more-right ~ * {
+  clear: both;
+}
+
+/* 9/10 left; 1/10 right */
+.left90 {
+  padding-top: 0.7em;
+  float: left;
+  width: 85%;
+}
+.right10 {
+  padding-top: 0.7em;
+  float: right;
+  width: 9%;
+}
+
+/* 95% left; 5% right */
+.left95 {
+  padding-top: 0.7em;
+  float: left;
+  width: 91%;
+}
+.right05 {
+  padding-top: 0.7em;
+  float: right;
+  width: 5%;
+}
+
+.left5 {
+  padding-top: 0.7em;
+  margin-left: 0em;
+  margin-right: -0.4em;
+  float: left;
+  width: 7%;
+}
+.left10 {
+  padding-top: 0.7em;
+  margin-left: -0.2em;
+  margin-right: -0.5em;
+  float: left;
+  width: 10%;
+}
+.left30 {
+  padding-top: 0.7em;
+  float: left;
+  width: 30%;
+}
+.right30 {
+  padding-top: 0.7em;
+  float: right;
+  width: 30%;
+}
+
+.thin-left {
+  padding-top: 0.7em;
+  margin-left: -1em;
+  margin-right: -0.5em;
+  float: left;
+  width: 27.5%;
+}
+
+/* Example */
+.ex {
+  font-weight: 300;
+  color: #cccccc !important;
+  font-style: italic;
+}
+
+.col-left {
+  float: left;
+  width: 47%;
+  margin-top: -1em;
+}
+.col-right {
+  float: right;
+  width: 47%;
+  margin-top: -1em;
+}
+
+.clear-up {
+  clear: both;
+  margin-top: -1em;
+}
+
+
+
+/* Format tables */
+table {
+  color: #000000;
+  font-size: 14pt;
+  line-height: 100%;
+  border-top: 1px solid #ffffff !important;
+  border-bottom: 1px solid #ffffff !important;
+}
+th, td {
+  background-color: #ffffff;
+}
+table th {
+  font-weight: 400;
+}
+
+
+/* Extra left padding */
+.pad-left {
+  margin-left: 5%;
+}
+
+/* Extra left padding */
+.big-left {
+  margin-left: 15%;
+  margin-bottom: -0.4em;
+}
+
+/* Attention */
+.attn {
+  font-weight: 500;
+  color: #e64173 !important;
+  font-family: 'Zilla Slab' !important;
+}
+
+/* Note */
+.note {
+  font-weight: 300;
+  font-style: italic;
+  color: #314f4f !important;
+  /* color: #cccccc !important; */
+  font-family: 'Zilla Slab' !important;
+}
+
+/* Question and answer */
+.qa {
+  font-weight: 500;
+  /* color: #314f4f !important; */
+  color: #e64173 !important;
+  font-family: 'Zilla Slab' !important;
+}
+
+
+
+/* Remove orange line */
+hr, .title-slide h2::after, .mline h1::after {
+  content: '';
+  display: block;
+  border: none;
+  background-color: #e5e5e5;
+  color: #e5e5e5;
+  height: 1px;
+}
+&lt;/style&gt;
+
+
+&lt;!-- From xaringancolor --&gt;
+
+&lt;div style = "position:fixed; visibility: hidden"&gt;
+`\(\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}\)`
+`\(\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}\)`
+`\(\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}\)`
+`\(\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}\)`
+`\(\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}\)`
+`\(\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}\)`
+`\(\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}\)`
+`\(\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}\)`
+`\(\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}\)`
+`\(\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}\)`
+`\(\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}\)`
+&lt;/div&gt;
+
+&lt;script type="text/x-mathjax-config"&gt;
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      red_pink: ["{\color{red_pink}{#1}}", 1],
+      turquoise: ["{\color{turquoise}{#1}}", 1],
+      orange: ["{\color{orange}{#1}}", 1],
+      red: ["{\color{red}{#1}}", 1],
+      blue: ["{\color{blue}{#1}}", 1],
+      green: ["{\color{green}{#1}}", 1],
+      grey_light: ["{\color{grey_light}{#1}}", 1],
+      grey_mid: ["{\color{grey_mid}{#1}}", 1],
+      grey_dark: ["{\color{grey_dark}{#1}}", 1],
+      purple: ["{\color{purple}{#1}}", 1],
+      slate: ["{\color{slate}{#1}}", 1]
+    },
+    loader: {load: ['[tex]/color']},
+    tex: {packages: {'[+]': ['color']}}
+  }
+});
+&lt;/script&gt;
+
+&lt;style&gt;
+.red_pink {color: #E64173;}
+.turquoise {color: #20B2AA;}
+.orange {color: #FFA500;}
+.red {color: #FB6107;}
+.blue {color: #3B3B9A;}
+.green {color: #8BB174;}
+.grey_light {color: #B3B3B3;}
+.grey_mid {color: #7F7F7F;}
+.grey_dark {color: #333333;}
+.purple {color: #6A5ACD;}
+.slate {color: #314F4F;}
+&lt;/style&gt;
+
+
+
+
+## Chapter 12: Introducing Probability
+
+---
+# Randomness
+
+
+What is randomness? A phenomenon is .hi.purple[random] if:
+      
+1. Individual outcomes are uncertain
+
+2. Has a distributions of outcomes in a large number of repetitions
+      
+.it[Example]: A coin toss
+
+
+
+
+---
+# Probability
+
+
+.hi.red_pink[Probability]: proportion of times a particular outcome would occur in a very long series of repetitions. 
+      
+- .it[Example]: What is the .red_pink[probability] of a coin landing on heads?
+      
+
+For a given observation, the .red_pink[probability] that an .orange[event] occurs is:
+  
+`$$\frac{\text{Number of ways event could occur}}{\text{Number of total possible outcomes}}$$`
+
+
+
+
+---
+# Probability and Randomness
+
+&lt;img src="ch12_files/figure-html/coin-toss-1.svg" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Probability Models
+
+
+We think of probability utilizing a particular framework, first we define a few useful terms:
+      
+-  .hi.green[Sample Space]: set of all possible outcomes
+
+-  .hi.orange[Event]: outcome (or set of outcomes) of a random phenomenon
+    - .orange[Event] is a subset of the .green[sample space]
+
+-  .hi.red_pink[Probability Model]: assigns a probability to every .orange[event] in the .green[sample space]
+      
+
+
+
+
+
+
+---
+# Probability: Example
+
+Say we roll two six-sided die, the following would be our .green[sample space]: 
+
+&lt;img src="twodiesamplespace.png" width="75%" style="display: block; margin: auto;" /&gt;
+
+Each outcome is equally likely, specifically each outcome has .red_pink[probability] of 1/36
+
+
+
+---
+# Clicker Question
+
+If I roll two six-sided die, what is the .red_pink[probability] I roll a one and a two?
+
+&lt;ol type = "a"&gt;
+  &lt;li&gt;1/36&lt;/li&gt;
+  &lt;li&gt;2/36&lt;/li&gt;
+  &lt;li&gt;3/36&lt;/li&gt;
+  &lt;li&gt;4/36&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+---
+# Set Notation
+
+`\({\color{orange} A} = \{1,2,3\}\)`, `\({\color{orange} B}=\{3,4,5\}\)`, `\({\color{orange} C}=\{1,2,3,4,5,6\}\)`, `\({\color{orange} D}=\{4\}\)`
+
+
+`\(\in\)`: "belongs to"
+      
+-  Example: `\(1 \in {\color{orange} A}\)`
+      
+`\(\notin\)`: "does not belong to"
+      
+-  Example: `\(4 \notin {\color{orange} A}\)`
+      
+`\(\cup\)`: Union; combination of two or more sets; "or"
+      
+-  Example: `\({\color{orange} A} \cup {\color{orange} B} = \{1,2,3,4,5\}\)`
+      
+`\(\cap\)`: Intersection; overlap of two or more sets; "and"
+      
+-  Example: `\({\color{orange} A} \cap {\color{orange} B} = \{3\}\)`
+      
+
+
+
+
+---
+# Set Notation, cont.
+
+`\({\color{orange} A} = \{1,2,3\}\)`, `\({\color{orange} B}=\{3,4,5\}\)`, `\({\color{orange} C}=\{1,2,3,4,5,6\}\)`, `\({\color{orange} D}=\{4\}\)`
+
+
+`\({\color{orange} A}^c\)`: "A complement"
+      
+-  Example: `\({\color{orange} A}^c = \{x: x \notin {\color{orange} A} \} = \{4,5,6\}\)`
+
+-  Interpreted as "not .orange[A]"
+      
+`\(\subseteq\)`: Subset
+      
+-  Example: `\({\color{orange} A} \subseteq {\color{orange} C}\)`, however `\({\color{orange} C} \not\subseteq {\color{orange} A}\)`.
+      
+`\({\color{orange} \emptyset}\)`: is the null or empty set 
+
+- contains nothing 
+      
+`\({\color{orange} A} \cap {\color{orange} D}= \emptyset\)`: Disjoint
+
+
+
+
+---
+# Clicker Question
+
+Given the following sets, `\({\color{orange} A}=\{5,10,15,20\}\)` and `\({\color{orange} B}=\{1,2,3,4,5\}\)`
+Which of the following is true?
+
+&lt;ol type = "a"&gt;
+  &lt;li&gt;\({\color{orange} A} \cup {\color{orange} B} = \{1,2,3,4,5,10,15,20\}\)&lt;/li&gt;
+  &lt;li&gt;\({\color{orange} A} \cup {\color{orange} B} = \{5\}\)&lt;/li&gt;
+  &lt;li&gt;\({\color{orange} A} \cap {\color{orange} B} = \{5\}\)&lt;/li&gt;
+  &lt;li&gt;\({\color{orange} A} \cap {\color{orange} B} = \{1,2,3,4,5,10,15,20\}\)&lt;/li&gt;
+  &lt;li&gt;Both a. and c.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+---
+# Axioms of Probability
+
+Let `\({\color{orange} A}\)` and `\({\color{orange} B}\)` be .orange[events], and `\(P({\color{orange} A})\)` and `\(P({\color{orange} B})\)` are the .red_pink[probability] of those outcomes. We have a set of rules:
+
+1. Any .red_pink[probability] is a number between 0 and 1
+
+2. All possible outcomes together must have the .red_pink[probability] of 1
+
+3. If two .orange[events] are disjoint, 
+
+  `$$P({\color{orange} A} \cap {\color{orange} B})=0 \implies P({\color{orange} A} \cup {\color{orange} B}) = P({\color{orange} A}) + P({\color{orange} B})$$`
+
+4. `\(P({\color{orange} A}^c)=1-P({\color{orange} A})\)`
+
+
+
+
+---
+# Clicker Question
+Given the three following scenarios:
+
+- A person is randomly selected. .orange[A] is the .orange[event] they are under 18. .orange[B] is the .orange[event] they are over 18.
+- A person is selected at random. .orange[A] is the .orange[event] that they earn more than $100,000 per year. .orange[B] is the .orange[event] that they earn more than $250,000.
+- A pair of dice are tossed. .orange[A] is the .orange[event] that one of the die is a 3. .orange[B] is the .orange[event] that the sum of two dice is 3.
+
+In which cases are the .orange[events], A and B, disjoint?
+
+&lt;ol type = "a"&gt;
+  &lt;li&gt;1 only&lt;/li&gt;
+  &lt;li&gt;2 only&lt;/li&gt;
+  &lt;li&gt;3 only&lt;/li&gt;
+  &lt;li&gt;1 and 2&lt;/li&gt;
+  &lt;li&gt;1 and 3&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+---
+# De Morgan's Law
+
+ 
+.hi.slate[De Morgan's law] of union and intersection. For any two finite sets .orange[A] and .orange[B]:
+      
+1. `\(({\color{orange} A} \cup {\color{orange} B})^c = {\color{orange} A}^c \cap {\color{orange} B}^c\)`
+
+2. `\(({\color{orange} A} \cap {\color{orange} B})^c = {\color{orange} A}^c \cup {\color{orange} B}^c\)`
+      
+
+
+
+
+---
+# De Morgan's Law Example
+
+Let `\({\color{green}S}=\{j, k, l, m, n\}\)` and `\({\color{orange} A}=\{j, k, m\}\)` and `\({\color{orange} B}=\{k, m, n\}\)`
+
+
+1. `\(({\color{orange} A} \cup {\color{orange} B})^c = ({\color{orange} A}^c \cap {\color{orange} B}^c)\)`
+
+  &lt;ol type="i"&gt;
+    &lt;li&gt;
+      \(({\color{orange} A} \cup {\color{orange} B})= \{j, k, m, n\} \implies ({\color{orange} A} \cup {\color{orange} B})^c=\{l\}\)
+    &lt;/li&gt;
+    &lt;br/&gt;
+    &lt;li&gt;
+      \({\color{orange} A}^c = \{l, n\}\) and \({\color{orange} B}^c=\{j, l\} \implies {\color{orange} A}^c \cap {\color{orange} B}^c = \{l\}\)
+    &lt;/li&gt;
+  &lt;/ol&gt;
+
+2. `\(({\color{orange} A} \cap {\color{orange} B})^c = {\color{orange} A}^c \cup {\color{orange} B}^c\)`
+  &lt;ol type="i"&gt;
+    &lt;li&gt;
+      \( ({\color{orange} A} \cap {\color{orange} B})=\{k,m\} \implies ({\color{orange} A} \cap {\color{orange} B})^c=\{j, l, n\} \)
+    &lt;/li&gt;
+    &lt;br/&gt;
+    &lt;li&gt;
+      \( {\color{orange} A}^c \cup {\color{orange} B}^c=\{l, n\} \cup \{j, l\} \implies {\color{orange} A}^c \cup {\color{orange} B}^c = \{j, l, n\} \)
+    &lt;/li&gt;
+  &lt;/ol&gt;
+
+
+
+
+---
+# Random Variables
+
+
+.hi.purple[Random variable]: variable whose value is a numerical outcome of a random phenomenon
+      
+- .hi.purple[Random variables] can be .hi[discrete] or .hi[continuous]
+      
+.it[Example:] Coin toss
+      
+- `\(X\)` can be defined as the number of heads we see in two tosses:
+  
+  - `\(X\)` is a discrete random variable; `\(X=0,1,2\)`
+
+.hi.red_pink[Probability distribution]: tell us what values random variable X can take, and how to assign probabilities to those values
+
+
+
+
+---
+# Example
+
+Flip a coin two times
+
+.green[Sample space]:
+      
+- {.orange[(Head, Tail)], .orange[(Head, Head)], .orange[(Tail, Head)], .orange[(Tail, Tail)]}
+      
+What is the .red_pink[probability] of each .orange[event]?
+
+
+
+
+---
+# Clicker Question
+
+If I toss a coin two times, and `\(X\)` is the number of heads, then what is `\(P({\color{orange}X=2})\)`?
+
+&lt;ol type = "a"&gt;
+&lt;li&gt;1/4&lt;/li&gt;
+&lt;li&gt;1/2&lt;/li&gt;
+&lt;li&gt;3/4&lt;/li&gt;
+&lt;li&gt;5/4&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+---
+# Additional Examples
+
+
+Still flipping a coin twice, what is the .red_pink[probability] of getting at least one head?
+      
+`\(P({\color{orange}X=1}) + P({\color{orange}X=2}) = 1-P({\color{orange}X=0})\)`
+
+- Now I only have to calculate one .red_pink[probability]!
+      
+
+
+
+
+---
+# Additional Dice Example
+
+What is the .red_pink[probability] of rolling a 7, 11, or double when rolling two dice?
+
+- Axiom 3 tells us we can find probabilities simply by adding if the .orange[event] is disjoint. 
+
+.orange[Roll a 7]: `\(\left\{(1,6), (6,1), (2, 5), (5,2), (3,4), (4,3) \right\}\)`
+
+.orange[Roll a 11]: `\(\left\{(5,6), (6,5) \right\}\)`
+
+.orange[Roll a double]: `\(\left\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6) \right\}\)`
+
+- Are all 3 .orange[events] disjoint?
+
+
+
+---
+# Additional Dice Example
+
+.orange[Roll a 7]: `\(\left\{(1,6), (6,1), (2, 5), (5,2), (3,4), (4,3) \right\}\)`
+
+.orange[Roll a 11]: `\(\left\{(5,6), (6,5) \right\}\)`
+
+.orange[Roll a double]: `\(\left\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6) \right\}\)`
+
+`\(P({\color{orange}7}) + P({\color{orange}11}) + P({\color{orange}\text{doubles}})=\frac{6}{36}+\frac{2}{36}+\frac{6}{36} \approx 0.4\)`
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
