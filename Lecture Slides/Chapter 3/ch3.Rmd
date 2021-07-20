@@ -176,32 +176,32 @@ set.seed(12)
 n_samp <- 1000
 
 df <- tibble(
-			x= seq(-10, 10, length=1000), 
-			y=  dnorm(x, mean=0, sd=3),
-			count= y * n_samp
-		)
+x= seq(-10, 10, length=1000), 
+y=  dnorm(x, mean=0, sd=3),
+count= y * n_samp
+)
 
 # 5 samples
 sample_df <- tibble(sample = rep(1:5, times = n_samp), values= rnorm(5*n_samp, 0, 3))
 
 
 ggplot(data= sample_df %>% filter(sample == 1), aes(x= values)) +
-		geom_histogram(aes(y= ..density..)) +
-		geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
-		theme_kyle(base_size = 20) +
-		scale_x_continuous(limits = c(-10,10)) + 
-		scale_y_continuous(limits = c(0, 0.25)) +
-		labs(x = "Value of Observation",
-			 y = "Density (Likelihood of observing value)",
-			 title= glue::glue("Sample and Population Distribution")
-		)
+geom_histogram(aes(y= ..density..)) +
+geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
+theme_kyle(base_size = 20) +
+scale_x_continuous(limits = c(-10,10)) + 
+scale_y_continuous(limits = c(0, 0.25)) +
+labs(x = "Value of Observation",
+ y = "Density (Likelihood of observing value)",
+ title= glue::glue("Sample and Population Distribution")
+)
 
 ```
 
     
 Lots of data naturally follow this distribution
 
--  heights of people, blood pressure, grades on a test
+- heights of people, blood pressure, grades on a test
 
 ---
 # Galton Board
@@ -222,19 +222,19 @@ sample_prob <- sample_df %>%
   mutate(less = values <= -2.5)
 
 ggplot() +
-		geom_histogram(data= sample_prob, aes(x = values, y= after_stat(density), fill = (stat(x) < -2.5))) +
-		geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
-		theme_kyle(base_size = 20) +
+geom_histogram(data= sample_prob, aes(x = values, y= after_stat(density), fill = (stat(x) < -2.5))) +
+geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
+theme_kyle(base_size = 20) +
     scale_fill_manual(values = c("grey80", "#d2382c")) +
-		labs(x = "Value of Observation",
-			 y = "Density (Likelihood of observing value)",
-			 fill = "Less than -2.5",
-			 title= "Sample Probability"
-		)
+labs(x = "Value of Observation",
+ y = "Density (Likelihood of observing value)",
+ fill = "Less than -2.5",
+ title= "Sample Probability"
+)
 
 ```
     
--  What's the probability that the x value is less than -2.5 .hi[in our sample]?
+- What's the probability that the x value is less than -2.5 .hi[in our sample]?
     
 
 
@@ -245,17 +245,17 @@ ggplot() +
         
 ```{r, echo = F, out.width = "80%"}
 ggplot() +
-		geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
+geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
     geom_area(data= df %>% filter(x < -2.5), aes(x = x, y = y), fill = "#d2382c") +
-		theme_kyle(base_size = 20) +
-		labs(x = "Value of Observation",
-			 y = "Density (Likelihood of observing value)",
-			 title= "Population Probability"
-		)
+theme_kyle(base_size = 20) +
+labs(x = "Value of Observation",
+ y = "Density (Likelihood of observing value)",
+ title= "Population Probability"
+)
 
 ```
     
--  What's the probability that the x value is less than -2.5 .hi[in our population distribution]?
+- What's the probability that the x value is less than -2.5 .hi[in our population distribution]?
     
 
 
@@ -267,7 +267,7 @@ ggplot() +
 Normal distribution is described .it.bf[completely] by two parameters-- its mean $\mu$ and variance $\sigma^2$
 
 - The mean is located at the center of the symmetric curve
-      -   It is the same as the median 
+      - It is the same as the median 
 - Changing $\mu$ (without changing $\sigma^2$), moves the curve along the horizontal axis
 - The variance describes the variability of the curve
 - Higher variance means a flatter and wider distribution
@@ -283,18 +283,18 @@ Normal distribution is described .it.bf[completely] by two parameters-- its mean
 ```{r multiple-vars, echo=F, out.width = "90%"}
 
 multiple_var = bind_rows(
-	tibble(Variance = 1, SD = 1, value = rnorm(1000, 0, 1)),
-	tibble(Variance = 4, SD = 2, value = rnorm(1000, 0, 4)),
-	tibble(Variance = 9, SD = 3, value = rnorm(1000, 0, 9))
+tibble(Variance = 1, SD = 1, value = rnorm(1000, 0, 1)),
+tibble(Variance = 4, SD = 2, value = rnorm(1000, 0, 4)),
+tibble(Variance = 9, SD = 3, value = rnorm(1000, 0, 9))
 ) %>% 
-	mutate(Variance = as.factor(Variance))
+mutate(Variance = as.factor(Variance))
 
 ggplot(multiple_var %>% filter(value < 20 & value > -20)) +
-	geom_density(mapping = aes(x = value, y = after_stat(density), color = Variance), 
-				 fill = NA, size = 1.5) +
-	theme_kyle(base_size = 20) + 
-	labs(x = "Value of Observation", y = "Density") + 
-	scale_color_manual(values = c("#d2382c", "#497eb3", "#8e549f"))
+geom_density(mapping = aes(x = value, y = after_stat(density), color = Variance), 
+ fill = NA, size = 1.5) +
+theme_kyle(base_size = 20) + 
+labs(x = "Value of Observation", y = "Density") + 
+scale_color_manual(values = c("#d2382c", "#497eb3", "#8e549f"))
 
 ```
 
@@ -370,9 +370,9 @@ ggplot(data.frame(x = c(-4, 4)), aes(.data$x)) +
     
 
 .small[
--  68.2% of data is within $\pm 1$ standard deviation of the mean
--  95.4% of data is within $\pm 2$ standard deviation of the mean
--  99.6% of data is within $\pm 3$ standard deviation of the mean
+- 68.2% of data is within $\pm 1$ standard deviation of the mean
+- 95.4% of data is within $\pm 2$ standard deviation of the mean
+- 99.6% of data is within $\pm 3$ standard deviation of the mean
 ]
 
 ---
@@ -397,10 +397,10 @@ If X is distributed normally, we denote it the following way:
 
 $$X \sim N({\color{orange}\mu}, {\color{green}\sigma^2})$$
  
--  This notation tells us everything we need to know about the normal distribution
+- This notation tells us everything we need to know about the normal distribution
       
--   The distribution has mean ${\color{orange}\mu}$
--   The distribution has variance ${\color{green}\sigma^2}$
+- The distribution has mean ${\color{orange}\mu}$
+- The distribution has variance ${\color{green}\sigma^2}$
       
 
 
@@ -544,7 +544,7 @@ $$P(BW\leq88)=P(\frac{BW-\mu}{\sigma} \leq \frac{88-113}{22}) = P(Z \leq -1.14)$
 
 Then, we actually have a big table of left-tail probabilities for the .it[standard] normal distribution
 
--  Table is either left-tail or right-tail (.hi.purple[Z table on exam is left-tailed])
+- Table is either left-tail or right-tail (.hi.purple[Z table on exam is left-tailed])
 
  
 
@@ -606,10 +606,10 @@ $$P(Z < -1.14)$$
 A company chooses its new entry-level employees from a pool of recent college graduates. The cumulative GPA of the candidates is used as a tie-breaker. GPAs for the successful interviewees are normally distributed, with a mean of 3.3 and a standard deviation of 0.4. What proportion of candidates have a GPA under 3.0?
 
 <ol type="a">
-	<li style="float:left; width: 150px">2.3%</li>
-	<li style="float:left; width: 150px">22.7%</li>
-	<li style="float:left; width: 150px">55.1%</li>
-	<li style="float:left; width: 150px">77.3%</li>
+<li style="float:left; width: 150px">2.3%</li>
+<li style="float:left; width: 150px">22.7%</li>
+<li style="float:left; width: 150px">55.1%</li>
+<li style="float:left; width: 150px">77.3%</li>
 </ol>
 
 
@@ -620,10 +620,10 @@ A company chooses its new entry-level employees from a pool of recent college gr
 Consider the scenario on the previous slide, where $GPA \sim N(3.3,0.4^2)$. What percent of candidates have a $GPA$ above 3.9?
 
 <ol type="a">
-	<li style="float:left; width: 150px">2.3%</li>
-	<li style="float:left; width: 150px">6.7%</li>
-	<li style="float:left; width: 150px">93.3%</li>
-	<li style="float:left; width: 150px">97.7%</li>
+<li style="float:left; width: 150px">2.3%</li>
+<li style="float:left; width: 150px">6.7%</li>
+<li style="float:left; width: 150px">93.3%</li>
+<li style="float:left; width: 150px">97.7%</li>
 </ol>
 
 
@@ -660,9 +660,9 @@ So we calculate:
 - $P(Z \leq -1.13) = 0.1292$
 
 \begin{aligned}
-	P(-1.13 \leq Z \leq 0.3) &= P(Z \leq 0.3) - P(Z \leq -1.13) \\
-	&= 0.6179 - 0.1292 \\
-	&= 0.4887
+P(-1.13 \leq Z \leq 0.3) &= P(Z \leq 0.3) - P(Z \leq -1.13) \\
+&= 0.6179 - 0.1292 \\
+&= 0.4887
 \end{aligned}
 
 
@@ -673,9 +673,9 @@ A typical college freshman spends an average of $\mu=150$ minutes per day with a
 
 
 <ol type="a">
-	<li style="float:left; width: 150px">72.57%</li>
-	<li style="float:left; width: 150px">27.43%</li>
-	<li style="float:left; width: 150px">45.14%</li>
+<li style="float:left; width: 150px">72.57%</li>
+<li style="float:left; width: 150px">27.43%</li>
+<li style="float:left; width: 150px">45.14%</li>
 </ol>
  
 
@@ -706,10 +706,10 @@ Back to the example discussing the distribution of GPAs, where GPA  $\sim N(3.3,
 Suppose that $P(Z\leq z^*) = 0.025$. Using a standard normal table, find $z^*$
 
 <ol type="a">
-	<li style="float:left; width: 150px">0.5478</li>
-	<li style="float:left; width: 150px">-0.5478</li>
-	<li style="float:left; width: 150px">1.96</li>
-	<li style="float:left; width: 150px">-1.96</li>
+<li style="float:left; width: 150px">0.5478</li>
+<li style="float:left; width: 150px">-0.5478</li>
+<li style="float:left; width: 150px">1.96</li>
+<li style="float:left; width: 150px">-1.96</li>
 </ol>
 
 
@@ -722,11 +722,11 @@ Suppose that $P(Z\leq z^*) = 0.025$. Using a standard normal table, find $z^*$
 Consider men's height to be distributed normally with a mean of 5.9 feet and a standard deviation or 0.4 feet.
 Calculate the following:
 
--  $P(X>6.5)$
+- $P(X>6.5)$
       
--  $P(X>5)$
+- $P(X>5)$
       
--  What is the top 10% of men's height?
+- What is the top 10% of men's height?
       
--  What is the bottom 20% of men's height?
+- What is the bottom 20% of men's height?
 

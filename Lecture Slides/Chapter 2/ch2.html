@@ -4,11 +4,15 @@
     <title>ECON 3818</title>
     <meta charset="utf-8" />
     <meta name="author" content="Kyle Butts" />
-    <meta name="date" content="2021-07-19" />
+    <meta name="date" content="2021-07-20" />
     <script src="ch2_files/header-attrs-2.9/header-attrs.js"></script>
     <link href="ch2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="ch2_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
     <link href="ch2_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="ch2_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="ch2_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="ch2_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
   </head>
   <body>
     <textarea id="source">
@@ -17,7 +21,7 @@ class: center, middle, inverse, title-slide
 # ECON 3818
 ## Chapter 2
 ### Kyle Butts
-### 19 July 2021
+### 20 July 2021
 
 ---
 
@@ -25,8 +29,11 @@ exclude: true
 
 
 
+
+
 ---
 class: clear, middle
+
 &lt;!-- Custom css --&gt;
 &lt;style type="text/css"&gt;
 @import url(https://fonts.googleapis.com/css?family=Zilla+Slab:300,300i,400,400i,500,500i,700,700i);
@@ -532,6 +539,11 @@ How to calculate median:
 -  The median, however, is resistant to .hi.purple[outliers] so it can be important to calculate for smaller samples 
 
 
+.center[
+&lt;img style="width: 60%;" src="meme.png"/&gt;
+]
+
+
 ---
 # Mean vs. Median Example
 
@@ -920,10 +932,10 @@ html {
 <td class="gt_row gt_left">female</td>
 <td class="gt_row gt_right">31.88</td>
 <td class="gt_row gt_left">2 drinks</td></tr>
-    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
-<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">56</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">male</td>
+<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">42.80</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">3 drinks</td></tr>
   </tbody>
   
   
@@ -1319,10 +1331,10 @@ html {
 <td class="gt_row gt_left">female</td>
 <td class="gt_row gt_right">31.88</td>
 <td class="gt_row gt_left">2 drinks</td></tr>
-    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
-<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">56</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">male</td>
+<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">42.80</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">3 drinks</td></tr>
   </tbody>
   
   
@@ -1806,10 +1818,10 @@ html {
 <td class="gt_row gt_left">female</td>
 <td class="gt_row gt_right">31.88</td>
 <td class="gt_row gt_left">2 drinks</td></tr>
-    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
-<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">56</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">male</td>
+<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">42.80</td>
+<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: black;">3 drinks</td></tr>
   </tbody>
   
   

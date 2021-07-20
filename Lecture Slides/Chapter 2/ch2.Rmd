@@ -6,7 +6,6 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: ['default', 'metropolis', 'metropolis-fonts']
-self_contained: true
 nature:
   highlightStyle: github
 highlightLines: true
@@ -21,76 +20,40 @@ library(knitr)
 library(here)
 library(gt)
 library(patchwork)
+library(kfbmisc)
 
 # Knitr options
 opts_chunk$set(
-  comment = "#>",
-  fig.align = "center",
-  fig.height = 7,
-  fig.width = 10.5,
-  # fig.height = 7/2,
-  # fig.width = 10.5/2,
-  warning = F,
-  message = F
+comment = "#>",
+fig.align = "center",
+fig.height = 7,
+fig.width = 10.5,
+warning = F,
+message = F
 )
 
 # Use svg for figures
 opts_chunk$set(dev = "svg")
 options(device = function(file, width, height) {
-  svg(tempfile(), width = width, height = height)
+svg(tempfile(), width = width, height = height)
 })
 
 # HTML output for knitr
 options(knitr.table.format = "html")
 
-source("https://raw.githubusercontent.com/kylebutts/templates/master/ggplot_theme/theme_kyle.R")
-
-# 538 Theme
-gt_theme_538 <- function(data, ...) {
-  data %>%
-    opt_all_caps() %>%
-    opt_table_font(
-      font = list(
-        google_font("Chivo"),
-        default_fonts()
-      )
-    ) %>%
-    tab_style(
-      style = cell_borders(
-        sides = "bottom", color = "transparent", weight = px(2)
-      ),
-      locations = cells_body(
-        columns = gt::everything(),
-        # This is a relatively sneaky way of changing the bottom border
-        # Regardless of data size
-        rows = nrow(data$`_data`)
-      )
-    ) %>%
-    tab_options(
-      column_labels.background.color = "white",
-      table.border.top.width = px(3),
-      table.border.top.color = "transparent",
-      table.border.bottom.color = "transparent",
-      table.border.bottom.width = px(3),
-      column_labels.border.top.width = px(3),
-      column_labels.border.top.color = "transparent",
-      column_labels.border.bottom.width = px(3),
-      column_labels.border.bottom.color = "black",
-      data_row.padding = px(3),
-      source_notes.font.size = 12,
-      table.font.size = 16,
-      heading.align = "left",
-      ...
-    )
-}
 
 make_gt_title <- function(title) {
-  gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
+gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
 }
+
+xaringanExtra::use_scribble()
 ```
+
+
 
 ---
 class: clear, middle
+
 <!-- Custom css -->
 ```{css, echo = F, code=xfun::read_utf8(here::here("Lecture Slides", "my-css.css"))}
 ```
@@ -170,12 +133,12 @@ slate <- "#314F4F"
 ## Chapter Overview
 	
 	
--  Population vs. Sample
--  Measures of Central Tendency
+- Population vs. Sample
+- Measures of Central Tendency
 - Mean
 - Median
 		      
--  Measures of Variability
+- Measures of Variability
 - Quartiles
 - Variance \& Standard Deviation
 
@@ -184,14 +147,14 @@ slate <- "#314F4F"
 # Population vs Sample
 	
 	
--  .hi.purple[Population]: the entire entities under the study
+- .hi.purple[Population]: the entire entities under the study
 - Examples: all men, all NBA players, all children under 5
 		      
--  .hi.green[Sample]: subset of the population
+- .hi.green[Sample]: subset of the population
 - Can be used to draw inferences about the population
 - Examples: our class, Denver Nuggets players, daycares in Colorado
 		      
--  Interested in parameters of the .hi.purple[population] distribution, we can estimate these parameters using data from .hi.green[samples] since finding population parameters is infeasible
+- Interested in parameters of the .hi.purple[population] distribution, we can estimate these parameters using data from .hi.green[samples] since finding population parameters is infeasible
 	
 
 
@@ -200,7 +163,7 @@ slate <- "#314F4F"
 
 The following graph depicts the underlying population distribution
 	
--  We are interested in its parameters, but are unable collect data on every single observation
+- We are interested in its parameters, but are unable collect data on every single observation
 
 		
 ```{r population-density, echo = F, out.width = "60%"}
@@ -275,15 +238,15 @@ file.remove(png_paths)
 	
 Two primary .hi.purple[population] parameters of interest:
 		      
--   Measures of central tendency:
+- Measures of central tendency:
 	      	      
 	- Population .orange[mean], $\mu$
 	
 	- Population .red_pink[median]
 	      	      
--   Measures of variability:
+- Measures of variability:
 	      	      
-	-  Population .blue[variance], $\sigma^2$
+	- Population .blue[variance], $\sigma^2$
 	  
 We will .it.green[estimate] these using the .hi.green[sample] distribution
 	
@@ -353,12 +316,12 @@ file.remove(png_paths)
 	
 The .hi.red_pink[median] is the midpoint of a distribution
 		      
--   Is more resistant to the influence of .hi[extreme observations]
+- Is more resistant to the influence of .hi[extreme observations]
 		      
 How to calculate median:
 		      
--   Arrange observations from smallest to largest
--   If there is odd number of observations, the median is the center observation. If there are even number of observations, the median is the average of two center observations
+- Arrange observations from smallest to largest
+- If there is odd number of observations, the median is the center observation. If there are even number of observations, the median is the average of two center observations
 		      
 	
 
@@ -367,9 +330,9 @@ How to calculate median:
 # Mean vs. Median
 	
 	
--  Although we will primarily be using the mean throughout the semester, the biggest drawback of the mean is that it is not resistant to .hi.purple[outliers]
+- Although we will primarily be using the mean throughout the semester, the biggest drawback of the mean is that it is not resistant to .hi.purple[outliers]
 		      
--  The median, however, is resistant to .hi.purple[outliers] so it can be important to calculate for smaller samples 
+- The median, however, is resistant to .hi.purple[outliers] so it can be important to calculate for smaller samples 
 
 
 .center[
@@ -439,7 +402,7 @@ drinking <- tribble(
 )
 
 drinking_tbl <- gt(drinking) %>% 
-	gt_theme_538() %>% 
+	gt_theme_kyle() %>% 
 	tab_header(title = make_gt_title("Sample of individuals")) %>%
 	tab_options(data_row.padding = px(6))
 
@@ -483,8 +446,8 @@ Measures of central tendency do not tell the whole story. To further characteriz
 # Variability: Quartiles
 	
 	
--  Measure of center alone can be misleading
--  How to calculate quartiles:
+- Measure of center alone can be misleading
+- How to calculate quartiles:
 		      
 - Arrange observations in increasing order and locate .hi.red_pink[median] 
 - The .hi.green[first quartile] is the median of the observations located to the left of the median
@@ -504,7 +467,7 @@ knitr::include_graphics("quartiles.png")
 
 We can use the .hi.purple[boxplot] using this five number summary to display quantitative data
 
--  How to make a boxplot:
+- How to make a boxplot:
 		      
 - A central box spans the first and third quartiles 
 - A line in the box marks the median
@@ -546,8 +509,8 @@ ggplot(stats, aes(x = trbTotals, y = 1)) +
 	
 The .hi.turquoise[interquartile range], IQR, is the distance between the first and third quartiles
 		      
--   IQR = $Q_3 - Q_1$
--   The IQR measures the spread of the data and it also helps to identify outliers
+- IQR = $Q_3 - Q_1$
+- The IQR measures the spread of the data and it also helps to identify outliers
 	      
 Rule for outliers:
 		      
@@ -608,12 +571,12 @@ Calculate the standard deviation of age?
 # Properties of Standard Deviation, $s$
 	
 	
--  $n-1$ is referred to as the degrees of freedom
--  $s$ measures variability about the mean
--  $s$ is always greater than or equal to zero, but usually $> 0$
+- $n-1$ is referred to as the degrees of freedom
+- $s$ measures variability about the mean
+- $s$ is always greater than or equal to zero, but usually $> 0$
   - When would it be $=0$?
--  As observations become more variable, $s$ gets larger
--  $s$ is not resistant in the same way the sample mean is not resistant; a few outliers can change it a lot.
+- As observations become more variable, $s$ gets larger
+- $s$ is not resistant in the same way the sample mean is not resistant; a few outliers can change it a lot.
 	
 	
 
@@ -623,9 +586,9 @@ Calculate the standard deviation of age?
 
 Two basic ways to summarize the center and spread of a distribution
 	
--  Mean and standard deviation (or variance)
+- Mean and standard deviation (or variance)
 
--  The five-number summary
+- The five-number summary
 	
 
 .hi.slate[When to Use Which]
@@ -642,12 +605,12 @@ Use five-number summary if distribution is skewed, or has outliers
 .pull-left[
 .hi.purple[Greek Letters]
 
--  Greek letters like $\mu$ and $\sigma^2$ represent the truth about the population.
+- Greek letters like $\mu$ and $\sigma^2$ represent the truth about the population.
 ]
 .pull-right[
 .hi.green[Latin Letters]
 
--  Latin lettes like $\bar{x}$ and $s^2$ are calculations that represent guesses (estimates) at the population values.
+- Latin lettes like $\bar{x}$ and $s^2$ are calculations that represent guesses (estimates) at the population values.
 ]
 
 The goal for the class is for the latin letters to be good guesses for the greek letters:
