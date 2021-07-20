@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>ECON 3818</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Kyle Butts" />
+    <meta name="date" content="2021-07-19" />
+    <script src="ch3_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="ch3_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="ch3_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="ch3_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="ch3_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="ch3_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="ch3_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# ECON 3818
+## Chapter 3
+### Kyle Butts
+### 19 July 2021
+
+---
+
+exclude: true
+
+
+
+---
+class: clear, middle
+&lt;!-- Custom css --&gt;
+&lt;style type="text/css"&gt;
+@import url(https://fonts.googleapis.com/css?family=Zilla+Slab:300,300i,400,400i,500,500i,700,700i);
+
+/* Create a highlighted class called 'hi'  */
+.hi {
+  font-weight: 600;
+}
+
+.bw {
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+}
+.gw {
+  background-color: #d2d2d2;
+  color: #ffffff;
+}
+
+
+/* Font styling */
+.mono {
+  font-family: monospace;
+}
+.ul {
+  text-decoration: underline;
+}
+.ol {
+  text-decoration: overline;
+}
+.st {
+  text-decoration: line-through;
+}
+.bf {
+  font-weight: bold;
+}
+.it {
+  font-style: italic;
+}
+
+
+/* Font Sizes */
+.bigger {
+  font-size: 125%;
+}
+.huge{
+  font-size: 150%;
+}
+
+.small {
+  font-size: 95%;
+}
+.smaller {
+  font-size: 85%;
+}
+.smallest {
+  font-size: 75%;
+}
+
+.tiny {
+  font-size: 50%;
+}
+
+
+/* Remark customization */
+
+.clear .remark-slide-number {
+  display: none;
+}
+.inverse .remark-slide-number {
+  display: none;
+}
+
+.remark-code-line-highlighted {
+  background-color: rgba(249, 39, 114, 0.5);
+}
+
+.remark-slide-content {
+  background-color: #ffffff;
+  font-size: 24px;
+  /* font-weight: 300; */
+  /* line-height: 1.5; */
+  /* padding: 1em 2em 1em 2em; */
+}
+
+/* Xaringan tweeks */
+
+.inverse {
+  background-color: #23373B;
+  text-shadow: 0 0 20px #333;
+  /* text-shadow: none; */
+}
+
+.title-slide {
+  background-color: #ffffff;
+  border-top: 80px solid #ffffff;
+}
+
+.footnote {
+  bottom: 1em;
+  font-size: 80%;
+  color: #7f7f7f;
+}
+
+
+
+/* Mono-spaced font, smaller */
+.mono-small {
+  font-family: monospace;
+  font-size: 20px;
+}
+.mono-small .mjx-chtml {
+  font-size: 103% !important;
+}
+
+.pseudocode, .pseudocode-small {
+  font-family: monospace;
+  background: #f8f8f8;
+  border-radius: 3px;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.pseudocode-small {
+  font-size: 20px;
+}
+
+.super{
+  vertical-align: super;
+  font-size: 70%;
+  line-height: 1%;
+}
+.sub{
+  vertical-align: sub;
+  font-size: 70%;
+  line-height: 1%;
+}
+
+.remark-code {
+  font-size: 68%;
+}
+
+.inverse &gt; h2 {
+  color: #e64173;
+  font-weight: 300;
+  font-size: 40px;
+  font-style: italic;
+  margin-top: -25px;
+}
+.title-slide &gt; h2  {
+  margin-top: -25px;
+  padding-bottom: -20px;
+  color: rgba(249, 38, 114, 0.75);
+  text-shadow: none;
+  font-weight: 300;
+  font-size: 35px;
+  font-style: normal;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.remark-inline-code {
+  background: #F5F5F5; /* lighter */
+  /* background: #e7e8e2; /* darker */
+  border-radius: 3px;
+  padding: 4px;
+}
+
+/* 2/3 left; 1/3 right */
+.more-left {
+  float: left;
+  width: 63%;
+}
+.less-right {
+  float: right;
+  width: 31%;
+}
+.more-right ~ * {
+  clear: both;
+}
+
+/* 9/10 left; 1/10 right */
+.left90 {
+  padding-top: 0.7em;
+  float: left;
+  width: 85%;
+}
+.right10 {
+  padding-top: 0.7em;
+  float: right;
+  width: 9%;
+}
+
+/* 95% left; 5% right */
+.left95 {
+  padding-top: 0.7em;
+  float: left;
+  width: 91%;
+}
+.right05 {
+  padding-top: 0.7em;
+  float: right;
+  width: 5%;
+}
+
+.left5 {
+  padding-top: 0.7em;
+  margin-left: 0em;
+  margin-right: -0.4em;
+  float: left;
+  width: 7%;
+}
+.left10 {
+  padding-top: 0.7em;
+  margin-left: -0.2em;
+  margin-right: -0.5em;
+  float: left;
+  width: 10%;
+}
+.left30 {
+  padding-top: 0.7em;
+  float: left;
+  width: 30%;
+}
+.right30 {
+  padding-top: 0.7em;
+  float: right;
+  width: 30%;
+}
+
+.thin-left {
+  padding-top: 0.7em;
+  margin-left: -1em;
+  margin-right: -0.5em;
+  float: left;
+  width: 27.5%;
+}
+
+/* Example */
+.ex {
+  font-weight: 300;
+  color: #cccccc !important;
+  font-style: italic;
+}
+
+.col-left {
+  float: left;
+  width: 47%;
+  margin-top: -1em;
+}
+.col-right {
+  float: right;
+  width: 47%;
+  margin-top: -1em;
+}
+
+.clear-up {
+  clear: both;
+  margin-top: -1em;
+}
+
+
+
+/* Format tables */
+table {
+  color: #000000;
+  font-size: 14pt;
+  line-height: 100%;
+  border-top: 1px solid #ffffff !important;
+  border-bottom: 1px solid #ffffff !important;
+}
+th, td {
+  background-color: #ffffff;
+}
+table th {
+  font-weight: 400;
+}
+
+
+/* Extra left padding */
+.pad-left {
+  margin-left: 5%;
+}
+
+/* Extra left padding */
+.big-left {
+  margin-left: 15%;
+  margin-bottom: -0.4em;
+}
+
+/* Attention */
+.attn {
+  font-weight: 500;
+  color: #e64173 !important;
+  font-family: 'Zilla Slab' !important;
+}
+
+/* Note */
+.note {
+  font-weight: 300;
+  font-style: italic;
+  color: #314f4f !important;
+  /* color: #cccccc !important; */
+  font-family: 'Zilla Slab' !important;
+}
+
+/* Question and answer */
+.qa {
+  font-weight: 500;
+  /* color: #314f4f !important; */
+  color: #e64173 !important;
+  font-family: 'Zilla Slab' !important;
+}
+
+
+
+/* Remove orange line */
+hr, .title-slide h2::after, .mline h1::after {
+  content: '';
+  display: block;
+  border: none;
+  background-color: #e5e5e5;
+  color: #e5e5e5;
+  height: 1px;
+}
+&lt;/style&gt;
+
+
+&lt;!-- From xaringancolor --&gt;
+
+&lt;div style = "position:fixed; visibility: hidden"&gt;
+`\(\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}\)`
+`\(\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}\)`
+`\(\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}\)`
+`\(\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}\)`
+`\(\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}\)`
+`\(\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}\)`
+`\(\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}\)`
+`\(\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}\)`
+`\(\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}\)`
+`\(\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}\)`
+`\(\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}\)`
+&lt;/div&gt;
+
+&lt;script type="text/x-mathjax-config"&gt;
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      red_pink: ["{\color{red_pink}{#1}}", 1],
+      turquoise: ["{\color{turquoise}{#1}}", 1],
+      orange: ["{\color{orange}{#1}}", 1],
+      red: ["{\color{red}{#1}}", 1],
+      blue: ["{\color{blue}{#1}}", 1],
+      green: ["{\color{green}{#1}}", 1],
+      grey_light: ["{\color{grey_light}{#1}}", 1],
+      grey_mid: ["{\color{grey_mid}{#1}}", 1],
+      grey_dark: ["{\color{grey_dark}{#1}}", 1],
+      purple: ["{\color{purple}{#1}}", 1],
+      slate: ["{\color{slate}{#1}}", 1]
+    },
+    loader: {load: ['[tex]/color']},
+    tex: {packages: {'[+]': ['color']}}
+  }
+});
+&lt;/script&gt;
+
+&lt;style&gt;
+.red_pink {color: #E64173;}
+.turquoise {color: #20B2AA;}
+.orange {color: #FFA500;}
+.red {color: #FB6107;}
+.blue {color: #3B3B9A;}
+.green {color: #8BB174;}
+.grey_light {color: #B3B3B3;}
+.grey_mid {color: #7F7F7F;}
+.grey_dark {color: #333333;}
+.purple {color: #6A5ACD;}
+.slate {color: #314F4F;}
+&lt;/style&gt;
+
+
+
+
+## Chapter 3: The Normal Distribution
+
+---
+# Normal Distribution
+    
+Normal curve is symmetric about the mean and bell-shaped:
+
+&lt;img src="ch3_files/figure-html/normal-1.svg" width="60%" style="display: block; margin: auto;" /&gt;
+
+    
+Lots of data naturally follow this distribution
+
+-  heights of people, blood pressure, grades on a test
+
+---
+# Galton Board
+
+.center[
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/EvHiee7gs9Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+]
+
+
+---
+# Sample Probability
+    
+
+&lt;img src="ch3_files/figure-html/unnamed-chunk-2-1.svg" width="80%" style="display: block; margin: auto;" /&gt;
+    
+-  What's the probability that the x value is less than -2.5 .hi[in our sample]?
+    
+
+
+---
+# Population Probability
+    
+
+        
+&lt;img src="ch3_files/figure-html/unnamed-chunk-3-1.svg" width="80%" style="display: block; margin: auto;" /&gt;
+    
+-  What's the probability that the x value is less than -2.5 .hi[in our population distribution]?
+    
+
+
+
+
+---
+# Parameters of Normal Distribution
+
+Normal distribution is described .it.bf[completely] by two parameters-- its mean `\(\mu\)` and variance `\(\sigma^2\)`
+
+- The mean is located at the center of the symmetric curve
+      -   It is the same as the median 
+- Changing `\(\mu\)` (without changing `\(\sigma^2\)`), moves the curve along the horizontal axis
+- The variance describes the variability of the curve
+- Higher variance means a flatter and wider distribution
+      
+
+
+
+
+---
+# Different Variances
+    
+        
+&lt;img src="ch3_files/figure-html/multiple-vars-1.svg" width="90%" style="display: block; margin: auto;" /&gt;
+
+    
+
+
+---
+# 68-95-99 Rule
+
+&lt;img src="ch3_files/figure-html/68-95-99-1.svg" width="75%" style="display: block; margin: auto;" /&gt;
+
+    
+
+.small[
+-  68.2% of data is within `\(\pm 1\)` standard deviation of the mean
+-  95.4% of data is within `\(\pm 2\)` standard deviation of the mean
+-  99.6% of data is within `\(\pm 3\)` standard deviation of the mean
+]
+
+---
+# Clicker Question
+
+Suppose that the mean birthweight in the sample is 113 oz. with a standard deviation of `\(\sqrt{484} \approx 22\)` oz. Assuming babies' birthweight is normally distributed, how heavy are the middle 95% of babies?
+
+&lt;ol type = "a"&gt;
+  &lt;li&gt;47 to 179 oz&lt;/li&gt;
+  &lt;li&gt;69 to 157 oz&lt;/li&gt;
+  &lt;li&gt;91 and 135 oz&lt;/li&gt;
+  &lt;li&gt;111 to 120 oz&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+---
+# Normal Distribution Notation
+
+If X is distributed normally, we denote it the following way:
+
+`$$X \sim N({\color{orange}\mu}, {\color{green}\sigma^2})$$`
+ 
+-  This notation tells us everything we need to know about the normal distribution
+      
+-   The distribution has mean `\({\color{orange}\mu}\)`
+-   The distribution has variance `\({\color{green}\sigma^2}\)`
+      
+
+
+
+
+---
+# Standard Normal Distribution
+
+Standard normal distribution is a specific type of normal distribution
+
+If a variable X follows a normal distribution with `\({\color{orange}\mu} = 0\)` and  `\({\color{green}\sigma^2} = 1\)`, we say that X follows the .hi.purple[standard normal distribution]
+  
+- Since it is so common, it is denoted as `\(Z \sim N(0,1)\)`
+
+- It is easier to find out probabilities about normal distributions if they are in the standard form
+      
+- Therefore we often will .hi.purple[standardize] any general normal distribution to be a standard normal
+      
+
+
+
+
+---
+# Properties of Standard Normal
+
+Graph of the standard normal distribution has two important properties
+
+Symmetric
+
+`$$P(Z &lt; -1) = P(Z &gt; 1)$$`
+&lt;img src="ch3_files/figure-html/symmetric-1.svg" width="50%" style="display: block; margin: auto;" /&gt;
+    
+    
+
+Area under the curve sums to one
+
+`$$P(Z &lt; 1) + P(Z &gt; 1) = 1$$`
+
+
+---
+# Probabilities: Cumulative Proportions
+
+Suppose we want to know the likelihood of a baby being born underweight (less than 88 oz).
+
+The data suggests `\(BW \sim N(113, 22^2)\)`, that is a mean of 113 and a standard deviation of 22. The probability of a baby being underweight is equal to `\(P(BW \leq 88)\)`. Graphically:
+
+
+---
+# Left-tail probability
+
+&lt;img src="ch3_files/figure-html/example-left-tail-1.svg" width="75%" style="display: block; margin: auto;" /&gt;
+
+This probability is called the .hi.turquoise[left-tail probability] as it's every value .turquoise[to the left].
+
+---
+# Right-tail Probability
+
+&lt;img src="ch3_files/figure-html/example-right-tail-1.svg" width="75%" style="display: block; margin: auto;" /&gt;
+
+If you want the .hi.turquoise[right-tail probability], `\(P(BW &gt; 88)\)`, you can use 
+
+`$$P(BW &gt; 88) = 1 - P(BW &lt; 88)$$`
+
+---
+# Standardization
+    
+If a variable X has any normal distribution, `\(X\sim N(\mu,\sigma^2)\)`, then the standardized variable:
+`$$Z= \frac{X-{\color{orange}\mu}}{{\color{green}\sigma}} \sim N(0,1)$$`
+We call the standardized value the .hi.purple[Z-score]. 
+
+The Z-score is equivalent to the number of .hi.green[standard deviations] that `\(X\)` is away from the .hi.orange[mean].
+
+
+---
+# Standardization
+
+Since Z-scores are measured in number of standard deviations, we can compare across samples without having to worry about units.
+
+For example:
+
+- SAT scores are `\(X\sim N(1500, 250^2)\)`
+- ACT scores are `\(Y \sim N(20.8, 2.8^2)\)`
+
+You scored an 1860 on the SAT, your neighbor scored a 29 on the ACT. Who did better? Just compare Z-scores!
+
+
+---
+# Calculating Probabilities
+
+Coming back to the birth-weight example, let's do a little standardizing. 
+
+How do we actually calculate `\(P(BW\leq 88)\)`  (when `\(BW\sim N(113,22^2)\)`)
+
+First, standardize the distribution 
+
+`$$P(BW\leq88)=P(\frac{BW-\mu}{\sigma} \leq \frac{88-113}{22}) = P(Z \leq -1.14)$$`
+
+Then, we actually have a big table of left-tail probabilities for the .it[standard] normal distribution
+
+-  Table is either left-tail or right-tail (.hi.purple[Z table on exam is left-tailed])
+
+ 
+
+---
+# Standard Normal Tables
+    
+
+&lt;img src="stdnormtableex.png" width="90%" style="display: block; margin: auto;" /&gt;
+    
+Standard normal tables show the cumulative probability of different z-scores
+
+- A table like this shows the .hi.purple[left-tail] probabilities. (One is available on the course site.)
+
+- .large.hi[Be Careful!] Some (but not many) tables display .hi.purple[right-tail] probabilities.
+    
+
+---
+class: clear
+
+.pull-left[.center[
+&lt;img src="/Users/kylebutts/Desktop/ECON3818_F2021/Lecture Slides/Chapter 3/z-table-neg.png" width="80%" style="display: block; margin: auto;" /&gt;
+]]
+.pull-right[.center[
+&lt;img src="/Users/kylebutts/Desktop/ECON3818_F2021/Lecture Slides/Chapter 3/z-table-pos.png" width="80%" style="display: block; margin: auto;" /&gt;
+]]
+
+
+
+---
+# Using a Z-Table
+    
+Back to our birth-weight example. We want 
+
+`$$P(Z &lt; -1.14)$$`
+    
+.hi[Method 1]: if you have negative values in Z-Table: 
+
+- Look up Z = -1.14 in z-table
+
+.hi[Method 2]: If you have only positive values in Z-Table:
+
+`\begin{aligned}
+    P(Z \leq -1.14) &amp;= P(Z \geq 1.14) \\
+    &amp;= 1 - P(Z \leq 1.14) \\
+    &amp;= 1 - .8729 \\ 
+    &amp;= 0.1271
+\end{aligned}`
+
+
+---
+# Normal Example
+
+A company chooses its new entry-level employees from a pool of recent college graduates. The cumulative GPA of the candidates is used as a tie-breaker. GPAs for the successful interviewees are normally distributed, with a mean of 3.3 and a standard deviation of 0.4. What proportion of candidates have a GPA under 3.0?
+
+&lt;ol type="a"&gt;
+	&lt;li style="float:left; width: 150px"&gt;2.3%&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;22.7%&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;55.1%&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;77.3%&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+---
+# Clicker Question
+
+Consider the scenario on the previous slide, where `\(GPA \sim N(3.3,0.4^2)\)`. What percent of candidates have a `\(GPA\)` above 3.9?
+
+&lt;ol type="a"&gt;
+	&lt;li style="float:left; width: 150px"&gt;2.3%&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;6.7%&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;93.3%&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;97.7%&lt;/li&gt;
+&lt;/ol&gt;
+
+
+---
+# Area In Between Z-Scores
+Suppose we want to calculate `\(P(-1.13 \leq Z \leq 0.3)\)`
+Graphically we want to calculate the following shaded area:
+
+&lt;img src="ch3_files/figure-html/example-area-between-1.svg" width="75%" style="display: block; margin: auto;" /&gt;
+
+
+---
+# Area In Between Z-Scores
+In order to calculate the area between two z-scores, 
+
+`$$P(-1.13 \leq Z \leq 0.3) = P(Z \leq 0.3) - P(Z \leq -1.13)$$`
+
+So we calculate:
+
+- `\(P(Z \leq 0.3) = 0.6179\)`
+- `\(P(Z \leq -1.13) = 0.1292\)`
+
+`\begin{align}
+P(-1.13 \leq Z \leq 0.3) &amp;= P(Z \leq 0.3) - P(Z \leq -1.13) \\
+&amp;= 0.6179 - 0.1292 \\
+&amp;= 0.4887
+\end{align}`
+
+
+---
+# Clicker Question
+
+A typical college freshman spends an average of `\(\mu=150\)` minutes per day with a standard deviation of `\(\sigma=50\)` minutes, on social media. The distribution of time on social media is known be Normal. What is the probability a college freshman spends between 2 and 3 hours on social media?
+
+
+&lt;ol type="a"&gt;
+	&lt;li style="float:left; width: 150px"&gt;72.57%&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;27.43%&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;45.14%&lt;/li&gt;
+&lt;/ol&gt;
+ 
+
+
+
+---
+# Using probability to calculate Z-score
+
+So far, we've used z-scores to calculate probabilities (values inside the table)
+
+In some cases, we will use probabilities to calculate z-scores (values outside the table)
+
+---
+# Example
+
+Scores on the SAT verbal test follow approximately the `\(N(515,109^2)\)` distribution. How high must a student score in order to place in top 5% of all students taking the SAT?
+
+
+
+---
+# Example
+
+Back to the example discussing the distribution of GPAs, where GPA  `\(\sim N(3.3, 0.4^2)\)`. If the company is interviewing 163 people, but only 121 can be hired, then what cut-off GPA should the company use?
+
+
+---
+# Clicker Question
+Suppose that `\(P(Z\leq z^*) = 0.025\)`. Using a standard normal table, find `\(z^*\)`
+
+&lt;ol type="a"&gt;
+	&lt;li style="float:left; width: 150px"&gt;0.5478&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;-0.5478&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;1.96&lt;/li&gt;
+	&lt;li style="float:left; width: 150px"&gt;-1.96&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+---
+# Review of Normal Distribution
+
+Consider men's height to be distributed normally with a mean of 5.9 feet and a standard deviation or 0.4 feet.
+Calculate the following:
+
+-  `\(P(X&gt;6.5)\)`
+      
+-  `\(P(X&gt;5)\)`
+      
+-  What is the top 10% of men's height?
+      
+-  What is the bottom 20% of men's height?
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
