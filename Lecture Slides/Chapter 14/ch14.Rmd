@@ -1,0 +1,425 @@
+---
+title: "ECON 3818"
+subtitle: "Chapter 14"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default', 'metropolis', 'metropolis-fonts']
+nature:
+  highlightStyle: github
+highlightLines: true
+countIncrementalSlides: false
+---
+exclude: true
+
+```{R, setup, include = F}
+
+library(tidyverse)
+library(knitr)
+library(here)
+library(gt)
+library(patchwork)
+library(kfbmisc)
+
+# Knitr options
+opts_chunk$set(
+comment = "#>",
+fig.align = "center",
+fig.height = 7,
+fig.width = 10.5,
+warning = F,
+message = F
+)
+
+# Use svg for figures
+opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+svg(tempfile(), width = width, height = height)
+})
+
+# HTML output for knitr
+options(knitr.table.format = "html")
+
+
+make_gt_title <- function(title) {
+gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
+}
+
+xaringanExtra::use_scribble()
+```
+
+---
+class: clear, middle
+<!-- Custom css -->
+```{css, echo = F, code=xfun::read_utf8(here::here("Lecture Slides", "my-css.css"))}
+```
+
+
+<!-- From xaringancolor -->
+
+<div style = "position:fixed; visibility: hidden">
+$\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}$
+$\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}$
+$\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}$
+$\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}$
+$\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}$
+$\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}$
+$\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}$
+$\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}$
+$\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}$
+$\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}$
+$\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}$
+</div>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      red_pink: ["{\color{red_pink}{#1}}", 1],
+      turquoise: ["{\color{turquoise}{#1}}", 1],
+      orange: ["{\color{orange}{#1}}", 1],
+      red: ["{\color{red}{#1}}", 1],
+      blue: ["{\color{blue}{#1}}", 1],
+      green: ["{\color{green}{#1}}", 1],
+      grey_light: ["{\color{grey_light}{#1}}", 1],
+      grey_mid: ["{\color{grey_mid}{#1}}", 1],
+      grey_dark: ["{\color{grey_dark}{#1}}", 1],
+      purple: ["{\color{purple}{#1}}", 1],
+      slate: ["{\color{slate}{#1}}", 1]
+    },
+    loader: {load: ['[tex]/color']},
+    tex: {packages: {'[+]': ['color']}}
+  }
+});
+</script>
+
+<style>
+.red_pink {color: #E64173;}
+.turquoise {color: #20B2AA;}
+.orange {color: #FFA500;}
+.red {color: #FB6107;}
+.blue {color: #3B3B9A;}
+.green {color: #8BB174;}
+.grey_light {color: #B3B3B3;}
+.grey_mid {color: #7F7F7F;}
+.grey_dark {color: #333333;}
+.purple {color: #6A5ACD;}
+.slate {color: #314F4F;}
+</style>
+
+
+```{r flair_color, echo=FALSE}
+library(flair)
+red_pink <- "#E64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#FB6107"
+blue <- "#3B3B9A"
+green <- "#8BB174"
+grey_light <- "#B3B3B3"
+grey_mid <- "#7F7F7F"
+grey_dark <- "#333333"
+purple <- "#6A5ACD"
+slate <- "#314F4F"
+```
+
+## Chapter 14: Binomial Distribution
+
+---
+# Binomial Distribution
+
+
+Probability model used when there are two outcomes: success or failure
+- .hi.turquoise[Bernoulli distribution]: one trial.
+
+- .hi.red_pink[Binomial distribution]: multiple trials.
+      
+.it[Examples]:
+      
+- Flipping a coin, shooting a free throw
+      
+
+
+
+
+---
+# Bernoulli Distribution
+
+
+If $X$ follows a .turquoise[Bernoulli] process, then we say that $$X \sim B(1,p)$$
+       
+- $1$ tells us the number of trials 
+- $p$ tells us the probability of success
+
+- $\sim$: "is distributed"
+      
+
+
+
+
+---
+# Binomial Distribution
+
+Generally, we focus on situations where we have more than one trial so we use the .hi.red_pink[binomial distribution]
+
+.red_pink[The Binomial Setting]
+      
+1. There are a fixed number, $n$, trials 
+
+2. These $n$ trials are all independent
+
+3. Each trial falls into one of just two categories -- "success" or "failure"
+
+4. The probability of success, $p$, is the same for each observations
+      
+Notation: $X \sim B(n,p)$
+      
+- where $n$, $p$ are .it[parameters]
+      
+
+
+
+
+---
+# Binomial Example
+
+Shaquille O'Neal is allowed 5 free throw shots. He has a 60% chance of making each shot. What is the probability he makes 3 out of the 5 shots?
+       
+1. There are fixed number of trials
+  - $\checkmark$ yes, n=5
+2. These trials are independent 
+  - $\checkmark$ yes, maybe not (getting nervous) but go with it :-)
+3. Each trial falls into one of two categories
+  - $\checkmark$ yes, miss or make
+4. Probability it the same for each trial
+  - $\checkmark$ yes, p=0.6
+      
+$$
+X ~ B(5, 0.6)
+$$
+
+
+
+---
+# Clicker Question
+
+For which of the following counts would a .red_pink[binomial] probability model be reasonable? If not, why not?
+
+<ol type = "a">
+<li>the number of phone calls received in a one-hour period</li>
+<li>the number of hearts you draw when you select 5 cards from a standard deck of 52 cards</li>
+<li>the number of sevens in a randomly selected set of five digits from a table of random digits</li>
+</ol>
+
+
+
+
+
+---
+# Binomial Example
+
+Important: There is more than one way to make 3 out 5 free throws
+
+1. Make, Make, Make, Miss, Miss
+2. Make, Make, Miss, Miss, Make
+3. Make Make, Miss, Make, Miss
+4. Make, Miss, Miss, Make, Make
+5. Make, Miss, Make, Miss, Make
+6. Miss, Make, Make, Make, Miss
+7. Miss, Make, Make, Miss, Make
+8. Miss, Make, Miss, Make, Make
+9. Miss, Make, Make, Make, Miss
+10. Miss, Miss, Make, Make, Make
+
+
+
+---
+# Binomial Coefficient
+
+First step to solving a .red_pink[binomial] probability is to calculate the number of different ways of getting exactly $k$ success in $n$ observations.
+ 
+This is .hi.purple[Binomial Coefficient]: 
+
+$$ 
+{n \choose k} = \frac{n!}{k!(n-k)!}
+$$
+
+- ${n \choose k}$ is read "n choose k" which means "how many different ways to get k successes in n trials" (you can google n choose k to get this)
+
+- $n! = n*(n-1)*(n-2)...(3)*(2)*(1)$
+      
+.it[Example]: $5! = 5*4*3*2*1=120$
+
+- Note: 0! = 1
+      
+
+---
+# Binomial Example
+
+Lets use this formula to calculate how many ways are there to make 3 out 5 free throws
+
+$$
+{5 \choose 3} = \frac{5!}{3!(5-3)!} = \frac{120}{6*2} = 10
+$$
+
+
+
+---
+# Binomial Formula
+
+Formula tells us the probability of getting k successes in n trials:
+
+$$P(X=k) = {\color{blue}{n \choose k}} {\color{green}p^k} {\color{orange}(1-p)^{n-k}}$$
+
+- ${\color{blue}{n \choose k}}$: number of ways to get k successes in n trials
+
+- ${\color{green}p^k}$: probability of success, raised by the number of successes
+
+- ${\color{orange}(1-p)^{n-k}}$: probability of failure, raised by the number of failures
+
+
+
+
+---
+# Binomial Example
+
+Back to our previous example. Shaq is shooting 5 free throws and has a 60% chance of making each one. What is the probability he makes 3?
+
+--
+$$P(X=3) = {5 \choose 3}*0.6^3*0.4^2 = 0.3456$$
+
+
+
+---
+# Clicker Question
+
+What is the probability of making 4 out of 6 penalty kicks if the probability of scoring is 70%?
+
+<ol type = "a">
+  <li>70%</li>
+  <li>2.2%</li>
+  <li>32.4%</li>
+  <li>65.47%</li>
+</ol>
+
+
+---
+# Example
+
+A local veterinary clinic typically sees 15% of its horses presenting with West Nile virus. If 10 horses are admitted during July, what is the probability that 2 or fewer horses among the 10 horses admitted have been infected with West Nile virus?
+
+
+---
+# Binomial Probabilities
+
+- The .red_pink[binomial] formula
+$$
+P(X=k) = {n \choose k} p^k (1-p)^{n-k}
+$$
+only calculates the probability that X is equal to one specific (discrete) number.
+
+In order to calculate the probability that X takes on multiple value means we must use this formula repeatedly
+ 
+- What if we wanted to know the probability that Shaq makes at least two of the five free throws?
+
+$$
+  P(X = 2) + P(X = 3) + P(X = 4) + P(X = 5)
+$$
+
+
+---
+# Cumulative Binomial Probabilities
+
+Recall the probability rule:
+$$P(A^c)=1-P(A)$$
+We can use this when calculating .red_pink[binomial] probabilities. Make sure to pay attention to the wording!
+
+
+.hi.purple[At least] is inclusive. 
+      
+- P(at least 1) = \(P(X\geq1)=1-P(X=0)\)
+      
+.hi.purple[More than] is not inclusive
+      
+- P(more than 1)= \(P(X>1)=1-P(X=0)-P(X=1)\)
+      
+
+
+
+
+---
+# Cumulative Example
+
+What is the probability that Shaq makes at least two out of his five free throws?
+
+$$P(X \geq 2)=1 - P(X = 0) - P(X = 1)$$
+
+- $P(X=0)= {5 \choose 0}*0.6^0*0.4^5 = 0.010$
+
+- $P(X=1)= {5 \choose 1}*0.6^1*0.4^4 = 0.077$
+
+- $P(X \geq 2) = 1 - 0.01 - 0.077 = 0.913$
+
+
+
+---
+# Clicker Question
+
+You are asking someone out on a date. Your probability of success is 35% each time you try. If you ask out 4 people, what are the odds that you get at least one yes?
+
+<ol type = "a">
+  <li>98.5%</li>
+  <li>1.5%</li>
+  <li>82.15%</li>
+  <li>17.85%</li>
+</ol>
+
+
+
+
+---
+# Binomial Mean and Standard Deviation
+
+If $X \sim B(n,p)$, the .hi.purple[mean] and .hi.purple[standard deviation] of X are:
+
+$$\mu = np$$
+
+$$\sigma = \sqrt{np(1-p)}$$
+
+
+
+
+---
+# Clicker Question (Midterm Example)
+
+If X has a binomial distribution with 20 trials and a mean of 6, then the success probability, $p$, is:
+
+<ol type = "a">
+  <li>0.3</li>
+  <li>0.5</li>
+  <li>0.75</li>
+  <li>Cannot be determined given the information</li>
+</ol>
+
+
+---
+# Recognizing the Binomial Setting
+
+Which of the three scenarios would it be reasonable to use a binomial distribution for random variable X?
+
+- An auto manufacturer chooses one car from each hour's production for a quality inspection. The variable $X$ is the count of defects in the car's paint
+- The pool of potential jurors for a murder case contains 100 people chosen at random. Each person in in the pool is asked whether they oppose the death penalty. $X$ is the number of people who say yes
+- Joe buys a ticket in his state's lottery game every week. $X$ is the number of times in that year that he receives a prize.
+
+
+
+---
+# Example
+
+You're taking an exam consisting of 8 multiple choice questions, each with 4 available answers. You forgot to study, so you have to guess on every question. What is the probability you only get 2 questions wrong?
+
+<ol type = "a">
+  <li>0.3114</li>
+  <li>0.0038</li>
+</ol>

@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>ECON 3818</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Kyle Butts" />
+    <meta name="date" content="2021-07-20" />
+    <script src="ch14_files/header-attrs-2.9/header-attrs.js"></script>
+    <link href="ch14_files/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="ch14_files/remark-css-0.0.1/metropolis.css" rel="stylesheet" />
+    <link href="ch14_files/remark-css-0.0.1/metropolis-fonts.css" rel="stylesheet" />
+    <script src="ch14_files/fabric-4.3.1/fabric.min.js"></script>
+    <link href="ch14_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="ch14_files/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# ECON 3818
+## Chapter 14
+### Kyle Butts
+### 20 July 2021
+
+---
+
+exclude: true
+
+
+
+---
+class: clear, middle
+&lt;!-- Custom css --&gt;
+&lt;style type="text/css"&gt;
+@import url(https://fonts.googleapis.com/css?family=Zilla+Slab:300,300i,400,400i,500,500i,700,700i);
+
+/* Create a highlighted class called 'hi'  */
+.hi {
+  font-weight: 600;
+}
+
+.bw {
+  background-color: rgb(0, 0, 0);
+  color: #ffffff;
+}
+.gw {
+  background-color: #d2d2d2;
+  color: #ffffff;
+}
+
+
+/* Font styling */
+.mono {
+  font-family: monospace;
+}
+.ul {
+  text-decoration: underline;
+}
+.ol {
+  text-decoration: overline;
+}
+.st {
+  text-decoration: line-through;
+}
+.bf {
+  font-weight: bold;
+}
+.it {
+  font-style: italic;
+}
+
+
+/* Font Sizes */
+.bigger {
+  font-size: 125%;
+}
+.huge{
+  font-size: 150%;
+}
+
+.small {
+  font-size: 95%;
+}
+.smaller {
+  font-size: 85%;
+}
+.smallest {
+  font-size: 75%;
+}
+
+.tiny {
+  font-size: 50%;
+}
+
+
+/* Remark customization */
+
+.clear .remark-slide-number {
+  display: none;
+}
+.inverse .remark-slide-number {
+  display: none;
+}
+
+.remark-code-line-highlighted {
+  background-color: rgba(249, 39, 114, 0.5);
+}
+
+.remark-slide-content {
+  background-color: #ffffff;
+  font-size: 24px;
+  /* font-weight: 300; */
+  /* line-height: 1.5; */
+  /* padding: 1em 2em 1em 2em; */
+}
+
+/* Xaringan tweeks */
+
+.inverse {
+  background-color: #23373B;
+  text-shadow: 0 0 20px #333;
+  /* text-shadow: none; */
+}
+
+.title-slide {
+  background-color: #ffffff;
+  border-top: 80px solid #ffffff;
+}
+
+.footnote {
+  bottom: 1em;
+  font-size: 80%;
+  color: #7f7f7f;
+}
+
+
+
+/* Mono-spaced font, smaller */
+.mono-small {
+  font-family: monospace;
+  font-size: 20px;
+}
+.mono-small .mjx-chtml {
+  font-size: 103% !important;
+}
+
+.pseudocode, .pseudocode-small {
+  font-family: monospace;
+  background: #f8f8f8;
+  border-radius: 3px;
+  padding: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+.pseudocode-small {
+  font-size: 20px;
+}
+
+.super{
+  vertical-align: super;
+  font-size: 70%;
+  line-height: 1%;
+}
+.sub{
+  vertical-align: sub;
+  font-size: 70%;
+  line-height: 1%;
+}
+
+.remark-code {
+  font-size: 68%;
+}
+
+.inverse &gt; h2 {
+  color: #e64173;
+  font-weight: 300;
+  font-size: 40px;
+  font-style: italic;
+  margin-top: -25px;
+}
+.title-slide &gt; h2  {
+  margin-top: -25px;
+  padding-bottom: -20px;
+  color: rgba(249, 38, 114, 0.75);
+  text-shadow: none;
+  font-weight: 300;
+  font-size: 35px;
+  font-style: normal;
+  text-align: left;
+  margin-left: 15px;
+}
+
+.remark-inline-code {
+  background: #F5F5F5; /* lighter */
+  /* background: #e7e8e2; /* darker */
+  border-radius: 3px;
+  padding: 4px;
+}
+
+/* 2/3 left; 1/3 right */
+.more-left {
+  float: left;
+  width: 63%;
+}
+.less-right {
+  float: right;
+  width: 31%;
+}
+.more-right ~ * {
+  clear: both;
+}
+
+/* 9/10 left; 1/10 right */
+.left90 {
+  padding-top: 0.7em;
+  float: left;
+  width: 85%;
+}
+.right10 {
+  padding-top: 0.7em;
+  float: right;
+  width: 9%;
+}
+
+/* 95% left; 5% right */
+.left95 {
+  padding-top: 0.7em;
+  float: left;
+  width: 91%;
+}
+.right05 {
+  padding-top: 0.7em;
+  float: right;
+  width: 5%;
+}
+
+.left5 {
+  padding-top: 0.7em;
+  margin-left: 0em;
+  margin-right: -0.4em;
+  float: left;
+  width: 7%;
+}
+.left10 {
+  padding-top: 0.7em;
+  margin-left: -0.2em;
+  margin-right: -0.5em;
+  float: left;
+  width: 10%;
+}
+.left30 {
+  padding-top: 0.7em;
+  float: left;
+  width: 30%;
+}
+.right30 {
+  padding-top: 0.7em;
+  float: right;
+  width: 30%;
+}
+
+.thin-left {
+  padding-top: 0.7em;
+  margin-left: -1em;
+  margin-right: -0.5em;
+  float: left;
+  width: 27.5%;
+}
+
+/* Example */
+.ex {
+  font-weight: 300;
+  color: #cccccc !important;
+  font-style: italic;
+}
+
+.col-left {
+  float: left;
+  width: 47%;
+  margin-top: -1em;
+}
+.col-right {
+  float: right;
+  width: 47%;
+  margin-top: -1em;
+}
+
+.clear-up {
+  clear: both;
+  margin-top: -1em;
+}
+
+
+
+/* Format tables */
+table {
+  color: #000000;
+  font-size: 14pt;
+  line-height: 100%;
+  border-top: 1px solid #ffffff !important;
+  border-bottom: 1px solid #ffffff !important;
+}
+th, td {
+  background-color: #ffffff;
+}
+table th {
+  font-weight: 400;
+}
+
+
+/* Extra left padding */
+.pad-left {
+  margin-left: 5%;
+}
+
+/* Extra left padding */
+.big-left {
+  margin-left: 15%;
+  margin-bottom: -0.4em;
+}
+
+/* Attention */
+.attn {
+  font-weight: 500;
+  color: #e64173 !important;
+  font-family: 'Zilla Slab' !important;
+}
+
+/* Note */
+.note {
+  font-weight: 300;
+  font-style: italic;
+  color: #314f4f !important;
+  /* color: #cccccc !important; */
+  font-family: 'Zilla Slab' !important;
+}
+
+/* Question and answer */
+.qa {
+  font-weight: 500;
+  /* color: #314f4f !important; */
+  color: #e64173 !important;
+  font-family: 'Zilla Slab' !important;
+}
+
+
+
+/* Remove orange line */
+hr, .title-slide h2::after, .mline h1::after {
+  content: '';
+  display: block;
+  border: none;
+  background-color: #e5e5e5;
+  color: #e5e5e5;
+  height: 1px;
+}
+&lt;/style&gt;
+
+
+&lt;!-- From xaringancolor --&gt;
+
+&lt;div style = "position:fixed; visibility: hidden"&gt;
+`\(\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}\)`
+`\(\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}\)`
+`\(\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}\)`
+`\(\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}\)`
+`\(\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}\)`
+`\(\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}\)`
+`\(\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}\)`
+`\(\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}\)`
+`\(\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}\)`
+`\(\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}\)`
+`\(\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}\)`
+&lt;/div&gt;
+
+&lt;script type="text/x-mathjax-config"&gt;
+MathJax.Hub.Config({
+  TeX: {
+    Macros: {
+      red_pink: ["{\color{red_pink}{#1}}", 1],
+      turquoise: ["{\color{turquoise}{#1}}", 1],
+      orange: ["{\color{orange}{#1}}", 1],
+      red: ["{\color{red}{#1}}", 1],
+      blue: ["{\color{blue}{#1}}", 1],
+      green: ["{\color{green}{#1}}", 1],
+      grey_light: ["{\color{grey_light}{#1}}", 1],
+      grey_mid: ["{\color{grey_mid}{#1}}", 1],
+      grey_dark: ["{\color{grey_dark}{#1}}", 1],
+      purple: ["{\color{purple}{#1}}", 1],
+      slate: ["{\color{slate}{#1}}", 1]
+    },
+    loader: {load: ['[tex]/color']},
+    tex: {packages: {'[+]': ['color']}}
+  }
+});
+&lt;/script&gt;
+
+&lt;style&gt;
+.red_pink {color: #E64173;}
+.turquoise {color: #20B2AA;}
+.orange {color: #FFA500;}
+.red {color: #FB6107;}
+.blue {color: #3B3B9A;}
+.green {color: #8BB174;}
+.grey_light {color: #B3B3B3;}
+.grey_mid {color: #7F7F7F;}
+.grey_dark {color: #333333;}
+.purple {color: #6A5ACD;}
+.slate {color: #314F4F;}
+&lt;/style&gt;
+
+
+
+
+## Chapter 14: Binomial Distribution
+
+---
+# Binomial Distribution
+
+
+Probability model used when there are two outcomes: success or failure
+- .hi.turquoise[Bernoulli distribution]: one trial.
+
+- .hi.red_pink[Binomial distribution]: multiple trials.
+      
+.it[Examples]:
+      
+- Flipping a coin, shooting a free throw
+      
+
+
+
+
+---
+# Bernoulli Distribution
+
+
+If `\(X\)` follows a .turquoise[Bernoulli] process, then we say that `$$X \sim B(1,p)$$`
+       
+- `\(1\)` tells us the number of trials 
+- `\(p\)` tells us the probability of success
+
+- `\(\sim\)`: "is distributed"
+      
+
+
+
+
+---
+# Binomial Distribution
+
+Generally, we focus on situations where we have more than one trial so we use the .hi.red_pink[binomial distribution]
+
+.red_pink[The Binomial Setting]
+      
+1. There are a fixed number, `\(n\)`, trials 
+
+2. These `\(n\)` trials are all independent
+
+3. Each trial falls into one of just two categories -- "success" or "failure"
+
+4. The probability of success, `\(p\)`, is the same for each observations
+      
+Notation: `\(X \sim B(n,p)\)`
+      
+- where `\(n\)`, `\(p\)` are .it[parameters]
+      
+
+
+
+
+---
+# Binomial Example
+
+Shaquille O'Neal is allowed 5 free throw shots. He has a 60% chance of making each shot. What is the probability he makes 3 out of the 5 shots?
+       
+1. There are fixed number of trials
+  - `\(\checkmark\)` yes, n=5
+2. These trials are independent 
+  - `\(\checkmark\)` yes, maybe not (getting nervous) but go with it :-)
+3. Each trial falls into one of two categories
+  - `\(\checkmark\)` yes, miss or make
+4. Probability it the same for each trial
+  - `\(\checkmark\)` yes, p=0.6
+      
+$$
+X ~ B(5, 0.6)
+$$
+
+
+
+---
+# Clicker Question
+
+For which of the following counts would a .red_pink[binomial] probability model be reasonable? If not, why not?
+
+&lt;ol type = "a"&gt;
+&lt;li&gt;the number of phone calls received in a one-hour period&lt;/li&gt;
+&lt;li&gt;the number of hearts you draw when you select 5 cards from a standard deck of 52 cards&lt;/li&gt;
+&lt;li&gt;the number of sevens in a randomly selected set of five digits from a table of random digits&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+
+---
+# Binomial Example
+
+Important: There is more than one way to make 3 out 5 free throws
+
+1. Make, Make, Make, Miss, Miss
+2. Make, Make, Miss, Miss, Make
+3. Make Make, Miss, Make, Miss
+4. Make, Miss, Miss, Make, Make
+5. Make, Miss, Make, Miss, Make
+6. Miss, Make, Make, Make, Miss
+7. Miss, Make, Make, Miss, Make
+8. Miss, Make, Miss, Make, Make
+9. Miss, Make, Make, Make, Miss
+10. Miss, Miss, Make, Make, Make
+
+
+
+---
+# Binomial Coefficient
+
+First step to solving a .red_pink[binomial] probability is to calculate the number of different ways of getting exactly `\(k\)` success in `\(n\)` observations.
+ 
+This is .hi.purple[Binomial Coefficient]: 
+
+$$ 
+{n \choose k} = \frac{n!}{k!(n-k)!}
+$$
+
+- `\({n \choose k}\)` is read "n choose k" which means "how many different ways to get k successes in n trials" (you can google n choose k to get this)
+
+- `\(n! = n*(n-1)*(n-2)...(3)*(2)*(1)\)`
+      
+.it[Example]: `\(5! = 5*4*3*2*1=120\)`
+
+- Note: 0! = 1
+      
+
+---
+# Binomial Example
+
+Lets use this formula to calculate how many ways are there to make 3 out 5 free throws
+
+$$
+{5 \choose 3} = \frac{5!}{3!(5-3)!} = \frac{120}{6*2} = 10
+$$
+
+
+
+---
+# Binomial Formula
+
+Formula tells us the probability of getting k successes in n trials:
+
+`$$P(X=k) = {\color{blue}{n \choose k}} {\color{green}p^k} {\color{orange}(1-p)^{n-k}}$$`
+
+- `\({\color{blue}{n \choose k}}\)`: number of ways to get k successes in n trials
+
+- `\({\color{green}p^k}\)`: probability of success, raised by the number of successes
+
+- `\({\color{orange}(1-p)^{n-k}}\)`: probability of failure, raised by the number of failures
+
+
+
+
+---
+# Binomial Example
+
+Back to our previous example. Shaq is shooting 5 free throws and has a 60% chance of making each one. What is the probability he makes 3?
+
+--
+`$$P(X=3) = {5 \choose 3}*0.6^3*0.4^2 = 0.3456$$`
+
+
+
+---
+# Clicker Question
+
+What is the probability of making 4 out of 6 penalty kicks if the probability of scoring is 70%?
+
+&lt;ol type = "a"&gt;
+  &lt;li&gt;70%&lt;/li&gt;
+  &lt;li&gt;2.2%&lt;/li&gt;
+  &lt;li&gt;32.4%&lt;/li&gt;
+  &lt;li&gt;65.47%&lt;/li&gt;
+&lt;/ol&gt;
+
+
+---
+# Example
+
+A local veterinary clinic typically sees 15% of its horses presenting with West Nile virus. If 10 horses are admitted during July, what is the probability that 2 or fewer horses among the 10 horses admitted have been infected with West Nile virus?
+
+
+---
+# Binomial Probabilities
+
+- The .red_pink[binomial] formula
+$$
+P(X=k) = {n \choose k} p^k (1-p)^{n-k}
+$$
+only calculates the probability that X is equal to one specific (discrete) number.
+
+In order to calculate the probability that X takes on multiple value means we must use this formula repeatedly
+ 
+- What if we wanted to know the probability that Shaq makes at least two of the five free throws?
+
+$$
+  P(X = 2) + P(X = 3) + P(X = 4) + P(X = 5)
+$$
+
+
+---
+# Cumulative Binomial Probabilities
+
+Recall the probability rule:
+`$$P(A^c)=1-P(A)$$`
+We can use this when calculating .red_pink[binomial] probabilities. Make sure to pay attention to the wording!
+
+
+.hi.purple[At least] is inclusive. 
+      
+- P(at least 1) = \(P(X\geq1)=1-P(X=0)\)
+      
+.hi.purple[More than] is not inclusive
+      
+- P(more than 1)= \(P(X&gt;1)=1-P(X=0)-P(X=1)\)
+      
+
+
+
+
+---
+# Cumulative Example
+
+What is the probability that Shaq makes at least two out of his five free throws?
+
+`$$P(X \geq 2)=1 - P(X = 0) - P(X = 1)$$`
+
+- `\(P(X=0)= {5 \choose 0}*0.6^0*0.4^5 = 0.010\)`
+
+- `\(P(X=1)= {5 \choose 1}*0.6^1*0.4^4 = 0.077\)`
+
+- `\(P(X \geq 2) = 1 - 0.01 - 0.077 = 0.913\)`
+
+
+
+---
+# Clicker Question
+
+You are asking someone out on a date. Your probability of success is 35% each time you try. If you ask out 4 people, what are the odds that you get at least one yes?
+
+&lt;ol type = "a"&gt;
+  &lt;li&gt;98.5%&lt;/li&gt;
+  &lt;li&gt;1.5%&lt;/li&gt;
+  &lt;li&gt;82.15%&lt;/li&gt;
+  &lt;li&gt;17.85%&lt;/li&gt;
+&lt;/ol&gt;
+
+
+
+
+---
+# Binomial Mean and Standard Deviation
+
+If `\(X \sim B(n,p)\)`, the .hi.purple[mean] and .hi.purple[standard deviation] of X are:
+
+`$$\mu = np$$`
+
+`$$\sigma = \sqrt{np(1-p)}$$`
+
+
+
+
+---
+# Clicker Question (Midterm Example)
+
+If X has a binomial distribution with 20 trials and a mean of 6, then the success probability, `\(p\)`, is:
+
+&lt;ol type = "a"&gt;
+  &lt;li&gt;0.3&lt;/li&gt;
+  &lt;li&gt;0.5&lt;/li&gt;
+  &lt;li&gt;0.75&lt;/li&gt;
+  &lt;li&gt;Cannot be determined given the information&lt;/li&gt;
+&lt;/ol&gt;
+
+
+---
+# Recognizing the Binomial Setting
+
+Which of the three scenarios would it be reasonable to use a binomial distribution for random variable X?
+
+- An auto manufacturer chooses one car from each hour's production for a quality inspection. The variable `\(X\)` is the count of defects in the car's paint
+- The pool of potential jurors for a murder case contains 100 people chosen at random. Each person in in the pool is asked whether they oppose the death penalty. `\(X\)` is the number of people who say yes
+- Joe buys a ticket in his state's lottery game every week. `\(X\)` is the number of times in that year that he receives a prize.
+
+
+
+---
+# Example
+
+You're taking an exam consisting of 8 multiple choice questions, each with 4 available answers. You forgot to study, so you have to guess on every question. What is the probability you only get 2 questions wrong?
+
+&lt;ol type = "a"&gt;
+&lt;li&gt;0.3114&lt;/li&gt;
+&lt;li&gt;0.0038&lt;/li&gt;
+&lt;/ol&gt;
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create();
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
