@@ -16,3 +16,9 @@ showtextdb
 showtext
 shiny
 flair
+stringr
+kfbmisc
+timeDate
+timeSeries
+fBasics
+fGarch

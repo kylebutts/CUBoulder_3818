@@ -6,6 +6,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: ['default', 'metropolis', 'metropolis-fonts']
+    self_contained: true
 nature:
   highlightStyle: github
 highlightLines: true

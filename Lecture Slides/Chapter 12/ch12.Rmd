@@ -6,6 +6,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: ['default', 'metropolis', 'metropolis-fonts']
+    self_contained: true
 nature:
   highlightStyle: github
 highlightLines: true
@@ -24,18 +25,18 @@ library(kfbmisc)
 
 # Knitr options
 opts_chunk$set(
-comment = "#>",
-fig.align = "center",
-fig.height = 7,
-fig.width = 10.5,
-warning = F,
-message = F
+    comment = "#>",
+    fig.align = "center",
+    fig.height = 7,
+    fig.width = 10.5,
+    warning = F,
+    message = F
 )
 
 # Use svg for figures
 opts_chunk$set(dev = "svg")
 options(device = function(file, width, height) {
-svg(tempfile(), width = width, height = height)
+    svg(tempfile(), width = width, height = height)
 })
 
 # HTML output for knitr
@@ -43,7 +44,7 @@ options(knitr.table.format = "html")
 
 
 make_gt_title <- function(title) {
-gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
+    gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
 }
 
 xaringanExtra::use_scribble()
@@ -162,40 +163,39 @@ $$\frac{\text{Number of ways event could occur}}{\text{Number of total possible 
 
 ```{r coin-toss, echo = F, out.width = "100%"}
 
-toss_img <- png::readPNG(here("Lecture Slides", "Chapter 12", "coin_toss.png")) %>% 
-  grid::rasterGrob(., interpolate=TRUE)
+toss_img <- png::readPNG(here("Lecture Slides", "Chapter 12", "coin_toss.png")) %>%
+    grid::rasterGrob(., interpolate = TRUE)
 
 
 set.seed(40)
 
-n_toss = 500
+n_toss <- 500
 
 df <- tibble(toss = 1:n_toss, head = as.numeric(runif(n_toss) >= 0.5)) %>%
-   mutate(
-     n_head = cumsum(head), 
-     prop_head = n_head/toss
-   )
+    mutate(
+        n_head = cumsum(head),
+        prop_head = n_head / toss
+    )
 
-small_n <- ggplot(df %>% filter(toss <= 20)) + 
-  geom_point(aes(x = toss, y = prop_head)) +
-  geom_line(aes(x = toss, y = prop_head)) +
-  geom_hline(yintercept = 0.5, linetype = "dashed", color = "#549f69") + 
-  scale_y_continuous(limits = c(0, 1)) +
-  theme_kyle() + 
-  annotation_custom(toss_img, xmin=10, xmax=20, ymin=0.6, ymax=1) +
-  labs(x = "Toss", y = "Cumulative Proportion of Heads")
+small_n <- ggplot(df %>% dplyr::filter(toss <= 20)) +
+    geom_point(aes(x = toss, y = prop_head)) +
+    geom_line(aes(x = toss, y = prop_head)) +
+    geom_hline(yintercept = 0.5, linetype = "dashed", color = "#549f69") +
+    scale_y_continuous(limits = c(0, 1)) +
+    theme_kyle() +
+    annotation_custom(toss_img, xmin = 10, xmax = 20, ymin = 0.6, ymax = 1) +
+    labs(x = "Toss", y = "Cumulative Proportion of Heads")
 
-large_n <- ggplot(df) + 
-  geom_point(aes(x = toss, y = prop_head)) +
-  geom_line(aes(x = toss, y = prop_head)) +
-  geom_hline(yintercept = 0.5, linetype = "dashed", color = "#549f69") + 
-  scale_y_continuous(limits = c(0, 1)) +
-  theme_kyle() + 
-  annotation_custom(toss_img, xmin=250, xmax=500, ymin=0.6, ymax=1) +
-  labs(x = "Toss", y = "Cumulative Proportion of Heads")
+large_n <- ggplot(df) +
+    geom_point(aes(x = toss, y = prop_head)) +
+    geom_line(aes(x = toss, y = prop_head)) +
+    geom_hline(yintercept = 0.5, linetype = "dashed", color = "#549f69") +
+    scale_y_continuous(limits = c(0, 1)) +
+    theme_kyle() +
+    annotation_custom(toss_img, xmin = 250, xmax = 500, ymin = 0.6, ymax = 1) +
+    labs(x = "Toss", y = "Cumulative Proportion of Heads")
 
 small_n + large_n
-
 ```
 
 

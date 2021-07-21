@@ -6,6 +6,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: ['default', 'metropolis', 'metropolis-fonts']
+    self_contained: true
 nature:
   highlightStyle: github
 highlightLines: true
@@ -23,18 +24,18 @@ library(patchwork)
 
 # Knitr options
 opts_chunk$set(
-comment = "#>",
-fig.align = "center",
-fig.height = 7,
-fig.width = 10.5,
-warning = F,
-message = F
+    comment = "#>",
+    fig.align = "center",
+    fig.height = 7,
+    fig.width = 10.5,
+    warning = F,
+    message = F
 )
 
 # Use svg for figures
 opts_chunk$set(dev = "svg")
 options(device = function(file, width, height) {
-svg(tempfile(), width = width, height = height)
+    svg(tempfile(), width = width, height = height)
 })
 
 # HTML output for knitr
@@ -43,46 +44,46 @@ options(knitr.table.format = "html")
 source("https://raw.githubusercontent.com/kylebutts/templates/master/ggplot_theme/theme_kyle.R")
 
 # 538 Theme
-gt_theme_kyle <- function(data,...) {
-  data %>%
-  opt_all_caps()  %>%
-  opt_table_font(
-    font = list(
-      google_font("Chivo"),
-      default_fonts()
-    )
-  ) %>%
-    tab_style(
-      style = cell_borders(
-        sides = "bottom", color = "transparent", weight = px(2)
-      ),
-      locations = cells_body(
-        columns = gt::everything(),
-        # This is a relatively sneaky way of changing the bottom border
-        # Regardless of data size
-        rows = nrow(data$`_data`)
-      )
-    )  %>% 
-  tab_options(
-    column_labels.background.color = "white",
-    table.border.top.width = px(3),
-    table.border.top.color = "transparent",
-    table.border.bottom.color = "transparent",
-    table.border.bottom.width = px(3),
-    column_labels.border.top.width = px(3),
-    column_labels.border.top.color = "transparent",
-    column_labels.border.bottom.width = px(3),
-    column_labels.border.bottom.color = "black",
-    data_row.padding = px(3),
-    source_notes.font.size = 12,
-    table.font.size = 16,
-    heading.align = "left",
-    ...
-  ) 
+gt_theme_kyle <- function(data, ...) {
+    data %>%
+        opt_all_caps() %>%
+        opt_table_font(
+            font = list(
+                google_font("Chivo"),
+                default_fonts()
+            )
+        ) %>%
+        tab_style(
+            style = cell_borders(
+                sides = "bottom", color = "transparent", weight = px(2)
+            ),
+            locations = cells_body(
+                columns = gt::everything(),
+                # This is a relatively sneaky way of changing the bottom border
+                # Regardless of data size
+                rows = nrow(data$`_data`)
+            )
+        ) %>%
+        tab_options(
+            column_labels.background.color = "white",
+            table.border.top.width = px(3),
+            table.border.top.color = "transparent",
+            table.border.bottom.color = "transparent",
+            table.border.bottom.width = px(3),
+            column_labels.border.top.width = px(3),
+            column_labels.border.top.color = "transparent",
+            column_labels.border.bottom.width = px(3),
+            column_labels.border.bottom.color = "black",
+            data_row.padding = px(3),
+            source_notes.font.size = 12,
+            table.font.size = 16,
+            heading.align = "left",
+            ...
+        )
 }
 
 make_gt_title <- function(title) {
-  gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
+    gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom: 8px;'>{title}</span>"))
 }
 
 xaringanExtra::use_scribble()
@@ -176,26 +177,26 @@ set.seed(12)
 n_samp <- 1000
 
 df <- tibble(
-x= seq(-10, 10, length=1000), 
-y=  dnorm(x, mean=0, sd=3),
-count= y * n_samp
+    x = seq(-10, 10, length = 1000),
+    y = dnorm(x, mean = 0, sd = 3),
+    count = y * n_samp
 )
 
 # 5 samples
-sample_df <- tibble(sample = rep(1:5, times = n_samp), values= rnorm(5*n_samp, 0, 3))
+sample_df <- tibble(sample = rep(1:5, times = n_samp), values = rnorm(5 * n_samp, 0, 3))
 
 
-ggplot(data= sample_df %>% filter(sample == 1), aes(x= values)) +
-geom_histogram(aes(y= ..density..)) +
-geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
-theme_kyle(base_size = 20) +
-scale_x_continuous(limits = c(-10,10)) + 
-scale_y_continuous(limits = c(0, 0.25)) +
-labs(x = "Value of Observation",
- y = "Density (Likelihood of observing value)",
- title= glue::glue("Sample and Population Distribution")
-)
-
+ggplot(data = sample_df %>% dplyr::filter(sample == 1), aes(x = values)) +
+    geom_histogram(aes(y = ..density..)) +
+    geom_line(data = df, aes(x = x, y = y), color = "#d2382c", size = 1.5) +
+    theme_kyle(base_size = 20) +
+    scale_x_continuous(limits = c(-10, 10)) +
+    scale_y_continuous(limits = c(0, 0.25)) +
+    labs(
+        x = "Value of Observation",
+        y = "Density (Likelihood of observing value)",
+        title = glue::glue("Sample and Population Distribution")
+    )
 ```
 
     
@@ -217,21 +218,22 @@ Lots of data naturally follow this distribution
 
 ```{r, echo = F, out.width = "80%"}
 
-sample_prob <- sample_df %>% 
-  filter(sample == 1) %>%
-  mutate(less = values <= -2.5)
+sample_prob <- sample_df %>%
+    dplyr::filter(sample == 1) %>%
+    mutate(less = values <= -2.5)
 
 ggplot() +
-geom_histogram(data= sample_prob, aes(x = values, y= after_stat(density), fill = (stat(x) < -2.5))) +
-geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
-theme_kyle(base_size = 20) +
+    geom_histogram(data = sample_prob, aes(x = values, y = after_stat(density), fill = (stat(x) < -2.5))) +
+    geom_line(data = df, aes(x = x, y = y), color = "#d2382c", size = 1.5) +
+    theme_kyle(base_size = 20) +
     scale_fill_manual(values = c("grey80", "#d2382c")) +
-labs(x = "Value of Observation",
- y = "Density (Likelihood of observing value)",
- fill = "Less than -2.5",
- title= "Sample Probability"
-)
-
+    scale_x_continuous(breaks = c(seq(-10, 10, by=5), -2.5)) +
+    guides(fill = "none") +
+    labs(
+        x = "Value of Observation",
+        y = "Density (Likelihood of observing value)",
+        title = "Sample Probability"
+    )
 ```
     
 - What's the probability that the x value is less than -2.5 .hi[in our sample]?
@@ -245,14 +247,15 @@ labs(x = "Value of Observation",
         
 ```{r, echo = F, out.width = "80%"}
 ggplot() +
-geom_line(data= df, aes(x= x, y= y), color = "#d2382c", size = 1.5) +
-    geom_area(data= df %>% filter(x < -2.5), aes(x = x, y = y), fill = "#d2382c") +
-theme_kyle(base_size = 20) +
-labs(x = "Value of Observation",
- y = "Density (Likelihood of observing value)",
- title= "Population Probability"
-)
-
+    geom_line(data = df, aes(x = x, y = y), color = "#d2382c", size = 1.5) +
+    geom_area(data = df %>% dplyr::filter(x < -2.5), aes(x = x, y = y), fill = "#d2382c") +
+    scale_x_continuous(breaks = c(seq(-10, 10, by=5), -2.5)) +
+    theme_kyle(base_size = 20) +
+    labs(
+        x = "Value of Observation",
+        y = "Density (Likelihood of observing value)",
+        title = "Population Probability"
+    )
 ```
     
 - What's the probability that the x value is less than -2.5 .hi[in our population distribution]?
@@ -282,20 +285,21 @@ Normal distribution is described .it.bf[completely] by two parameters-- its mean
         
 ```{r multiple-vars, echo=F, out.width = "90%"}
 
-multiple_var = bind_rows(
-tibble(Variance = 1, SD = 1, value = rnorm(1000, 0, 1)),
-tibble(Variance = 4, SD = 2, value = rnorm(1000, 0, 4)),
-tibble(Variance = 9, SD = 3, value = rnorm(1000, 0, 9))
-) %>% 
-mutate(Variance = as.factor(Variance))
+multiple_var <- bind_rows(
+    tibble(Variance = 1, SD = 1, value = rnorm(1000, 0, 1)),
+    tibble(Variance = 4, SD = 2, value = rnorm(1000, 0, 4)),
+    tibble(Variance = 9, SD = 3, value = rnorm(1000, 0, 9))
+) %>%
+    mutate(Variance = as.factor(Variance))
 
-ggplot(multiple_var %>% filter(value < 20 & value > -20)) +
-geom_density(mapping = aes(x = value, y = after_stat(density), color = Variance), 
- fill = NA, size = 1.5) +
-theme_kyle(base_size = 20) + 
-labs(x = "Value of Observation", y = "Density") + 
-scale_color_manual(values = c("#d2382c", "#497eb3", "#8e549f"))
-
+ggplot(multiple_var %>% dplyr::filter(value < 20 & value > -20)) +
+    geom_density(
+        mapping = aes(x = value, y = after_stat(density), color = Variance),
+        fill = NA, size = 1.5
+    ) +
+    theme_kyle(base_size = 20) +
+    labs(x = "Value of Observation", y = "Density") +
+    scale_color_manual(values = c("#d2382c", "#497eb3", "#8e549f"))
 ```
 
     
@@ -309,62 +313,94 @@ scale_color_manual(values = c("#d2382c", "#497eb3", "#8e549f"))
 # From svmiller
 
 ggplot(data.frame(x = c(-4, 4)), aes(.data$x)) +
-  # +/- 1
-  stat_function(fun = dnorm,
-                xlim = c(-1,1), size = 0,
-                geom = "area", fill = "#d2382c", alpha = 0.5) +
-  # +/- 2
-  stat_function(fun = dnorm,
-                xlim = c(-2,2), size = 0,
-                geom = "area", fill = "#d2382c", alpha = 0.4) +
-  # +/- 3
-  stat_function(fun = dnorm,
-                xlim = c(-3,3), size = 0,
-                geom = "area", fill = "#d2382c", alpha = 0.3) +
-  # +/- 1 sd
-  geom_segment(x = 1, y = 0, xend = 1, yend = dnorm(1, 0, 1),
-               color = "white", linetype = "dashed") +
-  geom_segment(x = -1, y = 0, xend = -1, yend = dnorm(1, 0, 1),
-               color = "white", linetype = "dashed") +
-  # +/- 2 sd
-  geom_segment(x = 2, y = 0, xend = 2, yend = dnorm(2, 0, 2),
-               color = "white", linetype = "dashed") +
-  geom_segment(x = -2, y = 0, xend = -2, yend = dnorm(2, 0, 2),
-               color = "white", linetype = "dashed") +
-  # 68%
-  annotate(geom = "text", x = 0, y = 0.2,
-           label = "68%", size = 4.5, color = "white") +
-  geom_segment(x = -0.15, y = .2, xend = -.98, yend = .2,
-               color = "white",
-               arrow = arrow(length = unit(0.15, "cm"))) +
-  geom_segment(x = 0.15, y = .2, xend = .98, yend = .2,
-               color = "white",
-               arrow = arrow(length = unit(0.15, "cm"))) +
-  # 95%
-  annotate(geom = "text", x = 0, y = 0.05,
-           label = "95%", size = 4.5, color = "white") +
-  geom_segment(x = -0.15, y = .05, xend = -1.98, yend = .05,
-               color = "white",
-               arrow = arrow(length = unit(0.15, "cm"))) +
-  geom_segment(x = 0.15, y = .05, xend = 1.98, yend = .05,
-               color = "white",
-               arrow = arrow(length = unit(0.15, "cm"))) +
-  # 99%
-  annotate(geom = "text", x = 0, y = 0.01,
-           label = "99%", size = 4.5, color = "white") +
-  geom_segment(x = -0.15, y = .005, xend = -2.98, yend = .005,
-               color = "white",
-               arrow = arrow(length = unit(0.15, "cm"))) +
-  geom_segment(x = 0.15, y = .005, xend = 2.98, yend = .005,
-               color = "white",
-               arrow = arrow(length = unit(0.15, "cm"))) +
-  # Normal curve
-  stat_function(fun = dnorm, color = "black", size = 1.5) +
-  scale_x_continuous(breaks = -4:4) +
-  # scale_x_continuous(breaks = c(-4, -2.58, -1.96, -1.645, -1, 0,
-  #                             1, 1.645, 1.96, 2.58, 4)) +
-  theme_kyle(base_size = 20) + 
-  labs(x = "Value", y = "Density")
+    # +/- 1
+    stat_function(
+        fun = dnorm,
+        xlim = c(-1, 1), size = 0,
+        geom = "area", fill = "#d2382c", alpha = 0.5
+    ) +
+    # +/- 2
+    stat_function(
+        fun = dnorm,
+        xlim = c(-2, 2), size = 0,
+        geom = "area", fill = "#d2382c", alpha = 0.4
+    ) +
+    # +/- 3
+    stat_function(
+        fun = dnorm,
+        xlim = c(-3, 3), size = 0,
+        geom = "area", fill = "#d2382c", alpha = 0.3
+    ) +
+    # +/- 1 sd
+    geom_segment(
+        x = 1, y = 0, xend = 1, yend = dnorm(1, 0, 1),
+        color = "white", linetype = "dashed"
+    ) +
+    geom_segment(
+        x = -1, y = 0, xend = -1, yend = dnorm(1, 0, 1),
+        color = "white", linetype = "dashed"
+    ) +
+    # +/- 2 sd
+    geom_segment(
+        x = 2, y = 0, xend = 2, yend = dnorm(2, 0, 2),
+        color = "white", linetype = "dashed"
+    ) +
+    geom_segment(
+        x = -2, y = 0, xend = -2, yend = dnorm(2, 0, 2),
+        color = "white", linetype = "dashed"
+    ) +
+    # 68%
+    annotate(
+        geom = "text", x = 0, y = 0.2,
+        label = "68%", size = 4.5, color = "white"
+    ) +
+    geom_segment(
+        x = -0.15, y = .2, xend = -.98, yend = .2,
+        color = "white",
+        arrow = arrow(length = unit(0.15, "cm"))
+    ) +
+    geom_segment(
+        x = 0.15, y = .2, xend = .98, yend = .2,
+        color = "white",
+        arrow = arrow(length = unit(0.15, "cm"))
+    ) +
+    # 95%
+    annotate(
+        geom = "text", x = 0, y = 0.05,
+        label = "95%", size = 4.5, color = "white"
+    ) +
+    geom_segment(
+        x = -0.15, y = .05, xend = -1.98, yend = .05,
+        color = "white",
+        arrow = arrow(length = unit(0.15, "cm"))
+    ) +
+    geom_segment(
+        x = 0.15, y = .05, xend = 1.98, yend = .05,
+        color = "white",
+        arrow = arrow(length = unit(0.15, "cm"))
+    ) +
+    # 99%
+    annotate(
+        geom = "text", x = 0, y = 0.01,
+        label = "99%", size = 4.5, color = "white"
+    ) +
+    geom_segment(
+        x = -0.15, y = .005, xend = -2.98, yend = .005,
+        color = "white",
+        arrow = arrow(length = unit(0.15, "cm"))
+    ) +
+    geom_segment(
+        x = 0.15, y = .005, xend = 2.98, yend = .005,
+        color = "white",
+        arrow = arrow(length = unit(0.15, "cm"))
+    ) +
+    # Normal curve
+    stat_function(fun = dnorm, color = "black", size = 1.5) +
+    scale_x_continuous(breaks = -4:4) +
+    # scale_x_continuous(breaks = c(-4, -2.58, -1.96, -1.645, -1, 0,
+    #                             1, 1.645, 1.96, 2.58, 4)) +
+    theme_kyle(base_size = 20) +
+    labs(x = "Value", y = "Density")
 ```
 
     
@@ -431,22 +467,27 @@ Graph of the standard normal distribution has two important properties
 Symmetric
 
 $$P(Z < -1) = P(Z > 1)$$
+
 ```{r symmetric, echo = F, out.width = "50%"}
 
 ggplot(data.frame(x = c(-4, 4)), aes(.data$x)) +
-  stat_function(fun = dnorm,
-                xlim = c(-4,-1), size = 0,
-                geom = "area", fill = "#d2382c", alpha = 0.5) +
-  stat_function(fun = dnorm,
-                xlim = c(1,4), size = 0,
-                geom = "area", fill = "#d2382c", alpha = 0.5) +
-  # Normal curve
-  stat_function(fun = dnorm, color = "black", size = 1.5) +
-  scale_x_continuous(breaks = -4:4) +
-  # scale_x_continuous(breaks = c(-4, -2.58, -1.96, -1.645, -1, 0,
-  #                             1, 1.645, 1.96, 2.58, 4)) +
-  theme_kyle(base_size = 20) + 
-  labs(x = "Value", y = "Density")
+    stat_function(
+        fun = dnorm,
+        xlim = c(-4, -1), size = 0,
+        geom = "area", fill = "#d2382c", alpha = 0.5
+    ) +
+    stat_function(
+        fun = dnorm,
+        xlim = c(1, 4), size = 0,
+        geom = "area", fill = "#d2382c", alpha = 0.5
+    ) +
+    # Normal curve
+    stat_function(fun = dnorm, color = "black", size = 1.5) +
+    scale_x_continuous(breaks = -4:4) +
+    # scale_x_continuous(breaks = c(-4, -2.58, -1.96, -1.645, -1, 0,
+    #                             1, 1.645, 1.96, 2.58, 4)) +
+    theme_kyle(base_size = 20) +
+    labs(x = "Value", y = "Density")
 ```
     
     
@@ -470,17 +511,25 @@ The data suggests $BW \sim N(113, 22^2)$, that is a mean of 113 and a standard d
 ```{r example-left-tail, echo = F, out.width = "75%"}
 
 ggplot(data.frame(x = c(25, 201)), aes(.data$x)) +
-  stat_function(fun = function(x) {dnorm(x, mean = 113, sd = 22)}, 
-                xlim = c(25,88), size = 0,
-                geom = "area", fill = "#d2382c", alpha = 0.5) +
-  # Normal curve
-  stat_function(fun = function(x) {dnorm(x, mean = 113, sd = 22)},  
-                color = "black", size = 1.5) +
-  scale_x_continuous(breaks = c(seq(25, 200, by = 25), 88, 113)) +
-  geom_vline(xintercept = 113, linetype = "dashed") +
-  geom_vline(xintercept = 88, linetype = "dashed") +
-  theme_kyle(base_size = 20) +
-  labs(x = "Value", y = "Density")
+    stat_function(
+        fun = function(x) {
+            dnorm(x, mean = 113, sd = 22)
+        },
+        xlim = c(25, 88), size = 0,
+        geom = "area", fill = "#d2382c", alpha = 0.5
+    ) +
+    # Normal curve
+    stat_function(
+        fun = function(x) {
+            dnorm(x, mean = 113, sd = 22)
+        },
+        color = "black", size = 1.5
+    ) +
+    scale_x_continuous(breaks = c(seq(25, 200, by = 25), 88, 113)) +
+    geom_vline(xintercept = 113, linetype = "dashed") +
+    geom_vline(xintercept = 88, linetype = "dashed") +
+    theme_kyle(base_size = 20) +
+    labs(x = "Value", y = "Density")
 ```
 
 This probability is called the .hi.turquoise[left-tail probability] as it's every value .turquoise[to the left].
@@ -491,17 +540,25 @@ This probability is called the .hi.turquoise[left-tail probability] as it's ever
 ```{r example-right-tail, echo = F, out.width = "75%"}
 
 ggplot(data.frame(x = c(25, 201)), aes(.data$x)) +
-  stat_function(fun = function(x) {dnorm(x, mean = 113, sd = 22)}, 
-                xlim = c(88,201), size = 0,
-                geom = "area", fill = "#d2382c", alpha = 0.5) +
-  # Normal curve
-  stat_function(fun = function(x) {dnorm(x, mean = 113, sd = 22)},  
-                color = "black", size = 1.5) +
-  scale_x_continuous(breaks = c(seq(25, 200, by = 25), 88, 113)) +
-  geom_vline(xintercept = 113, linetype = "dashed") +
-  geom_vline(xintercept = 88, linetype = "dashed") +
-  theme_kyle(base_size = 20) +
-  labs(x = "Value", y = "Density")
+    stat_function(
+        fun = function(x) {
+            dnorm(x, mean = 113, sd = 22)
+        },
+        xlim = c(88, 201), size = 0,
+        geom = "area", fill = "#d2382c", alpha = 0.5
+    ) +
+    # Normal curve
+    stat_function(
+        fun = function(x) {
+            dnorm(x, mean = 113, sd = 22)
+        },
+        color = "black", size = 1.5
+    ) +
+    scale_x_continuous(breaks = c(seq(25, 200, by = 25), 88, 113)) +
+    geom_vline(xintercept = 113, linetype = "dashed") +
+    geom_vline(xintercept = 88, linetype = "dashed") +
+    theme_kyle(base_size = 20) +
+    labs(x = "Value", y = "Density")
 ```
 
 If you want the .hi.turquoise[right-tail probability], $P(BW > 88)$, you can use 
@@ -568,12 +625,12 @@ class: clear
 
 .pull-left[.center[
 ```{r, echo = F, out.width = "80%"}
-knitr::include_graphics(here("Lecture Slides", "Chapter 3", "z-table-neg.png"))
+knitr::include_graphics(here("Lecture Slides", "Chapter 03", "neg_z.png"))
 ```
 ]]
 .pull-right[.center[
 ```{r, echo = F, out.width = "80%"}
-knitr::include_graphics(here("Lecture Slides", "Chapter 3", "z-table-pos.png"))
+knitr::include_graphics(here("Lecture Slides", "Chapter 03", "pos_z.png"))
 ```
 ]]
 
@@ -635,16 +692,24 @@ Graphically we want to calculate the following shaded area:
 ```{r example-area-between, echo = F, out.width = "75%"}
 
 ggplot(data.frame(x = -4:4), aes(.data$x)) +
-  stat_function(fun = function(x) {dnorm(x, mean = 0, sd = 1)}, 
-                xlim = c(-1.13,0.3), size = 0,
-                geom = "area", fill = "#d2382c", alpha = 0.5) +
-  # Normal curve
-  stat_function(fun = function(x) {dnorm(x, mean = 0, sd = 1)},  
-                color = "black", size = 1.5) +
-  scale_x_continuous(breaks = c(-4:-2, 1:4, -1.13, 0.3)) +
-  geom_vline(xintercept = c(-1.13, 0.3), linetype = "dashed") +
-  theme_kyle(base_size = 20) +
-  labs(x = "Value", y = "Density")
+    stat_function(
+        fun = function(x) {
+            dnorm(x, mean = 0, sd = 1)
+        },
+        xlim = c(-1.13, 0.3), size = 0,
+        geom = "area", fill = "#d2382c", alpha = 0.5
+    ) +
+    # Normal curve
+    stat_function(
+        fun = function(x) {
+            dnorm(x, mean = 0, sd = 1)
+        },
+        color = "black", size = 1.5
+    ) +
+    scale_x_continuous(breaks = c(-4:-2, 1:4, -1.13, 0.3)) +
+    geom_vline(xintercept = c(-1.13, 0.3), linetype = "dashed") +
+    theme_kyle(base_size = 20) +
+    labs(x = "Value", y = "Density")
 ```
 
 
@@ -729,4 +794,3 @@ Calculate the following:
 - What is the top 10% of men's height?
       
 - What is the bottom 20% of men's height?
-

@@ -6,6 +6,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: ['default', 'metropolis', 'metropolis-fonts']
+    self_contained: true
 nature:
   highlightStyle: github
 highlightLines: true
@@ -588,7 +589,7 @@ ggplot(majors, aes(x = `Field of Study`, y = `Percent of Students`, fill= `Field
 class: clear,middle
 
 ```{r grad-rates, echo = F}
-grad_rates <- read_csv(here::here("Lecture Slides", "Chapter 1", "grad_rates.csv"))
+grad_rates <- read_csv(here::here("Lecture Slides", "Chapter 01", "grad_rates.csv"))
 
 grad_rates %>%
 	mutate(grad_rate = grad_rate/100) %>% 
@@ -684,7 +685,7 @@ We describe the shape of the distribution as
 # snorm
 library("fGarch")
 
-skew <- data_frame(
+skew <- tibble(
 	skew_right= rsnorm(n = 5000, mean = 0, sd = 18, xi = 130),
 	symmetric= rnorm(n = 5000, mean = 0, sd = 18),
 	skew_left= rsnorm(n = 5000, mean = 0, sd = 18, xi = -130)
