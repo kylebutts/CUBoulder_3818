@@ -17,14 +17,14 @@ We will study basic probability, probability distributions (especially the norma
 
 **Lecture 01: [Introduction and Intro to Statistics](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2001/ch1.html)**
 
-**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2001/ch01.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2001/ch01.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2001/ch1.Rmd)
+**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2001/ch1.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2001/ch1.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2001/ch1.Rmd)
 <br>**Readings:** Chapter 1
 
 ---
 
 **Lecture 02: [Describing Distributions](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2002/ch2.html)**
 
-**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2002/ch02.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2002/ch02.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2002/ch2.Rmd)
+**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2002/ch2.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2002/ch2.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2002/ch2.Rmd)
 <br>**Readings:** Chapter 2
 
 ---
@@ -52,7 +52,7 @@ We will study basic probability, probability distributions (especially the norma
 
 **Lecture 06: [The Normal Distribution](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2003/ch3.html)**
 
-**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2003/ch03.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2003/ch03.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2003/ch3.Rmd)
+**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2003/ch3.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2003/ch3.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2003/ch3.Rmd)
 <br>**Readings:** Chapter 3
 
 
@@ -75,14 +75,14 @@ We will study basic probability, probability distributions (especially the norma
 
 **Lecture 09: [Producing Data - Sampling](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2008/ch8.html)**
 
-**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2008/ch08.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2008/ch08.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2008/ch8.Rmd)
+**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2008/ch8.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2008/ch8.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2008/ch8.Rmd)
 <br>**Readings:** Chapter 8
 
 ---
 
 **Lecture 10: [Producing Data - Experiments](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2009/ch9.html)**
 
-**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2009/ch09.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2009/ch09.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2009/ch9.Rmd)
+**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2009/ch9.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2009/ch9.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2009/ch9.Rmd)
 <br>**Readings:** Chapter 9
 
 ---
@@ -145,7 +145,7 @@ We will study basic probability, probability distributions (especially the norma
 
 **Lecture 19: [Correlation](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2004/ch4.html)**
 
-**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2004/ch04.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2004/ch04.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2004/ch4.Rmd)
+**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2004/ch4.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2004/ch4.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2004/ch4.Rmd)
 <br>**Readings:** Chapter 4
 
 
@@ -153,7 +153,7 @@ We will study basic probability, probability distributions (especially the norma
 
 **Lecture 20: [Regression](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.html)**
 
-**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch05.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch05.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2005/ch5.Rmd)
+**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2005/ch5.Rmd)
 <br>**Readings:** Chapter 5
 
 
@@ -161,7 +161,7 @@ We will study basic probability, probability distributions (especially the norma
 
 **Lecture 21: [Two-Way Tables](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch6.html)**
 
-**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch06.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch06.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2006/ch6.Rmd)
+**Note Formats:** [html](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch6.html), [pdf](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch6.pdf), and [.Rmd](https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2006/ch6.Rmd)
 <br>**Readings:** Chapter 6
 
 
