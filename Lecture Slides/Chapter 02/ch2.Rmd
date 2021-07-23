@@ -6,7 +6,7 @@ date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
     css: ['default', 'metropolis', 'metropolis-fonts']
-    self_contained: true
+    self-contained: true
 nature:
   highlightStyle: github
 highlightLines: true
@@ -22,6 +22,7 @@ library(gt)
 library(patchwork)
 library(kfbmisc)
 library(tidyverse)
+library(svglite)
 
 # Knitr options
 opts_chunk$set(
@@ -148,10 +149,10 @@ slate <- "#314F4F"
 # Population vs Sample
 	
 	
-- .hi.purple[Population]: the entire entities under the study
+.hi.purple[Population]: the entire entities under the study
 - Examples: all men, all NBA players, all children under 5
 		      
-- .hi.green[Sample]: subset of the population
+.hi.green[Sample]: subset of the population
 - Can be used to draw inferences about the population
 - Examples: our class, Denver Nuggets players, daycares in Colorado
 		      
@@ -162,36 +163,54 @@ slate <- "#314F4F"
 ---
 # Population Distribution
 
-The following graph depicts the underlying population distribution
+We are interested in the underlying population distribution of some variable
 	
-- We are interested in its parameters, but are unable collect data on every single observation
+- Fundamental problem of statistics is we can't collect data on every single observation
 
-		
-```{r population-density, echo = F, out.width = "60%"}
+	
+---
+class: clear
+	
+```{r population-density, echo = F}
 
 set.seed(12)
-n_samp <- 100
+n_samp <- 150
 
 df <- tibble(
-    x = seq(-10, 10, length = 1000),
-    y = dnorm(x, mean = 0, sd = 3),
+    x = seq(4, 12, length = 1000),
+    y = dnorm(x, mean = 8, sd = 1),
     count = y * n_samp
 )
 
 # 5 samples
-sample_df <- tibble(sample = rep(1:5, times = n_samp), values = rnorm(5 * n_samp, 0, 3))
+sample_df <- tibble(sample = rep(1:5, times = n_samp), values = rnorm(5 * n_samp, 8, 1))
 
 
-ggplot() +
+note_1 <- kfbmisc::png_to_grob(here("Lecture Slides", "Chapter 02", "pop_annotation_1.png"))
+
+note_2 <- kfbmisc::png_to_grob(here("Lecture Slides", "Chapter 02", "pop_annotation_2.png")) 
+
+p <- ggplot() +
     geom_line(data = df, aes(x = x, y = y), color = "#d2382c", size = 1.5) +
-    theme_kyle(base_size = 20) +
+    theme_kyle(base_size = 36) +
+    annotation_custom(note_1, xmin = 8.23, xmax = 11.73, ymin = 0.12, ymax = 0.52) +
+    annotation_custom(note_2, xmin = 10, xmax = 12, ymin = -0.115, ymax = 0.235) +
     labs(
-        x = "Value of Observation",
+        x = "Birth Weight (lb.)",
         y = "Density (Likelihood of observing value)",
-        title = "Population Distribution of Data"
+        title = "Population Distribution of Birth Weight"
     )
+
+# kfbmisc::ggpreview(p, width=8, height=5)
+
+ggsave(here("Lecture Slides", "Chapter 02", "pop_graph.png"), p, width=8, height = 5)
+
 ```
-	
+
+```{r, echo=F, out.width = "100%"}
+knitr::include_graphics("pop_graph.png")
+```
+
 
 
 ---
@@ -200,8 +219,6 @@ ggplot() +
 What we do instead is use a sample of the population and use that sample distribution to determine parameters of interest
 	
 ```{r sample-anim, eval=F, echo=F, cache=T, results='hide'}
-
-
 png_paths <- c()
 
 for (i in 1:5) {
@@ -209,12 +226,12 @@ for (i in 1:5) {
         geom_histogram(aes(y = ..density..)) +
         geom_line(data = df, aes(x = x, y = y), color = "#d2382c", size = 1.5) +
         theme_kyle(base_size = 40) +
-        scale_x_continuous(limits = c(-10, 10)) +
-        scale_y_continuous(limits = c(0, 0.25)) +
+        scale_x_continuous(limits = c(4, 12)) +
+        scale_y_continuous(limits = c(0, 0.75)) +
         labs(
-            x = "Value of Observation",
+            x = "Birth Weight (lb.)",
             y = "Density (Likelihood of observing value)",
-            title = glue::glue("Sample: {i}")
+            title = glue::glue("Sample Distribution: {i}")
         )
 
     png_path <- here("Lecture Slides", "Chapter 02", glue::glue("frame{i}.png"))
@@ -264,7 +281,9 @@ $${\color{orange} \bar{x}} = \frac{x_1 + x_2 + .... + x_n}{n}$$
 
 or more compactly:
 
-$${\color{orange} \bar{x}}=\frac{1}{n}\sum_{i=1}^n x_i$$
+```{r mean-annotated, echo=F, out.width="45%"}
+knitr::include_graphics("mean_annotated.png")
+```
 	
 	
 ---
@@ -293,8 +312,8 @@ for (i in 1:5) {
             color = "#8BB174", size = 2
         ) +
         theme_kyle(base_size = 40) +
-        scale_x_continuous(limits = c(-10, 10)) +
-        scale_y_continuous(limits = c(0, 0.25)) +
+        scale_x_continuous(limits = c(4, 12)) +
+        scale_y_continuous(limits = c(0, 0.75)) +
         labs(
             x = "Value of Observation",
             y = "Density (Likelihood of observing value)",
@@ -315,7 +334,7 @@ file.remove(png_paths)
 ```
 
 .center[
-<img style="width:80%;" src="sample_anim_mean.gif"/>
+<img style="width:100%;" src="sample_anim_mean.gif"/>
 ]
 
 ---
@@ -351,7 +370,7 @@ How to calculate median:
 ---
 # Mean vs. Median Example
 
-```{r rodman-graph, echo=F, out.width = "90%"}
+```{r rodman-graph, echo = F}
 
 # stats <- nbastatR::bref_players_stats(seasons=1990:1999)
 # write_csv(stats, here("Lecture Slides", "Chapter 02", "bball_90_99.csv"))
@@ -365,11 +384,13 @@ stats <- stats %>%
 mean <- mean(stats$trbTotals)
 median <- median(stats$trbTotals)
 
-ggplot(stats) +
+nba_jam <- kfbmisc::png_to_grob(here("Lecture Slides", "Chapter 02", "nba_jam.png"))
+
+p <- ggplot(stats) +
     geom_histogram(aes(x = trbTotals, fill = Rodman)) +
     geom_vline(xintercept = mean, linetype = "dashed") +
     geom_vline(xintercept = median, linetype = "dashed") +
-    theme_kyle(base_size = 20) +
+    theme_kyle(base_size = 36) +
     labs(
         y = "Count", x = "Total Rebounds",
         title = "1991-92 NBA Season Rebounds",
@@ -377,19 +398,31 @@ ggplot(stats) +
     ) +
     guides(fill = "none") +
     scale_fill_manual(values = c("Other" = "grey80", "Dennis Rodman" = "#d2382c")) +
+	annotation_custom(nba_jam, xmin = 1000, xmax = 1500, ymin = 40, ymax = 55) +
     geom_text(
         data = data.frame(x = 1530, y = 3, label = "Dennis Rodman"),
-        mapping = aes(x = x, y = y, label = label), size = 4,
+        mapping = aes(x = x, y = y, label = label), size = 8,
         colour = "#d2382c", family = "fira_sans", fontface = 2, inherit.aes = FALSE
     ) +
     geom_text(
-        data = data.frame(x = c(108, 330), y = c(57, 57), label = c("Median →", "← Mean")),
+        data = data.frame(x = c(130, 310), y = c(57, 57), label = c("Median →", "← Mean")),
         mapping = aes(x = x, y = y, label = label),
-        size = 5.29, family = "fira_sans", inherit.aes = FALSE
+        size = 10, family = "fira_sans", inherit.aes = FALSE
     )
+
+# kfbmisc::ggpreview(p, width = 8, height = 5)
+ggsave(here("Lecture Slides", "Chapter 02", "rebounds.png"), width = 8, height = 5)
+
 ```
 
+```{r, echo=F, out.width = "90%"}
+knitr::include_graphics("rebounds.png")
+```
+
+
 .hi[Median]: 205.5 rebounds and .hi[Mean]: 250.5 rebounds
+
+
 
 
 ---
@@ -532,18 +565,15 @@ Rule for outliers:
 $$s^2 = \frac{(x_1-{\color{orange}\bar{x}})^2 + (x_2-{\color{orange}\bar{x}})^2 + .... + (x_n - {\color{orange}\bar{x}})^2}{n-1},$$
 or more compactly
 
-$$
-s^2 = \frac{1}{n-1} \sum_{i=1}^n (x_i - {\color{orange}\bar{x}})^2
-$$
-.hi.purple[Standard deviation]: looks at how far each observation is from the mean; square root of the variance
-
-$$s=\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2}$$
+```{r var-annotated, echo=F, out.width="65%"}
+knitr::include_graphics("var_annotated.png")
+```
 	
 	
 
 
 ---
-# Visualizing Standard Deviation
+# Visualizing Variance
 	
 	
 ```{r multiple-vars, echo=F, out.width = "90%"}
@@ -566,6 +596,46 @@ ggplot(multiple_var %>% dplyr::filter(value < 20 & value > -20)) +
 ```
 
 
+---
+# Example
+
+```{r, echo=F, out.width="100%"}
+knitr::include_graphics("giraffe_variance1.jpg")
+```
+
+.footnote[Figure from [Teacups, Giraffes, & Statistics](https://tinystats.github.io/teacups-giraffes-and-statistics/04_variance.html)]
+
+1. Calculate the mean height in sample 
+
+---
+# Example
+
+```{r, echo=F, out.width="100%"}
+knitr::include_graphics("giraffe_variance2.jpg")
+```
+
+.footnote[Figure from [Teacups, Giraffes, & Statistics](https://tinystats.github.io/teacups-giraffes-and-statistics/04_variance.html)]
+
+
+<ol start = "2">
+<li>Calculate deviations from mean</li>
+<li>Square and sum</li>
+</ol>
+
+
+---
+# Variability: Standard Deviation
+.hi.purple[Standard deviation]: looks at how far each observation is from the mean; square root of the variance
+
+$$s=\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2} = \sqrt{s^2}$$
+	
+- $n-1$ is referred to as the degrees of freedom
+- $s$ measures variability about the mean
+	- More variable $\implies$ larger $s$
+- $s$ is always greater than or equal to zero, but usually $> 0$
+  - When would it be $=0$?
+- $s$ is not resistant to outliers.
+	
 
 ---
 # Practice Question
@@ -573,19 +643,6 @@ ggplot(multiple_var %>% dplyr::filter(value < 20 & value > -20)) +
 Calculate the standard deviation of age?
 
 `r drinking_tbl`
-
----
-# Properties of Standard Deviation, $s$
-	
-	
-- $n-1$ is referred to as the degrees of freedom
-- $s$ measures variability about the mean
-- $s$ is always greater than or equal to zero, but usually $> 0$
-  - When would it be $=0$?
-- As observations become more variable, $s$ gets larger
-- $s$ is not resistant in the same way the sample mean is not resistant; a few outliers can change it a lot.
-	
-	
 
 
 ---
@@ -610,14 +667,14 @@ Use five-number summary if distribution is skewed, or has outliers
 # Greek Letters and Statistics
 
 .pull-left[
-.hi.purple[Greek Letters]
-
-- Greek letters like $\mu$ and $\sigma^2$ represent the truth about the population.
-]
-.pull-right[
 .hi.green[Latin Letters]
 
 - Latin lettes like $\bar{x}$ and $s^2$ are calculations that represent guesses (estimates) at the population values.
+]
+.pull-right[
+.hi.purple[Greek Letters]
+
+- Greek letters like $\mu$ and $\sigma^2$ represent the truth about the population.
 ]
 
 The goal for the class is for the latin letters to be good guesses for the greek letters:
