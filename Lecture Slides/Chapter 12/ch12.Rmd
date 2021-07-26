@@ -17,6 +17,7 @@ exclude: true
 ```{R, setup, include = F}
 
 library(tidyverse)
+library(svglite)
 library(knitr)
 library(here)
 library(gt)
@@ -34,9 +35,9 @@ opts_chunk$set(
 )
 
 # Use svg for figures
-opts_chunk$set(dev = "svg")
+opts_chunk$set(dev = "svglite")
 options(device = function(file, width, height) {
-    svg(tempfile(), width = width, height = height)
+    svglite::svglite(tempfile(), width = width, height = height)
 })
 
 # HTML output for knitr
@@ -163,7 +164,7 @@ $$\frac{\text{Number of ways event could occur}}{\text{Number of total possible 
 
 ```{r coin-toss, echo = F, out.width = "100%"}
 
-toss_img <- png::readPNG(here("Lecture Slides", "Chapter 12", "coin_toss.png")) %>%
+toss_img <- png::readPNG(here("Lecture Slides", "Chapter 12", "coinflip.png")) %>%
     grid::rasterGrob(., interpolate = TRUE)
 
 
@@ -187,7 +188,6 @@ small_n <- ggplot(df %>% dplyr::filter(toss <= 20)) +
     labs(x = "Toss", y = "Cumulative Proportion of Heads")
 
 large_n <- ggplot(df) +
-    geom_point(aes(x = toss, y = prop_head)) +
     geom_line(aes(x = toss, y = prop_head)) +
     geom_hline(yintercept = 0.5, linetype = "dashed", color = "#549f69") +
     scale_y_continuous(limits = c(0, 1)) +
@@ -485,3 +485,4 @@ What is the .red_pink[probability] of rolling a 7, 11, or double when rolling tw
 .orange[Roll a double]: $\left\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6) \right\}$
 
 $P({\color{orange}7}) + P({\color{orange}11}) + P({\color{orange}\text{doubles}})=\frac{6}{36}+\frac{2}{36}+\frac{6}{36} \approx 0.4$
+

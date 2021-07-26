@@ -669,7 +669,7 @@ Use five-number summary if distribution is skewed, or has outliers
 .pull-left[
 .hi.green[Latin Letters]
 
-- Latin lettes like $\bar{x}$ and $s^2$ are calculations that represent guesses (estimates) at the population values.
+- Latin letters like $\bar{x}$ and $s^2$ are calculations that represent guesses (estimates) at the population values.
 ]
 .pull-right[
 .hi.purple[Greek Letters]

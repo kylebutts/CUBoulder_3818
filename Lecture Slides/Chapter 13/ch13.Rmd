@@ -17,6 +17,7 @@ exclude: true
 ```{R, setup, include = F}
 
 library(tidyverse)
+library(svglite)
 library(knitr)
 library(here)
 library(gt)
@@ -34,9 +35,9 @@ message = F
 )
 
 # Use svg for figures
-opts_chunk$set(dev = "svg")
+opts_chunk$set(dev = "svglite")
 options(device = function(file, width, height) {
-svg(tempfile(), width = width, height = height)
+svglite::svglite(tempfile(), width = width, height = height)
 })
 
 # HTML output for knitr

@@ -17,6 +17,7 @@ exclude: true
 ```{R, setup, include = F}
 
 library(tidyverse)
+library(svglite)
 library(knitr)
 library(here)
 library(gt)

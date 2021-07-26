@@ -5,6 +5,7 @@ output: html_document
 ```{r setup, include = F}
 
 library(tidyverse)
+library(svglite)
 library(glue)
 library(gt)
 
