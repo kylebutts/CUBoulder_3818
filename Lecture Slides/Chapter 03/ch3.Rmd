@@ -5,7 +5,7 @@ author: "Kyle Butts"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
-    css: ['default', 'metropolis', 'metropolis-fonts']
+    css: ['default']
     self_contained: true
 nature:
   highlightStyle: github
@@ -100,69 +100,69 @@ class: clear, middle
 <!-- From xaringancolor -->
 
 <div style = "position:fixed; visibility: hidden">
-$\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}$
-$\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}$
-$\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}$
-$\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}$
-$\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}$
-$\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}$
-$\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}$
-$\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}$
-$\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}$
-$\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}$
-$\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}$
+$$\require{color}\definecolor{purple}{rgb}{0.337254901960784, 0.00392156862745098, 0.643137254901961}$$
+$$\require{color}\definecolor{navy}{rgb}{0.0509803921568627, 0.23921568627451, 0.337254901960784}$$
+$$\require{color}\definecolor{ruby}{rgb}{0.603921568627451, 0.145098039215686, 0.0823529411764706}$$
+$$\require{color}\definecolor{alice}{rgb}{0.0627450980392157, 0.470588235294118, 0.584313725490196}$$
+$$\require{color}\definecolor{daisy}{rgb}{0.92156862745098, 0.788235294117647, 0.266666666666667}$$
+$$\require{color}\definecolor{coral}{rgb}{0.949019607843137, 0.427450980392157, 0.129411764705882}$$
+$$\require{color}\definecolor{kelly}{rgb}{0.509803921568627, 0.576470588235294, 0.337254901960784}$$
+$$\require{color}\definecolor{jet}{rgb}{0.0745098039215686, 0.0823529411764706, 0.0862745098039216}$$
+$$\require{color}\definecolor{asher}{rgb}{0.333333333333333, 0.372549019607843, 0.380392156862745}$$
+$$\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}$$
+$$\require{color}\definecolor{cranberry}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}$$
 </div>
-
+	
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-    Macros: {
-      red_pink: ["{\color{red_pink}{#1}}", 1],
-      turquoise: ["{\color{turquoise}{#1}}", 1],
-      orange: ["{\color{orange}{#1}}", 1],
-      red: ["{\color{red}{#1}}", 1],
-      blue: ["{\color{blue}{#1}}", 1],
-      green: ["{\color{green}{#1}}", 1],
-      grey_light: ["{\color{grey_light}{#1}}", 1],
-      grey_mid: ["{\color{grey_mid}{#1}}", 1],
-      grey_dark: ["{\color{grey_dark}{#1}}", 1],
-      purple: ["{\color{purple}{#1}}", 1],
-      slate: ["{\color{slate}{#1}}", 1]
-    },
-    loader: {load: ['[tex]/color']},
-    tex: {packages: {'[+]': ['color']}}
-  }
-});
+	MathJax.Hub.Config({
+		TeX: {
+			Macros: {
+				purple: ["{\\color{purple}{#1}}", 1],
+				navy: ["{\\color{navy}{#1}}", 1],
+				ruby: ["{\\color{ruby}{#1}}", 1],
+				alice: ["{\\color{alice}{#1}}", 1],
+				daisy: ["{\\color{daisy}{#1}}", 1],
+				coral: ["{\\color{coral}{#1}}", 1],
+				kelly: ["{\\color{kelly}{#1}}", 1],
+				jet: ["{\\color{jet}{#1}}", 1],
+				asher: ["{\\color{asher}{#1}}", 1],
+				slate: ["{\\color{slate}{#1}}", 1],
+				cranberry: ["{\\color{cranberry}{#1}}", 1]
+			},
+			loader: {load: ['[tex]/color']},
+			tex: {packages: {'[+]': ['color']}}
+		}
+	});
 </script>
 
 <style>
-.red_pink {color: #E64173;}
-.turquoise {color: #20B2AA;}
-.orange {color: #FFA500;}
-.red {color: #FB6107;}
-.blue {color: #3B3B9A;}
-.green {color: #8BB174;}
-.grey_light {color: #B3B3B3;}
-.grey_mid {color: #7F7F7F;}
-.grey_dark {color: #333333;}
-.purple {color: #6A5ACD;}
-.slate {color: #314F4F;}
+	.purple {color: #5601A4;}
+	.navy {color: #0D3D56;}
+	.ruby {color: #9A2515;}
+	.alice {color: #107895;}
+	.daisy {color: #EBC944;}
+	.coral {color: #F26D21;}
+	.kelly {color: #829356;}
+	.jet {color: #131516;}
+	.asher {color: #555F61;}
+	.slate {color: #314F4F;}
+	.cranberry {color: #E64173;}
 </style>
 
 
 ```{r flair_color, echo=FALSE}
-library(flair)
-red_pink <- "#E64173"
-turquoise <- "#20B2AA"
-orange <- "#FFA500"
-red <- "#FB6107"
-blue <- "#3B3B9A"
-green <- "#8BB174"
-grey_light <- "#B3B3B3"
-grey_mid <- "#7F7F7F"
-grey_dark <- "#333333"
-purple <- "#6A5ACD"
-slate <- "#314F4F"
+	library(flair)
+	purple <- "#5601A4"
+	navy <- "#0D3D56"
+	ruby <- "#9A2515"
+	alice <- "#107895"
+	daisy <- "#EBC944"
+	coral <- "#F26D21"
+	kelly <- "#829356"
+	jet <- "#131516"
+	asher <- "#555F61"
+	slate <- "#314F4F"
+	cranberry <- "#E64173"
 ```
 
 ## Chapter 3: The Normal Distribution
@@ -432,12 +432,12 @@ Suppose that the mean birthweight in the sample is 113 oz. with a standard devia
 
 If X is distributed normally, we denote it the following way:
 
-$$X \sim N({\color{orange}\mu}, {\color{green}\sigma^2})$$
+$$X \sim N({\color{coral}\mu}, {\color{kelly}\sigma^2})$$
  
 - This notation tells us everything we need to know about the normal distribution
       
-- The distribution has mean ${\color{orange}\mu}$
-- The distribution has variance ${\color{green}\sigma^2}$
+- The distribution has mean ${\color{coral}\mu}$
+- The distribution has variance ${\color{kelly}\sigma^2}$
       
 
 
@@ -448,7 +448,7 @@ $$X \sim N({\color{orange}\mu}, {\color{green}\sigma^2})$$
 
 Standard normal distribution is a specific type of normal distribution
 
-If a variable X follows a normal distribution with ${\color{orange}\mu} = 0$ and  ${\color{green}\sigma^2} = 1$, we say that X follows the .hi.purple[standard normal distribution]
+If a variable X follows a normal distribution with ${\color{coral}\mu} = 0$ and  ${\color{kelly}\sigma^2} = 1$, we say that X follows the .hi.purple[standard normal distribution]
   
 - Since it is so common, it is denoted as $Z \sim N(0,1)$
 
@@ -533,7 +533,7 @@ ggplot(data.frame(x = c(25, 201)), aes(.data$x)) +
     labs(x = "Value", y = "Density")
 ```
 
-This probability is called the .hi.turquoise[left-tail probability] as it's every value .turquoise[to the left].
+This probability is called the .hi.ruby[left-tail probability] as it's every value .ruby[to the left].
 
 ---
 # Right-tail Probability
@@ -562,7 +562,7 @@ ggplot(data.frame(x = c(25, 201)), aes(.data$x)) +
     labs(x = "Value", y = "Density")
 ```
 
-If you want the .hi.turquoise[right-tail probability], $P(BW > 88)$, you can use 
+If you want the .hi.ruby[right-tail probability], $P(BW > 88)$, you can use 
 
 $$P(BW > 88) = 1 - P(BW < 88)$$
 
@@ -570,10 +570,10 @@ $$P(BW > 88) = 1 - P(BW < 88)$$
 # Standardization
     
 If a variable X has any normal distribution, $X\sim N(\mu,\sigma^2)$, then the standardized variable:
-$$Z= \frac{X-{\color{orange}\mu}}{{\color{green}\sigma}} \sim N(0,1)$$
+$$Z= \frac{X-{\color{coral}\mu}}{{\color{kelly}\sigma}} \sim N(0,1)$$
 We call the standardized value the .hi.purple[Z-score]. 
 
-The Z-score is equivalent to the number of .hi.green[standard deviations] that $X$ is away from the .hi.orange[mean].
+The Z-score is equivalent to the number of .hi.kelly[standard deviations] that $X$ is away from the .hi.coral[mean].
 
 
 ---
@@ -626,12 +626,12 @@ class: clear
 
 .pull-left[.center[
 ```{r, echo = F, out.width = "80%"}
-knitr::include_graphics(here("Lecture Slides", "Chapter 03", "neg_z.png"))
+knitr::include_graphics("neg_z.png")
 ```
 ]]
 .pull-right[.center[
 ```{r, echo = F, out.width = "80%"}
-knitr::include_graphics(here("Lecture Slides", "Chapter 03", "pos_z.png"))
+knitr::include_graphics("pos_z.png")
 ```
 ]]
 

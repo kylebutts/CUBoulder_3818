@@ -5,7 +5,7 @@ author: "Kyle Butts"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
-    css: ['default', 'metropolis', 'metropolis-fonts']
+    css: ['default']
     self_contained: true
 nature:
   highlightStyle: github
@@ -61,69 +61,69 @@ class: clear, middle
 <!-- From xaringancolor -->
 
 <div style = "position:fixed; visibility: hidden">
-$\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}$
-$\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}$
-$\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}$
-$\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}$
-$\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}$
-$\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}$
-$\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}$
-$\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}$
-$\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}$
-$\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}$
-$\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}$
+$$\require{color}\definecolor{purple}{rgb}{0.337254901960784, 0.00392156862745098, 0.643137254901961}$$
+$$\require{color}\definecolor{navy}{rgb}{0.0509803921568627, 0.23921568627451, 0.337254901960784}$$
+$$\require{color}\definecolor{ruby}{rgb}{0.603921568627451, 0.145098039215686, 0.0823529411764706}$$
+$$\require{color}\definecolor{alice}{rgb}{0.0627450980392157, 0.470588235294118, 0.584313725490196}$$
+$$\require{color}\definecolor{daisy}{rgb}{0.92156862745098, 0.788235294117647, 0.266666666666667}$$
+$$\require{color}\definecolor{coral}{rgb}{0.949019607843137, 0.427450980392157, 0.129411764705882}$$
+$$\require{color}\definecolor{kelly}{rgb}{0.509803921568627, 0.576470588235294, 0.337254901960784}$$
+$$\require{color}\definecolor{jet}{rgb}{0.0745098039215686, 0.0823529411764706, 0.0862745098039216}$$
+$$\require{color}\definecolor{asher}{rgb}{0.333333333333333, 0.372549019607843, 0.380392156862745}$$
+$$\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}$$
+$$\require{color}\definecolor{cranberry}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}$$
 </div>
-
+	
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-    Macros: {
-      red_pink: ["{\color{red_pink}{#1}}", 1],
-      turquoise: ["{\color{turquoise}{#1}}", 1],
-      orange: ["{\color{orange}{#1}}", 1],
-      red: ["{\color{red}{#1}}", 1],
-      blue: ["{\color{blue}{#1}}", 1],
-      green: ["{\color{green}{#1}}", 1],
-      grey_light: ["{\color{grey_light}{#1}}", 1],
-      grey_mid: ["{\color{grey_mid}{#1}}", 1],
-      grey_dark: ["{\color{grey_dark}{#1}}", 1],
-      purple: ["{\color{purple}{#1}}", 1],
-      slate: ["{\color{slate}{#1}}", 1]
-    },
-    loader: {load: ['[tex]/color']},
-    tex: {packages: {'[+]': ['color']}}
-  }
-});
+	MathJax.Hub.Config({
+		TeX: {
+			Macros: {
+				purple: ["{\\color{purple}{#1}}", 1],
+				navy: ["{\\color{navy}{#1}}", 1],
+				ruby: ["{\\color{ruby}{#1}}", 1],
+				alice: ["{\\color{alice}{#1}}", 1],
+				daisy: ["{\\color{daisy}{#1}}", 1],
+				coral: ["{\\color{coral}{#1}}", 1],
+				kelly: ["{\\color{kelly}{#1}}", 1],
+				jet: ["{\\color{jet}{#1}}", 1],
+				asher: ["{\\color{asher}{#1}}", 1],
+				slate: ["{\\color{slate}{#1}}", 1],
+				cranberry: ["{\\color{cranberry}{#1}}", 1]
+			},
+			loader: {load: ['[tex]/color']},
+			tex: {packages: {'[+]': ['color']}}
+		}
+	});
 </script>
 
 <style>
-.red_pink {color: #E64173;}
-.turquoise {color: #20B2AA;}
-.orange {color: #FFA500;}
-.red {color: #FB6107;}
-.blue {color: #3B3B9A;}
-.green {color: #8BB174;}
-.grey_light {color: #B3B3B3;}
-.grey_mid {color: #7F7F7F;}
-.grey_dark {color: #333333;}
-.purple {color: #6A5ACD;}
-.slate {color: #314F4F;}
+	.purple {color: #5601A4;}
+	.navy {color: #0D3D56;}
+	.ruby {color: #9A2515;}
+	.alice {color: #107895;}
+	.daisy {color: #EBC944;}
+	.coral {color: #F26D21;}
+	.kelly {color: #829356;}
+	.jet {color: #131516;}
+	.asher {color: #555F61;}
+	.slate {color: #314F4F;}
+	.cranberry {color: #E64173;}
 </style>
 
 
 ```{r flair_color, echo=FALSE}
-library(flair)
-red_pink <- "#E64173"
-turquoise <- "#20B2AA"
-orange <- "#FFA500"
-red <- "#FB6107"
-blue <- "#3B3B9A"
-green <- "#8BB174"
-grey_light <- "#B3B3B3"
-grey_mid <- "#7F7F7F"
-grey_dark <- "#333333"
-purple <- "#6A5ACD"
-slate <- "#314F4F"
+	library(flair)
+	purple <- "#5601A4"
+	navy <- "#0D3D56"
+	ruby <- "#9A2515"
+	alice <- "#107895"
+	daisy <- "#EBC944"
+	coral <- "#F26D21"
+	kelly <- "#829356"
+	jet <- "#131516"
+	asher <- "#555F61"
+	slate <- "#314F4F"
+	cranberry <- "#E64173"
 ```
 
 ## Chapter 12: Introducing Probability
@@ -147,12 +147,12 @@ What is randomness? A phenomenon is .hi.purple[random] if:
 # Probability
 
 
-.hi.red_pink[Probability]: proportion of times a particular outcome would occur in a very long series of repetitions. 
+.hi.cranberry[Probability]: proportion of times a particular outcome would occur in a very long series of repetitions. 
       
-- .it[Example]: What is the .red_pink[probability] of a coin landing on heads?
+- .it[Example]: What is the .cranberry[probability] of a coin landing on heads?
       
 
-For a given observation, the .red_pink[probability] that an .orange[event] occurs is:
+For a given observation, the .cranberry[probability] that an .coral[event] occurs is:
   
 $$\frac{\text{Number of ways event could occur}}{\text{Number of total possible outcomes}}$$
 
@@ -205,12 +205,12 @@ small_n + large_n
 
 We think of probability utilizing a particular framework, first we define a few useful terms:
       
--  .hi.green[Sample Space]: set of all possible outcomes
+-  .hi.kelly[Sample Space]: set of all possible outcomes
 
--  .hi.orange[Event]: outcome (or set of outcomes) of a random phenomenon
-    - .orange[Event] is a subset of the .green[sample space]
+-  .hi.coral[Event]: outcome (or set of outcomes) of a random phenomenon
+    - .coral[Event] is a subset of the .kelly[sample space]
 
--  .hi.red_pink[Probability Model]: assigns a probability to every .orange[event] in the .green[sample space]
+-  .hi.cranberry[Probability Model]: assigns a probability to every .coral[event] in the .kelly[sample space]
       
 
 
@@ -221,20 +221,20 @@ We think of probability utilizing a particular framework, first we define a few 
 ---
 # Probability: Example
 
-Say we roll two six-sided die, the following would be our .green[sample space]: 
+Say we roll two six-sided die, the following would be our .kelly[sample space]: 
 
 ```{r, echo = F, out.width = "75%"}
 knitr::include_graphics("twodiesamplespace.png")
 ```
 
-Each outcome is equally likely, specifically each outcome has .red_pink[probability] of 1/36
+Each outcome is equally likely, specifically each outcome has .cranberry[probability] of 1/36
 
 
 
 ---
 # Clicker Question
 
-If I roll two six-sided die, what is the .red_pink[probability] I roll a one and a two?
+If I roll two six-sided die, what is the .cranberry[probability] I roll a one and a two?
 
 <ol type = "a">
   <li>1/36</li>
@@ -248,24 +248,24 @@ If I roll two six-sided die, what is the .red_pink[probability] I roll a one and
 ---
 # Set Notation
 
-${\color{orange} A} = \{1,2,3\}$, ${\color{orange} B}=\{3,4,5\}$, ${\color{orange} C}=\{1,2,3,4,5,6\}$, ${\color{orange} D}=\{4\}$
+${\color{coral} A} = \{1,2,3\}$, ${\color{coral} B}=\{3,4,5\}$, ${\color{coral} C}=\{1,2,3,4,5,6\}$, ${\color{coral} D}=\{4\}$
 
 
 $\in$: "belongs to"
       
--  Example: $1 \in {\color{orange} A}$
+-  Example: $1 \in {\color{coral} A}$
       
 $\notin$: "does not belong to"
       
--  Example: $4 \notin {\color{orange} A}$
+-  Example: $4 \notin {\color{coral} A}$
       
 $\cup$: Union; combination of two or more sets; "or"
       
--  Example: ${\color{orange} A} \cup {\color{orange} B} = \{1,2,3,4,5\}$
+-  Example: ${\color{coral} A} \cup {\color{coral} B} = \{1,2,3,4,5\}$
       
 $\cap$: Intersection; overlap of two or more sets; "and"
       
--  Example: ${\color{orange} A} \cap {\color{orange} B} = \{3\}$
+-  Example: ${\color{coral} A} \cap {\color{coral} B} = \{3\}$
       
 
 
@@ -274,24 +274,24 @@ $\cap$: Intersection; overlap of two or more sets; "and"
 ---
 # Set Notation, cont.
 
-${\color{orange} A} = \{1,2,3\}$, ${\color{orange} B}=\{3,4,5\}$, ${\color{orange} C}=\{1,2,3,4,5,6\}$, ${\color{orange} D}=\{4\}$
+${\color{coral} A} = \{1,2,3\}$, ${\color{coral} B}=\{3,4,5\}$, ${\color{coral} C}=\{1,2,3,4,5,6\}$, ${\color{coral} D}=\{4\}$
 
 
-${\color{orange} A}^c$: "A complement"
+${\color{coral} A}^c$: "A complement"
       
--  Example: ${\color{orange} A}^c = \{x: x \notin {\color{orange} A} \} = \{4,5,6\}$
+-  Example: ${\color{coral} A}^c = \{x: x \notin {\color{coral} A} \} = \{4,5,6\}$
 
--  Interpreted as "not .orange[A]"
+-  Interpreted as "not .coral[A]"
       
 $\subseteq$: Subset
       
--  Example: ${\color{orange} A} \subseteq {\color{orange} C}$, however ${\color{orange} C} \not\subseteq {\color{orange} A}$.
+-  Example: ${\color{coral} A} \subseteq {\color{coral} C}$, however ${\color{coral} C} \not\subseteq {\color{coral} A}$.
       
-${\color{orange} \emptyset}$: is the null or empty set 
+${\color{coral} \emptyset}$: is the null or empty set 
 
 - contains nothing 
       
-${\color{orange} A} \cap {\color{orange} D}= \emptyset$: Disjoint
+${\color{coral} A} \cap {\color{coral} D}= \emptyset$: Disjoint
 
 
 
@@ -299,14 +299,14 @@ ${\color{orange} A} \cap {\color{orange} D}= \emptyset$: Disjoint
 ---
 # Clicker Question
 
-Given the following sets, ${\color{orange} A}=\{5,10,15,20\}$ and ${\color{orange} B}=\{1,2,3,4,5\}$
+Given the following sets, ${\color{coral} A}=\{5,10,15,20\}$ and ${\color{coral} B}=\{1,2,3,4,5\}$
 Which of the following is true?
 
 <ol type = "a">
-  <li>\({\color{orange} A} \cup {\color{orange} B} = \{1,2,3,4,5,10,15,20\}\)</li>
-  <li>\({\color{orange} A} \cup {\color{orange} B} = \{5\}\)</li>
-  <li>\({\color{orange} A} \cap {\color{orange} B} = \{5\}\)</li>
-  <li>\({\color{orange} A} \cap {\color{orange} B} = \{1,2,3,4,5,10,15,20\}\)</li>
+  <li>\({\color{coral} A} \cup {\color{coral} B} = \{1,2,3,4,5,10,15,20\}\)</li>
+  <li>\({\color{coral} A} \cup {\color{coral} B} = \{5\}\)</li>
+  <li>\({\color{coral} A} \cap {\color{coral} B} = \{5\}\)</li>
+  <li>\({\color{coral} A} \cap {\color{coral} B} = \{1,2,3,4,5,10,15,20\}\)</li>
   <li>Both a. and c.</li>
 </ol>
 
@@ -315,17 +315,17 @@ Which of the following is true?
 ---
 # Axioms of Probability
 
-Let ${\color{orange} A}$ and ${\color{orange} B}$ be .orange[events], and $P({\color{orange} A})$ and $P({\color{orange} B})$ are the .red_pink[probability] of those outcomes. We have a set of rules:
+Let ${\color{coral} A}$ and ${\color{coral} B}$ be .coral[events], and $P({\color{coral} A})$ and $P({\color{coral} B})$ are the .cranberry[probability] of those outcomes. We have a set of rules:
 
-1. Any .red_pink[probability] is a number between 0 and 1
+1. Any .cranberry[probability] is a number between 0 and 1
 
-2. All possible outcomes together must have the .red_pink[probability] of 1
+2. All possible outcomes together must have the .cranberry[probability] of 1
 
-3. If two .orange[events] are disjoint, 
+3. If two .coral[events] are disjoint, 
 
-  $$P({\color{orange} A} \cap {\color{orange} B})=0 \implies P({\color{orange} A} \cup {\color{orange} B}) = P({\color{orange} A}) + P({\color{orange} B})$$
+  $$P({\color{coral} A} \cap {\color{coral} B})=0 \implies P({\color{coral} A} \cup {\color{coral} B}) = P({\color{coral} A}) + P({\color{coral} B})$$
 
-4. $P({\color{orange} A}^c)=1-P({\color{orange} A})$
+4. $P({\color{coral} A}^c)=1-P({\color{coral} A})$
 
 
 
@@ -334,11 +334,11 @@ Let ${\color{orange} A}$ and ${\color{orange} B}$ be .orange[events], and $P({\c
 # Clicker Question
 Given the three following scenarios:
 
-- A person is randomly selected. .orange[A] is the .orange[event] they are under 18. .orange[B] is the .orange[event] they are over 18.
-- A person is selected at random. .orange[A] is the .orange[event] that they earn more than $100,000 per year. .orange[B] is the .orange[event] that they earn more than $250,000.
-- A pair of dice are tossed. .orange[A] is the .orange[event] that one of the die is a 3. .orange[B] is the .orange[event] that the sum of two dice is 3.
+- A person is randomly selected. .coral[A] is the .coral[event] they are under 18. .coral[B] is the .coral[event] they are over 18.
+- A person is selected at random. .coral[A] is the .coral[event] that they earn more than $100,000 per year. .coral[B] is the .coral[event] that they earn more than $250,000.
+- A pair of dice are tossed. .coral[A] is the .coral[event] that one of the die is a 3. .coral[B] is the .coral[event] that the sum of two dice is 3.
 
-In which cases are the .orange[events], A and B, disjoint?
+In which cases are the .coral[events], A and B, disjoint?
 
 <ol type = "a">
   <li>1 only</li>
@@ -355,11 +355,11 @@ In which cases are the .orange[events], A and B, disjoint?
 # De Morgan's Law
 
  
-.hi.slate[De Morgan's law] of union and intersection. For any two finite sets .orange[A] and .orange[B]:
+.hi.slate[De Morgan's law] of union and intersection. For any two finite sets .coral[A] and .coral[B]:
       
-1. $({\color{orange} A} \cup {\color{orange} B})^c = {\color{orange} A}^c \cap {\color{orange} B}^c$
+1. $({\color{coral} A} \cup {\color{coral} B})^c = {\color{coral} A}^c \cap {\color{coral} B}^c$
 
-2. $({\color{orange} A} \cap {\color{orange} B})^c = {\color{orange} A}^c \cup {\color{orange} B}^c$
+2. $({\color{coral} A} \cap {\color{coral} B})^c = {\color{coral} A}^c \cup {\color{coral} B}^c$
       
 
 
@@ -368,29 +368,29 @@ In which cases are the .orange[events], A and B, disjoint?
 ---
 # De Morgan's Law Example
 
-Let ${\color{green}S}=\{j, k, l, m, n\}$ and ${\color{orange} A}=\{j, k, m\}$ and ${\color{orange} B}=\{k, m, n\}$
+Let ${\color{kelly}S}=\{j, k, l, m, n\}$ and ${\color{coral} A}=\{j, k, m\}$ and ${\color{coral} B}=\{k, m, n\}$
 
 
-1. $({\color{orange} A} \cup {\color{orange} B})^c = ({\color{orange} A}^c \cap {\color{orange} B}^c)$
+1. $({\color{coral} A} \cup {\color{coral} B})^c = ({\color{coral} A}^c \cap {\color{coral} B}^c)$
 
   <ol type="i">
     <li>
-      \(({\color{orange} A} \cup {\color{orange} B})= \{j, k, m, n\} \implies ({\color{orange} A} \cup {\color{orange} B})^c=\{l\}\)
+      \(({\color{coral} A} \cup {\color{coral} B})= \{j, k, m, n\} \implies ({\color{coral} A} \cup {\color{coral} B})^c=\{l\}\)
     </li>
     <br/>
     <li>
-      \({\color{orange} A}^c = \{l, n\}\) and \({\color{orange} B}^c=\{j, l\} \implies {\color{orange} A}^c \cap {\color{orange} B}^c = \{l\}\)
+      \({\color{coral} A}^c = \{l, n\}\) and \({\color{coral} B}^c=\{j, l\} \implies {\color{coral} A}^c \cap {\color{coral} B}^c = \{l\}\)
     </li>
   </ol>
 
-2. $({\color{orange} A} \cap {\color{orange} B})^c = {\color{orange} A}^c \cup {\color{orange} B}^c$
+2. $({\color{coral} A} \cap {\color{coral} B})^c = {\color{coral} A}^c \cup {\color{coral} B}^c$
   <ol type="i">
     <li>
-      \( ({\color{orange} A} \cap {\color{orange} B})=\{k,m\} \implies ({\color{orange} A} \cap {\color{orange} B})^c=\{j, l, n\} \)
+      \( ({\color{coral} A} \cap {\color{coral} B})=\{k,m\} \implies ({\color{coral} A} \cap {\color{coral} B})^c=\{j, l, n\} \)
     </li>
     <br/>
     <li>
-      \( {\color{orange} A}^c \cup {\color{orange} B}^c=\{l, n\} \cup \{j, l\} \implies {\color{orange} A}^c \cup {\color{orange} B}^c = \{j, l, n\} \)
+      \( {\color{coral} A}^c \cup {\color{coral} B}^c=\{l, n\} \cup \{j, l\} \implies {\color{coral} A}^c \cup {\color{coral} B}^c = \{j, l, n\} \)
     </li>
   </ol>
 
@@ -411,7 +411,7 @@ Let ${\color{green}S}=\{j, k, l, m, n\}$ and ${\color{orange} A}=\{j, k, m\}$ an
   
   - $X$ is a discrete random variable; $X=0,1,2$
 
-.hi.red_pink[Probability distribution]: tell us what values random variable X can take, and how to assign probabilities to those values
+.hi.cranberry[Probability distribution]: tell us what values random variable X can take, and how to assign probabilities to those values
 
 
 
@@ -421,11 +421,11 @@ Let ${\color{green}S}=\{j, k, l, m, n\}$ and ${\color{orange} A}=\{j, k, m\}$ an
 
 Flip a coin two times
 
-.green[Sample space]:
+.kelly[Sample space]:
       
-- {.orange[(Head, Tail)], .orange[(Head, Head)], .orange[(Tail, Head)], .orange[(Tail, Tail)]}
+- {.coral[(Head, Tail)], .coral[(Head, Head)], .coral[(Tail, Head)], .coral[(Tail, Tail)]}
       
-What is the .red_pink[probability] of each .orange[event]?
+What is the .cranberry[probability] of each .coral[event]?
 
 
 
@@ -433,7 +433,7 @@ What is the .red_pink[probability] of each .orange[event]?
 ---
 # Clicker Question
 
-If I toss a coin two times, and $X$ is the number of heads, then what is $P({\color{orange}X=2})$?
+If I toss a coin two times, and $X$ is the number of heads, then what is $P({\color{coral}X=2})$?
 
 <ol type = "a">
 <li>1/4</li>
@@ -448,11 +448,11 @@ If I toss a coin two times, and $X$ is the number of heads, then what is $P({\co
 # Additional Examples
 
 
-Still flipping a coin twice, what is the .red_pink[probability] of getting at least one head?
+Still flipping a coin twice, what is the .cranberry[probability] of getting at least one head?
       
-$P({\color{orange}X=1}) + P({\color{orange}X=2}) = 1-P({\color{orange}X=0})$
+$P({\color{coral}X=1}) + P({\color{coral}X=2}) = 1-P({\color{coral}X=0})$
 
-- Now I only have to calculate one .red_pink[probability]!
+- Now I only have to calculate one .cranberry[probability]!
       
 
 
@@ -461,28 +461,28 @@ $P({\color{orange}X=1}) + P({\color{orange}X=2}) = 1-P({\color{orange}X=0})$
 ---
 # Additional Dice Example
 
-What is the .red_pink[probability] of rolling a 7, 11, or double when rolling two dice?
+What is the .cranberry[probability] of rolling a 7, 11, or double when rolling two dice?
 
-- Axiom 3 tells us we can find probabilities simply by adding if the .orange[event] is disjoint. 
+- Axiom 3 tells us we can find probabilities simply by adding if the .coral[event] is disjoint. 
 
-.orange[Roll a 7]: $\left\{(1,6), (6,1), (2, 5), (5,2), (3,4), (4,3) \right\}$
+.coral[Roll a 7]: $\left\{(1,6), (6,1), (2, 5), (5,2), (3,4), (4,3) \right\}$
 
-.orange[Roll a 11]: $\left\{(5,6), (6,5) \right\}$
+.coral[Roll a 11]: $\left\{(5,6), (6,5) \right\}$
 
-.orange[Roll a double]: $\left\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6) \right\}$
+.coral[Roll a double]: $\left\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6) \right\}$
 
-- Are all 3 .orange[events] disjoint?
+- Are all 3 .coral[events] disjoint?
 
 
 
 ---
 # Additional Dice Example
 
-.orange[Roll a 7]: $\left\{(1,6), (6,1), (2, 5), (5,2), (3,4), (4,3) \right\}$
+.coral[Roll a 7]: $\left\{(1,6), (6,1), (2, 5), (5,2), (3,4), (4,3) \right\}$
 
-.orange[Roll a 11]: $\left\{(5,6), (6,5) \right\}$
+.coral[Roll a 11]: $\left\{(5,6), (6,5) \right\}$
 
-.orange[Roll a double]: $\left\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6) \right\}$
+.coral[Roll a double]: $\left\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6) \right\}$
 
-$P({\color{orange}7}) + P({\color{orange}11}) + P({\color{orange}\text{doubles}})=\frac{6}{36}+\frac{2}{36}+\frac{6}{36} \approx 0.4$
+$P({\color{coral}7}) + P({\color{coral}11}) + P({\color{coral}\text{doubles}})=\frac{6}{36}+\frac{2}{36}+\frac{6}{36} \approx 0.4$
 

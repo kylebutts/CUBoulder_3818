@@ -5,7 +5,7 @@ author: "Kyle Butts"
 date: "`r format(Sys.time(), '%d %B %Y')`"
 output:
   xaringan::moon_reader:
-    css: ['default', 'metropolis', 'metropolis-fonts']
+    css: ['default']
     self_contained: true
 nature:
   highlightStyle: github
@@ -49,7 +49,8 @@ gt::html(glue::glue("<span class='hi slate' style='display: block; margin-bottom
 }
 
 xaringanExtra::use_scribble()
-```
+``` 
+
 
 ---
 class: clear, middle
@@ -61,89 +62,89 @@ class: clear, middle
 <!-- From xaringancolor -->
 
 <div style = "position:fixed; visibility: hidden">
-$\require{color}\definecolor{red_pink}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}$
-$\require{color}\definecolor{turquoise}{rgb}{0.125490196078431, 0.698039215686274, 0.666666666666667}$
-$\require{color}\definecolor{orange}{rgb}{1, 0.647058823529412, 0}$
-$\require{color}\definecolor{red}{rgb}{0.984313725490196, 0.380392156862745, 0.0274509803921569}$
-$\require{color}\definecolor{blue}{rgb}{0.231372549019608, 0.231372549019608, 0.603921568627451}$
-$\require{color}\definecolor{green}{rgb}{0.545098039215686, 0.694117647058824, 0.454901960784314}$
-$\require{color}\definecolor{grey_light}{rgb}{0.701960784313725, 0.701960784313725, 0.701960784313725}$
-$\require{color}\definecolor{grey_mid}{rgb}{0.498039215686275, 0.498039215686275, 0.498039215686275}$
-$\require{color}\definecolor{grey_dark}{rgb}{0.2, 0.2, 0.2}$
-$\require{color}\definecolor{purple}{rgb}{0.415686274509804, 0.352941176470588, 0.803921568627451}$
-$\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}$
+$$\require{color}\definecolor{purple}{rgb}{0.337254901960784, 0.00392156862745098, 0.643137254901961}$$
+$$\require{color}\definecolor{navy}{rgb}{0.0509803921568627, 0.23921568627451, 0.337254901960784}$$
+$$\require{color}\definecolor{ruby}{rgb}{0.603921568627451, 0.145098039215686, 0.0823529411764706}$$
+$$\require{color}\definecolor{alice}{rgb}{0.0627450980392157, 0.470588235294118, 0.584313725490196}$$
+$$\require{color}\definecolor{daisy}{rgb}{0.92156862745098, 0.788235294117647, 0.266666666666667}$$
+$$\require{color}\definecolor{coral}{rgb}{0.949019607843137, 0.427450980392157, 0.129411764705882}$$
+$$\require{color}\definecolor{kelly}{rgb}{0.509803921568627, 0.576470588235294, 0.337254901960784}$$
+$$\require{color}\definecolor{jet}{rgb}{0.0745098039215686, 0.0823529411764706, 0.0862745098039216}$$
+$$\require{color}\definecolor{asher}{rgb}{0.333333333333333, 0.372549019607843, 0.380392156862745}$$
+$$\require{color}\definecolor{slate}{rgb}{0.192156862745098, 0.309803921568627, 0.309803921568627}$$
+$$\require{color}\definecolor{cranberry}{rgb}{0.901960784313726, 0.254901960784314, 0.450980392156863}$$
 </div>
-
+	
 <script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  TeX: {
-    Macros: {
-      red_pink: ["{\color{red_pink}{#1}}", 1],
-      turquoise: ["{\color{turquoise}{#1}}", 1],
-      orange: ["{\color{orange}{#1}}", 1],
-      red: ["{\color{red}{#1}}", 1],
-      blue: ["{\color{blue}{#1}}", 1],
-      green: ["{\color{green}{#1}}", 1],
-      grey_light: ["{\color{grey_light}{#1}}", 1],
-      grey_mid: ["{\color{grey_mid}{#1}}", 1],
-      grey_dark: ["{\color{grey_dark}{#1}}", 1],
-      purple: ["{\color{purple}{#1}}", 1],
-      slate: ["{\color{slate}{#1}}", 1]
-    },
-    loader: {load: ['[tex]/color']},
-    tex: {packages: {'[+]': ['color']}}
-  }
-});
+	MathJax.Hub.Config({
+		TeX: {
+			Macros: {
+				purple: ["{\\color{purple}{#1}}", 1],
+				navy: ["{\\color{navy}{#1}}", 1],
+				ruby: ["{\\color{ruby}{#1}}", 1],
+				alice: ["{\\color{alice}{#1}}", 1],
+				daisy: ["{\\color{daisy}{#1}}", 1],
+				coral: ["{\\color{coral}{#1}}", 1],
+				kelly: ["{\\color{kelly}{#1}}", 1],
+				jet: ["{\\color{jet}{#1}}", 1],
+				asher: ["{\\color{asher}{#1}}", 1],
+				slate: ["{\\color{slate}{#1}}", 1],
+				cranberry: ["{\\color{cranberry}{#1}}", 1]
+			},
+			loader: {load: ['[tex]/color']},
+			tex: {packages: {'[+]': ['color']}}
+		}
+	});
 </script>
 
 <style>
-.red_pink {color: #E64173;}
-.turquoise {color: #20B2AA;}
-.orange {color: #FFA500;}
-.red {color: #FB6107;}
-.blue {color: #3B3B9A;}
-.green {color: #8BB174;}
-.grey_light {color: #B3B3B3;}
-.grey_mid {color: #7F7F7F;}
-.grey_dark {color: #333333;}
-.purple {color: #6A5ACD;}
-.slate {color: #314F4F;}
+	.purple {color: #5601A4;}
+	.navy {color: #0D3D56;}
+	.ruby {color: #9A2515;}
+	.alice {color: #107895;}
+	.daisy {color: #EBC944;}
+	.coral {color: #F26D21;}
+	.kelly {color: #829356;}
+	.jet {color: #131516;}
+	.asher {color: #555F61;}
+	.slate {color: #314F4F;}
+	.cranberry {color: #E64173;}
 </style>
 
 
 ```{r flair_color, echo=FALSE}
-library(flair)
-red_pink <- "#E64173"
-turquoise <- "#20B2AA"
-orange <- "#FFA500"
-red <- "#FB6107"
-blue <- "#3B3B9A"
-green <- "#8BB174"
-grey_light <- "#B3B3B3"
-grey_mid <- "#7F7F7F"
-grey_dark <- "#333333"
-purple <- "#6A5ACD"
-slate <- "#314F4F"
+	library(flair)
+	purple <- "#5601A4"
+	navy <- "#0D3D56"
+	ruby <- "#9A2515"
+	alice <- "#107895"
+	daisy <- "#EBC944"
+	coral <- "#F26D21"
+	kelly <- "#829356"
+	jet <- "#131516"
+	asher <- "#555F61"
+	slate <- "#314F4F"
+	cranberry <- "#E64173"
 ```
 
 ## Chapter 13: General Rules of Probability
 ---
 # Basic Rules of Probability
 
-${\color{orange} A}$ is an .orange[event/outcome] and $P({\color{orange} A})$ is the .red_pink[probability] of that outcome, and ${\color{green} S}$ is that .green[state space]
+${\color{coral} A}$ is an .coral[event/outcome] and $P({\color{coral} A})$ is the .cranberry[probability] of that outcome, and ${\color{kelly} S}$ is that .kelly[state space]
 
 
-- $0 \leq P({\color{orange} A}) \leq 1$ for all ${\color{orange} A} \in {\color{green} S}$
+- $0 \leq P({\color{coral} A}) \leq 1$ for all ${\color{coral} A} \in {\color{kelly} S}$
       
-- $P({\color{green} S})=1$
+- $P({\color{kelly} S})=1$
       
-- If ${\color{orange} A}$ and ${\color{orange} B}$ are disjoint events 
+- If ${\color{coral} A}$ and ${\color{coral} B}$ are disjoint events 
 
   $$
-    \implies P({\color{orange} A} \cup {\color{orange} B}) = P({\color{orange} A}) + P({\color{orange} B})
+    \implies P({\color{coral} A} \cup {\color{coral} B}) = P({\color{coral} A}) + P({\color{coral} B})
   $$
       
-- $P({\color{orange} A}^c) = 1 - P({\color{orange} A})$
+- $P({\color{coral} A}^c) = 1 - P({\color{coral} A})$
 
 
 
@@ -163,15 +164,15 @@ knitr::include_graphics("venndiagram.png")
 # General Addition Rule
 
 
-If ${\color{orange} A}$ and ${\color{orange} B}$ are disjoint events: $P({\color{orange} A} \cup {\color{orange} B})=P({\color{orange} A})+P({\color{orange} B})$
+If ${\color{coral} A}$ and ${\color{coral} B}$ are disjoint events: $P({\color{coral} A} \cup {\color{coral} B})=P({\color{coral} A})+P({\color{coral} B})$
       
 For any two events (not necessarily disjoint): 
   
   $$
-  P({\color{orange} A} \cup {\color{orange} B}) = P({\color{orange} A}) + P({\color{orange} B})- P({\color{orange} A} \cap {\color{orange} B})
+  P({\color{coral} A} \cup {\color{coral} B}) = P({\color{coral} A}) + P({\color{coral} B})- P({\color{coral} A} \cap {\color{coral} B})
   $$
 
-- Why does this make sense? What is ${\color{orange} A} \cap {\color{orange} B}$ when ${\color{orange} A}$ and ${\color{orange} B}$ are disjoint?
+- Why does this make sense? What is ${\color{coral} A} \cap {\color{coral} B}$ when ${\color{coral} A}$ and ${\color{coral} B}$ are disjoint?
 
 
 
@@ -198,9 +199,9 @@ If we want to find Soccer $\cup$ Tennis:
 ---
 # Clicker Question
 
-Let $P({\color{orange} A}) = 0.4$, $P({\color{orange} B}) = 0.3$, and $P({\color{orange} A}\cap {\color{orange} B})=0.1$
+Let $P({\color{coral} A}) = 0.4$, $P({\color{coral} B}) = 0.3$, and $P({\color{coral} A}\cap {\color{coral} B})=0.1$
 
-What is $P({\color{orange} A}\cup {\color{orange} B})$?
+What is $P({\color{coral} A}\cup {\color{coral} B})$?
 
 <ol type = "a">
   <li>1.1</li>
@@ -216,16 +217,16 @@ What is $P({\color{orange} A}\cup {\color{orange} B})$?
 # Independence
 
 
-Two events, ${\color{orange} A}$ and ${\color{orange} B}$, are .hi.purple[independent] if knowing that one occurs does not change the probability that the other occurs
+Two events, ${\color{coral} A}$ and ${\color{coral} B}$, are .hi.purple[independent] if knowing that one occurs does not change the probability that the other occurs
 
 - Die lands on a 4 & Broncos win the Super Bowl
 
 - Club is drawn from deck of cards & You get an A on the final exam
 
 
-If ${\color{orange} A}$ and ${\color{orange} B}$ are independent: 
+If ${\color{coral} A}$ and ${\color{coral} B}$ are independent: 
 $$
-    P({\color{orange} A} \cap {\color{orange} B}) = P({\color{orange} A})P({\color{orange} B})
+    P({\color{coral} A} \cap {\color{coral} B}) = P({\color{coral} A})P({\color{coral} B})
 $$
 
 
@@ -233,14 +234,14 @@ $$
 ---
 # Clicker Question
 
-Let $P({\color{orange} A}) = 0.4$, $P({\color{orange} B}) = 0.3$, and $P({\color{orange} A}\cap {\color{orange} B})=0.1$
+Let $P({\color{coral} A}) = 0.4$, $P({\color{coral} B}) = 0.3$, and $P({\color{coral} A}\cap {\color{coral} B})=0.1$
 
 Which of the following statements is true:
 <ol type = "a">
-  <li>\({\color{orange} A}\) and \({\color{orange} B}\) are independent because \(P({\color{orange} A} \cap {\color{orange} B}) = P({\color{orange} A})P({\color{orange} B})\)</li>
-  <li>\({\color{orange} A}\) and \({\color{orange} B}\) are independent because \(P({\color{orange} A} \cap {\color{orange} B}) \neq P({\color{orange} A})P({\color{orange} B})\)</li>
-  <li>\({\color{orange} A}\) and \({\color{orange} B}\) are not independent because \(P({\color{orange} A} \cap {\color{orange} B}) = P({\color{orange} A})P({\color{orange} B})\)</li>
-  <li>\({\color{orange} A}\) and \({\color{orange} B}\) are not independent because \(P({\color{orange} A} \cap {\color{orange} B}) \neq P({\color{orange} A})P({\color{orange} B})\)</li>
+  <li>\({\color{coral} A}\) and \({\color{coral} B}\) are independent because \(P({\color{coral} A} \cap {\color{coral} B}) = P({\color{coral} A})P({\color{coral} B})\)</li>
+  <li>\({\color{coral} A}\) and \({\color{coral} B}\) are independent because \(P({\color{coral} A} \cap {\color{coral} B}) \neq P({\color{coral} A})P({\color{coral} B})\)</li>
+  <li>\({\color{coral} A}\) and \({\color{coral} B}\) are not independent because \(P({\color{coral} A} \cap {\color{coral} B}) = P({\color{coral} A})P({\color{coral} B})\)</li>
+  <li>\({\color{coral} A}\) and \({\color{coral} B}\) are not independent because \(P({\color{coral} A} \cap {\color{coral} B}) \neq P({\color{coral} A})P({\color{coral} B})\)</li>
 </ol>
 
 
@@ -251,13 +252,13 @@ Which of the following statements is true:
 
 Two events being independent is .hi[NOT] the same as them being disjoint:
 
-1. Say event ${\color{orange} A}$ is being 18 or over, and ${\color{orange} B}$ is under 18
+1. Say event ${\color{coral} A}$ is being 18 or over, and ${\color{coral} B}$ is under 18
 
-  - I cannot be both 18 or over, and under 18. This means ${\color{orange} A}$ and ${\color{orange} B}$ are .it[disjoint]
+  - I cannot be both 18 or over, and under 18. This means ${\color{coral} A}$ and ${\color{coral} B}$ are .it[disjoint]
 
-2. If I am not 18 or over, then I am under 18. That means if ${\color{orange} A}$ isn't true then ${\color{orange} B}$ must be true. 
+2. If I am not 18 or over, then I am under 18. That means if ${\color{coral} A}$ isn't true then ${\color{coral} B}$ must be true. 
 
-  - Since event ${\color{orange} A}$ tells me about event ${\color{orange} B}$, ${\color{orange} A}$ and ${\color{orange} B}$ are .it[not independent]
+  - Since event ${\color{coral} A}$ tells me about event ${\color{coral} B}$, ${\color{coral} A}$ and ${\color{coral} B}$ are .it[not independent]
 
 
 
@@ -269,9 +270,9 @@ Two events being independent is .hi[NOT] the same as them being disjoint:
  
 Sometimes one event occurring tells us something about the probability of a different event
 
-.hi.purple[Conditional probability]: probability of an event, ${\color{orange} A}$, given that another event, ${\color{orange} B}$, has already occurred
+.hi.purple[Conditional probability]: probability of an event, ${\color{coral} A}$, given that another event, ${\color{coral} B}$, has already occurred
 
-$$P({\color{orange} A} \ \vert \  {\color{orange} B})= \frac{P({\color{orange} A} \cap {\color{orange} B})}{P({\color{orange} B})}$$
+$$P({\color{coral} A} \ \vert \  {\color{coral} B})= \frac{P({\color{coral} A} \cap {\color{coral} B})}{P({\color{coral} B})}$$
 
 
 
@@ -282,20 +283,20 @@ $$P({\color{orange} A} \ \vert \  {\color{orange} B})= \frac{P({\color{orange} A
 knitr::include_graphics("simplevenndiagram.png")
 ```
 
-You throw a dart and land in ${\color{orange} B}$. What is the probability that you landed in ${\color{orange} A}$ as well? $P({\color{orange} A} \ \vert \  {\color{orange} B})$. We can now think of ${\color{orange} B}$ as the sample space which changes our likelihood of landing in ${\color{orange} A}$.
+You throw a dart and land in ${\color{coral} B}$. What is the probability that you landed in ${\color{coral} A}$ as well? $P({\color{coral} A} \ \vert \  {\color{coral} B})$. We can now think of ${\color{coral} B}$ as the sample space which changes our likelihood of landing in ${\color{coral} A}$.
 
 
 ---
 # Conditional Probability v. Intersection
 
-$P({\color{orange}\text{work in tech}} \cap {\color{orange}\text{live in Boulder}})$ vs. $P({\color{orange}\text{work in tech}} \ \vert \  {\color{orange}\text{live in Boulder}})$
+$P({\color{coral}\text{work in tech}} \cap {\color{coral}\text{live in Boulder}})$ vs. $P({\color{coral}\text{work in tech}} \ \vert \  {\color{coral}\text{live in Boulder}})$
       
-$P({\color{orange}\text{work in tech}})$ = work in tech/entire US population = relatively small, let's say $7\%$. 
+$P({\color{coral}\text{work in tech}})$ = work in tech/entire US population = relatively small, let's say $7\%$. 
 
-$P({\color{orange}\text{live in Boulder}})$ = Boulder population/entire US population = also small, $<1\%$.
+$P({\color{coral}\text{live in Boulder}})$ = Boulder population/entire US population = also small, $<1\%$.
       
 - This means the probability of BOTH happening is small, because both events are unlikely compared to the .i[state space of the entire US population]
-- But the $P({\color{orange}\text{work in tech}} \ \vert \  {\color{orange}\text{live in Boulder}})$ will be higher because now the .it[state space is Boulder population], which has a greater concentration of high-tech employees
+- But the $P({\color{coral}\text{work in tech}} \ \vert \  {\color{coral}\text{live in Boulder}})$ will be higher because now the .it[state space is Boulder population], which has a greater concentration of high-tech employees
 
 
 
@@ -306,11 +307,11 @@ $P({\color{orange}\text{live in Boulder}})$ = Boulder population/entire US popul
 # Identifying Conditional Probabilities
 In Colorado, the DMV identifies individuals as having either blonde, brunette or red hair. It also has eyes color. For each of the following statements, identify if this is a conditional probability.
 
-1. 2.1% of the drivers are redheads with blue eyes
-2. 45% of blondes have blue eyes                  
+1. 2.1% of the drivers are redheads with alice eyes
+2. 45% of blondes have alice eyes                  
 3. 51% of people have brown hair or brown eyes    
 4. 77% of the population is brunette              
-5. 4.7% of people with blue eyes are redheads.    
+5. 4.7% of people with alice eyes are redheads.    
 
 
 
@@ -325,10 +326,10 @@ Moreover, 15% of whites, 70% of blacks, and 90% of Asians are lactose intoleranc
 Which of the following statements is true?
 
 <ol type = "a">
-  <li>\(P({\color{orange} \text{Asian}} \cap {\color{orange} \text{Lactose Intolerant}}) = 0.9\)</li>
-  <li>\(P({\color{orange} \text{Asian}} \ \vert \ {\color{orange} \text{Lactose Intolerant}}) = 0.9\)</li>
-  <li>\(P({\color{orange} \text{Lactose Intolerant}} \ \vert \ {\color{orange} \text{Asian}}) = 0.9\)</li>
-  <li>\(P({\color{orange} \text{Asian}} \cup {\color{orange}\text{Lactose Intolerant}}) = 0.9\)</li>
+  <li>\(P({\color{coral} \text{Asian}} \cap {\color{coral} \text{Lactose Intolerant}}) = 0.9\)</li>
+  <li>\(P({\color{coral} \text{Asian}} \ \vert \ {\color{coral} \text{Lactose Intolerant}}) = 0.9\)</li>
+  <li>\(P({\color{coral} \text{Lactose Intolerant}} \ \vert \ {\color{coral} \text{Asian}}) = 0.9\)</li>
+  <li>\(P({\color{coral} \text{Asian}} \cup {\color{coral}\text{Lactose Intolerant}}) = 0.9\)</li>
 </ol> 
 
 
@@ -356,7 +357,7 @@ crash_tbl
 If we consider .it[only cars], what is the likelihood of a randomly selected sale being a domestic vehicle?
 
 \begin{aligned}
-P({\color{orange} \text{domestic}} \ \vert \  {\color{orange} \text{car}}) &= \frac{P({\color{orange} \text{domestic}} \text{ and } {\color{orange} \text{car}})}{P({\color{orange} \text{car}})} \\
+P({\color{coral} \text{domestic}} \ \vert \  {\color{coral} \text{car}}) &= \frac{P({\color{coral} \text{domestic}} \text{ and } {\color{coral} \text{car}})}{P({\color{coral} \text{car}})} \\
 &= \frac{\frac{472,100}{1,527,300}}{\frac{627,600}{1,527,300}}=\frac{472,100}{627,600}=0.75
 \end{aligned}
 
@@ -367,11 +368,11 @@ P({\color{orange} \text{domestic}} \ \vert \  {\color{orange} \text{car}}) &= \f
 
 Can use the equation for conditional probability to find the probability of two events happening together:
 
-$$P({\color{orange} A}\ \vert \ {\color{orange} B})=\frac{P({\color{orange} A}\cap {\color{orange} B})}{P({\color{orange} B})}$$
+$$P({\color{coral} A}\ \vert \ {\color{coral} B})=\frac{P({\color{coral} A}\cap {\color{coral} B})}{P({\color{coral} B})}$$
 
-If we multiply both sides by $P({\color{orange} B})$ we get:
+If we multiply both sides by $P({\color{coral} B})$ we get:
 
-$$P({\color{orange} A}\cap {\color{orange} B})=P({\color{orange} B})P({\color{orange} A}\ \vert \ {\color{orange} B})$$
+$$P({\color{coral} A}\cap {\color{coral} B})=P({\color{coral} B})P({\color{coral} A}\ \vert \ {\color{coral} B})$$
 
 
 
@@ -395,8 +396,8 @@ What is the probability an individual is Asian and lactose intolerant?
 # Conditional Prob. and Independence
 
 If 
-$$P({\color{orange} A}) = P({\color{orange} A} \ \vert \ {\color{orange} B}),$$
-then the probability of ${\color{orange} A}$ is the same conditional on ${\color{orange} B}$ or not, then the two events ${\color{orange} A}$ and ${\color{orange} B}$ are .hi.purple[independent]
+$$P({\color{coral} A}) = P({\color{coral} A} \ \vert \ {\color{coral} B}),$$
+then the probability of ${\color{coral} A}$ is the same conditional on ${\color{coral} B}$ or not, then the two events ${\color{coral} A}$ and ${\color{coral} B}$ are .hi.purple[independent]
 
 
 
@@ -418,9 +419,9 @@ One event is that the vehicle is a car, another event is that the vehicle is dom
 ---
 # Law of Total Probability
 
-Suppose we partition sample space into n different parts, ${\color{orange} B_1}, {\color{orange} B_2}, ..., {\color{orange} B_n}$
+Suppose we partition sample space into n different parts, ${\color{coral} B_1}, {\color{coral} B_2}, ..., {\color{coral} B_n}$
 
-If there is an event ${\color{orange} A}$, we can calculate its probability by adding all of its intersections with ${\color{orange} B_i}$'s
+If there is an event ${\color{coral} A}$, we can calculate its probability by adding all of its intersections with ${\color{coral} B_i}$'s
 
 
 ```{r, echo = F, out.width = "90%"}
@@ -433,9 +434,9 @@ knitr::include_graphics("totalprob.png")
 
 The .hi.slate[Law of Total Probability] states:
 
-$$P({\color{orange} A})=\sum_{i=1}^nP({\color{orange} A} \cap {\color{orange} B_i})$$
+$$P({\color{coral} A})=\sum_{i=1}^nP({\color{coral} A} \cap {\color{coral} B_i})$$
 An equivalent formula, uses the multiplication rule to show:
-$$P({\color{orange} A})=\sum_{i=1}^n P({\color{orange} A} \cap {\color{orange} B_i}) = \sum_{i=1}^n P({\color{orange} A}\ \vert \ {\color{orange} B_i})P({\color{orange} B_i})$$
+$$P({\color{coral} A})=\sum_{i=1}^n P({\color{coral} A} \cap {\color{coral} B_i}) = \sum_{i=1}^n P({\color{coral} A}\ \vert \ {\color{coral} B_i})P({\color{coral} B_i})$$
 
 
 
@@ -458,9 +459,9 @@ The .hi.purple[Law of Total Probability] says that we can calculate the probabil
 
 ---
 # Midterm Example
-Let ${\color{orange} A}$ be the event that a flight from New York to San Francisco arrives on time, and let ${\color{orange} B}$ be the event that it is a clear day in San Francisco.
+Let ${\color{coral} A}$ be the event that a flight from New York to San Francisco arrives on time, and let ${\color{coral} B}$ be the event that it is a clear day in San Francisco.
 
-Suppose the probability of a clear day is $P({\color{orange} B})=0.6$, We also know that the probability that a plane arrives on a sunny day is 0.9, and on a cloudy day it is 0.5
+Suppose the probability of a clear day is $P({\color{coral} B})=0.6$, We also know that the probability that a plane arrives on a sunny day is 0.9, and on a cloudy day it is 0.5
 
 <ol type = "a">
   <li>What is the probability that the plan lands on time and it is a sunny day?</li>
@@ -488,10 +489,10 @@ What percent of the entire population is lactose intolerant?
 # Bayes' Law
 
 .hi.purple[Bayes Law]: gives us a different way to calculate conditional probabilities 
-Let ${\color{orange} B_1}, {\color{orange} B_2}, ..., {\color{orange} B_n}$ be a partition of ${\color{green} S}$. Let ${\color{orange} A}$ be an event in ${\color{green} S}$. 
+Let ${\color{coral} B_1}, {\color{coral} B_2}, ..., {\color{coral} B_n}$ be a partition of ${\color{kelly} S}$. Let ${\color{coral} A}$ be an event in ${\color{kelly} S}$. 
 
 Then:
-$$P({\color{orange} B_i}\ \vert \ {\color{orange} A})=\frac{P({\color{orange} A}\ \vert \ {\color{orange} B_i})P({\color{orange} B_i})}{P({\color{orange} A}\ \vert \ {\color{orange} B_1})P({\color{orange} B_1})+P({\color{orange} A} \ \vert \ {\color{orange} B_2})P({\color{orange} B_2})+...+P({\color{orange} A} \ \vert \ {\color{orange} B_n})P({\color{orange} B_n})}$$
+$$P({\color{coral} B_i}\ \vert \ {\color{coral} A})=\frac{P({\color{coral} A}\ \vert \ {\color{coral} B_i})P({\color{coral} B_i})}{P({\color{coral} A}\ \vert \ {\color{coral} B_1})P({\color{coral} B_1})+P({\color{coral} A} \ \vert \ {\color{coral} B_2})P({\color{coral} B_2})+...+P({\color{coral} A} \ \vert \ {\color{coral} B_n})P({\color{coral} B_n})}$$
 
 - Bayes rule is used to "flip" a conditional probability 
 
