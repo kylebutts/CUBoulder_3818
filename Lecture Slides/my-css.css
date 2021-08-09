@@ -98,7 +98,7 @@ a, a > code {
 .footnote {
   position: absolute;
   bottom: 60px;
-  padding-right: 4em;
+  padding-right: 6em;
   font-size: 0.9em;
 }
 .remark-code-line-highlighted {
@@ -312,7 +312,7 @@ li {
 /* Mono-spaced font, smaller */
 .mono-small {
   font-family: monospace;
-  font-size: 20px;
+  font-size: 16px;
 }
 .mono-small .mjx-chtml {
   font-size: 103% !important;
@@ -327,7 +327,7 @@ li {
   padding-bottom: 0px;
 }
 .pseudocode-small {
-  font-size: 20px;
+  font-size: 16px;
 }
 .remark-code {
   font-size: 68%;
@@ -498,3 +498,10 @@ table th {
   font-family: 'Zilla Slab' !important;
 }
 
+/* Figure Caption */
+.caption {
+  font-size: 0.8888889em;
+  line-height: 1.5;
+  margin-top: 1em;
+  color: #6b7280;
+}

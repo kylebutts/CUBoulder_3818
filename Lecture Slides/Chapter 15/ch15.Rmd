@@ -472,7 +472,7 @@ file.remove(png_paths)
 ---
 class: clear
 
-```{r, echo = F, out.width = "100%"}
+```{r, echo = F, out.width = "80%"}
 
 sample_dist <- function(n) {
 	means <- c()
@@ -593,7 +593,7 @@ file.remove(png_paths)
 ---
 # Law of Large Numbers
 
-```{r, echo=F, out.width="100%"}
+```{r, echo=F, out.width="80%"}
 knitr::include_graphics("sample_dist_diff_n.png")
 ```
 
