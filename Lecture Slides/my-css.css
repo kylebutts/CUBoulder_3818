@@ -228,6 +228,11 @@ hr, .mline h1::after {
 
 /* Custom CSS */
 
+/* More line spacing */
+body {
+  line-height: 1.5;
+}
+
 
 /* Font styling */
 .hi {
