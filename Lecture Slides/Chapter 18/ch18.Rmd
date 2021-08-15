@@ -1,0 +1,1004 @@
+---
+title: "ECON 3818"
+subtitle: "Chapter 18"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default']
+    self_contained: true
+nature:
+  highlightStyle: github
+highlightLines: true
+countIncrementalSlides: false
+---
+class: clear, middle
+
+```{r setup, child=here::here("Lecture Slides", "preamble.Rmd")}
+```
+
+## Chapter 18: Inference in Practice
+
+---
+# Making Inferences
+So far we have discussed two ways to make inferences about the parameter using our estimate 
+
+- Confidence intervals
+
+- Hypothesis testing
+
+
+
+---
+# Cautions about Confidence Intervals
+
+Important to note that the .hi.daisy[margin of error] doesn't cover all errors
+
+- Address only the randomness due to grabbing a *random* sample
+
+- Does not address issues such as undercoverage, nonresponse, etc.
+
+
+
+---
+# Choosing Sample for Confidence Intervals
+
+
+A researcher can determine the number of observations required in the sample in order to achieve a desired margin of error. 
+
+$${\color{daisy} m} = z^* \frac{\sigma}{\sqrt{n}}  \implies n= \left( \frac{z^*\sigma}{m} \right)^2$$
+
+where ${\color{daisy} m}$ is the desired margin of error, and $z^*$ is the z-score associated with the confidence interval level
+
+
+
+---
+# Example
+Say we are recording tip size of patrons when a waiter writes a message on the receipt. We know $\sigma=2$. We want to estimate the mean percentage tip $\mu$ for patrons who receive the message within $\pm 0.5$ with 90% confidence. How many patrons must we observe?
+
+In other words we want ${\color{daisy} m} = 0.5$:
+
+--
+<br/>
+
+$$
+n = \left( \frac{z^*\sigma}{m} \right)^2 \implies n = \left(\frac{1.645\cdot 2}{0.5} \right)^2 = 43.3 
+$$
+
+
+---
+# Cautions about Hypothesis Testing
+
+These tests of significance depend on: 
+
+- The alternative hypothesis (left-tail, rigth-tail, two-tail)
+
+- The sample size, $n$
+
+- The level of significant, $\alpha$
+
+
+
+---
+# Planning for Hypothesis Testing
+
+How do we choose $\alpha$?
+
+Our choice of level of significance, $\alpha$, depends on whether we REALLY want not wrongly reject $H_0$ or if we REALLY don't want to fail to reject $H_0$
+
+- .ex[Example:] Are you NASA trying to land someone on the moon? small $\alpha$!!!
+
+- .ex[Example:] Are you a business trying to figure out if an A/B test on your website went well? can have a larger $\alpha$
+
+
+
+---
+# Types of Error
+
+In any statistical test there are four possible outcomes:
+
+```{r test-outcomes, echo = F}
+data <- tribble(
+  ~` `, ~`\\(H_0\\) true`, ~`\\(H_a\\) true`,
+  "Reject \\(H_0\\)", "Type I Error", "Correct",
+  "Fail to Reject \\(H_0\\)", "Correct", "Type II Error"
+)
+
+data %>% 
+  gt() %>% 
+  kfbmisc::gt_theme_kyle()
+```
+
+
+
+
+
+---
+# Type I Error
+
+.subheader.coral[False Positive]
+
+.hi.coral[Type I Error]: We reject $H_0$, even though $H_0$ is true
+
+- False-positive on a covid test
+            
+  - $H_0$: You do not have covid
+      
+Denote the probability of a type I error as $\alpha$
+
+<br/> 
+Since our null hypothesis is .it[typically] that there is no effect, a type I error .it[typically] says there is an effect when in reality there is not
+
+
+---
+class: clear,middle
+
+```{r type-1-ex1, echo = F}
+
+mean <- 0
+sd <- 1
+xobs <- 2.25
+
+
+ggplot(data.frame(x = c(mean - 4.5*sd, mean + 4.5*sd)), aes(.data$x)) +
+	# Density
+	stat_function(fun = function(x) dnorm(x, mean, sd), color = "black", size = 1.5) + 
+	annotate(
+        geom = "text", x = mean + -0.5, y = dnorm(qnorm(0.5, mean, sd), mean, sd),
+        label = "(True) Null Distribution",
+        size = 6, hjust = 1, color = "black"
+  ) +
+	# X^*
+  geom_segment(
+      x = qnorm(0.95, mean, sd), y = 0, xend = qnorm(0.95, mean, sd), yend = dnorm(qnorm(0.95, mean, sd), mean, sd),
+      color = "black", linetype = "dashed", size = 1.2
+  ) +
+	geom_point(
+        x = qnorm(0.95, mean, sd), y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        color = "black", size = 2
+    ) +
+  # Type-1 Error Area
+	stat_function(
+      fun = function(x) dnorm(x, mean, sd),
+      xlim = c(qnorm(0.95, mean, sd), mean + 4*sd), size = 0,
+      geom = "area", fill = coral, alpha = 0.5
+  ) +
+	annotate(
+        geom = "label", x = qnorm(0.95, mean, sd) + 0.15, y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        label = expression(P( bar(X) > X^"*") == 0.05), parse = TRUE,
+        size = 6, hjust = 0, color = "black"
+    ) +
+  annotate(
+        geom = "text", x = qnorm(0.95, mean, sd) + 0.1, y = dnorm(qnorm(0.95, mean, sd), mean, sd)/3,
+        label = expression(alpha), parse = TRUE,
+        size = 6, hjust = 0, color = coral
+  ) +
+	scale_x_continuous(
+		breaks = c(-3, -2, -1, 0, xobs, qnorm(0.95, mean, sd), 1, 3),
+		labels = c("-3", "-2", "-1", "0", expression(X[obs]), expression(X^"*"), "1", "3")
+	) +
+	kfbmisc::theme_kyle(base_size = 20) +
+	labs(x = "Value", y = "Density", title = "Probability of Incorrectly Rejecting Null") + 
+	theme(panel.grid.minor.x = element_blank())
+
+```
+
+
+---
+# Type II Error
+
+.subheader.ruby[False Negative]
+
+.hi.ruby[Type II Error]: We fail to reject $H_0$, even though $H_0$ is false
+      
+- False-negative on covid test
+            
+  - $H_0$: You do not have covid
+      
+Denote the probability of type II error as $\beta$
+
+<br/>
+Since our null hypothesis is .it[typically] that there is no effect, a type II error .it[typically] says there is not an effect when in reality there is something different going on 
+
+---
+class: clear,middle
+
+
+```{r type-2-ex1, echo = F}
+
+mean <- 0
+true_mean <- 2
+sd <- 1
+
+
+ggplot(data.frame(x = c(mean - 4*sd, true_mean + 4*sd)), aes(.data$x)) +
+	# Density
+	stat_function(fun = function(x) dnorm(x, mean, sd), color = "black", size = 1.5) + 
+	annotate(
+        geom = "text", x = mean + -0.5, y = dnorm(qnorm(0.5, mean, sd), mean, sd),
+        label = "Null Distribution",
+        size = 6, hjust = 1, color = "black"
+  ) +
+  # True Density
+	stat_function(fun = function(x) dnorm(x, true_mean, sd), color = ruby, size = 1.5) + 
+	annotate(
+        geom = "text", x = true_mean + 0.5, y = dnorm(qnorm(0.5, true_mean, sd), true_mean, sd),
+        label = "True Distribution", 
+        size = 6, hjust = 0, color = ruby
+  ) +
+	# X^*
+  geom_segment(
+      x = qnorm(0.95, mean, sd), y = 0, xend = qnorm(0.95, mean, sd), yend = dnorm(qnorm(0.95, mean, sd), mean, sd),
+      color = "black", linetype = "dashed", size = 1.2
+  ) +
+	geom_point(
+        x = qnorm(0.95, mean, sd), y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        color = "black", size = 2
+    ) +
+  # Type-2 Error Area
+	stat_function(
+      fun = function(x) dnorm(x, true_mean, sd),
+      xlim = c(qnorm(0.95, mean, sd), mean - 4*sd), size = 0,
+      geom = "area", fill = ruby, alpha = 0.5
+  ) +
+	annotate(
+        geom = "label", x = qnorm(0.95, mean, sd) + 0.15, y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        label = expression(P( bar(X) > X^"*") == 0.05), parse = TRUE,
+        size = 6, hjust = 0, color = "black"
+    ) +
+  annotate(
+        geom = "text", x = qnorm(0.95, mean, sd) - 0.4, y = dnorm(qnorm(0.95, mean, sd), mean, sd)/3,
+        label = expression(beta), parse = TRUE,
+        size = 6, hjust = 1, color = ruby
+  ) +
+	scale_x_continuous(
+		breaks = c(-3, -2, -1, 0, qnorm(0.95, mean, sd), 1, 2, 3, 4, 5, 6, 7),
+		labels = c("-3", "-2", "-1", "0", expression(X^"*"), "1", "2", "3", "4", "5", "6", "7")
+	) +
+	kfbmisc::theme_kyle(base_size = 20) +
+	labs(x = "Value", y = "Density", title = "Probability of Failing to Reject Incorrect Null") + 
+	theme(
+	  panel.grid.minor.x = element_blank(),
+	  title = element_text(size = 16)
+  )
+
+```
+
+---
+class: clear,middle
+
+
+```{r type-2-ex2, echo = F}
+
+mean <- 0
+true_mean <- 3
+sd <- 1
+
+
+ggplot(data.frame(x = c(mean - 4*sd, true_mean + 4*sd)), aes(.data$x)) +
+	# Density
+	stat_function(fun = function(x) dnorm(x, mean, sd), color = "black", size = 1.5) + 
+	annotate(
+        geom = "text", x = mean + -0.5, y = dnorm(qnorm(0.5, mean, sd), mean, sd),
+        label = "Null Distribution",
+        size = 6, hjust = 1, color = "black"
+  ) +
+  # True Density
+	stat_function(fun = function(x) dnorm(x, true_mean, sd), color = ruby, size = 1.5) + 
+	annotate(
+        geom = "text", x = true_mean + 0.5, y = dnorm(qnorm(0.5, true_mean, sd), true_mean, sd),
+        label = "True Distribution", 
+        size = 6, hjust = 0, color = ruby
+  ) +
+	# X^*
+  geom_segment(
+      x = qnorm(0.95, mean, sd), y = 0, xend = qnorm(0.95, mean, sd), yend = dnorm(qnorm(0.95, mean, sd), mean, sd),
+      color = "black", linetype = "dashed", size = 1.2
+  ) +
+	geom_point(
+        x = qnorm(0.95, mean, sd), y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        color = "black", size = 2
+    ) +
+  # Type-2 Error Area
+	stat_function(
+      fun = function(x) dnorm(x, true_mean, sd),
+      xlim = c(qnorm(0.95, mean, sd), mean - 4*sd), size = 0,
+      geom = "area", fill = ruby, alpha = 0.5
+  ) +
+	annotate(
+        geom = "label", x = qnorm(0.95, mean, sd) + 0.15, y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        label = expression(P( bar(X) > X^"*") == 0.05), parse = TRUE,
+        size = 6, hjust = 0, color = "black"
+    ) +
+    annotate(
+        geom = "text", x = qnorm(0.95, mean, sd) - 0.2, y = dnorm(qnorm(0.95, mean, sd), mean, sd)/3,
+        label = expression(beta), parse = TRUE,
+        size = 6, hjust = 1, color = ruby
+  ) +
+	scale_x_continuous(
+		breaks = c(-3, -2, -1, 0, qnorm(0.95, mean, sd), 1, 2, 3, 4, 5, 6, 7),
+		labels = c("-3", "-2", "-1", "0", expression(X^"*"), "1", "2", "3", "4", "5", "6", "7")
+	) +
+	kfbmisc::theme_kyle(base_size = 20) +
+	labs(x = "Value", y = "Density", title = "Probability of Failing to Reject Incorrect Null") + 
+	theme(
+	  panel.grid.minor.x = element_blank(),
+	  title = element_text(size = 16)
+  )
+
+```
+
+
+---
+class: clear,middle
+
+
+```{r type-2-ex3, echo = F}
+
+mean <- 0
+true_mean <- 0.3
+sd <- 1
+
+
+ggplot(data.frame(x = c(mean - 4*sd, true_mean + 4*sd)), aes(.data$x)) +
+	# Density
+	stat_function(fun = function(x) dnorm(x, mean, sd), color = "black", size = 1.5) + 
+	annotate(
+        geom = "text", x = mean + -0.5, y = dnorm(qnorm(0.5, mean, sd), mean, sd),
+        label = "Null Distribution",
+        size = 6, hjust = 1, color = "black"
+  ) +
+  # True Density
+	stat_function(fun = function(x) dnorm(x, true_mean, sd), color = ruby, size = 1.5) + 
+	annotate(
+        geom = "text", x = true_mean + 0.5, y = dnorm(qnorm(0.5, true_mean, sd), true_mean, sd),
+        label = "True Distribution", 
+        size = 6, hjust = 0, color = ruby
+  ) +
+	# X^*
+  geom_segment(
+      x = qnorm(0.95, mean, sd), y = 0, xend = qnorm(0.95, mean, sd), yend = dnorm(qnorm(0.95, mean, sd), mean, sd),
+      color = "black", linetype = "dashed", size = 1.2
+  ) +
+	geom_point(
+        x = qnorm(0.95, mean, sd), y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        color = "black", size = 2
+    ) +
+  # Type-2 Error Area
+	stat_function(
+      fun = function(x) dnorm(x, true_mean, sd),
+      xlim = c(qnorm(0.95, mean, sd), mean - 4*sd), size = 0,
+      geom = "area", fill = ruby, alpha = 0.5
+  ) +
+	annotate(
+        geom = "label", x = qnorm(0.95, mean, sd) + 0.15, y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        label = expression(P( bar(X) > X^"*") == 0.05), parse = TRUE,
+        size = 6, hjust = 0, color = "black"
+    ) +
+    annotate(
+        geom = "text", x = qnorm(0.95, mean, sd) - 0.4, y = dnorm(qnorm(0.95, mean, sd), mean, sd)/3,
+        label = expression(beta), parse = TRUE,
+        size = 6, hjust = 1, color = ruby
+  ) +
+	scale_x_continuous(
+		breaks = c(-3, -2, -1, 0, qnorm(0.95, mean, sd), 1, 2, 3, 4, 5, 6, 7),
+		labels = c("-3", "-2", "-1", "0", expression(X^"*"), "1", "2", "3", "4", "5", "6", "7")
+	) +
+	kfbmisc::theme_kyle(base_size = 20) +
+	labs(x = "Value", y = "Density", title = "Probability of Failing to Reject Incorrect Null") + 
+	theme(
+	  panel.grid.minor.x = element_blank(),
+	  title = element_text(size = 16)
+  )
+
+```
+
+---
+# How to remember
+
+> When the boy cried wolf, the village committed Type I and Type II errors, in that order
+
+<br/> 
+There is no wolf
+
+- Village rejects correct null (Type I)
+
+- Village incorrectly fails to reject false null (Type II)
+
+
+
+---
+# Clicker Question
+Suppose we have the following hypothesis test:
+
+- $H_0$: Taking multivitamins does not impact your running speed
+- $H_1$: Taking multivitamins .it[will increase] your running speed
+
+If we make the claim "Taking vitamins in the morning will increase your running speed" and it is not true, we have committed a:
+
+<ol type = "a">
+  <li>Type I error</li>
+  <li>Type II error</li>
+</ol>
+
+
+
+---
+# Errors in Hypothesis Testing
+
+How do these errors happen?
+
+- Our conclusions are based on sample data and probabilities
+  
+  - p-value tells us probability of observing it. The p-value is $ >0$ so it is possible to observe it
+      
+- We do not have enough information (sample size)
+
+- We do not choose to be very rigorous ( $\alpha$ )
+      
+  
+In particular we control
+      
+- Type I error is determined by the significance of the test $\alpha$
+
+- Type II error depends on the .hi[true distribution] when the null is false
+
+  - However, we can mitigate it by increasing the sample size
+            
+      
+---
+# Improving power by increasing sample size
+
+```{r, ref.label="type-2-ex1", echo = F}
+```
+
+---
+# Improving power by increasing sample size
+
+```{r type-2-ex4, echo = F}
+
+mean <- 0
+true_mean <- 2
+sd <- 0.5
+
+
+ggplot(data.frame(x = c(mean - 4*sd, true_mean + 4*sd)), aes(.data$x)) +
+	# Density
+	stat_function(fun = function(x) dnorm(x, mean, sd), color = "black", size = 1.5) + 
+	annotate(
+        geom = "text", x = mean + -0.5, y = dnorm(qnorm(0.5, mean, sd), mean, sd),
+        label = "Null Distribution",
+        size = 6, hjust = 1, color = "black"
+  ) +
+  # True Density
+	stat_function(fun = function(x) dnorm(x, true_mean, sd), color = ruby, size = 1.5) + 
+	annotate(
+        geom = "text", x = true_mean + 0.5, y = dnorm(qnorm(0.5, true_mean, sd), true_mean, sd),
+        label = "True Distribution", 
+        size = 6, hjust = 0, color = ruby
+  ) +
+	# X^*
+  geom_segment(
+      x = qnorm(0.95, mean, sd), y = 0, xend = qnorm(0.95, mean, sd), yend = dnorm(qnorm(0.95, mean, sd), mean, sd),
+      color = "black", linetype = "dashed", size = 1.2
+  ) +
+	geom_point(
+        x = qnorm(0.95, mean, sd), y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        color = "black", size = 2
+    ) +
+  # Type-2 Error Area
+	stat_function(
+      fun = function(x) dnorm(x, true_mean, sd),
+      xlim = c(qnorm(0.95, mean, sd), mean - 4*sd), size = 0,
+      geom = "area", fill = ruby, alpha = 0.5
+  ) +
+	annotate(
+        geom = "label", x = qnorm(0.95, mean, sd) + 0.15, y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        label = expression(P( bar(X) > X^"*") == 0.05), parse = TRUE,
+        size = 6, hjust = 0, color = "black"
+    ) +
+	scale_x_continuous(
+		breaks = c(-3, -2, -1, 0, qnorm(0.95, mean, sd), 1, 2, 3, 4, 5, 6, 7),
+		labels = c("-3", "-2", "-1", "0", expression(X^"*"), "1", "2", "3", "4", "5", "6", "7"),
+		limits = c(-4,6)
+	) +
+	kfbmisc::theme_kyle(base_size = 20) +
+	labs(x = "Value", y = "Density", title = "Probability of Failing to Reject Incorrect Null") + 
+	theme(
+	  panel.grid.minor.x = element_blank(),
+	  title = element_text(size = 16)
+  )
+
+```
+
+---
+# Size of a Test
+
+Now that we've defined Type I error, lets define size:
+
+The .hi.coral[size] of a test, ${\color{coral} \alpha}$, is the probability of making a Type I error. 
+
+Given a null hypothesis $H_0: \theta = \theta_0$; a test statistic $\hat{\theta}$; and a rejection region R,
+
+The size is:
+
+$${\color{coral} \alpha} = P({\color{coral} \text{Type I Error}})=P(\hat{\theta}\in R \ \vert \ \theta=\theta_0)$$
+
+
+---
+# Calculating the Size of a Test
+
+How do we actually calculate $\alpha$?
+
+Let's suppose we have $n=16$ and $\sigma=1$, and we want to test $H_0$: $\mu=3$ vs. $H_a$: $\mu > 3$.   
+
+Given a rejection region of $R=\{ \bar{X} \ \vert \ \bar{X} > 3.41 \}$, what is $\alpha$?
+
+--
+
+<br/>
+$$ 
+\alpha = P( \hat{\theta} \in R \ \vert \ \theta = \theta_0 ) = P\left(\bar{X} > 3.41 \ \vert \ {\mu=3}\right)
+$$
+
+$$
+= P\left(\frac{\bar{X} - \mu}{\sigma / \sqrt{n}} > \frac{3.41 - 3}{1/\sqrt{16}}\right) = Pr(Z > 1.64) = 0.05
+$$
+
+
+
+
+---
+# Choosing Size
+
+Note that we have to pick *either* the rejection region or the size
+
+- We generally pick a size and calculate the rejection region based off that size
+      
+- Because the size is the probability of a rejecting a true null, by choosing $\alpha$ we are choosing how much we are willing to risk .it[incorrectly] rejecting the null hypothesis
+      
+- Higher $\alpha$ will mean more of the sample statistics are in the rejection region, meaning a higher risk of rejecting the null even though it's true 
+      
+
+
+
+---
+# Power of a Test
+
+While size deals with Type I Errors, power deals with Type II.
+
+The .hi.ruby[power] is the probability of correctly rejecting a false null, or 1 - P(Type II Error)
+
+$$ {\color{ruby} \text{Power}} = 1 - P({\color{ruby} \text{Type II Error}} ) $$
+
+Intuitively, power is the likelihood of detecting a false null using your test statistic.
+
+
+---
+# Power and Probability of Type II Errors
+
+A .ruby[Type II] error is the probability of failing to reject a false null
+
+$$P({\color{ruby} \text{Type II}})=P(\bar{X} \notin R \ \vert \ \mu = \mu_A)$$
+
+The .hi.ruby[power] is the probability of correctly rejecting a false null
+
+$$
+{\color{ruby} \text{Power}} =P(\bar{X} \in R \ \vert \ \mu = \mu_A)
+$$
+
+
+<br/> 
+You can think of power as the probability of .it[not making a .ruby[Type II] error]
+
+You can calculate power by doing $1 - P({\color{ruby} \text{Type II}})$ or by calculating the power directly.
+
+
+
+---
+# Power
+
+
+```{r power-ex1, echo = F}
+
+mean <- 0
+true_mean <- 2
+sd <- 1
+
+
+ggplot(data.frame(x = c(mean - 4*sd, true_mean + 4*sd)), aes(.data$x)) +
+	# Density
+	stat_function(fun = function(x) dnorm(x, mean, sd), color = "black", size = 1.5) + 
+	annotate(
+        geom = "text", x = mean + -0.5, y = dnorm(qnorm(0.5, mean, sd), mean, sd),
+        label = "Null Distribution",
+        size = 6, hjust = 1, color = "black"
+  ) +
+  # True Density
+	stat_function(fun = function(x) dnorm(x, true_mean, sd), color = ruby, size = 1.5) + 
+	annotate(
+        geom = "text", x = true_mean + 0.5, y = dnorm(qnorm(0.5, true_mean, sd), true_mean, sd),
+        label = "True Distribution", 
+        size = 6, hjust = 0, color = ruby
+  ) +
+	# X^*
+  geom_segment(
+      x = qnorm(0.95, mean, sd), y = 0, xend = qnorm(0.95, mean, sd), yend = dnorm(qnorm(0.95, mean, sd), mean, sd),
+      color = "black", linetype = "dashed", size = 1.2
+  ) +
+	geom_point(
+        x = qnorm(0.95, mean, sd), y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        color = "black", size = 2
+    ) +
+  # Power Area
+	stat_function(
+      fun = function(x) dnorm(x, true_mean, sd),
+      xlim = c(qnorm(0.95, mean, sd), true_mean + 4*sd), size = 0,
+      geom = "area", fill = ruby, alpha = 0.5
+  ) +
+	annotate(
+        geom = "label", x = qnorm(0.95, mean, sd) + 0.15, y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        label = expression(P( bar(X) > X^"*") == 0.05), parse = TRUE,
+        size = 6, hjust = 0, color = "black"
+    ) +
+  annotate(
+        geom = "text", x = qnorm(0.95, mean, sd) - 0.4, y = dnorm(qnorm(0.95, mean, sd), mean, sd)/3,
+        label = "Power",
+        size = 6, hjust = 1, color = ruby
+  ) +
+	scale_x_continuous(
+		breaks = c(-3, -2, -1, 0, qnorm(0.95, mean, sd), 1, 2, 3, 4, 5, 6, 7),
+		labels = c("-3", "-2", "-1", "0", expression(X^"*"), "1", "2", "3", "4", "5", "6", "7")
+	) +
+	kfbmisc::theme_kyle(base_size = 20) +
+	labs(x = "Value", y = "Density", title = "Probability of Failing to Reject Incorrect Null") + 
+	theme(
+	  panel.grid.minor.x = element_blank(),
+	  title = element_text(size = 16)
+  )
+
+```
+
+
+
+---
+# Calculating the Power of a Test
+
+Back to previous example, where $n=16$, $\sigma=1$, and $R=\{ \bar{X}  \ \vert \  \bar{X} > 3.41 \}$. And we are testing $H_0: \mu=3$ vs. $H_1: \mu>3$:
+
+Power can be calculated in two ways: 
+
+$$
+  {\color{ruby} \text{Power}} = P(\text{reject } H_0 \ \vert \ \mu_0 = \mu^* ) = P(\bar{X}  \in R \ \vert \ H_0 \text{ false}) 
+$$
+
+$$ 
+  {\color{ruby} \text{Power}} = 1 - P({\color{ruby} \text{type II Error}}) = 1 - P(\bar{X} \notin R \ \vert \ H_0  \text{ false})
+$$
+
+
+
+
+
+
+
+---
+# Calculating the Power of a Test
+
+In order to calculate the power of a test, we must assume a specific true mean, $\mu_A$.
+
+For example, what is the power of the test if the true mean is $\mu_A = 4$?
+
+$$
+{\color{ruby} \text{Power}} = P(\bar{X} \in R \ \vert \ \mu = \mu_A = 4)
+$$
+
+--
+
+$$ 
+P(\bar{X} > 3.41 \ \vert \ \mu=4) = P(Z > \frac{3.41-4}{1/\sqrt{16}})= 0.9908
+$$
+
+
+
+---
+# Calculating the Power of a Test
+
+We can also calculate the power of a test by subtracting the probability of making a Type II error (\( \beta \)  from 1. 
+
+$$
+{\color{ruby} \beta} = P(\bar{X} < 3.41 \ \vert \  \mu = \mu_A = 4) 
+$$ 
+
+--
+
+$$ 
+\implies P(Z < \frac{3.41-4}{1/\sqrt{16}}) = 0.0092
+$$
+
+Meaning the power of the test is:
+
+$$ 
+{\color{ruby} \text{Power}} = 1 - {\color{ruby} \beta} = 1-.0092 = .9908
+$$
+
+There is a 99.1% chance that in *repeated sampling* we reject the null that $\mu = 3$ if the true mean is equal to 4.
+
+
+---
+# Group Question
+
+Assume $X\sim N(\mu,5^2)$. From a sample size of $n=100$, we wish to test the following at the $\alpha=0.05$ level
+
+$$
+H_0: \mu=3
+$$
+
+$$
+H_1: \mu>3
+$$
+
+What is the power of your test if $\mu = \mu_A = 4?$
+
+<ol type = "a">
+  <li> 0.85</li>
+  <li> 0.15</li>
+  <li> 0.64</li>
+  <li> 0.36</li>
+</ol>
+
+
+
+---
+# Interpreting Power
+
+Power is the probability of correctly rejecting a false null hypothesis
+
+- Can be thought of as our ability to identify a true value from an alternative
+
+
+<br/>
+
+In general, the power is a function of the true value.sup[*]
+
+- It changes as we try out different possible true values
+      
+<div class="footnote">
+<span class="sup">*</span> Must specify a specific true \(\mu\) in order to calculate power
+</div>
+
+
+
+
+---
+# Power
+
+```{r echo = F, ref.label = "power-ex1"}
+
+```
+
+
+---
+# Visualizing Underpowered Estimates
+
+.subheader.alice[Imprecise Estimates]
+
+
+```{r power-ex2, echo = F}
+
+mean <- 0
+true_mean <- 2
+sd <- 2
+
+
+ggplot(data.frame(x = c(mean - 4*sd, true_mean + 4*sd)), aes(.data$x)) +
+	# Density
+	stat_function(fun = function(x) dnorm(x, mean, sd), color = "black", size = 1.5) + 
+	annotate(
+        geom = "text", x = mean + -0.5, y = dnorm(qnorm(0.5, mean, sd), mean, sd),
+        label = "Null Distribution",
+        size = 6, hjust = 1, color = "black"
+  ) +
+  # True Density
+	stat_function(fun = function(x) dnorm(x, true_mean, sd), color = ruby, size = 1.5) + 
+	annotate(
+        geom = "text", x = true_mean + 0.5, y = dnorm(qnorm(0.5, true_mean, sd), true_mean, sd),
+        label = "True Distribution", 
+        size = 6, hjust = 0, color = ruby
+  ) +
+	# X^*
+  geom_segment(
+      x = qnorm(0.95, mean, sd), y = 0, xend = qnorm(0.95, mean, sd), yend = dnorm(qnorm(0.95, mean, sd), mean, sd),
+      color = "black", linetype = "dashed", size = 1.2
+  ) +
+	geom_point(
+        x = qnorm(0.95, mean, sd), y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        color = "black", size = 2
+    ) +
+  # Power Area
+	stat_function(
+      fun = function(x) dnorm(x, true_mean, sd),
+      xlim = c(qnorm(0.95, mean, sd), true_mean + 4*sd), size = 0,
+      geom = "area", fill = ruby, alpha = 0.5
+  ) +
+	annotate(
+        geom = "label", x = qnorm(0.95, mean, sd) + 0.15, y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        label = expression(P( bar(X) > X^"*") == 0.05), parse = TRUE,
+        size = 6, hjust = 0, color = "black"
+    ) +
+  annotate(
+        geom = "text", x = qnorm(0.95, mean, sd) - 0.4, y = dnorm(qnorm(0.95, mean, sd), mean, sd)/3,
+        label = "Power",
+        size = 6, hjust = 1, color = ruby
+  ) +
+	scale_x_continuous(
+		breaks = c(-3, -2, -1, 0, qnorm(0.95, mean, sd), 1, 2, 3, 4, 5, 6, 7),
+		labels = c("-3", "-2", "-1", "0", expression(X^"*"), "1", "2", "3", "4", "5", "6", "7")
+	) +
+	scale_y_continuous(
+	  limits = c(0, 0.4)
+	) +
+	kfbmisc::theme_kyle(base_size = 20) +
+	labs(x = "Value", y = "Density", title = "Probability of Failing to Reject Incorrect Null") + 
+	theme(
+	  panel.grid.minor.x = element_blank(),
+	  title = element_text(size = 16)
+  )
+
+```
+
+
+
+---
+# Visualizing Underpowered Estimates
+
+.subheader.alice[Small Relative Differences]
+
+
+```{r power-ex3, echo = F}
+
+mean <- 0
+true_mean <- 0.5
+sd <- 1
+
+
+ggplot(data.frame(x = c(mean - 4*sd, true_mean + 4*sd)), aes(.data$x)) +
+	# Density
+	stat_function(fun = function(x) dnorm(x, mean, sd), color = "black", size = 1.5) + 
+	annotate(
+        geom = "text", x = mean + -0.5, y = dnorm(qnorm(0.5, mean, sd), mean, sd),
+        label = "Null Distribution",
+        size = 6, hjust = 1, color = "black"
+  ) +
+  # True Density
+	stat_function(fun = function(x) dnorm(x, true_mean, sd), color = ruby, size = 1.5) + 
+	annotate(
+        geom = "text", x = true_mean + 0.5, y = dnorm(qnorm(0.5, true_mean, sd), true_mean, sd),
+        label = "True Distribution", 
+        size = 6, hjust = 0, color = ruby
+  ) +
+	# X^*
+  geom_segment(
+      x = qnorm(0.95, mean, sd), y = 0, xend = qnorm(0.95, mean, sd), yend = dnorm(qnorm(0.95, mean, sd), mean, sd),
+      color = "black", linetype = "dashed", size = 1.2
+  ) +
+	geom_point(
+        x = qnorm(0.95, mean, sd), y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        color = "black", size = 2
+    ) +
+  # Power Area
+	stat_function(
+      fun = function(x) dnorm(x, true_mean, sd),
+      xlim = c(qnorm(0.95, mean, sd), true_mean + 4*sd), size = 0,
+      geom = "area", fill = ruby, alpha = 0.5
+  ) +
+	annotate(
+        geom = "label", x = qnorm(0.95, mean, sd) + 0.15, y = dnorm(qnorm(0.95, mean, sd), mean, sd),
+        label = expression(P( bar(X) > X^"*") == 0.05), parse = TRUE,
+        size = 6, hjust = 0, color = "black"
+    ) +
+  annotate(
+        geom = "text", x = qnorm(0.95, mean, sd) - 0.4, y = dnorm(qnorm(0.95, mean, sd), mean, sd)/3,
+        label = "Power",
+        size = 6, hjust = 1, color = ruby
+  ) +
+	scale_x_continuous(
+		breaks = c(-3, -2, -1, 0, qnorm(0.95, mean, sd), 1, 2, 3, 4, 5, 6, 7),
+		labels = c("-3", "-2", "-1", "0", expression(X^"*"), "1", "2", "3", "4", "5", "6", "7")
+	) +
+	scale_y_continuous(
+	  limits = c(0, 0.4)
+	) +
+	kfbmisc::theme_kyle(base_size = 20) +
+	labs(x = "Value", y = "Density", title = "Probability of Failing to Reject Incorrect Null") + 
+	theme(
+	  panel.grid.minor.x = element_blank(),
+	  title = element_text(size = 16)
+  )
+
+```
+
+
+
+---
+# Spotting Underpowered Estimates
+
+How can we avoid underpowered estimates? There are two main root causes:
+
+Imprecise estimates
+
+- Low precision/high variance
+
+- Large standard errors interpreted as "no effect"
+
+Small relative differences between $\theta_0$ and $\theta_A$
+
+- Precise estimates can detect small relative differences
+
+- Imprecise estimates require large relative differences to detect the truth. 
+
+Watch for imprecise estimates! They are often interpreted as a true result when really they are underpowered.
+
+
+
+---
+# Example
+
+.subheader.alice[Underpowered Estimates]
+
+Suppose from 10 observations you estimate that raising the minimum wage by 1% would lead to only a 0.1% decline in employment on average with a standard deviation of 6%. Can you reject the null that employment wouldn't decrease at the 5% significance level?
+ 
+$$
+p\text{-value} = Pr(\bar{X} < -0.1 \ \vert \ \mu=0) = Pr\left(\frac{\bar{X} - \mu_0}{\sigma / \sqrt{n}} < \frac{-0.1 - 0}{6/\sqrt{10}}\right) 
+$$
+
+$$
+= Pr(Z < -0.053) = 0.479      
+$$
+ 
+Since $p\text{-value} \nleqslant \alpha$, we conclude there is not enough evidence to say that average employment reduction is not 0% (no effect of minimum wage).
+
+
+---
+# Example
+
+.subheader.alice[Underpowered Estimates]
+
+Great news! Raising the minimum wage has no statistically discernible effect on employment, right? Well.. hold on... If there is an effect on employment our statistic may be too underpowered to detect it. Let's calculate the power of this test....
+
+
+---
+# Example
+
+.subheader.alice[Underpowered Estimates]
+
+Calculate power by $P(\bar{X} \in R \ \vert \ \mu_0 = -0.5)$
+ 
+This means we must first calculate the rejection region
+
+If $\alpha=.05$, then the rejection region is $R = \{ \bar{X} \ \vert \ \bar{X} < -3.12 \}$. 
+
+
+---
+# Example
+
+.subheader.alice[Underpowered Estimates]
+
+Let's assume a reasonable negative impact on employment of 0.5%. (So we're assuming the true $\mu=-0.5$).
+
+Then the power is:
+ 
+$$
+P(\text{Reject }H_0 \ \vert \ \mu=-0.5)
+$$
+
+$$
+P(\text{Reject }H_0 \ \vert \ \mu=-0.5)
+$$
+
+$$
+P(\text{Reject }H_0 \ \vert \ \mu=-0.5) = P(Z < -1.38) \approx 0.0836  
+$$
+
+Our power to detect a measurable effect is a measly 8.4%!
+
