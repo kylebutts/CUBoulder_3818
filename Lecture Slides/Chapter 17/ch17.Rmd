@@ -200,7 +200,7 @@ This means we want to calculate $P(\bar{X}>0.3)$ if $\bar{X} \sim N(0,\frac{1}{1
 ---
 class: clear, middle
 
-```{r, echo = F}
+```{r p-value, echo = F}
 mean <- 0
 sd <- 1/sqrt(10)
 

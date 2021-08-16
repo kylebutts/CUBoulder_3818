@@ -16,6 +16,7 @@ class: clear, middle
 
 ```{r preamble, child=here::here("Lecture Slides", "preamble.Rmd")}
 ```
+
 ## Chapter 14: Binomial Distribution
 
 ---
