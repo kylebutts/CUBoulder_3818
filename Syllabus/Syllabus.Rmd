@@ -1,0 +1,316 @@
+---
+title: "Syllabus"
+subtitle: "ECON 3818: Introduction to Statistics"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default']
+    ## No title slide
+    seal: false
+    self_contained: true
+    nature:
+      ratio: '8.5:11'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r preamble, child=here::here("Syllabus", "preamble.Rmd")}
+```
+
+
+```{r, echo = F}
+library(icons)
+library(tidyverse)
+library(gt)
+
+output_format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+```
+
+<h1 class="hi text-2xl center coral">ECON 3818: Introduction to Statistics</h1>
+
+Economics 3818 is an introductory course in the theory and methods of statistics. Statistics allows datasets to be transformed into usable information, analyzed for patterns and trends, which improve decision-making.
+
+Upon completion of the course, students should be able to
+
+-   Be prepared for a future course in Econometrics -- the data driven side of economics.
+-   Will be able to load datasets into R and perform statistical methods to gather information about the data.
+-   Understand the probability theory behind basic statistical tests and implement them.
+
+We will study basic probability, probability distributions (especially the normal distribution), and descriptive and inferential statistics, including estimation and hypothesis testing. Emphasis is on both theory and applications. Weekly problem sets will explore issues in statistical theory and practice. The course will use the programming language R to do data analysis on simulated and real datasets.
+
+## Course Info
+
+```{r info-table, echo = F}
+table <- tribble(
+	~Icon, ~Name, ~Time, ~Location,
+	as.character(icons::fontawesome("chalkboard-teacher")), "Instructor", "Kyle Butts", "<a href = 'emailto:kyle.butts@colorado.edu'>kyle.butts@colorado.edu</a>",
+	as.character(icons::fontawesome("school")), "Lecture", "MWF 11:30-12:20pm", "Econ 119",
+	as.character(icons::fontawesome("laptop-house")), "Office Hours", "TBD", "<a href = '#'>Zoom</a>",
+	as.character(icons::fontawesome("chalkboard-teacher")), "TA", "TBD", "<a href = 'emailto:first.last@colorado.edu'>first.last@colorado.edu</a>",
+	as.character(icons::fontawesome("laptop-house")), "Office Hours", "TBD", "<a href = '#'>Zoom</a>",
+	as.character(icons::fontawesome("book")), "Textbook", "The Basic Practice of Statistics 9e. <br/> David Moore, William Notz, <br/> and Michael A Fligner.", "<a href = 'https://www.cubookstore.com/c-74-textbook-help.aspx#Day1'>You already bought this!</a> <br/> <i>Course Materials on Canvas</i>",
+	as.character(icons::fontawesome("laptop-code")), "Software", "<b>R</b> is a free programming language that is utilized primarily for data analysis. We will spend time throughout the
+course working on <i>R</i> exercises through the <i>RStudio</i> interface.", "Download <br/> <a href = 'https://cloud.r-project.org/'><b>R</b></a> and <a href = 'https://www.rstudio.com/products/rstudio/download/'>RStudio</a>",
+	as.character(icons::fontawesome("list")), "Prerequisites", "Econ 1088, 2010 and 2020", "",
+) 
+
+
+
+table %>% 
+	mutate(
+		Icon = map(Icon, gt::html),
+		Location = map(Location, gt::html),
+		Time = map(Time, gt::html),
+		Name = paste0("<i>", Name, "</i>"),
+		Name = map(Name, gt::html)
+	) %>%
+	gt::gt(table) %>% 
+		kfbmisc::gt_theme_kyle() %>%
+		gt::cols_label(Icon = "") %>%
+		gt::cols_width(
+			Icon ~ px(40)
+		) %>% 
+		gt::cols_align(columns = c(Name, Time, Location),align = "left") %>% 
+		gt::tab_options(
+			data_row.padding = px(4),
+			column_labels.hidden  = TRUE,
+			table.font.size = px(10)
+		)
+```
+
+
+
+---
+
+## Grading
+
+```{r grading-summary, echo = F}
+grades <- tribble(
+	~Assignment, ~Percentage, ~Blank, ~Assignment2, ~Percentage2,
+    "<b>Homework</b>", .1, "", "<b>Midterm 1</b>", .2,    
+    "<b>R Problem Sets</b>", .15, "", "<b>Midterm 2</b>", .2,    
+    "<b>R Project</b>", .15, "", "<b>Final</b>", .2
+) %>% 
+	mutate(
+		Assignment = map(Assignment, gt::html),
+		Assignment2 = map(Assignment2, gt::html)
+	)
+
+gt(grades) %>% 
+	kfbmisc::gt_theme_kyle() %>%
+	fmt_percent(columns = c("Percentage", "Percentage2"), decimals = 0) %>%
+	gt::cols_width(
+		Assignment ~ px(100),
+		Assignment2 ~ px(100),
+		Percentage ~ px(80),
+		Percentage2 ~ px(70),
+		Blank ~ px(20)
+	) %>% 
+	gt::cols_align(align = "left") %>%
+	# Border right
+	gt::tab_style(
+      style = list(cell_borders(
+          sides = c("left"),
+          color = "#D3D3D3",
+          weight = px(2)
+      )),
+      locations = list(cells_body(columns = Blank))
+    ) %>% 
+	gt::tab_options(
+		data_row.padding = px(2),
+		table.font.size = px(10),
+		column_labels.hidden  = TRUE,
+		column_labels.border.bottom.width = px(1)
+	) 
+```
+
+
+<div style="min-height: 2rem;"></div>
+
+### Curving and Grade Asjustments:
+
+Midterms may be curved individually, and a curve may be applied to the overall course grade to conform to departmental standards. I will automatically increase final course grades that are 0.5% below any grade cutoff after any final grading curve has been applied. I will not grant any request to increase your grade to meet a certain cutoff. You will receive the grade that you earned throughout the course. If you are concerned about your grade(s) you should immediately come talk to me. I will do everything I can to help you be successful in this course.
+
+### Homework:
+
+There will be weekly homework assignments assigned through the Achieve website. These will be due by 11:59 pm on *most* Sundays. No late homework will be accepted. The 2 chapter homeworks with the lowest grades will be dropped.
+
+### Recitation:
+
+Recitation attendance is not mandatory. However, it is crucial for success to attend recitation. Material covered in recitation will look very similar to exam questions and will serve as high-quality review of lecture material. Your TA is PhD student TBD.
+
+### R Project & Exercises:
+
+There will be an introductory and five simple <span class="coral">R</span> assignments throughout the semester. These will serve to (i) develop your coding abilities and (ii) improve your understanding in this course. At the end of the semester, you will analyze a dataset as a final project. The <span class="coral">R</span> project will be worth 15% and the <span class="coral">R</span> assignments will be worth another 15%. R assignments must be turned in to Canvas before class starts on Wednesday. A compiled html file should be turned in for the assignment.
+
+### Exams:
+
+There will be two midterms throughout the semester. They will consist of multiple choice questions along with a couple of free response questions. You may use your notes and book for the exam, but may not work with anyone on them. Any tables required will be provided by the instructor. There will be no make-up exams, unless there is documentation of a medical or family emergency. If you miss an exam, the weight of that exam will be added to the final exam. The final exam is cumulative, but the midterms are not.
+
+
+
+---
+
+## Tentative Course Calendar
+
+```{r echo = F}
+
+link_classes <- function(col) {
+	col <- replace_na(col, " ")
+
+	# Add githack link
+	col <- str_replace_all(
+		col, "Chapter ([:digit:]{1,2})",
+		"<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%200\\1/ch\\1.html'> Chapter \\1</a>"
+		)
+
+	col <- str_replace(col, "Chapter%200([:digit:]{2})", "Chapter%20\\1")
+
+	# Fix for Intro, Distribution, Expectations, and Syllabus
+	col <- str_replace(
+		col, "Intro$",
+		"<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2001/ch1.html'> Intro</a>"
+		)
+	col <- str_replace(
+		col, "^Distributions",
+		"<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Distributions/distributions.html'> Distributions</a>"
+		)
+	col <- str_replace(
+		col, "Expectations",
+		"<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Expectations/expectations.html'> Expectations</a>"
+		)
+
+	col <- str_replace(
+		col, "Syllabus",
+		"<a href = '#'>Syllabus</a>"
+	)
+
+	# color No Class, Midterm, and R Day
+	col <- str_replace(
+		col, "No Class",
+		"<span style = 'color: #F26D21;'>No Class</span>"
+	)
+	col <- str_replace(
+		col, "Midterm",
+		"<span style = 'color: #9A2515;'>Midterm</span>"
+	)
+	col <- str_replace(
+		col, "R Day",
+		"<span style = 'color: #829356;'>R Day</span>"
+	)
+
+	col
+}
+
+link_assignments <- function(col) {
+	col <- replace_na(col, " ")
+
+	col <- str_replace(
+		col, "Final Exam",
+		"<span style = 'color: #9A2515;'>Final Exam</span>"
+	)
+
+	col
+}
+
+cal <- read_csv(here("schedule.csv")) %>%
+	pivot_wider(., names_from = "name", values_from = "value") %>%
+	mutate(
+		Monday = link_classes(Monday),
+		Wednesday = link_classes(Wednesday),
+		Friday = link_classes(Friday),
+		Assignments = link_assignments(Assignments),
+		Monday = map(Monday, gt::html),
+		Wednesday = map(Wednesday, gt::html),
+		Friday = map(Friday, gt::html),
+		Assignments = map(Assignments, gt::html),
+		Dates = map(Dates, gt::html)
+	)
+
+cal %>%
+	gt() %>%
+		kfbmisc::gt_theme_kyle() %>%
+		tab_options(
+			data_row.padding = px(14)
+		) %>%
+		cols_align(
+			align = "left",
+			columns = c("Week", "Dates", "Monday", "Wednesday", "Friday", "Assignments")
+		) %>%
+		tab_options(
+			data_row.padding = px(4),
+			table.font.size = px(8),
+			column_labels.border.bottom.width = px(1)
+		)
+
+
+```
+
+
+
+---
+
+## University Policies
+
+<br/>
+
+### Students with Disabilities:
+
+<div class="text-sm">
+If you qualify for accommodations
+because of a disability, please submit to me a letter from disability
+services in a timely manner so that your needs can be addressed.
+Disability services determine accommodations based on documented
+disabilities. Contact: 303-492-8671, Center for Community N200.
+</div>
+
+### Religious Observance Policy:
+
+<div class="text-sm">
+Campus policy regarding religious
+observances requires that faculty make every effort to reasonably and
+fairly deal with all students who, because of religious obligations,
+have conflicts with scheduled exams, assignments, or required
+attendance. If you have a conflict, please contact me at the beginning
+of the term so we can make proper arrangements.
+</div>
+
+### Honor Code:
+
+<div class="text-sm">
+All students of the University of Colorado at Boulder
+are responsible for knowing and adhering to the academic integrity
+policy of this institution. Violations of this policy may include:
+cheating, plagiarism, aid of academic dishonesty, fabrication, lying,
+bribery, and threatening behavior. All incidents of academic misconduct
+shall be reported to the Honor Code Council (<honor@colorado.edu>;
+303-725-2273). Students who are found to be in violation of the academic
+integrity policy will be subject to both academic sanctions from the
+faculty member and non-academic sanctions (including but not limited to
+university probation, suspension, or expulsion). Other information on
+the Honor Code can be found at:
+<http://www.colorado.edu/policies/honor.html> and at
+<http://www.colorado.edu/academics/honorcode/>
+</div>
+
+### Discrimination & Harassment Policy:
+
+<div class="text-sm">
+The University of Colorado
+Policy on Sexual Harassment applies to all students, staff and faculty.
+Sexual harassment is unwelcome sexual attention. It can involve
+intimidation, threats, coercion, or promises or create an environment
+that is hostile or offensive. Harassment may occur between members of
+the same or opposite gender and between any combinations of members in
+the campus community: students, faculty, staff, and administrators.
+Harassment can occur anywhere on campus, including the classroom, the
+workplace, or a residence hall. Any student, staff or faculty member who
+believes s/he has been sexually harassed should contact the Office of
+Discrimination and Harassment (ODH) at 303-492-2127 or the Office of
+Judicial Affairs at 303-492-5550. Information about the ODH and the
+campus resources available to assist individuals who believe they have
+been sexually harassed can be obtained at:
+<http://www.colorado.edu/odh/>
+</div>

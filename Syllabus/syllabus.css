@@ -1,0 +1,553 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap);
+
+:root {
+  /* Fonts */
+  --text-font-family: 'Atkinson Hyperelegible';
+  --text-font-family-fallback: Roboto, -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial;
+  --text-font-base: sans-serif;
+  --header-font-family: 'Atkinson Hyperelegible'
+  --header-font-family-fallback: Georgia, serif;
+  --code-font-family: 'Source Code Pro';
+
+  /* block = display; none = don't display */
+  --display-page: none;
+
+  /* Colors */
+  --text-color: #131516;
+  --text-color-light: #555F61;
+  --header-color: #FFF;
+  --background-color: #FFF;
+  --link-color: #107895; /* alice-500 */
+  --code-highlight-color: rgba(255,255,0,0.5);
+  --inverse-text-color: #d6d6d6;
+  --inverse-background-color: #272822;
+  --inverse-header-color: #f3f3f3;
+  --inverse-link-color: #107895;
+  --title-slide-background-color: #272822;
+  --title-slide-text-color: #d6d6d6;
+  --header-background-color: #FFF;
+  --header-background-text-color: #FFF;
+
+  /* Custom colors */
+  --daisy-50: #fefcf6;
+  --daisy-100: #fdfaec;
+  --daisy-200: #faf2d0;
+  --daisy-300: #f7e9b4;
+  --daisy-400: #f1d97c;
+  --daisy-500: #EBC944;
+  --daisy-600: #d4b53d;
+  --daisy-700: #b09733;
+  --daisy-800: #8d7929;
+  --daisy-900: #736221;
+  --ruby-50: #faf4f3;
+  --ruby-100: #f5e9e8;
+  --ruby-200: #e6c9c5;
+  --ruby-300: #d7a8a1;
+  --ruby-400: #b8665b;
+  --ruby-500: #9A2515;
+  --ruby-600: #8b2113;
+  --ruby-700: #741c10;
+  --ruby-800: #5c160d;
+  --ruby-900: #4b120a;
+  --alice-50: #f3f8fa;
+  --alice-100: #e7f2f4;
+  --alice-200: #c3dde5;
+  --alice-300: #9fc9d5;
+  --alice-400: #58a1b5;
+  --alice-500: #107895;
+  --alice-600: #0e6c86;
+  --alice-700: #0c5a70;
+  --alice-800: #0a4859;
+  --alice-900: #083b49;
+  --coral-50: #fef8f4;
+  --coral-100: #fef0e9;
+  --coral-200: #fcdbc8;
+  --coral-300: #fac5a6;
+  --coral-400: #f69964;
+  --coral-500: #F26D21;
+  --coral-600: #da621e;
+  --coral-700: #b65219;
+  --coral-800: #914114;
+  --coral-900: #773510;
+  --kelly-50: #f9faf7;
+  --kelly-100: #f3f4ee;
+  --kelly-200: #e0e4d5;
+  --kelly-300: #cdd4bb;
+  --kelly-400: #a8b389;
+  --kelly-500: #829356;
+  --kelly-600: #75844d;
+  --kelly-700: #626e41;
+  --kelly-800: #4e5834;
+  --kelly-900: #40482a;
+  --purple-50: #fafafb;
+  --purple-100: #f6f5f7;
+  --purple-200: #e8e5ea;
+  --purple-300: #dbd6dd;
+  --purple-400: #bfb7c4;
+  --purple-500: #a498aa;
+  --purple-600: #948999;
+  --purple-700: #7b7280;
+  --purple-800: #625b66;
+  --purple-900: #504a53;
+  --slate-50: #f5f6f6;
+  --slate-100: #eaeded;
+  --slate-200: #ccd3d3;
+  --slate-300: #adb9b9;
+  --slate-400: #6f8484;
+  --slate-500: #314F4F;
+  --slate-600: #2c4747;
+  --slate-700: #253b3b;
+  --slate-800: #1d2f2f;
+  --slate-900: #182727;
+}
+
+
+/* Base-size for rem */
+html {
+  font-size: 10px;
+  line-height: 1.5rem;
+}
+
+body {
+  font-family: 'Atkinson Hyperelegible', var(--text-font-family-fallback), var(--text-font-base);
+  font-weight: normal;
+  color: var(--text-color);
+}
+h1, h2, h3 {
+  font-family: var(--header-font-family), var(--header-font-family-fallback);
+  color: var(--text-color-light);
+}
+.remark-slide-content {
+  background-color: var(--background-color);
+  font-size: 1rem;
+  padding: 2rem 3rem 1.5rem 3rem;
+  width: 100%;
+  height: 100%;
+}
+.remark-code, .remark-inline-code {
+  font-family: var(--code-font-family), Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+}
+.remark-code {
+  font-size: 1rem;
+}
+.remark-inline-code {
+  font-size: var(--code-inline-font-size);
+  color: #000;
+}
+.remark-slide-number {
+  color: var(--alice-500);
+  opacity: 1;
+  font-size: 0.9em;
+  display: var(--display-page);
+}
+.remark-code-line-highlighted {
+  background-color: var(--code-highlight-color);
+}
+
+/* Inverse class */
+.inverse {
+  background-color: var(--inverse-background-color);
+  color: var(--inverse-text-color);
+
+}
+.inverse h1, .inverse h2, .inverse h3 {
+  color: var(--inverse-header-color);
+}
+.inverse a, .inverse a > code {
+  color: var(--inverse-link-color);
+}
+img, video, iframe {
+  max-width: 100%;
+}
+blockquote {
+  border-left: solid 5px lightgray;
+  padding-left: 1em;
+}
+
+/* For Printing */
+@page { margin: 0; }
+@media print {
+  .remark-slide-scaler {
+    width: 100% !important;
+    height: 100% !important;
+    transform: scale(1) !important;
+    top: 0 !important;
+    left: 0 !important;
+  }
+}
+
+
+
+/* Font styling */
+.hi {
+  font-weight: 600;
+}
+.mono {
+  font-family: monospace;
+}
+.ul {
+  text-decoration: underline;
+}
+.ol {
+  text-decoration: overline;
+}
+.st {
+  text-decoration: line-through;
+}
+.bf {
+  font-weight: bold;
+}
+.it {
+  font-style: italic;
+}
+
+/* Example */
+.ex {
+  font-weight: 300;
+  color: #555F61 !important;
+  font-style: italic;
+}
+
+/* Attention */
+.attn {
+  font-weight: 500;
+  color: #e64173 !important;
+}
+
+/* Note */
+.note {
+  font-weight: 300;
+  font-style: italic;
+  color: #314f4f !important;
+}
+
+/* Question and answer */
+.qa {
+  font-weight: 500;
+  color: #e64173 !important;
+}
+
+/* Figure Caption */
+.caption {
+  font-size: 0.8888889em;
+  line-height: 1.5;
+  margin-top: 1em;
+  color: #6b7280;
+}
+
+
+
+/* Font Sizes */
+text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+text-6xl {
+  font-size: 3.75rem;
+  line-height: 1;
+}
+text-7xl {
+  font-size: 4.5rem;
+  line-height: 1;
+}
+text-8xl {
+  font-size: 6rem;
+  line-height: 1;
+}
+text-9xl {
+  font-size: 8rem;
+  line-height: 1;
+}
+
+/* Headers */
+.remark-slide-content h1 {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.remark-slide-content h2 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.remark-slide-content h3 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+
+/* Title Slide */
+.title-slide .inverse .remark-slide-content {
+  background-color: #FAFAFA;
+}
+.title-slide {
+  background-color: #FAFAFA;
+  border-top: 80px solid #FAFAFA;
+}
+.title-slide h1  {
+  color: var(--text-color);
+  font-size: 1.75rem;
+  font-weight: 400;
+  text-shadow: none;
+  text-align: left;
+  margin-left: 1.5rem;
+}
+.title-slide h2  {
+  color: var(--link-color);
+  font-size: 1.5rem;
+  font-weight: 300;
+  text-shadow: none;
+  text-align: left;
+  margin-left: 1.5rem;
+  margin-top: -1.5rem;
+}
+/* Date */
+.title-slide h3  {
+  color: var(--text-color-light);
+  font-size: 1rem;
+  font-weight: 300;
+  text-shadow: none;
+  text-align: left;
+  margin-left: 1.5rem;
+  margin-bottom: 0rem;
+}
+/* Name */
+.title-slide h3:last-of-type  {
+  font-style: italic;
+  font-size: 1rem;
+}
+
+/* Header */
+h1 {
+  margin-top: -5px;
+  margin-left: -0px;
+  margin-bottom: 30px;
+  color: var(--text-color-light);
+  font-weight: 200;
+}
+h2, h3, h4 {
+  color: #F26D21;
+  font-weight: 400;
+  text-shadow: none;
+  text-align: left;
+  padding-top: -15px;
+  padding-bottom: 0px;
+  margin-left: 0px;
+}
+
+/* Subheader */
+.subheader{
+  font-weight: 100;
+  font-style: italic;
+  display: block;
+  margin-top: -25px;
+  margin-bottom: 25px;
+}
+
+/* Links */
+a {
+  color: var(--alice-500);
+  background-color: var(--alice-50);
+  padding: 0.125rem 0.25rem;
+}
+a:hover {
+  color: var(--alice-700);
+}
+
+/* turns off slide numbers for title page: https://github.com/gnab/remark/issues/298 */
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+
+/* No line numbers with classes: clear, inverse */
+.clear .remark-slide-number {
+  display: none;
+}
+.inverse .remark-slide-number {
+  display: none;
+}
+.remark-code-line-highlighted {
+  background-color: rgba(249, 39, 114, 0.5);
+}
+
+
+/* Xaringan tweeks */
+.inverse {
+  background-color: var(--alice-800);
+  text-shadow: 0 0 20px #333;
+  /* text-shadow: none; */
+}
+
+.title-slide {
+  background-color: #ffffff;
+  border-top: 80px solid #ffffff;
+}
+
+.footnote {
+  position: absolute;
+  bottom: 1em;
+  padding-right: 6em;
+  font-size: 0.75rem;
+  color: #7f7f7f;
+}
+
+/* Lists */
+li {
+    margin-top: 4px;
+}
+
+/* Mono-spaced font */
+.mono-small {
+  font-family: monospace;
+  font-size: 1rem;
+}
+.remark-inline-code {
+  background: #F5F5F5; /* lighter */
+  border-radius: 0.125rem;
+  padding: 0.125rem 0.25rem;
+}
+
+
+
+
+/* 2/3 left; 1/3 right */
+.more-left {
+  float: left;
+  width: 63%;
+}
+.less-right {
+  float: right;
+  width: 31%;
+}
+.more-right ~ * {
+  clear: both;
+}
+
+/* 9/10 left; 1/10 right */
+.left90 {
+  padding-top: 0.7em;
+  float: left;
+  width: 85%;
+}
+.right10 {
+  padding-top: 0.7em;
+  float: right;
+  width: 9%;
+}
+
+/* 95% left; 5% right */
+.left95 {
+  padding-top: 0.7em;
+  float: left;
+  width: 91%;
+}
+.right05 {
+  padding-top: 0.7em;
+  float: right;
+  width: 5%;
+}
+.col-left {
+  float: left;
+  width: 47%;
+  margin-top: -1em;
+}
+.col-right {
+  float: right;
+  width: 47%;
+  margin-top: -1em;
+}
+.clear-up {
+  clear: both;
+  margin-top: -1em;
+}
+
+
+
+/* Fix remark  */
+table {
+  color: #000000;
+  font-size: 11pt;
+  line-height: 100%;
+  border-top: 1px solid #ffffff !important;
+  border-bottom: 1px solid #ffffff !important;
+}
+th, td {
+  background-color: #ffffff;
+  line-height: 1.25 !important;
+}
+table th {
+  font-weight: 400;
+}
+
+
+/*
+
+Documents Only CSS
+
+*/
+
+/* Title Page: Documents Only */
+.title-slide {
+  background-color: #FAFAFA;
+}
+.title-slide > h1 {
+  font-size: 16pt !important;
+  line-height: 32pt !important;
+}
+.title-slide > h2 {
+  font-size: 12pt !important;
+  line-height: 24pt !important;
+}
+.title-slide > h3 {
+  font-size: 8pt !important;
+  line-height: 16pt !important;
+}
+
+h1, h2, h3, h4 {
+  color: var(--coral-500);
+  background-color: var(--coral-50);
+  padding: 0.25rem 0.5rem;
+  display: inline-block;
+}
+h1, h2 {
+  margin: 1rem 0rem;
+}
+h3, h4 {
+  margin: 0.5rem 0rem;
+}
+p {
+  margin: 0.125rem 0rem;
+}
