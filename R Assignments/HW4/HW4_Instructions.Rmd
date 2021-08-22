@@ -1,0 +1,109 @@
+---
+title: "R Homework 4"
+subtitle: "Instructions"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default']
+    ## No title slide
+    seal: false
+    self_contained: true
+    nature:
+      ratio: '8.5:11'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r preamble, child=here::here("document-preamble.Rmd")}
+
+```
+
+
+```{r, echo = F}
+library(icons)
+library(tidyverse)
+library(gt)
+
+output_format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+```
+
+<h1 class="hi text-2xl center coral">Instructions for R Homework 4*</h1>
+
+<div class="footnote"><sup>*</sup> For all HW assignments, I need to see all the code used</div>
+
+
+## Question 1 
+
+A light bulb manufacturer claims their light bulbs last for 1,000 hours. You sample 50 light bulbs and you find that the sample average light bulb lifetime duration is 955 hours. Assume that you know the population standard deviation, and that it is 220 hours. That is $n = 50$, $\bar{x} = 955$, $\sigma = 220$. Test the null hypothesis $H_0: \mu = 1000$ against the alternative hypothesis $H_a: \mu < 1000$ at the 0.05 significance level.
+
+
+- Calculate the critical statistic using the `qnorm()` function. Compare this to the test statistic, found using the sample information. Do you reject, or fail to reject the null hypothesis?
+
+- Find the p-value associated with the sample statistic under the null hypothesis. You can do this using the `pnorm()` function. Report the p-value. Is your conclusion consistent with the first part of this question?
+
+
+## Question 2 
+
+Consider the scenario presented in question 1. Here we will consider how the p-value will change with the sample size, keeping all of the other information the same. Create a vector, called `n`, of different sample sizes, from 10 to 200 at an increment of 5. You can do this using the seq() command. Use this vector of sample sizes, along with the information in question 1 and the `pnorm()` function, to create a vector of p-values that is the same length as the vector `n`. Plot the vector of sample sizes on the horizontal axis and the vector of p-values on the vertical axis using the `plot()` function. Label the axes.
+
+- What happens to the p-value as the sample size increases?
+
+- What range of sample sizes will give you a statistically significant result, holding the population standard deviation and sample average constant?
+
+
+---
+
+## Question 3 
+
+Now we will do something similar to see how the sample average impacts the p-value. Create a vector, called `xbar`, of different observed sample averages, from 920 to 1000 at an increment of 5 (use the `seq()` function). Use this vector of sample averages along with the information in question 1 and the `pnorm()` function, to create a vector of p-values that is the same length as `xbar`. Plot the vector of sample averages on the horizontal axis and the vector of p-values on the vertical axis using the plot function. Label the axes (use `help(plot)` to learn how to make axis labels).
+
+- What happens to the p-value as the sample average increases?
+
+- What range of sample averages will give you a statistically significant result, holding the population standard deviation and sample size constant?
+
+
+## Question 4 
+
+Now, we’ll go through the same procedure keeping sample size and population standard constant, but changing the population standard deviation. Create a numerical vector, called `sigma`, of different population standard deviations, from 120 to 250 at an increment of 5. You can do this using the `seq()` command. Use this vector of population standard deviations, along with the information in question 1 and the `pnorm()` function, to create a vector of p-values. 
+
+Plot the vector of population standard deviations on the horizontal axis and the vector of p-values on the vertical axis using the plot function. Label the axes.
+
+- What happens to the p-value as the population standard deviation increases?
+
+- What range of population standard deviations will give you a statistically significant result, holding the sample average and sample size constant?
+
+
+
+
+---
+
+## Question 5 
+
+Now we’ll do power analysis for question 1. For the hypothesis $H_0: \mu = 1000$ vs. $H_a: \mu < 1000$, with $n = 50$, $\bar{x} = 50$, $\sigma = 220$, with $\alpha = 0.05$, there is a range of values of that will result in us rejecting the null hypothesis. This is called the rejection region, and the figure you created in question three hints at this.
+
+- Find the rejection region in terms of $\bar{x}$.
+
+- Now consider alternative true values of ranging from 800 to 1000 at intervals of ten. Create a vector of these values use the `seq()` function, and call this vector `true_mu`.
+
+- Use the `pnorm()` to calculate the probability of observing the critical sample average or a smaller value of $\bar{x}$ using the vector of true mean values. This is the power of the test for alternative true values of mu.
+
+- Plot the vector of alternative true values of $\mu$ on the horizontal axis and the vector a power on the vertical axis. Paste the figure below.
+
+- For what range of true values of $\mu$ does our test have a power of 80% or more?
+
+
+
+---
+## Question 6 
+
+You started taking the bus to work. The local transit authority says that a bus should arrive at your bus stop every five minutes. After a while, you notice you spend a lot more than five minutes waiting for the bus, so you start to keep a record. You spend the next two months recording how long it takes for the bus to arrive to the bus stop. This give a total of sixty observations that denote the number of minutes it took for the bus to arrive (rounded to the nearest minute). These observations are hosted at https://mattbutner.github.io/data/bus_stop_time.csv
+
+- Use the `t.test()` command to test the hypothesis $H_0: \mu = 5$ vs. $H_a: \mu \neq 5$ with $\alpha= 0.05$.
+
+- Report the exact p-value
+
+- Do you reject or fail to reject the null hypothesis? Interpret your conclusion.
+
+

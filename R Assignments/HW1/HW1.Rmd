@@ -1,0 +1,46 @@
+---
+title: "3818 R Homework 1"
+author: "*** STUDENT NAME HERE ***"
+date: "8/20/2020"
+output: 
+  html_document:
+    theme: flatly
+---
+
+## Question 1
+
+```{r}
+# Code goes here!
+```
+
+
+
+## Question 2
+
+```{r}
+# Code goes here!
+```
+
+
+
+## Question 3
+
+```{r}
+# Code goes here!
+```
+
+
+
+## Question 4
+
+```{r}
+# Code goes here!
+```
+
+
+
+## Question 5
+
+```{r}
+# Code goes here!
+```

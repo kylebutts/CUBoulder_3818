@@ -1,0 +1,23 @@
+---
+title: "3818 R Homework 0"
+author: "*** STUDENT NAME HERE ***"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document: 
+    theme: flatly
+---
+
+# Checking that you read the Markdown Section
+
+1. Please provide a link to a song you like:
+
+
+
+
+
+2. Insert a code chunk with the content being `1 + 1`.
+
+
+
+
+

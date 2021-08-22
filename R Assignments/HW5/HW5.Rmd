@@ -1,0 +1,14 @@
+---
+title: "3818 R Homework 5"
+author: '*** Student Name ***'
+date: "8/20/2020"
+output: html_document
+---
+
+
+
+## Question 1 
+
+```{r Load 1888 Swiss demographic data}
+data(swiss, package="datasets")
+```
