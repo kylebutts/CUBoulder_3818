@@ -37,12 +37,12 @@ class: clear, middle
 
 grades <- tribble(
 	~Assignment, ~Percentage,
-    "Homework",.1,    
-    "R Problem Sets",.1,    
-    "R Project",.1,    
-    "Midterm 1",.2,    
-    "Midterm 2",.2,    
-    "Final",.2
+    "Homework", .1,    
+    "R Problem Sets", .15,    
+    "R Project", .15,    
+    "Midterm 1", .2,    
+    "Midterm 2", .2,    
+    "Final", .2
 )
 
 gt(grades) %>% 

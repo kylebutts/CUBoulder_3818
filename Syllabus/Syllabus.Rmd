@@ -16,7 +16,7 @@ output:
       countIncrementalSlides: false
 ---
 
-```{r preamble, child=here::here("Syllabus", "preamble.Rmd")}
+```{r preamble, child=here::here("document-preamble.Rmd")}
 ```
 
 
@@ -25,7 +25,7 @@ library(icons)
 library(tidyverse)
 library(gt)
 
-output_format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+output_format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 ```
 
 <h1 class="hi text-2xl center coral">ECON 3818: Introduction to Statistics</h1>
@@ -44,40 +44,40 @@ We will study basic probability, probability distributions (especially the norma
 
 ```{r info-table, echo = F}
 table <- tribble(
-	~Icon, ~Name, ~Time, ~Location,
-	as.character(icons::fontawesome("chalkboard-teacher")), "Instructor", "Kyle Butts", "<a href = 'emailto:kyle.butts@colorado.edu'>kyle.butts@colorado.edu</a>",
-	as.character(icons::fontawesome("school")), "Lecture", "MWF 11:30-12:20pm", "Econ 119",
-	as.character(icons::fontawesome("laptop-house")), "Office Hours", "TBD", "<a href = '#'>Zoom</a>",
-	as.character(icons::fontawesome("chalkboard-teacher")), "TA", "TBD", "<a href = 'emailto:first.last@colorado.edu'>first.last@colorado.edu</a>",
-	as.character(icons::fontawesome("laptop-house")), "Office Hours", "TBD", "<a href = '#'>Zoom</a>",
-	as.character(icons::fontawesome("book")), "Textbook", "The Basic Practice of Statistics 9e. <br/> David Moore, William Notz, <br/> and Michael A Fligner.", "<a href = 'https://www.cubookstore.com/c-74-textbook-help.aspx#Day1'>You already bought this!</a> <br/> <i>Course Materials on Canvas</i>",
-	as.character(icons::fontawesome("laptop-code")), "Software", "<b>R</b> is a free programming language that is utilized primarily for data analysis. We will spend time throughout the
+  ~Icon, ~Name, ~Time, ~Location,
+  as.character(icons::fontawesome("chalkboard-teacher")), "Instructor", "Kyle Butts", "<a href = 'emailto:kyle.butts@colorado.edu'>kyle.butts@colorado.edu</a>",
+  as.character(icons::fontawesome("school")), "Lecture", "MWF 11:30-12:20pm", "Econ 119",
+  as.character(icons::fontawesome("laptop-house")), "Office Hours", "TBD", "<a href = '#'>Zoom</a>",
+  as.character(icons::fontawesome("chalkboard-teacher")), "TA", "TBD", "<a href = 'emailto:first.last@colorado.edu'>first.last@colorado.edu</a>",
+  as.character(icons::fontawesome("laptop-house")), "Office Hours", "TBD", "<a href = '#'>Zoom</a>",
+  as.character(icons::fontawesome("book")), "Textbook", "The Basic Practice of Statistics 9e. <br/> David Moore, William Notz, <br/> and Michael A Fligner.", "<a href = 'https://www.cubookstore.com/c-74-textbook-help.aspx#Day1'>You already bought this!</a> <br/> <i>Course Materials on Canvas</i>",
+  as.character(icons::fontawesome("laptop-code")), "Software", "<b>R</b> is a free programming language that is utilized primarily for data analysis. We will spend time throughout the
 course working on <i>R</i> exercises through the <i>RStudio</i> interface.", "Download <br/> <a href = 'https://cloud.r-project.org/'><b>R</b></a> and <a href = 'https://www.rstudio.com/products/rstudio/download/'>RStudio</a>",
-	as.character(icons::fontawesome("list")), "Prerequisites", "Econ 1088, 2010 and 2020", "",
-) 
+  as.character(icons::fontawesome("list")), "Prerequisites", "Econ 1088, 2010 and 2020", "",
+)
 
 
 
-table %>% 
-	mutate(
-		Icon = map(Icon, gt::html),
-		Location = map(Location, gt::html),
-		Time = map(Time, gt::html),
-		Name = paste0("<i>", Name, "</i>"),
-		Name = map(Name, gt::html)
-	) %>%
-	gt::gt(table) %>% 
-		kfbmisc::gt_theme_kyle() %>%
-		gt::cols_label(Icon = "") %>%
-		gt::cols_width(
-			Icon ~ px(40)
-		) %>% 
-		gt::cols_align(columns = c(Name, Time, Location),align = "left") %>% 
-		gt::tab_options(
-			data_row.padding = px(4),
-			column_labels.hidden  = TRUE,
-			table.font.size = px(10)
-		)
+table %>%
+  mutate(
+    Icon = map(Icon, gt::html),
+    Location = map(Location, gt::html),
+    Time = map(Time, gt::html),
+    Name = paste0("<i>", Name, "</i>"),
+    Name = map(Name, gt::html)
+  ) %>%
+  gt::gt(table) %>%
+  kfbmisc::gt_theme_kyle() %>%
+  gt::cols_label(Icon = "") %>%
+  gt::cols_width(
+    Icon ~ px(40)
+  ) %>%
+  gt::cols_align(columns = c(Name, Time, Location), align = "left") %>%
+  gt::tab_options(
+    data_row.padding = px(4),
+    column_labels.hidden = TRUE,
+    table.font.size = px(10)
+  )
 ```
 
 
@@ -88,42 +88,42 @@ table %>%
 
 ```{r grading-summary, echo = F}
 grades <- tribble(
-	~Assignment, ~Percentage, ~Blank, ~Assignment2, ~Percentage2,
-    "<b>Homework</b>", .1, "", "<b>Midterm 1</b>", .2,    
-    "<b>R Problem Sets</b>", .15, "", "<b>Midterm 2</b>", .2,    
-    "<b>R Project</b>", .15, "", "<b>Final</b>", .2
-) %>% 
-	mutate(
-		Assignment = map(Assignment, gt::html),
-		Assignment2 = map(Assignment2, gt::html)
-	)
+  ~Assignment, ~Percentage, ~Blank, ~Assignment2, ~Percentage2,
+  "<b>Homework</b>", .1, "", "<b>Midterm 1</b>", .2,
+  "<b>R Problem Sets</b>", .15, "", "<b>Midterm 2</b>", .2,
+  "<b>R Project</b>", .15, "", "<b>Final</b>", .2
+) %>%
+  mutate(
+    Assignment = map(Assignment, gt::html),
+    Assignment2 = map(Assignment2, gt::html)
+  )
 
-gt(grades) %>% 
-	kfbmisc::gt_theme_kyle() %>%
-	fmt_percent(columns = c("Percentage", "Percentage2"), decimals = 0) %>%
-	gt::cols_width(
-		Assignment ~ px(100),
-		Assignment2 ~ px(100),
-		Percentage ~ px(80),
-		Percentage2 ~ px(70),
-		Blank ~ px(20)
-	) %>% 
-	gt::cols_align(align = "left") %>%
-	# Border right
-	gt::tab_style(
-      style = list(cell_borders(
-          sides = c("left"),
-          color = "#D3D3D3",
-          weight = px(2)
-      )),
-      locations = list(cells_body(columns = Blank))
-    ) %>% 
-	gt::tab_options(
-		data_row.padding = px(2),
-		table.font.size = px(10),
-		column_labels.hidden  = TRUE,
-		column_labels.border.bottom.width = px(1)
-	) 
+gt(grades) %>%
+  kfbmisc::gt_theme_kyle() %>%
+  fmt_percent(columns = c("Percentage", "Percentage2"), decimals = 0) %>%
+  gt::cols_width(
+    Assignment ~ px(100),
+    Assignment2 ~ px(100),
+    Percentage ~ px(80),
+    Percentage2 ~ px(70),
+    Blank ~ px(20)
+  ) %>%
+  gt::cols_align(align = "left") %>%
+  # Border right
+  gt::tab_style(
+    style = list(cell_borders(
+      sides = c("left"),
+      color = "#D3D3D3",
+      weight = px(2)
+    )),
+    locations = list(cells_body(columns = Blank))
+  ) %>%
+  gt::tab_options(
+    data_row.padding = px(2),
+    table.font.size = px(10),
+    column_labels.hidden = TRUE,
+    column_labels.border.bottom.width = px(1)
+  )
 ```
 
 
@@ -158,94 +158,92 @@ There will be two midterms throughout the semester. They will consist of multipl
 ```{r echo = F}
 
 link_classes <- function(col) {
-	col <- replace_na(col, " ")
+  col <- replace_na(col, " ")
 
-	# Add githack link
-	col <- str_replace_all(
-		col, "Chapter ([:digit:]{1,2})",
-		"<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%200\\1/ch\\1.html'> Chapter \\1</a>"
-		)
+  # Add githack link
+  col <- str_replace_all(
+    col, "Chapter ([:digit:]{1,2})",
+    "<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%200\\1/ch\\1.html'> Chapter \\1</a>"
+  )
 
-	col <- str_replace(col, "Chapter%200([:digit:]{2})", "Chapter%20\\1")
+  col <- str_replace(col, "Chapter%200([:digit:]{2})", "Chapter%20\\1")
 
-	# Fix for Intro, Distribution, Expectations, and Syllabus
-	col <- str_replace(
-		col, "Intro$",
-		"<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2001/ch1.html'> Intro</a>"
-		)
-	col <- str_replace(
-		col, "^Distributions",
-		"<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Distributions/distributions.html'> Distributions</a>"
-		)
-	col <- str_replace(
-		col, "Expectations",
-		"<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Expectations/expectations.html'> Expectations</a>"
-		)
+  # Fix for Intro, Distribution, Expectations, and Syllabus
+  col <- str_replace(
+    col, "Intro$",
+    "<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2001/ch1.html'> Intro</a>"
+  )
+  col <- str_replace(
+    col, "^Distributions",
+    "<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Distributions/distributions.html'> Distributions</a>"
+  )
+  col <- str_replace(
+    col, "Expectations",
+    "<a href = 'https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Expectations/expectations.html'> Expectations</a>"
+  )
 
-	col <- str_replace(
-		col, "Syllabus",
-		"<a href = '#'>Syllabus</a>"
-	)
+  col <- str_replace(
+    col, "Syllabus",
+    "<a href = '#'>Syllabus</a>"
+  )
 
-	# color No Class, Midterm, and R Day
-	col <- str_replace(
-		col, "No Class",
-		"<span style = 'color: #F26D21;'>No Class</span>"
-	)
-	col <- str_replace(
-		col, "Midterm",
-		"<span style = 'color: #9A2515;'>Midterm</span>"
-	)
-	col <- str_replace(
-		col, "R Day",
-		"<span style = 'color: #829356;'>R Day</span>"
-	)
+  # color No Class, Midterm, and R Day
+  col <- str_replace(
+    col, "No Class",
+    "<span style = 'color: #F26D21;'>No Class</span>"
+  )
+  col <- str_replace(
+    col, "Midterm",
+    "<span style = 'color: #9A2515;'>Midterm</span>"
+  )
+  col <- str_replace(
+    col, "R Day",
+    "<span style = 'color: #829356;'>R Day</span>"
+  )
 
-	col
+  col
 }
 
 link_assignments <- function(col) {
-	col <- replace_na(col, " ")
+  col <- replace_na(col, " ")
 
-	col <- str_replace(
-		col, "Final Exam",
-		"<span style = 'color: #9A2515;'>Final Exam</span>"
-	)
+  col <- str_replace(
+    col, "Final Exam",
+    "<span style = 'color: #9A2515;'>Final Exam</span>"
+  )
 
-	col
+  col
 }
 
 cal <- read_csv(here("schedule.csv")) %>%
-	pivot_wider(., names_from = "name", values_from = "value") %>%
-	mutate(
-		Monday = link_classes(Monday),
-		Wednesday = link_classes(Wednesday),
-		Friday = link_classes(Friday),
-		Assignments = link_assignments(Assignments),
-		Monday = map(Monday, gt::html),
-		Wednesday = map(Wednesday, gt::html),
-		Friday = map(Friday, gt::html),
-		Assignments = map(Assignments, gt::html),
-		Dates = map(Dates, gt::html)
-	)
+  pivot_wider(., names_from = "name", values_from = "value") %>%
+  mutate(
+    Monday = link_classes(Monday),
+    Wednesday = link_classes(Wednesday),
+    Friday = link_classes(Friday),
+    Assignments = link_assignments(Assignments),
+    Monday = map(Monday, gt::html),
+    Wednesday = map(Wednesday, gt::html),
+    Friday = map(Friday, gt::html),
+    Assignments = map(Assignments, gt::html),
+    Dates = map(Dates, gt::html)
+  )
 
 cal %>%
-	gt() %>%
-		kfbmisc::gt_theme_kyle() %>%
-		tab_options(
-			data_row.padding = px(14)
-		) %>%
-		cols_align(
-			align = "left",
-			columns = c("Week", "Dates", "Monday", "Wednesday", "Friday", "Assignments")
-		) %>%
-		tab_options(
-			data_row.padding = px(4),
-			table.font.size = px(8),
-			column_labels.border.bottom.width = px(1)
-		)
-
-
+  gt() %>%
+  kfbmisc::gt_theme_kyle() %>%
+  tab_options(
+    data_row.padding = px(14)
+  ) %>%
+  cols_align(
+    align = "left",
+    columns = c("Week", "Dates", "Monday", "Wednesday", "Friday", "Assignments")
+  ) %>%
+  tab_options(
+    data_row.padding = px(4),
+    table.font.size = px(8),
+    column_labels.border.bottom.width = px(1)
+  )
 ```
 
 
@@ -254,32 +252,27 @@ cal %>%
 
 ## University Policies
 
-<br/>
+<div style="height: 0px;"></div>
 
 ### Students with Disabilities:
 
-<div class="text-sm">
 If you qualify for accommodations
 because of a disability, please submit to me a letter from disability
 services in a timely manner so that your needs can be addressed.
 Disability services determine accommodations based on documented
 disabilities. Contact: 303-492-8671, Center for Community N200.
-</div>
 
 ### Religious Observance Policy:
 
-<div class="text-sm">
 Campus policy regarding religious
 observances requires that faculty make every effort to reasonably and
 fairly deal with all students who, because of religious obligations,
 have conflicts with scheduled exams, assignments, or required
 attendance. If you have a conflict, please contact me at the beginning
 of the term so we can make proper arrangements.
-</div>
 
 ### Honor Code:
 
-<div class="text-sm">
 All students of the University of Colorado at Boulder
 are responsible for knowing and adhering to the academic integrity
 policy of this institution. Violations of this policy may include:
@@ -293,11 +286,9 @@ university probation, suspension, or expulsion). Other information on
 the Honor Code can be found at:
 <http://www.colorado.edu/policies/honor.html> and at
 <http://www.colorado.edu/academics/honorcode/>
-</div>
 
 ### Discrimination & Harassment Policy:
 
-<div class="text-sm">
 The University of Colorado
 Policy on Sexual Harassment applies to all students, staff and faculty.
 Sexual harassment is unwelcome sexual attention. It can involve
@@ -313,4 +304,3 @@ Judicial Affairs at 303-492-5550. Information about the ODH and the
 campus resources available to assist individuals who believe they have
 been sexually harassed can be obtained at:
 <http://www.colorado.edu/odh/>
-</div>

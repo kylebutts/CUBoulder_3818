@@ -210,7 +210,6 @@ We will study basic probability, probability distributions (especially the norma
 
 **Readings:** Chapter 23
 
-
 ---
 
 **Lecture 19: [Correlation](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2004/ch4.html)**
@@ -225,19 +224,7 @@ We will study basic probability, probability distributions (especially the norma
 
 ---
 
-**Lecture 20: [Regression](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.html)**
-
-<a href="https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.html">![html](https://img.shields.io/badge/html-%23323330.svg?style=for-the-badge&logo=html5&logoColor=white)</a>
-<a href="https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.pdf">![.pdf](https://img.shields.io/badge/pdf-%23323330.svg?style=for-the-badge&logo=adobe&logoColor=white)</a>
-<a href="https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2005/ch5.Rmd">![.Rmd](https://img.shields.io/badge/.Rmd%20File-%23323330.svg?style=for-the-badge&logo=r&logoColor=white)</a>
-
-**Readings:** Chapter 5
-
-
-
----
-
-**Lecture 21: [Two-Way Tables](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch6.html)**
+**Lecture 20: [Two-Way Tables](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch6.html)**
 
 <a href="https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch6.html">![html](https://img.shields.io/badge/html-%23323330.svg?style=for-the-badge&logo=html5&logoColor=white)</a>
 <a href="https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2006/ch6.pdf">![.pdf](https://img.shields.io/badge/pdf-%23323330.svg?style=for-the-badge&logo=adobe&logoColor=white)</a>
@@ -245,6 +232,18 @@ We will study basic probability, probability distributions (especially the norma
 
 **Readings:** Chapter 6
 
+
+
+
+---
+
+**Lecture 21: [Regression](https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.html)**
+
+<a href="https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.html">![html](https://img.shields.io/badge/html-%23323330.svg?style=for-the-badge&logo=html5&logoColor=white)</a>
+<a href="https://raw.githack.com/kylebutts/ECON3818_F2021/master/Lecture%20Slides/Chapter%2005/ch5.pdf">![.pdf](https://img.shields.io/badge/pdf-%23323330.svg?style=for-the-badge&logo=adobe&logoColor=white)</a>
+<a href="https://github.com/kylebutts/ECON3818_F2021/blob/master/Lecture%20Slides/Chapter%2005/ch5.Rmd">![.Rmd](https://img.shields.io/badge/.Rmd%20File-%23323330.svg?style=for-the-badge&logo=r&logoColor=white)</a>
+
+**Readings:** Chapter 5
 
 
 ---

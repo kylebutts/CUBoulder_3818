@@ -9,18 +9,18 @@ library(kfbmisc)
 
 # Knitr options
 opts_chunk$set(
-comment = "#>",
-fig.align = "center",
-fig.height = 7,
-fig.width = 10.5,
-warning = F,
-message = F
+	comment = "#>",
+	fig.align = "center",
+	fig.height = 7,
+	fig.width = 10.5,
+	warning = F,
+	message = F
 )
 
 # Use svg for figures
 opts_chunk$set(dev = "svglite")
 options(device = function(file, width, height) {
-svglite::svglite(tempfile(), width = width, height = height)
+	svglite::svglite(tempfile(), width = width, height = height)
 })
 
 # HTML output for knitr
@@ -30,7 +30,7 @@ options(knitr.table.format = "html")
 
 
 <!-- Custom css -->
-```{css, echo = F, code=xfun::read_utf8(here::here("Syllabus", "syllabus.css"))}
+```{css, echo = F, code=xfun::read_utf8(here::here("document.css"))}
 ```
 
 

@@ -1,0 +1,66 @@
+Week,Dates,name,value
+1,08/23 - 08/27,Monday,Syllabus + Intro
+1,08/23 - 08/27,Wednesday,Chapter 1
+1,08/23 - 08/27,Friday,Chapter 2
+2,08/30 - 09/03,Monday,R Day <br/> <i>(Introduction)</i>
+2,08/30 - 09/03,Wednesday,R Day <br/> <i>(Visualizing Data)</i>
+2,08/30 - 09/03,Friday,Chapter 12
+3,09/06 - 09/10,Monday,No Class <br/> <i>Labor Day</i>
+3,09/06 - 09/10,Wednesday,Chapter 13
+3,09/06 - 09/10,Friday,Chapter 14
+4,09/13 - 09/17,Monday,Chapter 3
+4,09/13 - 09/17,Wednesday,Distributions
+4,09/13 - 09/17,Friday,Expectations
+5,09/20 - 09/24,Monday,R Day <br/> <i>(Distributions)</i>
+5,09/20 - 09/24,Wednesday,Chapter 8
+5,09/20 - 09/24,Friday,Chapter 9
+6,09/27 - 10/01,Monday,<i>Review</i>
+6,09/27 - 10/01,Wednesday,Midterm
+6,09/27 - 10/01,Friday,Chapter 15
+7,10/04 - 10/08,Monday,Chapter 15
+7,10/04 - 10/08,Wednesday,Chapter 16
+7,10/04 - 10/08,Friday,Chapter 16 <br/> Chapter 17
+8,10/11 - 10/15,Monday,Chapter 17
+8,10/11 - 10/15,Wednesday,R Day <br/> <i>(Inference)</i>
+8,10/11 - 10/15,Friday,Chapter 18
+9,10/18 - 10/22,Monday,R Day <br/> <i>(Underpowered)</i>
+9,10/18 - 10/22,Wednesday,Chapter 20
+9,10/18 - 10/22,Friday,Chapter 20
+10,10/25 - 10/29,Monday,Chapter 21
+10,10/25 - 10/29,Wednesday,Chapter 21
+10,10/25 - 10/29,Friday,R Day <br/> <i>(t-dist)</i>
+11,11/01 - 11/05,Monday,Midterm
+11,11/01 - 11/05,Wednesday,Chapter 22
+11,11/01 - 11/05,Friday,Chapter 22
+12,11/08 - 11/12,Monday,Chapter 23
+12,11/08 - 11/12,Wednesday,Chapter 4
+12,11/08 - 11/12,Friday,Chapter 6
+13,11/15 - 11/19,Monday,Chapter 5
+13,11/15 - 11/19,Wednesday,Chapter 5
+13,11/15 - 11/19,Friday,R Day <br> <i>(Regression)</i>
+14,11/22 - 11/26,Monday,R Day <br/> <i>(ggplot2)</i>
+14,11/22 - 11/26,Wednesday,
+14,11/22 - 11/26,Friday,No Class <br/> <i>Thanksgiving</i>
+15,11/29 - 12/03,Monday,Chapter 26
+15,11/29 - 12/03,Wednesday,Chapter 26
+15,11/29 - 12/03,Friday,<i>Review</i>
+16,12/06 - 12/08,Monday,<i>Review</i>
+16,12/06 - 12/08,Wednesday,<i>Review</i>
+16,12/06 - 12/08,Friday,
+1,08/23 - 08/27,Assignments,"Homework 1, Sunday"
+2,08/30 - 09/03,Assignments,"R assignment 1, Wednesday <br/> Homework 2, Sunday"
+3,09/06 - 09/10,Assignments,"Homework 3, Sunday"
+4,09/13 - 09/17,Assignments,"R assignment 2, Wednesday"
+5,09/20 - 09/24,Assignments,"Homework 4, Sunday"
+6,09/27 - 10/01,Assignments,"Homework 5, Sunday"
+7,10/04 - 10/08,Assignments,"Homework 6, Sunday"
+8,10/11 - 10/15,Assignments,"R assignment 3, Wednesday <br/> Homework 7, Sunday"
+9,10/18 - 10/22,Assignments,"Homework 8, Sunday"
+10,10/25 - 10/29,Assignments,"Homework 9, Wednesday"
+11,11/01 - 11/05,Assignments,"R assignment 4, Wednesday <br/> Homework 10, Sunday"
+12,11/08 - 11/12,Assignments,"Homework 11, Sunday"
+13,11/15 - 11/19,Assignments,"Homework 12, Sunday"
+14,11/22 - 11/26,Assignments,"R Project, Due Sunday"
+15,11/29 - 12/03,Assignments,"R assignment 5, Wednesday <br/> Homework 13, Sunday"
+16,12/06 - 12/08,Assignments,
+Final,12/12 - <i>1:30-4pm</i>,Assignments,Final Exam
