@@ -19,7 +19,6 @@ output:
 ```{r preamble, child=here::here("document-preamble.Rmd")}
 ```
 
-
 ```{r, echo = F}
 library(icons)
 library(tidyverse)
@@ -47,8 +46,8 @@ table <- tribble(
   ~Icon, ~Name, ~Time, ~Location,
   as.character(icons::fontawesome("chalkboard-teacher")), "Instructor", "Kyle Butts", "<a href = 'emailto:kyle.butts@colorado.edu'>kyle.butts@colorado.edu</a>",
   as.character(icons::fontawesome("school")), "Lecture", "MWF 11:30-12:20pm", "Econ 119",
-  as.character(icons::fontawesome("laptop-house")), "Office Hours", "TBD", "<a href = '#'>Zoom</a>",
-  as.character(icons::fontawesome("chalkboard-teacher")), "TA", "TBD", "<a href = 'emailto:first.last@colorado.edu'>first.last@colorado.edu</a>",
+  as.character(icons::fontawesome("laptop-house")), "Office Hours", "M 2-4pm and W 9-11am", "<a href = 'https://cuboulder.zoom.us/s/3975335005'>Zoom</a>",
+  as.character(icons::fontawesome("chalkboard-teacher")), "TA", "Ge Song", "<a href = 'emailto:ge.song@colorado.edu'>ge.song@colorado.edu</a>",
   as.character(icons::fontawesome("laptop-house")), "Office Hours", "TBD", "<a href = '#'>Zoom</a>",
   as.character(icons::fontawesome("book")), "Textbook", "The Basic Practice of Statistics 9e. <br/> David Moore, William Notz, <br/> and Michael A Fligner.", "<a href = 'https://www.cubookstore.com/c-74-textbook-help.aspx#Day1'>You already bought this!</a> <br/> <i>Course Materials on Canvas</i>",
   as.character(icons::fontawesome("laptop-code")), "Software", "<b>R</b> is a free programming language that is utilized primarily for data analysis. We will spend time throughout the
