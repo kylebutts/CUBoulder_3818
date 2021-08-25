@@ -163,13 +163,13 @@ $$
 
 Formula tells us the probability of getting k successes in n trials:
 
-$$P(X=k) = {\color{alice}{n \choose k}} {\color{kelly}p^k} {\color{coral}(1-p)^{n-k}}$$
+$$P(X=k) = \alice{{n \choose k}} \kelly{p^k} \coral{(1-p)^{n-k}}$$
 
-- ${\color{alice}{n \choose k}}$: number of ways to get k successes in n trials
+- $\alice{{n \choose k}}$: number of ways to get k successes in n trials
 
-- ${\color{kelly}p^k}$: probability of success, raised by the number of successes
+- $\kelly{p^k}$: probability of success, raised by the number of successes
 
-- ${\color{coral}(1-p)^{n-k}}$: probability of failure, raised by the number of failures
+- $\coral{(1-p)^{n-k}}$: probability of failure, raised by the number of failures
 
 
 

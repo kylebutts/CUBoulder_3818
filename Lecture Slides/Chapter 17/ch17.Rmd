@@ -80,23 +80,23 @@ The average rate of return is $\bar{X}=0.3$, but there are quite a few days with
 
 In hypothesis testing, we proceed under the assumption our claim is true and then try to disprove it.
 
-For example we could claim ${\color{alice} \mu=0}$, that is the average Spotify return is 0%.
+For example we could claim $\alice{\mu=0}$, that is the average Spotify return is 0%.
 
-Since the data are drawn from a normal distribution, the sample mean is distributed $\bar{X} \sim N({\color{alice} 0}, \frac{1}{10})$.
+Since the data are drawn from a normal distribution, the sample mean is distributed $\bar{X} \sim N(\alice{0}, \frac{1}{10})$.
 
 ---
 # Example
 
 In hypothesis testing, we proceed under the assumption our claim is true and then try to disprove it.
 
-For example we could claim ${\color{alice} \mu=0}$, that is the average Spotify return is 0%.
+For example we could claim $\alice{\mu=0}$, that is the average Spotify return is 0%.
 
-Since the data are drawn from a normal distribution, the sample mean is distributed $\bar{X} \sim N({\color{alice} 0}, \frac{1}{10})$.
+Since the data are drawn from a normal distribution, the sample mean is distributed $\bar{X} \sim N(\alice{0}, \frac{1}{10})$.
 
 <br/>
 
 <center>
-<div class="hi">Important:</div> Note that we take the hypothesis that \({\color{alice} \mu = 0}\) as true!!
+<div class="hi">Important:</div> Note that we take the hypothesis that \(\alice{\mu = 0}\) as true!!
 </center>
 
 <br/>
@@ -134,11 +134,11 @@ ggplot(data.frame(x = c(mean - 4*sd, mean + 4*sd)), aes(.data$x)) +
 
 It is very important to state the hypothesis clearly. A hypothesis has two parts:
 
-.hi.alice[Null hypothesis], denoted ${\color{alice} H_0}$, is the claim we are trying to disprove
+.hi.alice[Null hypothesis], denoted $\alice{H_0}$, is the claim we are trying to disprove
       
 - test is designed to test the strength of evidence against the null hypothesis 
       
-.hi.ruby[Alternative hypothesis], denoted ${\color{ruby} H_1}$, is the claim we are trying to find evidence for.sup[*]
+.hi.ruby[Alternative hypothesis], denoted $\ruby{H_1}$, is the claim we are trying to find evidence for.sup[*]
       
 - antithesis of the null
 
@@ -169,8 +169,8 @@ Two-sided alternative
 Back to the Spotify example:
 
 Lets say we're claiming there is no return on average. We would like to see if we can disprove this hypothesis in favor of a claim that there is a positive return
-$${\color{alice} H_0}: \mu=0$$
-$${\color{ruby} H_1}: \mu > 0$$
+$$\alice{H_0}: \mu=0$$
+$$\ruby{H_1}: \mu > 0$$
 
 .ex[Clicker Question:] What type of hypothesis test is this?
 <ol type = "a">
@@ -188,8 +188,8 @@ $${\color{ruby} H_1}: \mu > 0$$
 So in the Spotify example, we had 10 observations with a sample mean, $\bar{X}=0.3$. We also somehow know that $\sigma^2 = 1$. 
 
 If we want to test the hypothesis 
-$${\color{alice} H_0}: \mu=0$$
-$${\color{ruby} H_1}: \mu > 0$$
+$$\alice{H_0}: \mu=0$$
+$$\ruby{H_1}: \mu > 0$$
 
 <br> 
 
@@ -239,21 +239,21 @@ We want to calculate $P(\bar{X}>0.3)$ if $\bar{X} \sim N(0,\frac{1}{10})$
 
 --
 
-$$P(\bar{X}>0.3) = P(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}} > \frac{0.3- {\color{alice} 0}}{1/\sqrt{10}}) = P(Z>0.95) = 0.1711$$
+$$P(\bar{X}>0.3) = P(\frac{\bar{X}-\mu}{\sigma/\sqrt{n}} > \frac{0.3- \alice{0}}{1/\sqrt{10}}) = P(Z>0.95) = 0.1711$$
 
-This says that if the *true* population mean is ${\color{alice} \mu = 0}$, then 17% of the time we would expect to see a sample mean greater than 0.3, 17% of the time.
+This says that if the *true* population mean is $\alice{\mu = 0}$, then 17% of the time we would expect to see a sample mean greater than 0.3, 17% of the time.
 
   - This is not so rare (~ 1 out of 5), so this isn't strong evidence against the null. It doesn't prove it, but it does not rule it out.
 
 ---
 # p-values
 
-Suppose you calculate a test statistic $\hat{\theta}$ (e.g. mean or standard deviation) from sample data, and formulate a null hypothesis ${\color{alice} H_0}: \theta=\theta_0$ about the true value of $\theta$
+Suppose you calculate a test statistic $\hat{\theta}$ (e.g. mean or standard deviation) from sample data, and formulate a null hypothesis $\alice{H_0}: \theta=\theta_0$ about the true value of $\theta$
 
-- .hi.kelly[p-value] is the probability that the test statistic takes a value as or *more extreme* than the observed value $\hat{\theta}$, <span class="hi">under the assumption that</span> ${\color{alice} H_0}$ <span class="hi">is true</span><span class="sup">*</span>
+- .hi.kelly[p-value] is the probability that the test statistic takes a value as or *more extreme* than the observed value $\hat{\theta}$, <span class="hi">under the assumption that</span> $\alice{H_0}$ <span class="hi">is true</span><span class="sup">*</span>
 
 <div class="footnote">
-<span class="sup">*</span> Can not emphasize this enough. Under the assumption that \({\color{alice} H_0}\) is true.
+<span class="sup">*</span> Can not emphasize this enough. Under the assumption that \(\alice{H_0}\) is true.
 </div>
 
 --
@@ -271,20 +271,20 @@ In general, the test statistic we calculate is $\bar{X}$ and formulate a hypothe
 
 The way a p-value is calculated changes depending on the type of alternative hypothesis we have:
 
-$${\color{alice} H_0: \mu = \mu_0}$$
+$$\alice{H_0: \mu = \mu_0}$$
 
 **Left-tailed Test:** 
-$${\color{ruby} H_1}: \mu> \mu_0 \ \implies p = P(\bar{X} \leq \bar{X}_{obs} \ \big\vert \  {\color{alice} \mu = \mu_0})$$
+$$\ruby{H_1}: \mu> \mu_0 \ \implies p = P(\bar{X} \leq \bar{X}_{obs} \ \big\vert \  \alice{\mu = \mu_0})$$
 
 --
 **Right-tailed Test:**
 
-$${\color{ruby} H_1}: \mu< \mu_0 \ \implies  p = P(\bar{X} \geq \bar{X}_{obs} \ \big\vert \ {\color{alice} \mu = \mu_0})$$
+$$\ruby{H_1}: \mu< \mu_0 \ \implies  p = P(\bar{X} \geq \bar{X}_{obs} \ \big\vert \ \alice{\mu = \mu_0})$$
 
 --
 **Two-tailed Test:**
 
-$${\color{ruby} H_1}: \mu \neq \mu_0 \  \implies p = 2 \cdot P(\bar{X} \geq \vert\bar{X}_{obs} \vert \ \big\vert \ {\color{alice} \mu = \mu_0})$$
+$$\ruby{H_1}: \mu \neq \mu_0 \  \implies p = 2 \cdot P(\bar{X} \geq \vert\bar{X}_{obs} \vert \ \big\vert \ \alice{\mu = \mu_0})$$
 
 where $\bar{X}$ is a random draw from our sample distribution and $\bar{X}_{obs}$ is our **observed** value for the sample statistic.
 
@@ -295,8 +295,8 @@ where $\bar{X}$ is a random draw from our sample distribution and $\bar{X}_{obs}
 # Example -- One-sided
 
 Lets say we have a sample of 30 observations and calculate a sample mean of 1020. We also know that the standard deviation is $\sigma=40$. We want to test the following hypothesis:
-$${\color{alice} H_0}: \mu=1000$$
-$${\color{ruby} H_1}: \mu > 1000$$
+$$\alice{H_0}: \mu=1000$$
+$$\ruby{H_1}: \mu > 1000$$
 
 - Write out p-value:
 
@@ -318,8 +318,8 @@ So $p=0.003$, the probability we get a sample mean as large as 1020 if the true 
 
 Say we have nine observations, and calculate a sample mean of $\bar{X} = 0.5$. We know the underlying distribution has a standard deviation $\sigma = 1$. We want to test the following hypothesis:
 
-$${\color{alice} H_0}: \mu=0$$
-$${\color{ruby} H_1}: \mu \neq 0$$
+$$\alice{H_0}: \mu=0$$
+$$\ruby{H_1}: \mu \neq 0$$
 
 - Write out p-value:
 
@@ -339,8 +339,8 @@ So $p=0.134$, meaning there is a 13.4% probability of getting a sample mean *as 
 ---
 # Breakout Group
 Say we have a sample of 25 observations and we calculate a sample mean of 11,500. We know that the standard deviation is $\sigma=5000$. We want to test the following hypothesis:
-$${\color{alice} H_0}: \mu=12,675$$
-$${\color{ruby} H_1}: \mu < 12,675$$
+$$\alice{H_0}: \mu=12,675$$
+$$\ruby{H_1}: \mu < 12,675$$
 
 Calculate the p-value:
 <ol type = "a">
@@ -356,8 +356,8 @@ Calculate the p-value:
 
 Say we have a sample of 25 observations and we calculate a sample mean of 11,500. We know that the standard deviation is $\sigma=5000$. We want to test the following hypothesis:
 
-$${\color{alice} H_0}: \mu=12,675$$
-$${\color{ruby} H_1}: \mu < 12,675$$
+$$\alice{H_0}: \mu=12,675$$
+$$\ruby{H_1}: \mu < 12,675$$
 
 
 
@@ -370,8 +370,8 @@ A restaurant owner is determining whether to expand her restaurant to another lo
 
 --
 
-$${\color{alice} H_0}: \mu=510$$
-$${\color{ruby} H_1}: \mu \geq 510$$
+$$\alice{H_0}: \mu=510$$
+$$\ruby{H_1}: \mu \geq 510$$
       
       
 
@@ -392,15 +392,15 @@ If true population mean is 510, there is a 4.95% probability of calculating a sa
 ---
 # Interpreting p-Values
 
-Small p-values are evidence against the null, because they say **the observed value of the sample statistic if very unlikely to occur if the null hypothesis,** ${\color{alice} H_0}$, **is true.**
+Small p-values are evidence against the null, because they say **the observed value of the sample statistic if very unlikely to occur if the null hypothesis,** $\alice{H_0}$, **is true.**
 
-- Larger p-values fail to give evidence against the null because the observed sample statistic could have resulted by chance if the null hypothesis, ${\color{alice} H_0}$ is true. 
+- Larger p-values fail to give evidence against the null because the observed sample statistic could have resulted by chance if the null hypothesis, $\alice{H_0}$ is true. 
 
 --
 
 <br/>
 <center>
-p-values do not tell you the probability that \({\color{alice} H_0}\) is true!!<span class="sup">*</span>
+p-values do not tell you the probability that \(\alice{H_0}\) is true!!<span class="sup">*</span>
 </center>
 
 .footnote[.sup[*] I will likely ask this on the exam, so make sure to understand why]
@@ -412,14 +412,14 @@ p-values do not tell you the probability that \({\color{alice} H_0}\) is true!!<
 
 To review, our decision process using p-values is
 
-- p-value is sufficiently small $\rightarrow$ reject ${\color{alice} H_0} \rightarrow$ accept ${\color{ruby} H_1}$
-- p-value is too large $\rightarrow$ fail to reject ${\color{alice} H_0} \rightarrow$ do not accept ${\color{ruby} H_1}$
+- p-value is sufficiently small $\rightarrow$ reject $\alice{H_0} \rightarrow$ accept $\ruby{H_1}$
+- p-value is too large $\rightarrow$ fail to reject $\alice{H_0} \rightarrow$ do not accept $\ruby{H_1}$
 
 
 
-We *never* say "accept ${\color{alice} H_0}$". All we can say is if there is enough evidence to say it is false, we cannot know if it is true.
+We *never* say "accept $\alice{H_0}$". All we can say is if there is enough evidence to say it is false, we cannot know if it is true.
 
-We say our results are .hi.purple[statistically significant] if we reject ${\color{alice} H_0}$.sup[*]
+We say our results are .hi.purple[statistically significant] if we reject $\alice{H_0}$.sup[*]
 
 <div class="footnote">
 <span class="sup">*<span> This saying is short for "statistically significantly different from zero" (or \(H_0\) more generally).
@@ -432,7 +432,7 @@ We say our results are .hi.purple[statistically significant] if we reject ${\col
 How small does p need to be in order to be "sufficiently small"? When can we claim our results are statistically significant?
 
 Suppose you calculate a p-value, and specify a .hi.purple[level of significance], $\alpha$. We say our results are .hi.purple[statistically significant] if:
-$$\text{p-value} \leq {\color{purple}\alpha}$$
+$$\text{p-value} \leq \purple{\alpha}$$
 
 We will discuss how to think about choosing $\alpha$. Some of the most common levels of significance are .01, .05, and 0.1.
 
@@ -454,7 +454,7 @@ A restaurant owner is determining whether to expand her restaurant to another lo
 
 1. State Null and Alternative hypotheses
 
-	- ${\color{alice} H_0}: \mu=510; \quad {\color{ruby} H_1}: \mu \geq 510$
+	- $\alice{H_0}: \mu=510; \quad \ruby{H_1}: \mu \geq 510$
       
 2. Calculate p-value 
 	
@@ -462,7 +462,7 @@ A restaurant owner is determining whether to expand her restaurant to another lo
       
 3. Is our estimate statistically siginificant?
       
-	- $0.049 < 0.05 \implies p-value<\alpha \implies \text{Reject } {\color{alice} H_0}$
+	- $0.049 < 0.05 \implies p-value<\alpha \implies \text{Reject } \alice{H_0}$
       
 
 Reject null hypothesis in favor of alternative, that the true population mean number of customers is greater than 510
@@ -473,9 +473,9 @@ Reject null hypothesis in favor of alternative, that the true population mean nu
 
 A hypothesis test consists of 4 parts:
 
-- Null hypothesis, ${\color{alice} H_0}$
+- Null hypothesis, $\alice{H_0}$
 
-- Alternative hypothesis, ${\color{ruby} H_1}$
+- Alternative hypothesis, $\ruby{H_1}$
 
 - Test statistic, $\hat{\theta}$, most commonly $\bar{X}$
 
@@ -484,9 +484,9 @@ A hypothesis test consists of 4 parts:
 
 With these, we reach the conclusion:
       
-- reject ${\color{alice} H_0}$ if $p \leq \alpha$
+- reject $\alice{H_0}$ if $p \leq \alpha$
 
-- fail to reject ${\color{alice} H_0}$ if $p > \alpha$
+- fail to reject $\alice{H_0}$ if $p > \alpha$
       
 
 
@@ -660,19 +660,19 @@ Calculate rejection region using
 
 - level of significance, $\alpha$ and Z-score associated with it
 
-The rejection region tells us how extreme the sample mean needs to be for us to reject the null  hypothesis ${\color{alice} H_0}: \mu = \mu_0$
+The rejection region tells us how extreme the sample mean needs to be for us to reject the null  hypothesis $\alice{H_0}: \mu = \mu_0$
 ---
 # Calculate Rejection Region -- One-Sided
 
 Let's say we want to test a hypothesis about the number of children in a family. We have a sample of 25 observations, and we know $\sigma=0.8$. We decide to test the following hypothesis:
 
-$${\color{alice} H_0}:\mu=2$$
+$$\alice{H_0}:\mu=2$$
 
-$${\color{ruby} H_1}:\mu<2$$
+$$\ruby{H_1}:\mu<2$$
 
 If we are testing at the 5% significance level, calculate the rejection region. 
 
-- The rejection region is the values of $\bar{X}$ that are far enough away from $\mu$ that we would reject ${\color{alice} H_0}$
+- The rejection region is the values of $\bar{X}$ that are far enough away from $\mu$ that we would reject $\alice{H_0}$
 
 --
 
@@ -700,7 +700,7 @@ We know that $P(Z \leq -1.645)=0.05$, therefore:
 
 $$\frac{\bar{X}^*-2}{0.16}=-1.645 \implies \bar{X}^*=1.74$$
 
-This means our rejection region is all $\bar{X}\leq1.74$. In words, we will reject ${\color{alice} H_0}:\mu=2$ at the $\alpha=0.05$ level if we calculate a sample mean of 1.74 or smaller.
+This means our rejection region is all $\bar{X}\leq1.74$. In words, we will reject $\alice{H_0}:\mu=2$ at the $\alpha=0.05$ level if we calculate a sample mean of 1.74 or smaller.
 
 
 
@@ -708,9 +708,9 @@ This means our rejection region is all $\bar{X}\leq1.74$. In words, we will reje
 # Breakout Group
 A study is conducted to determine the average income of 18-25 year olds in San Antonio. They are trying to test whether the average is greater than \$21,000. The study is able to collect 16 different salaries. We somehow know that the population standard deviation is $\sigma=$\$2000. What sample averages would we reject the null hypothesis at the $\alpha=0.05$ level?
 
-$${\color{alice} H_0}: \mu = \$21,000$$
+$$\alice{H_0}: \mu = \$21,000$$
 
-$${\color{ruby} H_1}: \mu > \$21,000$$
+$$\ruby{H_1}: \mu > \$21,000$$
 
 <ol type = "a">
 	<li> Reject if \( \bar{X} < \$21,822.5 \) </li>
@@ -724,9 +724,9 @@ $${\color{ruby} H_1}: \mu > \$21,000$$
 # Breakout Group
 A study is conducted to determine the average income of 18-25 year olds in San Antonio. They are trying to test whether the average is greater than \$21,000. The study is able to collect 16 different salaries. We somehow know that the population standard deviation is $\sigma=$\$2000. What sample averages would we reject the null hypothesis at the $\alpha=0.05$ level?
 
-$${\color{alice} H_0}: \mu = \$21,000$$
+$$\alice{H_0}: \mu = \$21,000$$
 
-$${\color{ruby} H_1}: \mu > \$21,000$$
+$$\ruby{H_1}: \mu > \$21,000$$
 
 
 ---
@@ -736,8 +736,8 @@ Solving for a rejection region changes a little bit when we consider a two-taile
 
 Example: Suppose we have a sample of 25 observations, we know $\sigma=3.5$. We want to test the following hypothesis at the $\alpha=0.05$ level. 
 
-$${\color{alice} H_0}: \mu=13.5$$
-$${\color{ruby} H_1}: \mu \neq 13.5$$
+$$\alice{H_0}: \mu=13.5$$
+$$\ruby{H_1}: \mu \neq 13.5$$
 
 Our rejection region is calculated by finding two different $\bar{X}^*$'s.
 
@@ -784,7 +784,7 @@ Remember it solves: $P(\bar{X}\leq\bar{X}^*_L)=\frac{0.05}{2}$
 - p-value: probability of getting as extreme of a sample statistic, if the null hypothesis is true
 
 <center>
-If \(p<\alpha \implies\) reject \( {\color{alice} H_0} \)
+If \(p<\alpha \implies\) reject \( \alice{H_0} \)
 </center>
             
       
@@ -794,7 +794,7 @@ If \(p<\alpha \implies\) reject \( {\color{alice} H_0} \)
 - compare sample statistic with rejection region
 
 <center>            
-If sample statistic is in rejection region, reject \( {\color{alice} H_0} \)
+If sample statistic is in rejection region, reject \( \alice{H_0} \)
 </center>
       
 

@@ -46,9 +46,9 @@ Important to note that the .hi.daisy[margin of error] doesn't cover all errors
 
 A researcher can determine the number of observations required in the sample in order to achieve a desired margin of error. 
 
-$${\color{daisy} m} = z^* \frac{\sigma}{\sqrt{n}}  \implies n= \left( \frac{z^*\sigma}{m} \right)^2$$
+$$\daisy{m} = z^* \frac{\sigma}{\sqrt{n}}  \implies n= \left( \frac{z^*\sigma}{m} \right)^2$$
 
-where ${\color{daisy} m}$ is the desired margin of error, and $z^*$ is the z-score associated with the confidence interval level
+where $\daisy{m}$ is the desired margin of error, and $z^*$ is the z-score associated with the confidence interval level
 
 
 
@@ -56,7 +56,7 @@ where ${\color{daisy} m}$ is the desired margin of error, and $z^*$ is the z-sco
 # Example
 Say we are recording tip size of patrons when a waiter writes a message on the receipt. We know $\sigma=2$. We want to estimate the mean percentage tip $\mu$ for patrons who receive the message within $\pm 0.5$ with 90% confidence. How many patrons must we observe?
 
-In other words we want ${\color{daisy} m} = 0.5$:
+In other words we want $\daisy{m} = 0.5$:
 
 --
 <br/>
@@ -516,13 +516,13 @@ ggplot(data.frame(x = c(mean - 4*sd, true_mean + 4*sd)), aes(.data$x)) +
 
 Now that we've defined Type I error, lets define size:
 
-The .hi.coral[size] of a test, ${\color{coral} \alpha}$, is the probability of making a Type I error. 
+The .hi.coral[size] of a test, $\coral{\alpha}$, is the probability of making a Type I error. 
 
 Given a null hypothesis $H_0: \theta = \theta_0$; a test statistic $\hat{\theta}$; and a rejection region R,
 
 The size is:
 
-$${\color{coral} \alpha} = P({\color{coral} \text{Type I Error}})=P(\hat{\theta}\in R \ \vert \ \theta=\theta_0)$$
+$$\coral{\alpha} = P(\coral{\text{Type I Error}})=P(\hat{\theta}\in R \ \vert \ \theta=\theta_0)$$
 
 
 ---
@@ -569,7 +569,7 @@ While size deals with Type I Errors, power deals with Type II.
 
 The .hi.ruby[power] is the probability of correctly rejecting a false null, or 1 - P(Type II Error)
 
-$$ {\color{ruby} \text{Power}} = 1 - P({\color{ruby} \text{Type II Error}} ) $$
+$$ \ruby{\text{Power}} = 1 - P(\ruby{\text{Type II Error}} ) $$
 
 Intuitively, power is the likelihood of detecting a false null using your test statistic.
 
@@ -579,19 +579,19 @@ Intuitively, power is the likelihood of detecting a false null using your test s
 
 A .ruby[Type II] error is the probability of failing to reject a false null
 
-$$P({\color{ruby} \text{Type II}})=P(\bar{X} \notin R \ \vert \ \mu = \mu_A)$$
+$$P(\ruby{\text{Type II}})=P(\bar{X} \notin R \ \vert \ \mu = \mu_A)$$
 
 The .hi.ruby[power] is the probability of correctly rejecting a false null
 
 $$
-{\color{ruby} \text{Power}} =P(\bar{X} \in R \ \vert \ \mu = \mu_A)
+\ruby{\text{Power}} =P(\bar{X} \in R \ \vert \ \mu = \mu_A)
 $$
 
 
 <br/> 
 You can think of power as the probability of .it[not making a .ruby[Type II] error]
 
-You can calculate power by doing $1 - P({\color{ruby} \text{Type II}})$ or by calculating the power directly.
+You can calculate power by doing $1 - P(\ruby{\text{Type II}})$ or by calculating the power directly.
 
 
 
@@ -669,11 +669,11 @@ Back to previous example, where $n=16$, $\sigma=1$, and $R=\{ \bar{X}  \ \vert \
 Power can be calculated in two ways: 
 
 $$
-  {\color{ruby} \text{Power}} = P(\text{reject } H_0 \ \vert \ \mu_0 = \mu^* ) = P(\bar{X}  \in R \ \vert \ H_0 \text{ false}) 
+  \ruby{\text{Power}} = P(\text{reject } H_0 \ \vert \ \mu_0 = \mu^* ) = P(\bar{X}  \in R \ \vert \ H_0 \text{ false}) 
 $$
 
 $$ 
-  {\color{ruby} \text{Power}} = 1 - P({\color{ruby} \text{type II Error}}) = 1 - P(\bar{X} \notin R \ \vert \ H_0  \text{ false})
+  \ruby{\text{Power}} = 1 - P(\ruby{\text{type II Error}}) = 1 - P(\bar{X} \notin R \ \vert \ H_0  \text{ false})
 $$
 
 
@@ -690,7 +690,7 @@ In order to calculate the power of a test, we must assume a specific true mean, 
 For example, what is the power of the test if the true mean is $\mu_A = 4$?
 
 $$
-{\color{ruby} \text{Power}} = P(\bar{X} \in R \ \vert \ \mu = \mu_A = 4)
+\ruby{\text{Power}} = P(\bar{X} \in R \ \vert \ \mu = \mu_A = 4)
 $$
 
 --
@@ -707,7 +707,7 @@ $$
 We can also calculate the power of a test by subtracting the probability of making a Type II error (\( \beta \)  from 1. 
 
 $$
-{\color{ruby} \beta} = P(\bar{X} < 3.41 \ \vert \  \mu = \mu_A = 4) 
+\ruby{\beta} = P(\bar{X} < 3.41 \ \vert \  \mu = \mu_A = 4) 
 $$ 
 
 --
@@ -719,7 +719,7 @@ $$
 Meaning the power of the test is:
 
 $$ 
-{\color{ruby} \text{Power}} = 1 - {\color{ruby} \beta} = 1-.0092 = .9908
+\ruby{\text{Power}} = 1 - \ruby{\beta} = 1-.0092 = .9908
 $$
 
 There is a 99.1% chance that in *repeated sampling* we reject the null that $\mu = 3$ if the true mean is equal to 4.

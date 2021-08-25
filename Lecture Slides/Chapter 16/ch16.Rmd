@@ -250,7 +250,7 @@ ci_coverage
 
 In that example, the confidence interval was $\bar{X}_{654} \pm 0.6$. In general, a confidence interval takes the form 
 
-$${\color{kelly} \text{estimate}} \pm {\color{daisy} \text{margin of error}}$$
+$$\kelly{\text{estimate}} \pm \daisy{\text{margin of error}}$$
 
 where the .hi.daisy[margin of error] shows how much variability there is in our estimate
 
@@ -261,7 +261,7 @@ where the .hi.daisy[margin of error] shows how much variability there is in our 
 For a given level of confidence, $C$ (say 95%), the .daisy[margin of error] for our sample mean as: 
 
 $$
-{\color{daisy} k} = Z_{\frac{1-C}{2}}} \frac{\sigma}{\sqrt{n}}
+\daisy{k} = Z_{\frac{1-C}{2}}} \frac{\sigma}{\sqrt{n}}
 $$
 
 <br>

@@ -306,7 +306,7 @@ $$
 
 --
 $$ 
-E(X^2) = 0^2 \cdot (\frac{1}{4})+ 1^2 \cdot (\frac{1}{2}) + 2^2 \cdot  (\frac{1}{4}) = \frac{1}{2} + 1 = \frac{3}{2} ^{\color{cranberry}*}
+E(X^2) = 0^2 \cdot (\frac{1}{4})+ 1^2 \cdot (\frac{1}{2}) + 2^2 \cdot  (\frac{1}{4}) = \frac{1}{2} + 1 = \frac{3}{2} ^\cranberry{*}
 $$
 
 This means that 

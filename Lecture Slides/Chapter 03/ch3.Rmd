@@ -284,12 +284,12 @@ Suppose that the mean birthweight in the sample is 113 oz. with a standard devia
 
 If X is distributed normally, we denote it the following way:
 
-$$X \sim N({\color{coral}\mu}, {\color{kelly}\sigma^2})$$
+$$X \sim N(\coral{\mu}, \kelly{\sigma^2})$$
  
 - This notation tells us everything we need to know about the normal distribution
       
-- The distribution has mean ${\color{coral}\mu}$
-- The distribution has variance ${\color{kelly}\sigma^2}$
+- The distribution has mean $\coral{\mu}$
+- The distribution has variance $\kelly{\sigma^2}$
       
 
 
@@ -300,7 +300,7 @@ $$X \sim N({\color{coral}\mu}, {\color{kelly}\sigma^2})$$
 
 Standard normal distribution is a specific type of normal distribution
 
-If a variable X follows a normal distribution with ${\color{coral}\mu} = 0$ and  ${\color{kelly}\sigma^2} = 1$, we say that X follows the .hi.purple[standard normal distribution]
+If a variable X follows a normal distribution with $\coral{\mu} = 0$ and  $\kelly{\sigma^2} = 1$, we say that X follows the .hi.purple[standard normal distribution]
   
 - Since it is so common, it is denoted as $Z \sim N(0,1)$
 
@@ -422,7 +422,7 @@ $$P(BW > 88) = 1 - P(BW < 88)$$
 # Standardization
     
 If a variable X has any normal distribution, $X\sim N(\mu,\sigma^2)$, then the standardized variable:
-$$Z= \frac{X-{\color{coral}\mu}}{{\color{kelly}\sigma}} \sim N(0,1)$$
+$$Z= \frac{X-\coral{\mu}}{\kelly{\sigma}} \sim N(0,1)$$
 We call the standardized value the .hi.purple[Z-score]. 
 
 The Z-score is equivalent to the number of .hi.kelly[standard deviations] that $X$ is away from the .hi.coral[mean].

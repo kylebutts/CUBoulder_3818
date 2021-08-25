@@ -21,20 +21,20 @@ class: clear, middle
 ---
 # Basic Rules of Probability
 
-${\color{coral} A}$ is an .coral[event/outcome] and $P({\color{coral} A})$ is the .cranberry[probability] of that outcome, and ${\color{kelly} S}$ is that .kelly[state space]
+$\coral{A}$ is an .coral[event/outcome] and $P(\coral{A})$ is the .cranberry[probability] of that outcome, and $\kelly{S}$ is that .kelly[state space]
 
 
-- $0 \leq P({\color{coral} A}) \leq 1$ for all ${\color{coral} A} \in {\color{kelly} S}$
+- $0 \leq P(\coral{A}) \leq 1$ for all $\coral{A} \in \kelly{S}$
       
-- $P({\color{kelly} S})=1$
+- $P(\kelly{S})=1$
       
-- If ${\color{coral} A}$ and ${\color{coral} B}$ are disjoint events 
+- If $\coral{A}$ and $\coral{B}$ are disjoint events 
 
   $$
-    \implies P({\color{coral} A} \cup {\color{coral} B}) = P({\color{coral} A}) + P({\color{coral} B})
+    \implies P(\coral{A} \cup \coral{B}) = P(\coral{A}) + P(\coral{B})
   $$
       
-- $P({\color{coral} A}^c) = 1 - P({\color{coral} A})$
+- $P(\coral{A}^c) = 1 - P(\coral{A})$
 
 
 
@@ -54,15 +54,15 @@ knitr::include_graphics("venndiagram.png")
 # General Addition Rule
 
 
-If ${\color{coral} A}$ and ${\color{coral} B}$ are disjoint events: $P({\color{coral} A} \cup {\color{coral} B})=P({\color{coral} A})+P({\color{coral} B})$
+If $\coral{A}$ and $\coral{B}$ are disjoint events: $P(\coral{A} \cup \coral{B})=P(\coral{A})+P(\coral{B})$
       
 For any two events (not necessarily disjoint): 
   
   $$
-  P({\color{coral} A} \cup {\color{coral} B}) = P({\color{coral} A}) + P({\color{coral} B})- P({\color{coral} A} \cap {\color{coral} B})
+  P(\coral{A} \cup \coral{B}) = P(\coral{A}) + P(\coral{B})- P(\coral{A} \cap \coral{B})
   $$
 
-- Why does this make sense? What is ${\color{coral} A} \cap {\color{coral} B}$ when ${\color{coral} A}$ and ${\color{coral} B}$ are disjoint?
+- Why does this make sense? What is $\coral{A} \cap \coral{B}$ when $\coral{A}$ and $\coral{B}$ are disjoint?
 
 
 
@@ -89,9 +89,9 @@ If we want to find Soccer $\cup$ Tennis:
 ---
 # Clicker Question
 
-Let $P({\color{coral} A}) = 0.4$, $P({\color{coral} B}) = 0.3$, and $P({\color{coral} A}\cap {\color{coral} B})=0.1$
+Let $P(\coral{A}) = 0.4$, $P(\coral{B}) = 0.3$, and $P(\coral{A}\cap \coral{B})=0.1$
 
-What is $P({\color{coral} A}\cup {\color{coral} B})$?
+What is $P(\coral{A}\cup \coral{B})$?
 
 <ol type = "a">
   <li>1.1</li>
@@ -107,16 +107,16 @@ What is $P({\color{coral} A}\cup {\color{coral} B})$?
 # Independence
 
 
-Two events, ${\color{coral} A}$ and ${\color{coral} B}$, are .hi.purple[independent] if knowing that one occurs does not change the probability that the other occurs
+Two events, $\coral{A}$ and $\coral{B}$, are .hi.purple[independent] if knowing that one occurs does not change the probability that the other occurs
 
 - Die lands on a 4 & Broncos win the Super Bowl
 
 - Club is drawn from deck of cards & You get an A on the final exam
 
 
-If ${\color{coral} A}$ and ${\color{coral} B}$ are independent: 
+If $\coral{A}$ and $\coral{B}$ are independent: 
 $$
-    P({\color{coral} A} \cap {\color{coral} B}) = P({\color{coral} A})P({\color{coral} B})
+    P(\coral{A} \cap \coral{B}) = P(\coral{A})P(\coral{B})
 $$
 
 
@@ -124,14 +124,14 @@ $$
 ---
 # Clicker Question
 
-Let $P({\color{coral} A}) = 0.4$, $P({\color{coral} B}) = 0.3$, and $P({\color{coral} A}\cap {\color{coral} B})=0.1$
+Let $P(\coral{A}) = 0.4$, $P(\coral{B}) = 0.3$, and $P(\coral{A}\cap \coral{B})=0.1$
 
 Which of the following statements is true:
 <ol type = "a">
-  <li>\({\color{coral} A}\) and \({\color{coral} B}\) are independent because \(P({\color{coral} A} \cap {\color{coral} B}) = P({\color{coral} A})P({\color{coral} B})\)</li>
-  <li>\({\color{coral} A}\) and \({\color{coral} B}\) are independent because \(P({\color{coral} A} \cap {\color{coral} B}) \neq P({\color{coral} A})P({\color{coral} B})\)</li>
-  <li>\({\color{coral} A}\) and \({\color{coral} B}\) are not independent because \(P({\color{coral} A} \cap {\color{coral} B}) = P({\color{coral} A})P({\color{coral} B})\)</li>
-  <li>\({\color{coral} A}\) and \({\color{coral} B}\) are not independent because \(P({\color{coral} A} \cap {\color{coral} B}) \neq P({\color{coral} A})P({\color{coral} B})\)</li>
+  <li>\(\coral{A}\) and \(\coral{B}\) are independent because \(P(\coral{A} \cap \coral{B}) = P(\coral{A})P(\coral{B})\)</li>
+  <li>\(\coral{A}\) and \(\coral{B}\) are independent because \(P(\coral{A} \cap \coral{B}) \neq P(\coral{A})P(\coral{B})\)</li>
+  <li>\(\coral{A}\) and \(\coral{B}\) are not independent because \(P(\coral{A} \cap \coral{B}) = P(\coral{A})P(\coral{B})\)</li>
+  <li>\(\coral{A}\) and \(\coral{B}\) are not independent because \(P(\coral{A} \cap \coral{B}) \neq P(\coral{A})P(\coral{B})\)</li>
 </ol>
 
 
@@ -142,13 +142,13 @@ Which of the following statements is true:
 
 Two events being independent is .hi[NOT] the same as them being disjoint:
 
-1. Say event ${\color{coral} A}$ is being 18 or over, and ${\color{coral} B}$ is under 18
+1. Say event $\coral{A}$ is being 18 or over, and $\coral{B}$ is under 18
 
-  - I cannot be both 18 or over, and under 18. This means ${\color{coral} A}$ and ${\color{coral} B}$ are .it[disjoint]
+  - I cannot be both 18 or over, and under 18. This means $\coral{A}$ and $\coral{B}$ are .it[disjoint]
 
-2. If I am not 18 or over, then I am under 18. That means if ${\color{coral} A}$ isn't true then ${\color{coral} B}$ must be true. 
+2. If I am not 18 or over, then I am under 18. That means if $\coral{A}$ isn't true then $\coral{B}$ must be true. 
 
-  - Since event ${\color{coral} A}$ tells me about event ${\color{coral} B}$, ${\color{coral} A}$ and ${\color{coral} B}$ are .it[not independent]
+  - Since event $\coral{A}$ tells me about event $\coral{B}$, $\coral{A}$ and $\coral{B}$ are .it[not independent]
 
 
 
@@ -160,9 +160,9 @@ Two events being independent is .hi[NOT] the same as them being disjoint:
  
 Sometimes one event occurring tells us something about the probability of a different event
 
-.hi.purple[Conditional probability]: probability of an event, ${\color{coral} A}$, given that another event, ${\color{coral} B}$, has already occurred
+.hi.purple[Conditional probability]: probability of an event, $\coral{A}$, given that another event, $\coral{B}$, has already occurred
 
-$$P({\color{coral} A} \ \vert \  {\color{coral} B})= \frac{P({\color{coral} A} \cap {\color{coral} B})}{P({\color{coral} B})}$$
+$$P(\coral{A} \ \vert \  \coral{B})= \frac{P(\coral{A} \cap \coral{B})}{P(\coral{B})}$$
 
 
 
@@ -173,20 +173,20 @@ $$P({\color{coral} A} \ \vert \  {\color{coral} B})= \frac{P({\color{coral} A} \
 knitr::include_graphics("simplevenndiagram.png")
 ```
 
-You throw a dart and land in ${\color{coral} B}$. What is the probability that you landed in ${\color{coral} A}$ as well? $P({\color{coral} A} \ \vert \  {\color{coral} B})$. We can now think of ${\color{coral} B}$ as the sample space which changes our likelihood of landing in ${\color{coral} A}$.
+You throw a dart and land in $\coral{B}$. What is the probability that you landed in $\coral{A}$ as well? $P(\coral{A} \ \vert \  \coral{B})$. We can now think of $\coral{B}$ as the sample space which changes our likelihood of landing in $\coral{A}$.
 
 
 ---
 # Conditional Probability v. Intersection
 
-$P({\color{coral}\text{work in tech}} \cap {\color{coral}\text{live in Boulder}})$ vs. $P({\color{coral}\text{work in tech}} \ \vert \  {\color{coral}\text{live in Boulder}})$
+$P(\coral{\text{work in tech}} \cap \coral{\text{live in Boulder}})$ vs. $P(\coral{\text{work in tech}} \ \vert \  \coral{\text{live in Boulder}})$
       
-$P({\color{coral}\text{work in tech}})$ = work in tech/entire US population = relatively small, let's say $7\%$. 
+$P(\coral{\text{work in tech}})$ = work in tech/entire US population = relatively small, let's say $7\%$. 
 
-$P({\color{coral}\text{live in Boulder}})$ = Boulder population/entire US population = also small, $<1\%$.
+$P(\coral{\text{live in Boulder}})$ = Boulder population/entire US population = also small, $<1\%$.
       
 - This means the probability of BOTH happening is small, because both events are unlikely compared to the .i[state space of the entire US population]
-- But the $P({\color{coral}\text{work in tech}} \ \vert \  {\color{coral}\text{live in Boulder}})$ will be higher because now the .it[state space is Boulder population], which has a greater concentration of high-tech employees
+- But the $P(\coral{\text{work in tech}} \ \vert \  \coral{\text{live in Boulder}})$ will be higher because now the .it[state space is Boulder population], which has a greater concentration of high-tech employees
 
 
 
@@ -216,10 +216,10 @@ Moreover, 15% of whites, 70% of blacks, and 90% of Asians are lactose intoleranc
 Which of the following statements is true?
 
 <ol type = "a">
-  <li>\(P({\color{coral} \text{Asian}} \cap {\color{coral} \text{Lactose Intolerant}}) = 0.9\)</li>
-  <li>\(P({\color{coral} \text{Asian}} \ \vert \ {\color{coral} \text{Lactose Intolerant}}) = 0.9\)</li>
-  <li>\(P({\color{coral} \text{Lactose Intolerant}} \ \vert \ {\color{coral} \text{Asian}}) = 0.9\)</li>
-  <li>\(P({\color{coral} \text{Asian}} \cup {\color{coral}\text{Lactose Intolerant}}) = 0.9\)</li>
+  <li>\(P(\coral{\text{Asian}} \cap \coral{\text{Lactose Intolerant}}) = 0.9\)</li>
+  <li>\(P(\coral{\text{Asian}} \ \vert \ \coral{\text{Lactose Intolerant}}) = 0.9\)</li>
+  <li>\(P(\coral{\text{Lactose Intolerant}} \ \vert \ \coral{\text{Asian}}) = 0.9\)</li>
+  <li>\(P(\coral{\text{Asian}} \cup \coral{\text{Lactose Intolerant}}) = 0.9\)</li>
 </ol> 
 
 
@@ -247,7 +247,7 @@ crash_tbl
 If we consider .it[only cars], what is the likelihood of a randomly selected sale being a domestic vehicle?
 
 \begin{aligned}
-P({\color{coral} \text{domestic}} \ \vert \  {\color{coral} \text{car}}) &= \frac{P({\color{coral} \text{domestic}} \text{ and } {\color{coral} \text{car}})}{P({\color{coral} \text{car}})} \\
+P(\coral{\text{domestic}} \ \vert \  \coral{\text{car}}) &= \frac{P(\coral{\text{domestic}} \text{ and } \coral{\text{car}})}{P(\coral{\text{car}})} \\
 &= \frac{\frac{472,100}{1,527,300}}{\frac{627,600}{1,527,300}}=\frac{472,100}{627,600}=0.75
 \end{aligned}
 
@@ -258,11 +258,11 @@ P({\color{coral} \text{domestic}} \ \vert \  {\color{coral} \text{car}}) &= \fra
 
 Can use the equation for conditional probability to find the probability of two events happening together:
 
-$$P({\color{coral} A}\ \vert \ {\color{coral} B})=\frac{P({\color{coral} A}\cap {\color{coral} B})}{P({\color{coral} B})}$$
+$$P(\coral{A}\ \vert \ \coral{B})=\frac{P(\coral{A}\cap \coral{B})}{P(\coral{B})}$$
 
-If we multiply both sides by $P({\color{coral} B})$ we get:
+If we multiply both sides by $P(\coral{B})$ we get:
 
-$$P({\color{coral} A}\cap {\color{coral} B})=P({\color{coral} B})P({\color{coral} A}\ \vert \ {\color{coral} B})$$
+$$P(\coral{A}\cap \coral{B})=P(\coral{B})P(\coral{A}\ \vert \ \coral{B})$$
 
 
 
@@ -286,8 +286,8 @@ What is the probability an individual is Asian and lactose intolerant?
 # Conditional Prob. and Independence
 
 If 
-$$P({\color{coral} A}) = P({\color{coral} A} \ \vert \ {\color{coral} B}),$$
-then the probability of ${\color{coral} A}$ is the same conditional on ${\color{coral} B}$ or not, then the two events ${\color{coral} A}$ and ${\color{coral} B}$ are .hi.purple[independent]
+$$P(\coral{A}) = P(\coral{A} \ \vert \ \coral{B}),$$
+then the probability of $\coral{A}$ is the same conditional on $\coral{B}$ or not, then the two events $\coral{A}$ and $\coral{B}$ are .hi.purple[independent]
 
 
 
@@ -309,9 +309,9 @@ One event is that the vehicle is a car, another event is that the vehicle is dom
 ---
 # Law of Total Probability
 
-Suppose we partition sample space into n different parts, ${\color{coral} B_1}, {\color{coral} B_2}, ..., {\color{coral} B_n}$
+Suppose we partition sample space into n different parts, $\coral{B_1}, \coral{B_2}, ..., \coral{B_n}$
 
-If there is an event ${\color{coral} A}$, we can calculate its probability by adding all of its intersections with ${\color{coral} B_i}$'s
+If there is an event $\coral{A}$, we can calculate its probability by adding all of its intersections with $\coral{B_i}$'s
 
 
 ```{r, echo = F, out.width = "90%"}
@@ -324,9 +324,9 @@ knitr::include_graphics("totalprob.png")
 
 The .hi.slate[Law of Total Probability] states:
 
-$$P({\color{coral} A})=\sum_{i=1}^nP({\color{coral} A} \cap {\color{coral} B_i})$$
+$$P(\coral{A})=\sum_{i=1}^nP(\coral{A} \cap \coral{B_i})$$
 An equivalent formula, uses the multiplication rule to show:
-$$P({\color{coral} A})=\sum_{i=1}^n P({\color{coral} A} \cap {\color{coral} B_i}) = \sum_{i=1}^n P({\color{coral} A}\ \vert \ {\color{coral} B_i})P({\color{coral} B_i})$$
+$$P(\coral{A})=\sum_{i=1}^n P(\coral{A} \cap \coral{B_i}) = \sum_{i=1}^n P(\coral{A}\ \vert \ \coral{B_i})P(\coral{B_i})$$
 
 
 
@@ -349,9 +349,9 @@ The .hi.purple[Law of Total Probability] says that we can calculate the probabil
 
 ---
 # Midterm Example
-Let ${\color{coral} A}$ be the event that a flight from New York to San Francisco arrives on time, and let ${\color{coral} B}$ be the event that it is a clear day in San Francisco.
+Let $\coral{A}$ be the event that a flight from New York to San Francisco arrives on time, and let $\coral{B}$ be the event that it is a clear day in San Francisco.
 
-Suppose the probability of a clear day is $P({\color{coral} B})=0.6$, We also know that the probability that a plane arrives on a sunny day is 0.9, and on a cloudy day it is 0.5
+Suppose the probability of a clear day is $P(\coral{B})=0.6$, We also know that the probability that a plane arrives on a sunny day is 0.9, and on a cloudy day it is 0.5
 
 <ol type = "a">
   <li>What is the probability that the plan lands on time and it is a sunny day?</li>
@@ -379,10 +379,10 @@ What percent of the entire population is lactose intolerant?
 # Bayes' Law
 
 .hi.purple[Bayes Law]: gives us a different way to calculate conditional probabilities 
-Let ${\color{coral} B_1}, {\color{coral} B_2}, ..., {\color{coral} B_n}$ be a partition of ${\color{kelly} S}$. Let ${\color{coral} A}$ be an event in ${\color{kelly} S}$. 
+Let $\coral{B_1}, \coral{B_2}, ..., \coral{B_n}$ be a partition of $\kelly{S}$. Let $\coral{A}$ be an event in $\kelly{S}$. 
 
 Then:
-$$P({\color{coral} B_i}\ \vert \ {\color{coral} A})=\frac{P({\color{coral} A}\ \vert \ {\color{coral} B_i})P({\color{coral} B_i})}{P({\color{coral} A}\ \vert \ {\color{coral} B_1})P({\color{coral} B_1})+P({\color{coral} A} \ \vert \ {\color{coral} B_2})P({\color{coral} B_2})+...+P({\color{coral} A} \ \vert \ {\color{coral} B_n})P({\color{coral} B_n})}$$
+$$P(\coral{B_i}\ \vert \ \coral{A})=\frac{P(\coral{A}\ \vert \ \coral{B_i})P(\coral{B_i})}{P(\coral{A}\ \vert \ \coral{B_1})P(\coral{B_1})+P(\coral{A} \ \vert \ \coral{B_2})P(\coral{B_2})+...+P(\coral{A} \ \vert \ \coral{B_n})P(\coral{B_n})}$$
 
 - Bayes rule is used to "flip" a conditional probability 
 

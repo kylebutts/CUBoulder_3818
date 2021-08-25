@@ -158,12 +158,12 @@ A .hi.kelly[statistic] is a number that can be calculated from sample data witho
 The goal for the class is for the latin letters to be good guesses for the greek letters:
 
 $$
-	{\color{kelly}\text{Data}} \longrightarrow {\color{kelly}\text{Calculation}} \longrightarrow {\color{kelly}\text{Estimates}} \longrightarrow^{hopefully!} {\color{purple}\text{Truth}}
+	\kelly{\text{Data}} \longrightarrow \kelly{\text{Calculation}} \longrightarrow \kelly{\text{Estimates}} \longrightarrow^{hopefully!} \purple{\text{Truth}}
 $$
 
 For example, 
 $$
-	{\color{kelly}X} \longrightarrow {\color{kelly} \frac{1}{n} \sum_{i=1}^n X_i} \longrightarrow {\color{kelly}\bar{x}} \longrightarrow^{hopefullly!} {\color{purple}\mu}
+	\kelly{X} \longrightarrow \kelly{\frac{1}{n} \sum_{i=1}^n X_i} \longrightarrow \kelly{\bar{x}} \longrightarrow^{hopefullly!} \purple{\mu}
 $$
 
 
@@ -250,14 +250,14 @@ To summarize, we want an .it[i.i.d.] sample, i.e. sample observations that are .
 
 For a sample $X_1,..., X_n$ of the random variable $X$, any function of that sample, $\hat{\theta}=g(X_1,...,X_n)$, is a .hi.ruby[sample statistic].  For example,
 
-$${\color{ruby}\bar{X}} = \frac{1}{n} \sum_{i=1}^{n} X_i$$
+$$\ruby{\bar{X}} = \frac{1}{n} \sum_{i=1}^{n} X_i$$
 
-$${\color{ruby}\displaystyle s^2} = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$$ 
+$$\ruby{\displaystyle s^2} = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^2$$ 
 
 
-Because $X_1,..., X_n$ are random variables, any sample statistic ${\color{ruby} \hat{\theta}} = g(X_1,...,X_n)$ is itself a random variable! 
+Because $X_1,..., X_n$ are random variables, any sample statistic $\ruby{\hat{\theta}} = g(X_1,...,X_n)$ is itself a random variable! 
 
-That means, there is some distribution for the values of ${\color{ruby} \hat{\theta}}$
+That means, there is some distribution for the values of $\ruby{\hat{\theta}}$
 
 
 ---

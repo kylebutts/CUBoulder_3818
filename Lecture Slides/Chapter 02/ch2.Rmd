@@ -165,7 +165,7 @@ We will .it.kelly[estimate] these using the .hi.kelly[sample] distribution
 	
 The most common measure of center is the arithmetic average, or .hi.coral[mean]
 
-$${\color{coral} \bar{x}} = \frac{x_1 + x_2 + .... + x_n}{n}$$
+$$\coral{\bar{x}} = \frac{x_1 + x_2 + .... + x_n}{n}$$
 
 or more compactly:
 
@@ -450,7 +450,7 @@ Rule for outliers:
 	
 .hi.purple[Variance]: denoted, $s^2$, measures how "spread out" the data are on average
 		     
-$$s^2 = \frac{(x_1-{\color{coral}\bar{x}})^2 + (x_2-{\color{coral}\bar{x}})^2 + .... + (x_n - {\color{coral}\bar{x}})^2}{n-1},$$
+$$s^2 = \frac{(x_1-\coral{\bar{x}})^2 + (x_2-\coral{\bar{x}})^2 + .... + (x_n - \coral{\bar{x}})^2}{n-1},$$
 or more compactly
 
 ```{r var-annotated, echo=F, out.width="65%"}
@@ -568,12 +568,12 @@ Use five-number summary if distribution is skewed, or has outliers
 The goal for the class is for the latin letters to be good guesses for the greek letters:
 
 $$
-	{\color{kelly}\text{Data}} \longrightarrow {\color{kelly}\text{Calculation}} \longrightarrow {\color{kelly}\text{Estimates}} \longrightarrow^{hopefully!} {\color{purple}\text{Truth}}
+	\kelly{\text{Data}} \longrightarrow \kelly{\text{Calculation}} \longrightarrow \kelly{\text{Estimates}} \longrightarrow^{hopefully!} \purple{\text{Truth}}
 $$
 
 For example, 
 $$
-	{\color{kelly}X} \longrightarrow {\color{kelly} \frac{1}{n} \sum_{i=1}^n X_i} \longrightarrow {\color{kelly}\bar{x}} \longrightarrow^{hopefullly!} {\color{purple}\mu}
+	\kelly{X} \longrightarrow \kelly{\frac{1}{n} \sum_{i=1}^n X_i} \longrightarrow \kelly{\bar{x}} \longrightarrow^{hopefullly!} \purple{\mu}
 $$
 
 

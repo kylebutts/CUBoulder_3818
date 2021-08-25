@@ -139,24 +139,24 @@ If I roll two six-sided die, what is the .cranberry[probability] I roll a one an
 ---
 # Set Notation
 
-${\color{coral} A} = \{1,2,3\}$, ${\color{coral} B}=\{3,4,5\}$, ${\color{coral} C}=\{1,2,3,4,5,6\}$, ${\color{coral} D}=\{4\}$
+$\coral{A} = \{1,2,3\}$, $\coral{B}=\{3,4,5\}$, $\coral{C}=\{1,2,3,4,5,6\}$, $\coral{D}=\{4\}$
 
 
 $\in$: "belongs to"
       
--  Example: $1 \in {\color{coral} A}$
+-  Example: $1 \in \coral{A}$
       
 $\notin$: "does not belong to"
       
--  Example: $4 \notin {\color{coral} A}$
+-  Example: $4 \notin \coral{A}$
       
 $\cup$: Union; combination of two or more sets; "or"
       
--  Example: ${\color{coral} A} \cup {\color{coral} B} = \{1,2,3,4,5\}$
+-  Example: $\coral{A} \cup \coral{B} = \{1,2,3,4,5\}$
       
 $\cap$: Intersection; overlap of two or more sets; "and"
       
--  Example: ${\color{coral} A} \cap {\color{coral} B} = \{3\}$
+-  Example: $\coral{A} \cap \coral{B} = \{3\}$
       
 
 
@@ -165,24 +165,24 @@ $\cap$: Intersection; overlap of two or more sets; "and"
 ---
 # Set Notation, cont.
 
-${\color{coral} A} = \{1,2,3\}$, ${\color{coral} B}=\{3,4,5\}$, ${\color{coral} C}=\{1,2,3,4,5,6\}$, ${\color{coral} D}=\{4\}$
+$\coral{A} = \{1,2,3\}$, $\coral{B}=\{3,4,5\}$, $\coral{C}=\{1,2,3,4,5,6\}$, $\coral{D}=\{4\}$
 
 
-${\color{coral} A}^c$: "A complement"
+$\coral{A}^c$: "A complement"
       
--  Example: ${\color{coral} A}^c = \{x: x \notin {\color{coral} A} \} = \{4,5,6\}$
+-  Example: $\coral{A}^c = \{x: x \notin \coral{A} \} = \{4,5,6\}$
 
 -  Interpreted as "not .coral[A]"
       
 $\subseteq$: Subset
       
--  Example: ${\color{coral} A} \subseteq {\color{coral} C}$, however ${\color{coral} C} \not\subseteq {\color{coral} A}$.
+-  Example: $\coral{A} \subseteq \coral{C}$, however $\coral{C} \not\subseteq \coral{A}$.
       
-${\color{coral} \emptyset}$: is the null or empty set 
+$\coral{\emptyset}$: is the null or empty set 
 
 - contains nothing 
       
-${\color{coral} A} \cap {\color{coral} D}= \emptyset$: Disjoint
+$\coral{A} \cap \coral{D}= \emptyset$: Disjoint
 
 
 
@@ -190,14 +190,14 @@ ${\color{coral} A} \cap {\color{coral} D}= \emptyset$: Disjoint
 ---
 # Clicker Question
 
-Given the following sets, ${\color{coral} A}=\{5,10,15,20\}$ and ${\color{coral} B}=\{1,2,3,4,5\}$
+Given the following sets, $\coral{A}=\{5,10,15,20\}$ and $\coral{B}=\{1,2,3,4,5\}$
 Which of the following is true?
 
 <ol type = "a">
-  <li>\({\color{coral} A} \cup {\color{coral} B} = \{1,2,3,4,5,10,15,20\}\)</li>
-  <li>\({\color{coral} A} \cup {\color{coral} B} = \{5\}\)</li>
-  <li>\({\color{coral} A} \cap {\color{coral} B} = \{5\}\)</li>
-  <li>\({\color{coral} A} \cap {\color{coral} B} = \{1,2,3,4,5,10,15,20\}\)</li>
+  <li>\(\coral{A} \cup \coral{B} = \{1,2,3,4,5,10,15,20\}\)</li>
+  <li>\(\coral{A} \cup \coral{B} = \{5\}\)</li>
+  <li>\(\coral{A} \cap \coral{B} = \{5\}\)</li>
+  <li>\(\coral{A} \cap \coral{B} = \{1,2,3,4,5,10,15,20\}\)</li>
   <li>Both a. and c.</li>
 </ol>
 
@@ -206,7 +206,7 @@ Which of the following is true?
 ---
 # Axioms of Probability
 
-Let ${\color{coral} A}$ and ${\color{coral} B}$ be .coral[events], and $P({\color{coral} A})$ and $P({\color{coral} B})$ are the .cranberry[probability] of those outcomes. We have a set of rules:
+Let $\coral{A}$ and $\coral{B}$ be .coral[events], and $P(\coral{A})$ and $P(\coral{B})$ are the .cranberry[probability] of those outcomes. We have a set of rules:
 
 1. Any .cranberry[probability] is a number between 0 and 1
 
@@ -214,9 +214,9 @@ Let ${\color{coral} A}$ and ${\color{coral} B}$ be .coral[events], and $P({\colo
 
 3. If two .coral[events] are disjoint, 
 
-  $$P({\color{coral} A} \cap {\color{coral} B})=0 \implies P({\color{coral} A} \cup {\color{coral} B}) = P({\color{coral} A}) + P({\color{coral} B})$$
+  $$P(\coral{A} \cap \coral{B})=0 \implies P(\coral{A} \cup \coral{B}) = P(\coral{A}) + P(\coral{B})$$
 
-4. $P({\color{coral} A}^c)=1-P({\color{coral} A})$
+4. $P(\coral{A}^c)=1-P(\coral{A})$
 
 
 
@@ -248,9 +248,9 @@ In which cases are the .coral[events], A and B, disjoint?
  
 .hi.slate[De Morgan's law] of union and intersection. For any two finite sets .coral[A] and .coral[B]:
       
-1. $({\color{coral} A} \cup {\color{coral} B})^c = {\color{coral} A}^c \cap {\color{coral} B}^c$
+1. $(\coral{A} \cup \coral{B})^c = \coral{A}^c \cap \coral{B}^c$
 
-2. $({\color{coral} A} \cap {\color{coral} B})^c = {\color{coral} A}^c \cup {\color{coral} B}^c$
+2. $(\coral{A} \cap \coral{B})^c = \coral{A}^c \cup \coral{B}^c$
       
 
 
@@ -259,29 +259,29 @@ In which cases are the .coral[events], A and B, disjoint?
 ---
 # De Morgan's Law Example
 
-Let ${\color{kelly}S}=\{j, k, l, m, n\}$ and ${\color{coral} A}=\{j, k, m\}$ and ${\color{coral} B}=\{k, m, n\}$
+Let $\kelly{S}=\{j, k, l, m, n\}$ and $\coral{A}=\{j, k, m\}$ and $\coral{B}=\{k, m, n\}$
 
 
-1. $({\color{coral} A} \cup {\color{coral} B})^c = ({\color{coral} A}^c \cap {\color{coral} B}^c)$
+1. $(\coral{A} \cup \coral{B})^c = (\coral{A}^c \cap \coral{B}^c)$
 
   <ol type="i">
     <li>
-      \(({\color{coral} A} \cup {\color{coral} B})= \{j, k, m, n\} \implies ({\color{coral} A} \cup {\color{coral} B})^c=\{l\}\)
+      \((\coral{A} \cup \coral{B})= \{j, k, m, n\} \implies (\coral{A} \cup \coral{B})^c=\{l\}\)
     </li>
     <br/>
     <li>
-      \({\color{coral} A}^c = \{l, n\}\) and \({\color{coral} B}^c=\{j, l\} \implies {\color{coral} A}^c \cap {\color{coral} B}^c = \{l\}\)
+      \(\coral{A}^c = \{l, n\}\) and \(\coral{B}^c=\{j, l\} \implies \coral{A}^c \cap \coral{B}^c = \{l\}\)
     </li>
   </ol>
 
-2. $({\color{coral} A} \cap {\color{coral} B})^c = {\color{coral} A}^c \cup {\color{coral} B}^c$
+2. $(\coral{A} \cap \coral{B})^c = \coral{A}^c \cup \coral{B}^c$
   <ol type="i">
     <li>
-      \( ({\color{coral} A} \cap {\color{coral} B})=\{k,m\} \implies ({\color{coral} A} \cap {\color{coral} B})^c=\{j, l, n\} \)
+      \( (\coral{A} \cap \coral{B})=\{k,m\} \implies (\coral{A} \cap \coral{B})^c=\{j, l, n\} \)
     </li>
     <br/>
     <li>
-      \( {\color{coral} A}^c \cup {\color{coral} B}^c=\{l, n\} \cup \{j, l\} \implies {\color{coral} A}^c \cup {\color{coral} B}^c = \{j, l, n\} \)
+      \( \coral{A}^c \cup \coral{B}^c=\{l, n\} \cup \{j, l\} \implies \coral{A}^c \cup \coral{B}^c = \{j, l, n\} \)
     </li>
   </ol>
 
@@ -324,7 +324,7 @@ What is the .cranberry[probability] of each .coral[event]?
 ---
 # Clicker Question
 
-If I toss a coin two times, and $X$ is the number of heads, then what is $P({\color{coral}X=2})$?
+If I toss a coin two times, and $X$ is the number of heads, then what is $P(\coral{X=2})$?
 
 <ol type = "a">
 <li>1/4</li>
@@ -341,7 +341,7 @@ If I toss a coin two times, and $X$ is the number of heads, then what is $P({\co
 
 Still flipping a coin twice, what is the .cranberry[probability] of getting at least one head?
       
-$P({\color{coral}X=1}) + P({\color{coral}X=2}) = 1-P({\color{coral}X=0})$
+$P(\coral{X=1}) + P(\coral{X=2}) = 1-P(\coral{X=0})$
 
 - Now I only have to calculate one .cranberry[probability]!
       
@@ -375,5 +375,5 @@ What is the .cranberry[probability] of rolling a 7, 11, or double when rolling t
 
 .coral[Roll a double]: $\left\{(1,1), (2,2), (3,3), (4,4), (5,5), (6,6) \right\}$
 
-$P({\color{coral}7}) + P({\color{coral}11}) + P({\color{coral}\text{doubles}})=\frac{6}{36}+\frac{2}{36}+\frac{6}{36} \approx 0.4$
+$P(\coral{7}) + P(\coral{11}) + P(\coral{\text{doubles}})=\frac{6}{36}+\frac{2}{36}+\frac{6}{36} \approx 0.4$
 

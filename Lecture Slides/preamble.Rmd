@@ -52,7 +52,6 @@ xaringanExtra::use_scribble()
 
 
 <!-- From xaringancolor -->
-
 <div style = "position:fixed; visibility: hidden">
 $$
 \require{color}
@@ -71,53 +70,53 @@ $$
 </div>
 	
 <script type="text/x-mathjax-config">
-	MathJax.Hub.Config({
-		TeX: {
-			Macros: {
-				purple: ["{\\color{purple}{#1}}", 1],
-				navy: ["{\\color{navy}{#1}}", 1],
-				ruby: ["{\\color{ruby}{#1}}", 1],
-				alice: ["{\\color{alice}{#1}}", 1],
-				daisy: ["{\\color{daisy}{#1}}", 1],
-				coral: ["{\\color{coral}{#1}}", 1],
-				kelly: ["{\\color{kelly}{#1}}", 1],
-				jet: ["{\\color{jet}{#1}}", 1],
-				asher: ["{\\color{asher}{#1}}", 1],
-				slate: ["{\\color{slate}{#1}}", 1],
-				cranberry: ["{\\color{cranberry}{#1}}", 1]
-			},
-			loader: {load: ['[tex]/color']},
-			tex: {packages: {'[+]': ['color']}}
-		}
-	});
+MathJax.Hub.Config({
+	TeX: {
+		Macros: {
+			purple: ["{\\color{purple}{#1}}", 1],
+			navy: ["{\\color{navy}{#1}}", 1],
+			ruby: ["{\\color{ruby}{#1}}", 1],
+			alice: ["{\\color{alice}{#1}}", 1],
+			daisy: ["{\\color{daisy}{#1}}", 1],
+			coral: ["{\\color{coral}{#1}}", 1],
+			kelly: ["{\\color{kelly}{#1}}", 1],
+			jet: ["{\\color{jet}{#1}}", 1],
+			asher: ["{\\color{asher}{#1}}", 1],
+			slate: ["{\\color{slate}{#1}}", 1],
+			cranberry: ["{\\color{cranberry}{#1}}", 1]
+		},
+		loader: {load: ['[tex]/color']},
+		tex: {packages: {'[+]': ['color']}}
+	}
+});
 </script>
 
 <style>
-	.purple {color: #5601A4;}
-	.navy {color: #0D3D56;}
-	.ruby {color: #9A2515;}
-	.alice {color: #107895;}
-	.daisy {color: #EBC944;}
-	.coral {color: #F26D21;}
-	.kelly {color: #829356;}
-	.jet {color: #131516;}
-	.asher {color: #555F61;}
-	.slate {color: #314F4F;}
-	.cranberry {color: #E64173;}
+.purple {color: #5601A4;}
+.navy {color: #0D3D56;}
+.ruby {color: #9A2515;}
+.alice {color: #107895;}
+.daisy {color: #EBC944;}
+.coral {color: #F26D21;}
+.kelly {color: #829356;}
+.jet {color: #131516;}
+.asher {color: #555F61;}
+.slate {color: #314F4F;}
+.cranberry {color: #E64173;}
 </style>
 
 
 ```{r flair_color, echo=FALSE}
-	library(flair)
-	purple <- "#5601A4"
-	navy <- "#0D3D56"
-	ruby <- "#9A2515"
-	alice <- "#107895"
-	daisy <- "#EBC944"
-	coral <- "#F26D21"
-	kelly <- "#829356"
-	jet <- "#131516"
-	asher <- "#555F61"
-	slate <- "#314F4F"
-	cranberry <- "#E64173"
+library(flair)
+purple <- "#5601A4"
+navy <- "#0D3D56"
+ruby <- "#9A2515"
+alice <- "#107895"
+daisy <- "#EBC944"
+coral <- "#F26D21"
+kelly <- "#829356"
+jet <- "#131516"
+asher <- "#555F61"
+slate <- "#314F4F"
+cranberry <- "#E64173"
 ```
