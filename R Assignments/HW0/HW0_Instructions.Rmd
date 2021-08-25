@@ -82,7 +82,14 @@ Two things for you to do for this assignment.
   
   While you are there, change the name parameter to your name.
 
-2. Fill out the few tasks given in the document
+2. Fill out the few tasks given in the document. 
 
-3. Upload completed html file to canvas.
+3. Click the `knit` button to creat html file. This will create the file in the same location as where you saved you HW0.Rmd file.
+
+```{r R-knit, echo = F, out.width = "50%"}
+knitr::include_graphics("R-knit.png")
+```
+
+
+4. Upload completed html file to canvas.
 
