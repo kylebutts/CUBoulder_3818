@@ -4,8 +4,8 @@
     <title>ECON 3818</title>
     <meta charset="utf-8" />
     <meta name="author" content="Kyle Butts" />
-    <meta name="date" content="2021-08-10" />
-    <script src="ch2_files/header-attrs-2.9/header-attrs.js"></script>
+    <meta name="date" content="2021-08-27" />
+    <script src="ch2_files/header-attrs-2.10/header-attrs.js"></script>
     <link href="ch2_files/remark-css-0.0.1/default.css" rel="stylesheet" />
     <script src="ch2_files/fabric-4.3.1/fabric.min.js"></script>
     <link href="ch2_files/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
@@ -19,7 +19,7 @@ class: center, middle, inverse, title-slide
 # ECON 3818
 ## Chapter 2
 ### Kyle Butts
-### 10 August 2021
+### 27 August 2021
 
 ---
 
@@ -42,15 +42,16 @@ class: clear, middle
 @import url(https://fonts.googleapis.com/css?family=Roboto&amp;display=swap);
 @import url(https://fonts.googleapis.com/css?family=Roboto&amp;display=swap);
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700&amp;display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&amp;display=swap);
 
 
 :root {
   /* Fonts */
-  --text-font-family: Roboto;
+  --text-font-family: 'Atkinson Hyperelegible';
   --text-font-is-google: 1;
-  --text-font-family-fallback: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial;
+  --text-font-family-fallback: Roboto, -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica, Ubuntu, roboto, noto, segoe ui, arial;
   --text-font-base: sans-serif;
-  --header-font-family: Roboto;
+  --header-font-family: 'Atkinson Hyperelegible'
   --header-font-is-google: 1;
   --header-font-family-fallback: Georgia, serif;
   --code-font-family: 'Source Code Pro';
@@ -547,7 +548,6 @@ table th {
 
 
 &lt;!-- From xaringancolor --&gt;
-
 &lt;div style = "position:fixed; visibility: hidden"&gt;
 $$
 \require{color}
@@ -566,39 +566,39 @@ $$
 &lt;/div&gt;
 	
 &lt;script type="text/x-mathjax-config"&gt;
-	MathJax.Hub.Config({
-		TeX: {
-			Macros: {
-				purple: ["{\\color{purple}{#1}}", 1],
-				navy: ["{\\color{navy}{#1}}", 1],
-				ruby: ["{\\color{ruby}{#1}}", 1],
-				alice: ["{\\color{alice}{#1}}", 1],
-				daisy: ["{\\color{daisy}{#1}}", 1],
-				coral: ["{\\color{coral}{#1}}", 1],
-				kelly: ["{\\color{kelly}{#1}}", 1],
-				jet: ["{\\color{jet}{#1}}", 1],
-				asher: ["{\\color{asher}{#1}}", 1],
-				slate: ["{\\color{slate}{#1}}", 1],
-				cranberry: ["{\\color{cranberry}{#1}}", 1]
-			},
-			loader: {load: ['[tex]/color']},
-			tex: {packages: {'[+]': ['color']}}
-		}
-	});
+MathJax.Hub.Config({
+	TeX: {
+		Macros: {
+			purple: ["{\\color{purple}{#1}}", 1],
+			navy: ["{\\color{navy}{#1}}", 1],
+			ruby: ["{\\color{ruby}{#1}}", 1],
+			alice: ["{\\color{alice}{#1}}", 1],
+			daisy: ["{\\color{daisy}{#1}}", 1],
+			coral: ["{\\color{coral}{#1}}", 1],
+			kelly: ["{\\color{kelly}{#1}}", 1],
+			jet: ["{\\color{jet}{#1}}", 1],
+			asher: ["{\\color{asher}{#1}}", 1],
+			slate: ["{\\color{slate}{#1}}", 1],
+			cranberry: ["{\\color{cranberry}{#1}}", 1]
+		},
+		loader: {load: ['[tex]/color']},
+		tex: {packages: {'[+]': ['color']}}
+	}
+});
 &lt;/script&gt;
 
 &lt;style&gt;
-	.purple {color: #5601A4;}
-	.navy {color: #0D3D56;}
-	.ruby {color: #9A2515;}
-	.alice {color: #107895;}
-	.daisy {color: #EBC944;}
-	.coral {color: #F26D21;}
-	.kelly {color: #829356;}
-	.jet {color: #131516;}
-	.asher {color: #555F61;}
-	.slate {color: #314F4F;}
-	.cranberry {color: #E64173;}
+.purple {color: #5601A4;}
+.navy {color: #0D3D56;}
+.ruby {color: #9A2515;}
+.alice {color: #107895;}
+.daisy {color: #EBC944;}
+.coral {color: #F26D21;}
+.kelly {color: #829356;}
+.jet {color: #131516;}
+.asher {color: #555F61;}
+.slate {color: #314F4F;}
+.cranberry {color: #E64173;}
 &lt;/style&gt;
 
 
@@ -610,14 +610,15 @@ $$
 ## Chapter Overview
 	
 	
-- Population vs. Sample
-- Measures of Central Tendency
+Population vs. Sample
+
+Measures of Central Tendency
 - Mean
 - Median
 		      
-- Measures of Variability
+Measures of Variability
 - Quartiles
-- Variance \&amp; Standard Deviation
+- Variance and Standard Deviation
 
 
 ---
@@ -638,7 +639,10 @@ $$
 ---
 # Population Distribution
 
-We are interested in the underlying population distribution of some variable
+.hi.kelly[Distribution of a variable]: tells us .it[what values] it takes and .it[how often] it takes these values
+
+
+- We are interested in the underlying population distribution of some variable
 	
 - Fundamental problem of statistics is we can't collect data on every single observation
 
@@ -679,6 +683,9 @@ Two primary .hi.purple[population] parameters of interest:
 	      	      
 	- Population .alice[variance], `\(\sigma^2\)`
 	  
+	  
+--
+
 We will .it.kelly[estimate] these using the .hi.kelly[sample] distribution
 	
 	
@@ -690,7 +697,7 @@ We will .it.kelly[estimate] these using the .hi.kelly[sample] distribution
 	
 The most common measure of center is the arithmetic average, or .hi.coral[mean]
 
-`$${\color{coral} \bar{x}} = \frac{x_1 + x_2 + .... + x_n}{n}$$`
+`$$\coral{\bar{x}} = \frac{x_1 + x_2 + .... + x_n}{n}$$`
 
 or more compactly:
 
@@ -706,6 +713,18 @@ or more compactly:
 .center[
 &lt;img style="width:100%;" src="sample_anim_mean.gif"/&gt;
 ]
+
+	
+---
+# Population Inference: Mean
+
+	
+
+
+.center[
+&lt;img style="width:100%;" src="sample_anim_mean_wider.gif"/&gt;
+]
+
 
 ---
 # Measuring Center: the Median
@@ -731,6 +750,7 @@ How to calculate median:
 		      
 - The median, however, is resistant to .hi.purple[outliers] so it can be important to calculate for smaller samples 
 
+--
 
 .center[
 &lt;img style="width: 60%;" src="meme.png"/&gt;
@@ -753,12 +773,12 @@ How to calculate median:
 ---
 # Clicker Question
 	
-What is the sample average of the participants?
+What is the sample mean of the participants's age?
 	
 <div id="hvyvmbbplw" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+<style>@import url("https://fonts.googleapis.com/css2?family=Fira+Code:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
-  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+  font-family: 'Fira Code', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
 #hvyvmbbplw .gt_table {
@@ -841,7 +861,7 @@ html {
 
 #hvyvmbbplw .gt_col_heading {
   color: #333333;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 80%;
   font-weight: bolder;
   text-transform: uppercase;
@@ -861,7 +881,7 @@ html {
 
 #hvyvmbbplw .gt_column_spanner_outer {
   color: #333333;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 80%;
   font-weight: bolder;
   text-transform: uppercase;
@@ -1130,10 +1150,10 @@ html {
 <td class="gt_row gt_left">female</td>
 <td class="gt_row gt_right">31.88</td>
 <td class="gt_row gt_left">2 drinks</td></tr>
-    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
-<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right">56</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">42.80</td>
+<td class="gt_row gt_left">3 drinks</td></tr>
   </tbody>
   
   
@@ -1155,9 +1175,9 @@ html {
 Which measure of central tendency best describes the age of participants?
 
 <div id="dtuqtxfghi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+<style>@import url("https://fonts.googleapis.com/css2?family=Fira+Code:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
-  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+  font-family: 'Fira Code', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
 #dtuqtxfghi .gt_table {
@@ -1240,7 +1260,7 @@ html {
 
 #dtuqtxfghi .gt_col_heading {
   color: #333333;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 80%;
   font-weight: bolder;
   text-transform: uppercase;
@@ -1260,7 +1280,7 @@ html {
 
 #dtuqtxfghi .gt_column_spanner_outer {
   color: #333333;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 80%;
   font-weight: bolder;
   text-transform: uppercase;
@@ -1529,10 +1549,10 @@ html {
 <td class="gt_row gt_left">female</td>
 <td class="gt_row gt_right">31.88</td>
 <td class="gt_row gt_left">2 drinks</td></tr>
-    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
-<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right">56</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">42.80</td>
+<td class="gt_row gt_left">3 drinks</td></tr>
   </tbody>
   
   
@@ -1559,8 +1579,10 @@ Measures of central tendency do not tell the whole story. To further characteriz
 # Variability: Quartiles
 	
 	
-- Measure of center alone can be misleading
-- How to calculate quartiles:
+Measure of center alone can be misleading. One way to measure variability is to use quartiles.
+
+
+How to calculate quartiles:
 		      
 - Arrange observations in increasing order and locate .hi.cranberry[median] 
 - The .hi.kelly[first quartile] is the median of the observations located to the left of the median
@@ -1574,14 +1596,16 @@ Measures of central tendency do not tell the whole story. To further characteriz
 ---
 # Boxplots
 	
-.hi.alice[five-number summary]: smallest observation (minimum), the first quartile, the median, the third quartile, and the largest observation (maximum)
+.hi.alice[Five-number summary]: smallest observation (minimum), the first quartile, the median, the third quartile, and the largest observation (maximum)
 
 We can use the .hi.purple[boxplot] using this five number summary to display quantitative data
 
-- How to make a boxplot:
+How to make a boxplot:
 		      
-- A central box spans the first and third quartiles 
+- A central box spans the first and third quartiles
+
 - A line in the box marks the median
+
 - Line extends from the box out to the smallest and largest observations 
 		      
 	
@@ -1615,7 +1639,7 @@ Rule for outliers:
 	
 .hi.purple[Variance]: denoted, `\(s^2\)`, measures how "spread out" the data are on average
 		     
-`$$s^2 = \frac{(x_1-{\color{coral}\bar{x}})^2 + (x_2-{\color{coral}\bar{x}})^2 + .... + (x_n - {\color{coral}\bar{x}})^2}{n-1},$$`
+`$$s^2 = \frac{(x_1-\coral{\bar{x}})^2 + (x_2-\coral{\bar{x}})^2 + .... + (x_n - \coral{\bar{x}})^2}{n-1},$$`
 or more compactly
 
 &lt;img src="var_annotated.png" width="65%" style="display: block; margin: auto;" /&gt;
@@ -1673,9 +1697,9 @@ or more compactly
 Calculate the standard deviation of age?
 
 <div id="ptjgebyyms" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+<style>@import url("https://fonts.googleapis.com/css2?family=Fira+Code:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 html {
-  font-family: Chivo, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+  font-family: 'Fira Code', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
 #ptjgebyyms .gt_table {
@@ -1758,7 +1782,7 @@ html {
 
 #ptjgebyyms .gt_col_heading {
   color: #333333;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 80%;
   font-weight: bolder;
   text-transform: uppercase;
@@ -1778,7 +1802,7 @@ html {
 
 #ptjgebyyms .gt_column_spanner_outer {
   color: #333333;
-  background-color: white;
+  background-color: #FFFFFF;
   font-size: 80%;
   font-weight: bolder;
   text-transform: uppercase;
@@ -2047,10 +2071,10 @@ html {
 <td class="gt_row gt_left">female</td>
 <td class="gt_row gt_right">31.88</td>
 <td class="gt_row gt_left">2 drinks</td></tr>
-    <tr><td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">56</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">male</td>
-<td class="gt_row gt_right" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">42.80</td>
-<td class="gt_row gt_left" style="border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: transparent;">3 drinks</td></tr>
+    <tr><td class="gt_row gt_right">56</td>
+<td class="gt_row gt_left">male</td>
+<td class="gt_row gt_right">42.80</td>
+<td class="gt_row gt_left">3 drinks</td></tr>
   </tbody>
   
   
@@ -2093,40 +2117,14 @@ Use five-number summary if distribution is skewed, or has outliers
 The goal for the class is for the latin letters to be good guesses for the greek letters:
 
 $$
-	{\color{kelly}\text{Data}} \longrightarrow {\color{kelly}\text{Calculation}} \longrightarrow {\color{kelly}\text{Estimates}} \longrightarrow^{hopefully!} {\color{purple}\text{Truth}}
+	\kelly{\text{Data}} \longrightarrow \kelly{\text{Calculation}} \longrightarrow \kelly{\text{Estimates}} \longrightarrow^{hopefully!} \purple{\text{Truth}}
 $$
 
 For example, 
 $$
-	{\color{kelly}X} \longrightarrow {\color{kelly} \frac{1}{n} \sum_{i=1}^n X_i} \longrightarrow {\color{kelly}\bar{x}} \longrightarrow^{hopefullly!} {\color{purple}\mu}
+	\kelly{X} \longrightarrow \kelly{\frac{1}{n} \sum_{i=1}^n X_i} \longrightarrow \kelly{\bar{x}} \longrightarrow^{hopefullly!} \purple{\mu}
 $$
 
-
-
-
----
-# Install R and R Studio
-	
-.hi[Download R:] [https://www.r-project.org/](https://www.r-project.org/)
-
-- Click "download R" link under "Getting Started"
-- Select a CRAN location (mirror site) and click link
-- I selected the UC Berkeley one, pick one in USA
-- Click on "Download R for Mac/Windows/etc" link at top of page
-- Click on package to download, under "Latest Release"
-- Save the .pkg file, double click open, and follow instructions 
-
-.hi[Download RStudio:] [https://www.rstudio.com/](https://www.rstudio.com/)
-
-- \url{www.rstudio.com} and click "Download RStudio"
-- Click on "download RStudio Desktop"
-	
-
----
-# How to use R
-	
-		
-&lt;img src="r.png" width="90%" style="display: block; margin: auto;" /&gt;
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -23,14 +23,15 @@ class: clear, middle
 ## Chapter Overview
 	
 	
-- Population vs. Sample
-- Measures of Central Tendency
+Population vs. Sample
+
+Measures of Central Tendency
 - Mean
 - Median
 		      
-- Measures of Variability
+Measures of Variability
 - Quartiles
-- Variance \& Standard Deviation
+- Variance and Standard Deviation
 
 
 ---
@@ -51,7 +52,10 @@ class: clear, middle
 ---
 # Population Distribution
 
-We are interested in the underlying population distribution of some variable
+.hi.kelly[Distribution of a variable]: tells us .it[what values] it takes and .it[how often] it takes these values
+
+
+- We are interested in the underlying population distribution of some variable
 	
 - Fundamental problem of statistics is we can't collect data on every single observation
 
@@ -154,6 +158,9 @@ Two primary .hi.purple[population] parameters of interest:
 	      	      
 	- Population .alice[variance], $\sigma^2$
 	  
+	  
+--
+
 We will .it.kelly[estimate] these using the .hi.kelly[sample] distribution
 	
 	
@@ -190,7 +197,7 @@ for (i in 1:5) {
     mean <- sample_df %>%
         dplyr::filter(sample == i) %>%
         slice(1) %>%
-        pull(mean)
+        pull(mean)libr
 
     p <- ggplot(data = sample_df %>% dplyr::filter(sample == i), aes(x = values)) +
         geom_histogram(aes(y = ..density..)) +
@@ -225,6 +232,72 @@ file.remove(png_paths)
 <img style="width:100%;" src="sample_anim_mean.gif"/>
 ]
 
+	
+---
+# Population Inference: Mean
+
+	
+```{r sample-anim-mean-wider, eval=F, echo=F, cache=T, results='hide'}
+
+
+set.seed(12)
+n_samp <- 150
+
+df <- tibble(
+    x = seq(4, 12, length = 1000),
+    y = dnorm(x, mean = 8, sd = 2),
+    count = y * n_samp
+)
+
+# 5 samples
+sample_df <- tibble(sample = rep(1:5, times = n_samp), values = rnorm(5 * n_samp, 8, 2))
+
+sample_df <- sample_df %>%
+    group_by(sample) %>%
+    mutate(mean = mean(values))
+
+png_paths <- c()
+
+for (i in 1:5) {
+    mean <- sample_df %>%
+        dplyr::filter(sample == i) %>%
+        slice(1) %>%
+        pull(mean)
+
+    p <- ggplot(data = sample_df %>% dplyr::filter(sample == i), aes(x = values)) +
+        geom_histogram(aes(y = ..density..)) +
+        geom_line(data = df, aes(x = x, y = y), color = "#d2382c", size = 1.5) +
+        geom_vline(
+            xintercept = mean,
+            color = "#8BB174", size = 2
+        ) +
+        kfbmisc::theme_kyle(base_size = 40) +
+        scale_x_continuous(limits = c(4, 12)) +
+        scale_y_continuous(limits = c(0, 0.75)) +
+        labs(
+            x = "Value of Observation",
+            y = "Density (Likelihood of observing value)",
+            title = glue::glue("Sample Mean {i}: {round(mean,3)}")
+        )
+
+    png_path <- here("Lecture Slides", "Chapter 02", glue::glue("frame{i}.png"))
+    png_paths <- c(png_paths, png_path)
+
+    ggsave(filename = png_path, plot = p, dpi = 300, width = 8, height = 5)
+}
+
+# Requires magick!!
+# convert png to gif
+system("convert -dispose previous -delay 80 frame*.png sample_anim_mean_wider.gif")
+
+file.remove(png_paths)
+```
+
+.center[
+<img style="width:100%;" src="sample_anim_mean_wider.gif"/>
+]
+
+
 ---
 # Measuring Center: the Median
 	
@@ -249,6 +322,7 @@ How to calculate median:
 		      
 - The median, however, is resistant to .hi.purple[outliers] so it can be important to calculate for smaller samples 
 
+--
 
 .center[
 <img style="width: 60%;" src="meme.png"/>
@@ -278,7 +352,7 @@ p <- ggplot(stats) +
     geom_histogram(aes(x = trbTotals, fill = Rodman)) +
     geom_vline(xintercept = mean, linetype = "dashed") +
     geom_vline(xintercept = median, linetype = "dashed") +
-    theme_kyle(base_size = 36) +
+    kfbmisc::theme_kyle(base_size = 36) +
     labs(
         y = "Count", x = "Total Rebounds",
         title = "1991-92 NBA Season Rebounds",
@@ -316,7 +390,7 @@ knitr::include_graphics("rebounds.png")
 ---
 # Clicker Question
 	
-What is the sample average of the participants?
+What is the sample mean of the participants's age?
 	
 ```{r drinking-table, echo = F}
 
@@ -374,8 +448,10 @@ Measures of central tendency do not tell the whole story. To further characteriz
 # Variability: Quartiles
 	
 	
-- Measure of center alone can be misleading
-- How to calculate quartiles:
+Measure of center alone can be misleading. One way to measure variability is to use quartiles.
+
+
+How to calculate quartiles:
 		      
 - Arrange observations in increasing order and locate .hi.cranberry[median] 
 - The .hi.kelly[first quartile] is the median of the observations located to the left of the median
@@ -391,14 +467,16 @@ knitr::include_graphics("quartiles.png")
 ---
 # Boxplots
 	
-.hi.alice[five-number summary]: smallest observation (minimum), the first quartile, the median, the third quartile, and the largest observation (maximum)
+.hi.alice[Five-number summary]: smallest observation (minimum), the first quartile, the median, the third quartile, and the largest observation (maximum)
 
 We can use the .hi.purple[boxplot] using this five number summary to display quantitative data
 
-- How to make a boxplot:
+How to make a boxplot:
 		      
-- A central box spans the first and third quartiles 
+- A central box spans the first and third quartiles
+
 - A line in the box marks the median
+
 - Line extends from the box out to the smallest and largest observations 
 		      
 	
@@ -576,31 +654,3 @@ $$
 	\kelly{X} \longrightarrow \kelly{\frac{1}{n} \sum_{i=1}^n X_i} \longrightarrow \kelly{\bar{x}} \longrightarrow^{hopefullly!} \purple{\mu}
 $$
 
-
-
-
----
-# Install R and R Studio
-	
-.hi[Download R:] [https://www.r-project.org/](https://www.r-project.org/)
-
-- Click "download R" link under "Getting Started"
-- Select a CRAN location (mirror site) and click link
-- I selected the UC Berkeley one, pick one in USA
-- Click on "Download R for Mac/Windows/etc" link at top of page
-- Click on package to download, under "Latest Release"
-- Save the .pkg file, double click open, and follow instructions 
-
-.hi[Download RStudio:] [https://www.rstudio.com/](https://www.rstudio.com/)
-
-- \url{www.rstudio.com} and click "Download RStudio"
-- Click on "download RStudio Desktop"
-	
-
----
-# How to use R
-	
-		
-```{r, echo = F, out.width = "90%"}
-knitr::include_graphics("r.png")
-```
