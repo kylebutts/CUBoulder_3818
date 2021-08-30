@@ -1,0 +1,274 @@
+---
+title: "R Day 2 - Visualizing Data"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+
+
+# Accessing Variables
+
+Let's load the penguin dataset from last time:
+
+```{r}
+penguins <- read.csv("https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/inst/extdata/penguins.csv")
+```
+
+## Accessing individual observations/variables
+
+
+To access an individual variable, we can use the `$` or `[]` operators. For the `[]` operator, you there are two options and are separated by a comma. The first option describes the rows you want, the second option describes the columns you want. Leaving either blank is equivalent to "all".
+
+```{r}
+
+```
+
+You can pair these together, for example let's say I want the variable `island` for the first 6 observations:
+
+```{r}
+# Two ways to do it. How are they different?
+penguins[1:6, "island"]
+penguins[1:6, ]$island
+```
+
+
+
+### Exercise
+
+Use the `unique()` function to find the unique values of the variable `species` in the penguins dataset.
+
+```{r}
+
+```
+
+
+
+## Selecting rows based on criteria
+
+Lets see which penguins live on Torgersen.
+
+```{r}
+
+```
+
+Can use vector of True and False to select rows that match criteria: 
+
+```{r}
+
+```
+
+You can also use the following operators to supply multiple criteria:
+
+- `&` And operator. Both vector 1 **and** vector 2 must be true for the observation
+- `|` Or operator. **Either** vector 1 **or** vector 2 must be true for the observation
+
+```{r}
+```
+
+
+### Exercise
+
+Now try and answer the following question. Are all three species present on the Torgersen island? 
+
+```{r}
+```
+
+
+
+### Exercise
+
+![Penguin Beak Measurements](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/culmen_depth.png)
+
+Lets compare Bill Length and Bill Depth between the three species of penguins in our dataset: the Adelie, Gentoo, and Chinstrap penguins.
+
+Using `[]` and `<-`, create 3 dataframes called `penguins_ad`, `penguins_gent`, and `penguins_chin` that subset based on the correct species of penguins. 
+
+```{r}
+
+```
+
+
+What is the mean of each species bill length in millimeters? (remember there are NAs so we will need to use `na.rm = TRUE`).
+
+```{r}
+
+```
+
+
+# Creating new variables
+
+We can create variables in our dataset by using the `$` or `[]` operators with `<-`.
+
+```{r}
+# 0.0022 lbs = 1 g
+penguins$body_mass_lb <- 0.00220462 * penguins$body_mass_g
+```
+
+
+
+
+### Exericse
+
+Your R exercise asks you to calculate the standard deviation without using the `var()` or `sd()` command. We want to remove `NA`s manually to fix this. A helpful command is `is.na()`. Let's practice computing the variance of body_mass_lb by hand. You will want to use `nrow()`
+
+```{r}
+```
+
+
+
+# Graphing Data
+
+## Histograms
+
+Common functions for graphing are `hist()` for plotting one variable and `plot()` for plotting two variables. 
+
+```{r}
+# Count
+```
+
+You can add additional commands for better plots. Use `?hist` or `help("hist")` to see the list of options. 
+
+### Exercise
+
+Type `?hist` into the console and Find the following options:
+
+- Find the option that will give you probabilities
+
+```{r}
+# Probability
+```
+
+- the bar color
+- the number of breaks
+- the x-axis label
+- add a title
+
+
+```{r}
+
+```
+
+### Exercise
+
+Using different `col` for each species of penguin,  make a histogram of the three species' bill length.
+
+```{r}
+
+```
+
+Knit your file and compare the distributions of the bill lengths. Include a comment about the Mean and the Variance. Which Distribution looks symmetric?
+
+
+## Box plots
+
+Box plots are also easy in R. First lets make a box plot of `flipper_length_mm` among the entire sample.
+
+```{r}
+
+```
+
+If we want to do more fancy plotting, we can use a `formula` that looks like this:
+
+`variable ~ by`
+
+where `variable` is the variable we want to make a box plot of and `by` is the variable that we want to break out into groups:
+
+```{r}
+
+```
+
+### Exercise
+
+Let's see if the weights of Adelie penguins appear to have a different distribution of `body_mass_lb` by island:
+
+```{r}
+
+```
+
+
+
+## Scatter Plots
+
+While we haven't talked about this yet, it is typically of interest to compare multiple variables together. To plot two variables, we will use the `plot()` function to make scatter plots.
+
+```{r}
+
+```
+
+
+
+
+
+## ggplot2
+
+There is a package called `ggplot2` that improves base Rs graphing library. We will not cover the details here, but a curious student can find much more details here: https://ggplot2-book.org/
+
+This is a particularly nice introduction: https://uopsych-r-bootcamp-2020.netlify.app/post/06-ggplot2/
+
+```{r, warning = FALSE, message = FALSE}
+library(ggplot2)
+ggplot() +
+  geom_histogram(data = penguins, aes(x = body_mass_lb, color = species, fill = species), alpha = 0.3) +
+  labs(
+    title = "Histogram of Penguin Body Mass, by species",
+    x = "Weight (in lb.)",
+    color = "Species",
+    fill = "Species"
+  ) +
+  scale_color_grey() +
+  scale_fill_grey() +
+  theme_gray()
+```
+
+```{r, warning = FALSE, message = FALSE}
+ggplot() +
+  geom_point(data = penguins, aes(x = flipper_length_mm, y = body_mass_lb, color = species)) +
+  labs(
+    title = "Scatter Plot of Penguin Data, by species",
+    x = "Flipper Length (in mm)",
+    y = "Weight (in lb.)",
+    color = "Species",
+    fill = "Species"
+  ) +
+  scale_color_grey() +
+  theme_gray()
+```
+
+`ggplot2` makes it really easy to make beautiful and professional graphs and it would be a **really** useful skill to have in your career
+
+```{r}
+ggplot(
+  data = penguins,
+  aes(
+    x = bill_length_mm,
+    y = bill_depth_mm,
+    group = species
+  )
+) +
+  geom_point(aes(
+    color = species,
+    shape = species
+  ),
+  size = 3,
+  alpha = 0.8
+  ) +
+  geom_smooth(method = "lm", se = FALSE, aes(color = species)) +
+  theme_minimal() +
+  scale_color_manual(values = c("darkorange", "purple", "cyan4")) +
+  labs(
+    title = "Penguin bill dimensions",
+    subtitle = "Bill length and depth for Adelie, Chinstrap and Gentoo Penguins at Palmer Station LTER",
+    x = "Bill length (mm)",
+    y = "Bill depth (mm)",
+    color = "Penguin species",
+    shape = "Penguin species"
+  ) +
+  theme(
+    legend.position = c(0.85, 0.15),
+    legend.background = element_rect(fill = "white", color = NA),
+    plot.title.position = "plot",
+    plot.caption = element_text(hjust = 0, face = "italic"),
+    plot.caption.position = "plot"
+  )
+```
