@@ -9,7 +9,7 @@ output:
 
 # Checking that you read the Markdown Section
 
-1. Please provide a link to a song you like. If you don't know how, refer to [these notes](https://evalf21.classes.andrewheiss.com/resource/markdown/)
+1. Please provide a link to a song you like. If you don't know how, refer to [these notes](https://evalf21.classes.andrewheiss.com/resource/markdown/). Give the link a meaningful title (for example, the name of the song).
 
 
 
