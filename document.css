@@ -398,7 +398,8 @@ li {
   font-size: 1rem;
   display: block;
   overflow-x: auto;
-  padding: 0.5rem 0.5rem !important;
+  padding: 0rem 0.5rem !important;
+  line-height: 2rem !important;
   background: var(--daisy-100) !important;
   border-left: var(--daisy-400) solid 2px;
 }

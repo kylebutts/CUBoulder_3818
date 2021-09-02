@@ -214,7 +214,7 @@ link_assignments <- function(col) {
   col
 }
 
-cal <- read_csv(here("schedule.csv")) %>%
+cal <- read_csv(here::here("schedule.csv")) %>%
   pivot_wider(., names_from = "name", values_from = "value") %>%
   mutate(
     Monday = link_classes(Monday),

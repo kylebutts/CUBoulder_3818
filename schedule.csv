@@ -21,9 +21,9 @@ Week,Dates,name,value
 7,10/04 - 10/08,Wednesday,Chapter 16
 7,10/04 - 10/08,Friday,Chapter 16 <br/> Chapter 17
 8,10/11 - 10/15,Monday,Chapter 17
-8,10/11 - 10/15,Wednesday,R Day <br/> <i>(Inference)</i>
+8,10/11 - 10/15,Wednesday,R Day <br/> <i>(Sampling Distributions)</i>
 8,10/11 - 10/15,Friday,Chapter 18
-9,10/18 - 10/22,Monday,R Day <br/> <i>(Underpowered)</i>
+9,10/18 - 10/22,Monday,R Day <br/> <i>(Size and Power)</i>
 9,10/18 - 10/22,Wednesday,Chapter 20
 9,10/18 - 10/22,Friday,Chapter 20
 10,10/25 - 10/29,Monday,Chapter 21
@@ -47,20 +47,20 @@ Week,Dates,name,value
 16,12/06 - 12/08,Monday,<i>Review</i>
 16,12/06 - 12/08,Wednesday,<i>Review</i>
 16,12/06 - 12/08,Friday,
-1,08/23 - 08/27,Assignments,"Homework 1, Sunday"
-2,08/30 - 09/03,Assignments,"R assignment 1, Wednesday <br/> Homework 2, Sunday"
-3,09/06 - 09/10,Assignments,"Homework 3, Sunday"
-4,09/13 - 09/17,Assignments,"R assignment 2, Wednesday"
-5,09/20 - 09/24,Assignments,"Homework 4, Sunday"
-6,09/27 - 10/01,Assignments,"Homework 5, Sunday"
-7,10/04 - 10/08,Assignments,"Homework 6, Sunday"
-8,10/11 - 10/15,Assignments,"R assignment 3, Wednesday <br/> Homework 7, Sunday"
-9,10/18 - 10/22,Assignments,"Homework 8, Sunday"
-10,10/25 - 10/29,Assignments,"Homework 9, Wednesday"
-11,11/01 - 11/05,Assignments,"R assignment 4, Wednesday <br/> Homework 10, Sunday"
-12,11/08 - 11/12,Assignments,"Homework 11, Sunday"
-13,11/15 - 11/19,Assignments,"Homework 12, Sunday"
+1,08/23 - 08/27,Assignments,"R assignment 0 <br/> Chapter 1 and 2, Sunday"
+2,08/30 - 09/03,Assignments,"Chapter 12, Sunday"
+3,09/06 - 09/10,Assignments,"R assignment 1, Wednesday <br/> Chapter 13 and 14, Sunday"
+4,09/13 - 09/17,Assignments,"Chapter 3, Sunday"
+5,09/20 - 09/24,Assignments,"Chapter 8 and 9, Sunday"
+6,09/27 - 10/01,Assignments,"R assignment 2, Wednesday <br/> Chapter 15, Sunday"
+7,10/04 - 10/08,Assignments,"Chapter 15, Sunday"
+8,10/11 - 10/15,Assignments,"Chapter 16 and 17, Sunday"
+9,10/18 - 10/22,Assignments,"R assignment 3, Wednesday <br/> Chapter 20, Sunday"
+10,10/25 - 10/29,Assignments,"Chapter 21, Wednesday"
+11,11/01 - 11/05,Assignments,"R assignment 4, Friday <br/> Chapter 22, Sunday"
+12,11/08 - 11/12,Assignments,"Chapter 4, 6, and 23, Sunday"
+13,11/15 - 11/19,Assignments,"Chapter 5, Sunday"
 14,11/22 - 11/26,Assignments,"R Project, Due Sunday"
-15,11/29 - 12/03,Assignments,"R assignment 5, Wednesday <br/> Homework 13, Sunday"
+15,11/29 - 12/03,Assignments,"R assignment 5, Wednesday <br/> Chapter 26, Sunday"
 16,12/06 - 12/08,Assignments,
 Final,12/12 - <i>1:30-4pm</i>,Assignments,Final Exam
