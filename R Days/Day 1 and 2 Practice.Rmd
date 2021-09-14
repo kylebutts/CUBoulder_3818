@@ -1,0 +1,63 @@
+---
+title: "R Day 1 and 2 Practice"
+output:
+  html_document:
+    theme: readable
+    highlight: tango
+---
+
+# Vectors
+
+- Create a vector with the following 20 observations and call it `height`:
+
+64, 65, 64, 66, 67, 64, 67, 66, 66, 67, 70, 66, 70, 68, 68, 67, 69, 67, 67, 69
+
+- Subset the first 4 elements of the `height`
+
+- Subset the last two elements of `height`
+
+- Compute the five-number summary, the mean, and the sd of `height`. 
+
+- Use `length` and confirm there are twenty observations
+
+
+
+
+# Real Data 
+
+1991-1992 Total Rebounds
+
+```{r}
+rebounds <- c(260, 114, 252, 310, 165, 236, 148, 336, 941, 127, 384, 278, 300, 6, 136, 145, 233, 142, 420, 35, 11, 161, 485, 1, 830, 81, 112, 16, 63, 513, 162, 296, 434, 239, 22, 269, 235, 222, 485, 245, 578, 162, 281, 344, 39, 99, 82, 79, 476, 3, 69, 84, 201, 52, 223, 244, 34, 728, 5, 423, 286, 346, 324, 549, 580, 152, 401, 58, 95, 187, 618, 189, 69, 184, 34, 101, 36, 7, 472, 78, 41, 631, 259, 12, 760, 33, 410, 672, 70, 227, 272, 247, 289, 63, 96, 500, 497, 739, 188, 178, 491, 1, 298, 202, 211, 307, 227, 439, 253, 24, 740, 168, 921, 61, 210, 213, 209, 150, 145, 220, 26, 144, 286, 190, 56, 182, 580, 105, 402, 660, 260, 118, 0, 231, 11, 184, 69, 432, 807, 257, 762, 24, 42, 342, 95, 185, 77, 310, 170, 447, 98, 271, 8, 41, 99, 85, 102, 593, 275, 24, 10, 206, 407, 51, 184, 0, 98, 10, 305, 43, 112, 30, 80, 312, 292, 292, 899, 182, 317, 511, 665, 78, 633, 314, 32, 11, 49, 205, 402, 296, 46, 26, 261, 429, 451, 66, 546, 206, 35, 5, 63, 161, 227, 394, 308, 118, 92, 249, 691, 257, 85, 220, 483, 233, 909, 744, 564, 208, 573, 25, 243, 16, 2, 30, 132, 34, 468, 460, 330, 268, 1, 252, 318, 453, 473, 33, 82, 494, 26, 450, 54, 110, 145, 870, 670, 111, 1, 179, 448, 700, 74, 845, 30, 27, 639, 15, 97, 705, 96, 54, 295, 312, 556, 39, 551, 426, 45, 258, 8, 233, 564, 630, 536, 5, 255, 95, 173, 11, 51, 106, 71, 393, 317, 149, 394, 301, 319, 19, 147, 257, 336, 350, 19, 416, 829, 2, 219, 1530, 171, 124, 54, 47, 296, 30, 26, 96, 168, 14, 118, 770, 310, 66, 934, 42, 415, 204, 634, 202, 301, 391, 177, 81, 256, 116, 188, 76, 417, 1, 28, 435, 191, 449, 270, 265, 5, 1, 0, 47, 183, 0, 22, 247, 0, 381, 19, 2, 862, 253, 469, 55, 37, 90, 246, 78, 88, 512, 0, 101, 265, 28, 238, 223, 257, 372, 21, 236, 94, 81, 295, 206, 704, 454, 607, 145, 129, 282, 405, 247, 1258, 15, 269, 9, 240, 260, 305, 75)
+```
+
+- Compute the median and IQR of the data
+
+- Compute the median +/- 1.5 * IQR.
+
+- Create vector of trues and falses if data is between median - 1.5 * IQR and median + 1.5 * IQR. (hint use `&`)
+
+- Using `[]` and the above true/false vector, what are the values of the rebound outliers
+
+- Plot a histogram of rebounds and give it a title and label the x-axis. If you don't remember these options type `?hist`.
+
+
+# Data
+
+[Article about Movie Scores](https://fivethirtyeight.com/features/fandango-movies-ratings/)
+
+- Load `fandango_score_comparison.csv`
+
+- Compute the five-number summary for Rotten Tomatoes, Metacritic, and IMDB scores.
+
+- Subset data for Rotten Tomatoes scores above 90
+
+- Subset data for movies with a IMDB score above 9 and Rotten Tomatoes scores above 90.
+
+- Among those movies with a Rotten Tomatoes score above 90, what is the five-number summary of IMDB Scores
+
+- Plot a histogram of IMDB scores and a histogram of Fandango scores. Compare them (see above article for similar figure made in R!!)
+
+- Plot a scatter plot of IMDB and Rotten Tomatoes scores
+
+
