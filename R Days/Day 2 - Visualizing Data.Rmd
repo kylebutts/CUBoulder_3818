@@ -21,8 +21,26 @@ penguins <- read.csv("https://raw.githubusercontent.com/allisonhorst/palmerpengu
 To access an individual variable, we can use the `$` or `[]` operators. For the `[]` operator, you there are two options and are separated by a comma. The first option describes the rows you want, the second option describes the columns you want. Leaving either blank is equivalent to "all".
 
 ```{r}
+penguins$sex
+```
+
+[,]
+
+Before comma = rows
+After comma = columns
+
+```{r}
+penguins[1:5,"species"]
+penguins[1:5,]
+
+penguins[,"species"]
+
+penguins[1:10, c("species", "island")]
+
+penguins[c(TRUE, FALSE), ]
 
 ```
+
 
 You can pair these together, for example let's say I want the variable `island` for the first 6 observations:
 
@@ -39,23 +57,24 @@ penguins[1:6, ]$island
 Use the `unique()` function to find the unique values of the variable `species` in the penguins dataset.
 
 ```{r}
-
+species <- penguins$species
+unique(species)
 ```
-
-
 
 ## Selecting rows based on criteria
 
 Lets see which penguins live on Torgersen.
 
 ```{r}
-
+on_torgersen <- penguins$island == "Torgersen"
 ```
 
 Can use vector of True and False to select rows that match criteria: 
 
 ```{r}
+penguins[penguins$island == "Torgersen", ]
 
+penguins[penguins$island == "Torgersen", "body_mass_g"]
 ```
 
 You can also use the following operators to supply multiple criteria:
@@ -64,6 +83,9 @@ You can also use the following operators to supply multiple criteria:
 - `|` Or operator. **Either** vector 1 **or** vector 2 must be true for the observation
 
 ```{r}
+penguins$island == "Torgersen" & penguins$sex == "male"
+
+penguins$island == "Torgersen" | penguins$sex == "male"
 ```
 
 
@@ -72,6 +94,11 @@ You can also use the following operators to supply multiple criteria:
 Now try and answer the following question. Are all three species present on the Torgersen island? 
 
 ```{r}
+unique(penguins[penguins$island == "Torgersen", "species"])
+
+
+mean(penguins[penguins$species == "Chinstrap", "body_mass_g"])
+
 ```
 
 
@@ -80,12 +107,19 @@ Now try and answer the following question. Are all three species present on the 
 
 ![Penguin Beak Measurements](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/culmen_depth.png)
 
-Lets compare Bill Length and Bill Depth between the three species of penguins in our dataset: the Adelie, Gentoo, and Chinstrap penguins.
+Lets compare Bill Length between the three species of penguins in our dataset: the Adelie, Gentoo, and Chinstrap penguins.
 
 Using `[]` and `<-`, create 3 dataframes called `penguins_ad`, `penguins_gent`, and `penguins_chin` that subset based on the correct species of penguins. 
 
 ```{r}
+unique(penguins$species)
+penguins_ad <- penguins[penguins$species == "Adelie", ]
+penguins_gent <- penguins[penguins$species == "Gentoo", ]
+penguins_chin <- penguins[penguins$species == "Chinstrap", ]
 
+mean(penguins_ad$bill_length_mm, na.rm = TRUE)
+mean(penguins_gent$bill_length_mm, na.rm = TRUE)
+mean(penguins_chin$bill_length_mm, na.rm = TRUE)
 ```
 
 
@@ -101,8 +135,16 @@ What is the mean of each species bill length in millimeters? (remember there are
 We can create variables in our dataset by using the `$` or `[]` operators with `<-`.
 
 ```{r}
+
+penguins$body_mass_g
+
 # 0.0022 lbs = 1 g
 penguins$body_mass_lb <- 0.00220462 * penguins$body_mass_g
+
+in_torgersen <- penguins$island == "Torgersen"
+
+
+
 ```
 
 
@@ -125,6 +167,7 @@ Common functions for graphing are `hist()` for plotting one variable and `plot()
 
 ```{r}
 # Count
+hist(penguins$body_mass_lb)
 ```
 
 You can add additional commands for better plots. Use `?hist` or `help("hist")` to see the list of options. 
@@ -137,6 +180,7 @@ Type `?hist` into the console and Find the following options:
 
 ```{r}
 # Probability
+hist(penguins$body_mass_lb, freq = FALSE)
 ```
 
 - the bar color
@@ -146,15 +190,17 @@ Type `?hist` into the console and Find the following options:
 
 
 ```{r}
-
+hist(penguins$body_mass_lb, main = "Penguins Weight in lbs.", xlab = "Weight (lbs.)", col = "pink")
 ```
 
 ### Exercise
 
 Using different `col` for each species of penguin,  make a histogram of the three species' bill length.
 
-```{r}
-
+```{r, echo = FALSE}
+hist(penguins_ad$bill_length_mm, main = "Adelie Penguins", col = "purple")
+hist(penguins_chin$bill_length_mm, main = "Chinstrap Penguins", col = "red")
+hist(penguins_gent$bill_length_mm, main = "Gentile Penguins", col = "green")
 ```
 
 Knit your file and compare the distributions of the bill lengths. Include a comment about the Mean and the Variance. Which Distribution looks symmetric?
@@ -165,8 +211,13 @@ Knit your file and compare the distributions of the bill lengths. Include a comm
 Box plots are also easy in R. First lets make a box plot of `flipper_length_mm` among the entire sample.
 
 ```{r}
-
+boxplot(penguins$flipper_length_mm ~ penguins$species, main = "Flipper Length (mm)",ylab = "Flipper Length")
 ```
+
+```{r}
+boxplot(flipper_length_mm ~ species, data = penguins, main = "Flipper Length (mm)", ylab = "Flipper Length", xlab = "Species of Penguin")
+```
+
 
 If we want to do more fancy plotting, we can use a `formula` that looks like this:
 
@@ -193,7 +244,9 @@ Let's see if the weights of Adelie penguins appear to have a different distribut
 While we haven't talked about this yet, it is typically of interest to compare multiple variables together. To plot two variables, we will use the `plot()` function to make scatter plots.
 
 ```{r}
-
+plot(body_mass_lb ~ flipper_length_mm, data = penguins)
+plot(penguins$body_mass_lb ~ penguins$flipper_length_mm)
+plot(y = penguins$body_mass_lb, x = penguins$flipper_length_mm, main = "Scatter plot of ...")
 ```
 
 

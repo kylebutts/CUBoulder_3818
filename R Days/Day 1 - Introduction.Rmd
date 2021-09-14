@@ -206,13 +206,16 @@ rebounds <- c(260, 114, 252, 310, 165, 236, 148, 336, 941, 127, 384, 278, 300, 6
 In R, `NA` is a very special value meaning "Not Available"/"Missing". This comes up a lot in real world datasets. For example, maybe individuals don't answer a survey question. Lets say that for some reason, baby weights has a missing observation.
 
 ```{r Create vector with NA}
-
+baby_weights <- c(baby_weights, NA)
+baby_weights
 ```
 
 Try a few of the summary functions and see what happens. 
 
 ```{r}
+mean(baby_weights)
 
+median(baby_weights)
 ```
 
 
@@ -221,13 +224,13 @@ Try a few of the summary functions and see what happens.
 You can use `help("function name")` or `?function name` to get information the command. Type `help("sum")` to see how to fix this problem. 
 
 ```{r}
-
+help("mean")
 ```
 
 
 
 ```{r}
-
+mean(baby_weights, na.rm = TRUE)
 ```
 
 
@@ -243,7 +246,7 @@ housing_df <- read.csv("https://raw.githubusercontent.com/kylebutts/3818_fall_20
 However, most common is to download the data and put it in the folder where your `.Rmd` file is. To load data you will need to find the file location. 
 
 ```{r "Loading Data from Computer", eval= FALSE}
-penguins <- read.csv("~/Desktop/ECON3818_F2021/R Days/penguins.csv")
+penguins <- read.csv("penguins.csv")
 ```
 
 # Dataframes
@@ -251,8 +254,13 @@ penguins <- read.csv("~/Desktop/ECON3818_F2021/R Days/penguins.csv")
 Dataframes are a special object in R. The columns of a dataframe are each vectors that contain variables and a row contains an observation. If you are using RStudio, clicking the dataframe in the `Environment` tab or typing `View(dataframe)` into the console will let you interactively scroll though the data. 
 
 ```{r}
-
+penguins$species
 ```
+
+```{r}
+penguins
+```
+
 
 
 ![Palmers 3 species of Penguins](https://raw.githubusercontent.com/allisonhorst/palmerpenguins/master/man/figures/lter_penguins.png)

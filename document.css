@@ -388,6 +388,7 @@ ol, ul {
 }
 li {
     margin-top: 4px;
+    line-height: 1.5rem;
 }
 
 /* Code Chunks */

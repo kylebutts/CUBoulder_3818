@@ -69,7 +69,7 @@ gt(df_info) %>%
 
 ## Question 1
 
-Look in the `Environment` panel of R studio, how many variables and how many observations are in this data set? Which of the variables are quantitative, which of the variables are categorical?
+Look in the `Environment` panel of R studio, how many variables and how many observations are in this data set? Which of the variables are quantitative, which of the variables are categorical? What is a unit of observation?
 
 
 ## Question 2

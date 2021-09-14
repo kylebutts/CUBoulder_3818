@@ -9,11 +9,6 @@ output:
 
 ## Question 1
 
-```{r}
-# Code goes here!
-```
-
-
 
 ## Question 2
 
