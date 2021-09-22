@@ -9,37 +9,37 @@ Week,Dates,name,value
 3,09/06 - 09/10,Wednesday,Chapter 13
 3,09/06 - 09/10,Friday,Chapter 14
 4,09/13 - 09/17,Monday,Chapter 3
-4,09/13 - 09/17,Wednesday,Distributions
-4,09/13 - 09/17,Friday,Expectations
-5,09/20 - 09/24,Monday,R Day <br/> <i>(Distributions)</i>
-5,09/20 - 09/24,Wednesday,Chapter 8
-5,09/20 - 09/24,Friday,Chapter 9
-6,09/27 - 10/01,Monday,<i>Review</i>
-6,09/27 - 10/01,Wednesday,Midterm
-6,09/27 - 10/01,Friday,Chapter 15
+4,09/13 - 09/17,Wednesday,Chapter 3
+4,09/13 - 09/17,Friday,Distributions
+5,09/20 - 09/24,Monday,Expectations
+5,09/20 - 09/24,Wednesday,R Day <br/> <i>(Distributions)</i>
+5,09/20 - 09/24,Friday,Chapter 8
+6,09/27 - 10/01,Monday,Chapter 9
+6,09/27 - 10/01,Wednesday,<i>Review</i>
+6,09/27 - 10/01,Friday,Midterm
 7,10/04 - 10/08,Monday,Chapter 15
-7,10/04 - 10/08,Wednesday,Chapter 16
-7,10/04 - 10/08,Friday,Chapter 16 <br/> Chapter 17
-8,10/11 - 10/15,Monday,Chapter 17
-8,10/11 - 10/15,Wednesday,R Day <br/> <i>(Sampling Distributions)</i>
-8,10/11 - 10/15,Friday,Chapter 18
-9,10/18 - 10/22,Monday,R Day <br/> <i>(Size and Power)</i>
-9,10/18 - 10/22,Wednesday,Chapter 20
+7,10/04 - 10/08,Wednesday,Chapter 15
+7,10/04 - 10/08,Friday,Chapter 16
+8,10/11 - 10/15,Monday,Chapter 16 <br/> Chapter 17
+8,10/11 - 10/15,Wednesday,Chapter 17
+8,10/11 - 10/15,Friday,R Day <br/> <i>(Sampling Distributions)</i>
+9,10/18 - 10/22,Monday,Chapter 18
+9,10/18 - 10/22,Wednesday,R Day <br/> <i>(Size and Power)</i>
 9,10/18 - 10/22,Friday,Chapter 20
-10,10/25 - 10/29,Monday,Chapter 21
+10,10/25 - 10/29,Monday,Chapter 20
 10,10/25 - 10/29,Wednesday,Chapter 21
-10,10/25 - 10/29,Friday,R Day <br/> <i>(t-dist)</i>
-11,11/01 - 11/05,Monday,Midterm
-11,11/01 - 11/05,Wednesday,Chapter 22
+10,10/25 - 10/29,Friday,Chapter 21
+11,11/01 - 11/05,Monday,R Day <br/> <i>(t-dist)</i>
+11,11/01 - 11/05,Wednesday,Midterm
 11,11/01 - 11/05,Friday,Chapter 22
-12,11/08 - 11/12,Monday,Chapter 23
-12,11/08 - 11/12,Wednesday,Chapter 4
-12,11/08 - 11/12,Friday,Chapter 6
-13,11/15 - 11/19,Monday,Chapter 5
+12,11/08 - 11/12,Monday,Chapter 22
+12,11/08 - 11/12,Wednesday,Chapter 23
+12,11/08 - 11/12,Friday,Chapter 4
+13,11/15 - 11/19,Monday,Chapter 6
 13,11/15 - 11/19,Wednesday,Chapter 5
-13,11/15 - 11/19,Friday,R Day <br> <i>(Regression)</i>
-14,11/22 - 11/26,Monday,R Day <br/> <i>(ggplot2)</i>
-14,11/22 - 11/26,Wednesday,
+13,11/15 - 11/19,Friday,Chapter 5
+14,11/22 - 11/26,Monday,R Day <br> <i>(Regression)</i>
+14,11/22 - 11/26,Wednesday,R Day <br/> <i>(ggplot2)</i>
 14,11/22 - 11/26,Friday,No Class <br/> <i>Thanksgiving</i>
 15,11/29 - 12/03,Monday,Chapter 26
 15,11/29 - 12/03,Wednesday,Chapter 26

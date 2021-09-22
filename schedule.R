@@ -100,3 +100,15 @@ cal <- read_csv(here("schedule.csv")) %>%
 
 cal_tbl %>% gt::as_raw_html() %>% clipr::write_clip()
 
+
+# Write to README.md
+readme <- xfun::read_utf8(here::here("README.md"))
+
+tab_start <- which(stringr::str_detect(readme, "## Calendar")) + 1
+tab_end <- which(stringr::str_detect(readme, "## Lecture Slides")) - 1
+
+# Hacky way to change table text
+readme <- readme[-c(tab_start:tab_end)]
+readme <- c(readme[1:(tab_start-1)], "", cal_tbl %>% gt::as_raw_html(), "", readme[tab_start:length(readme)])
+
+xfun::write_utf8(readme, here::here("README.md"))

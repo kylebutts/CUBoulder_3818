@@ -1,0 +1,46 @@
+---
+title: "R Day 3 Practice"
+output:
+  html_document:
+    theme: readable
+    highlight: tango
+---
+
+
+
+# Take-home Practice
+
+From the [Washington Post](https://www.washingtonpost.com/news/wonk/wp/2014/12/03/the-score-of-every-basketball-football-and-baseball-game-in-league-history-visualized/?variant=116ae929826d1fd3), professional sports scores follow certain distributions. Let's try to recreate the following graphs using `rxxxx` and then answer some questions using our distribution functions.
+
+## Binomial Distribution
+
+![Distribution of MLB games](https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/L6UJ5CGGYIYBLNLWEFPO7WZRGE.png&w=916)
+
+I played around and the best match is with $n = 80$ and $p = 0.06$, so use those for this.
+
+
+Using these parameters, calculate the following
+
+- Calculate the probability that more than 10 points are scored in a game
+
+- Calculate the probability of the most common score, 3.
+
+
+
+## Normal Distribution
+
+![Distribution of NBA games](https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/ZDVXILQMZY7T5LLEOOWX3CTNP4.png&w=916)
+
+Play around with the mean and sd to try to recreate this figure using `rnorm` and `hist` 
+
+*Hint: the 68-95-98 rule can help*
+
+
+
+Using these parameters, calculate the following
+
+- What is the probability of a game having fewer than 80 points?
+
+- What is the probability of a game having more than 130 points
+
+- What is the probability of having a score between 100 and 110
