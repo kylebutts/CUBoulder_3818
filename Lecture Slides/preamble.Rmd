@@ -42,7 +42,7 @@ theme_empty <- theme_bw() + theme(
   legend.position = "none"
 )
 
-xaringanExtra::use_scribble()
+# xaringanExtra::use_scribble()
 ```
 
 
