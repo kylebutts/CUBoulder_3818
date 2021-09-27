@@ -1,0 +1,484 @@
+---
+title: "ECON 3818"
+subtitle: "Chapter 6"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%d %B %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default']
+    self_contained: true
+nature:
+  highlightStyle: github
+highlightLines: true
+countIncrementalSlides: false
+---
+class: clear, middle
+
+```{r preamble, child=here::here("Lecture Slides", "preamble.Rmd")}
+```
+
+## Chapter 6: Two-Way Tables
+---
+# Introduction
+This chapter discusses the relationship between two categorical variables
+
+- To analyze categorical data, we use the .it[counts] or .it[percentages] of individuals that fall into various categories
+
+
+
+---
+# Two-Way Table
+Typically, published data is grouped in order to save space. This chapter will talk about .hi.purple[Two-Way Tables]
+
+```{r, echo = F}
+deg <- tribble(
+  ~Sex, ~Associate, ~Bachelors, ~Masters, ~Doctorate,
+  "Women", 673, 1050, 481, 95,
+  "Men", 401, 780, 342, 89
+)
+
+deg_tbl <- gt(deg, rowname_col = "Sex") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  cols_align(align = "center")
+
+deg_tbl
+```
+
+This two-way table describes two categorical variables. One is the sex of an individual, this is the .hi.kelly[row variable] and the other is the degree attained, which is the .hi.coral[column variable]
+
+
+---
+# Joint Distribution
+The joint distribution is found by dividing each cell by the total count.
+
+$$P(x,y)=\frac{\text{number of times x and y occurs}}{\text{total number of occurrences}}$$
+Since we have 3911 people in total, we get the following joint probabilities:
+
+```{r, echo = F}
+deg_joint <- tribble(
+  ~Sex, ~Associate, ~Bachelors, ~Masters, ~Doctorate,
+  "Women", 673, 1050, 481, 95,
+  "Joint", 0.17, 0.27, 0.12, 0.024,
+  "Men", 401, 780, 342, 89,
+  "Joint", 0.103, 0.2, 0.09, 0.023
+)
+
+gt(deg_joint, rowname_col = "Sex") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  gt::fmt_number(columns = everything(), rows = c(1,3), decimals = 0) |> 
+  gt::fmt_percent(columns = everything(), rows = c(2,4), decimals = 0) |> 
+  cols_align(align = "center")
+```
+
+This means the probability of being a woman **and** having a Master's degree is 12%
+
+
+---
+# Marginal Distribution
+
+A .hi.alice[marginal distribution] is the probability distribution associated with only one of the random variables
+
+In order to calculate, we need to look at the distribution of each variable *separately*. We do this by looking at the "Total" column and "Total" row.
+ 
+We will have two different marginal distributions, the "row" marginal and the "column" marginal
+
+
+---
+# Row Marginal
+
+In this scenario, the row marginal is the distribution of sex alone:
+
+```{r, echo = F}
+deg_marg <- tribble(
+  ~Sex, ~Associate, ~Bachelors, ~Masters, ~Doctorate, ~"Row Marginal",
+  "Women", 673, 1050, 481, 95, 2299,
+  "Joint", 0.17, 0.27, 0.12, 0.024, 0.584,
+  "Men", 401, 780, 342, 89, 1612,
+  "Joint", 0.103, 0.2, 0.09, 0.023, 0.416
+)
+
+gt(deg_marg, rowname_col = "Sex") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  fmt_number(columns = everything(), rows = c(1,3), decimals = 0) |> 
+  fmt_percent(columns = everything(), rows = c(2,4), decimals = 0) |> 
+  tab_style(style = cell_borders(
+        sides = "left",
+        color = "#BBBBBB",
+        weight = px(2),
+        style = "solid"
+      ),
+      locations = cells_body(
+        columns = "Row Marginal",
+        rows = everything()
+      )
+  ) |> 
+  cols_align(align = "center")
+```
+
+58.4% of individuals in this sample of degree holders are women.
+
+
+---
+# Column Marginal
+In this scenario, the column marginal is the distribution of degrees alone:
+
+
+```{r, echo = F}
+deg_col_marg <- tribble(
+  ~Sex, ~Associate, ~Bachelors, ~Masters, ~Doctorate,
+  "Women", 673, 1050, 481, 95,
+  "Joint", 0.17, 0.27, 0.12, 0.024, 
+  "Men", 401, 780, 342, 89,
+  "Joint", 0.103, 0.2, 0.09, 0.023,
+  "Column Marginal", 0.273, 0.47, 0.21, 0.047
+)
+
+gt(deg_col_marg, rowname_col = "Sex") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  fmt_number(columns = everything(), rows = c(1,3), decimals = 0) |> 
+  fmt_percent(columns = everything(), rows = c(2,4), decimals = 0) |> 
+  tab_style(style = cell_borders(
+        sides = "top",
+        color = "#BBBBBB",
+        weight = px(2),
+        style = "solid"
+      ),
+      locations = cells_body(
+        columns = everything(),
+        rows = "Column Marginal"
+      )
+  ) |> 
+  cols_align(align = "center")
+```
+
+The probability of an individual having a Bachelor's degree is 47%.
+
+
+---
+# Conditional Distribution
+
+We can use these tables to back out conditional distributions. 
+
+Remember:
+
+$$P(A \vert B)=\frac{P(A \cap B)}{P(B)}$$
+This is the same expression (just different notation) as:
+
+$$P(x\vert y)=\frac{P(x,y)}{P(y)}$$
+
+
+
+---
+# Conditional Distribution
+
+For example, we can calculate the probability of holding each degree, given the individual is a woman: 
+
+$$ 
+P(\text{Associate's} \vert \text{Woman}) = \frac{P(\text{Associate's and Woman})}{P(\text{Woman})} = 0.17/0.584 = 29.1\%
+$$
+
+$$
+P(\text{Bachelor's} \vert \text{Woman}) = \frac{P(\text{Bachelor's and Woman})}{P(\text{Woman})} = 0.27/0.584 = 46.2\%
+$$
+
+$$
+P(\text{Master's} \vert \text{Woman}) = \frac{P(\text{Master's and Woman})}{P(\text{Woman})} = 0.12/0.584 = 20.5\%
+$$
+
+$$
+P(\text{Doctorate} \vert \text{Woman}) = \frac{P(\text{Doctorate and Woman})}{P(\text{Woman})} = 0.024/0.584 = 4.1\%
+$$
+
+---
+# Conditional Distribution
+We could also calculate the probability an individual is a particular sex, based of holding an Associate's degree
+
+$$
+P(\text{Male} \vert \text{Associate's}) = \frac{P(\text{Male and Associate's})}{P(\text{Associate's})} = .103/0.273 = 37.7\%
+$$
+
+$$
+P(\text{Female} \vert \text{Associate's}) = \frac{P(\text{Female and Associate's})}{P(\text{Associate's})} = .17/.273 = 62.3\%
+$$
+
+
+---
+# Joint Probabilities vs. Conditional Probabilities
+
+- Joint probabilities take into account the probability that each event happens on its own
+
+- Conditional probabilities assume that one event has already happened
+
+
+
+---
+# Joint Probability vs. Conditional Probability{Example}
+
+$$
+P(\text{work in tech job} \cap \text{live in Boulder}) \text{ vs. } P(\text{work in tech job} \ \vert \  \text{live in Boulder})
+$$
+      
+- $P(\text{work in tech})$ = work in tech/entire US population = relatively small, let's say $7\%$
+
+- $P(\text{live in Boulder})$ = Boulder population/entire US population = also small, $<1\%$
+      
+This means the probability of BOTH happening is small, because both events are unlikely compared to the state space of the entire US population
+
+- But the P(work in tech $\vert$ live in Boulder) will be higher because now the state space is Boulder population, which has a greater concentration of high-tech employees
+
+
+
+---
+# Marginal and Conditional Distributions
+
+Here are some formal definitions:
+
+The .hi[marginal distribution] of one of the categorical variables in a two-way table of counts is the .hi[distribution of that variable among all individuals described by the table]
+
+- distribution of sex or degrees alone
+
+
+A .hi[conditional distribution] of a variable is the .hi[distribution of values of that variable among only individuals who have a given value of the other variable]. There is a separate conditional distribution for each value of the other variable. 
+
+- there are two sets of conditional distributions for any two-way table, probability of having a degree based on sex, probability of being a particular sex based on degree held
+
+
+
+---
+# Clicker Question 
+
+
+```{r, echo = F}
+titanic <- tribble(
+  ~Survival, ~First, ~Second, ~Third, ~Crew,
+  "Alive", 203, 118, 178, 212,
+  "Dead",  122, 167, 528, 673,
+  "Total", 325, 285, 706, 885
+)
+
+gt(titanic, rowname_col = "Survival") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  tab_style(
+    style = cell_borders(
+        sides = "top",
+        color = "#BBBBBB",
+        weight = px(2),
+        style = "solid"
+      ),
+      locations = cells_body(
+        columns = everything(),
+        rows = "Total"
+      )
+  ) |> 
+  cols_align(align = "center")
+
+
+```
+
+Given this joint distribution, what is the probability of survival, given you are a first class passenger?
+<ol type = "a">
+  <li>9%</li>
+  <li>62%</li>
+  <li>1.3%</li>
+  <li>30%</li>
+</ol>
+
+
+---
+class: clear, center, middle
+
+<iframe width="840" height="472.5" src="https://www.youtube.com/embed/sxYrzzy3cq8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+.center[[Source](https://ed.ted.com/lessons/how-statistics-can-be-misleading-mark-liddell)]
+
+---
+class: clear, center, middle
+
+<iframe width="840" height="472.5" src="https://www.youtube.com/embed/t-Ci3FosqZs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+.center[[Source](https://www.youtube.com/watch?v=t-Ci3FosqZs)]
+
+
+
+---
+# Simpson's Paradox
+Consider the survival rates for the following groups of victims who were taken to the hospital, either by helicopter or by car:
+
+```{r, echo = F}
+crash <- tribble(
+  ~Counts, ~Helicopter, ~Car,
+  "Victim Died", 64, 260,
+  "Victim Survived", 136, 840,
+  "Total", 200, 1100
+)
+
+gt(crash, rowname_col = "Counts") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  tab_style(
+    style = cell_borders(
+        sides = "top",
+        color = "#BBBBBB",
+        weight = px(2),
+        style = "solid"
+      ),
+      locations = cells_body(
+        columns = everything(),
+        rows = "Total"
+      )
+  ) |> 
+  cols_align(align = "center")
+
+```
+
+The probability of died conditional on helicopter, is higher than the probability of died conditional on car. Does this mean that this (more costly) mode of transportation isn't helping?
+
+```{r, echo = F}
+crash_pct <- tribble(
+  ~Counts, ~Helicopter, ~Car,
+  "Victim Died", .32, .68,
+  "Victim Survived", .24, .76,
+)
+
+gt(crash_pct, rowname_col = "Counts") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  fmt_percent(columns = 2:3,  decimals = 0) |> 
+  cols_align(align = "center")
+
+```
+
+
+
+
+---
+# Simpson's Paradox
+
+The idea is there a confounding variable, the severity of the accident, whose proportion differs between planes and car crashes
+
+
+<div class = "pull-left">
+
+```{r, echo = F}
+crash_serious <- tribble(
+  ~Counts, ~Helicopter, ~Car,
+  "Victim Died", 48, 60,
+  "Victim Survived", 52, 40,
+  "Total", 100, 100
+)
+
+gt(crash_serious, rowname_col = "Counts") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  tab_style(
+    style = cell_borders(
+        sides = "top",
+        color = "#BBBBBB",
+        weight = px(2),
+        style = "solid"
+      ),
+      locations = cells_body(
+        columns = everything(),
+        rows = "Total"
+      )
+  ) |> 
+  cols_align(align = "center") |> 
+  tab_header(title = make_gt_title("Serious Accidents"))
+```
+</div>
+<div class = "pull-right">
+```{r, echo = F}
+crash_less <- tribble(
+  ~Counts, ~Helicopter, ~Car,
+  "Victim Died", 16, 200,
+  "Victim Survived", 84, 800,
+  "Total", 100, 1000
+)
+
+gt(crash_less, rowname_col = "Counts") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  tab_style(
+    style = cell_borders(
+        sides = "top",
+        color = "#BBBBBB",
+        weight = px(2),
+        style = "solid"
+      ),
+      locations = cells_body(
+        columns = everything(),
+        rows = "Total"
+      )
+  ) |> 
+  cols_align(align = "center") |> 
+  tab_header(title = make_gt_title("Less Serious Accidents"))
+```
+</div>
+
+<br/>
+
+<div class = "pull-left">
+```{r, echo = F}
+crash_pct_serious <- tribble(
+  ~Counts, ~Helicopter, ~Car,
+  "Victim Died", .48, .52,
+  "Victim Survived", .60, .40,
+)
+
+gt(crash_pct_serious, rowname_col = "Counts") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  fmt_percent(columns = 2:3,  decimals = 0) |> 
+  cols_align(align = "center") |> 
+  tab_header(title = make_gt_title("Serious Accidents"))
+
+```
+
+</div>
+
+<div class = "pull-right">
+```{r, echo = F}
+
+crash_pct_less <- tribble(
+  ~Counts, ~Helicopter, ~Car,
+  "Victim Died", .16, .84,
+  "Victim Survived", .20, .80,
+)
+
+gt(crash_pct_less, rowname_col = "Counts") |> 
+  kfbmisc::gt_theme_kyle() |> 
+  fmt_percent(columns = 2:3,  decimals = 0) |> 
+  cols_align(align = "center") |> 
+  tab_header(title = make_gt_title("Less Serious Accidents"))
+
+```
+
+</div>
+
+
+
+---
+# Simpson's Paradox
+
+```{r, echo = F}
+library(palmerpenguins)
+
+ggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g)) + 
+  geom_point(aes(color = species)) + 
+  geom_smooth(method = "lm", color = "#555F61") + 
+  geom_smooth(aes(color = species), method = "lm") + 
+  scale_color_viridis_d(option = "plasma", end = 0.9) + 
+  labs(x = "Bill depth (mm)", y = "Body mass (g)", color = NULL, title = "Palmer's Penguins dataset") +
+  kfbmisc::theme_kyle(base_size = 20)
+```
+
+
+
+
+---
+# Clicker Question
+
+From 2010-2013 the US median wage increased 1%, however over the same time period the median wage has decreased within each education subgroup (high school drop outs, high school graduates, some college, bachelor's or more).
+
+Which of the following explanations is consistent with Simpson's paradox?
+<ol type = "a">
+  <li>The BLS didn't control for inflation</li>
+  <li>There are more people with bachelor's degrees (high income people)</li>
+  <li>The wage of the highest income earner went up even more</li>
+  <li>There are less unemployed people now</li>
+</ol>
