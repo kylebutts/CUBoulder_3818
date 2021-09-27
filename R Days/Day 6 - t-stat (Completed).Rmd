@@ -1,0 +1,162 @@
+---
+title: "R Day 6 - t-stat"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+
+
+# Two-sided t-test
+
+**Exercise:** fill in the missing code to calculate a two-sided t-test by hand.
+
+$$ 
+	H_0: \mu_1 - \mu_2 = 0 
+$$
+
+$$
+	H_A: \mu_1 - \mu_2 > 0
+$$
+
+Our z-stat in this case is 
+
+$$
+	Z\text{-stat} = \frac{(\bar{X}_1 - \bar{X}_2) - (\mu_1 - \mu_2)}{\sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}}
+$$
+
+And our p-value is 
+$$
+	P (Z \geq Z\text{-stat}) 
+$$
+
+```{r "two-sided Z-test"}
+set.seed(390)
+
+# Random Sample of group 1 and 2
+x1 <- rnorm(50, mean = 10, sd = 5)
+x2 <- rnorm(35, mean = 11, sd = 5)
+
+# Calculate means
+mean1 <- mean(x1)
+mean2 <- mean(x2)
+
+var1 <- var(x1)
+var2 <- var(x2)
+
+n1 <- length(x1)
+n2 <- length(x2)
+
+# Calculate z-stat
+z_stat <- ((mean1 - mean2) - 0) / (sqrt(var1/n1 + var2/n2))
+
+# Calculate p-value
+1 - pnorm(z_stat)
+
+
+```
+
+
+```{r "two-sided t-test"}
+set.seed(14)
+
+# Random Sample of group 1 and 2
+x1 <- rnorm(24, mean = 10, sd = 5)
+x2 <- rnorm(15, mean = 11, sd = 5)
+
+# Calculate means
+mean1 <- mean(x1)
+mean2 <- mean(x2)
+
+var1 <- var(x1)
+var2 <- var(x2)
+
+n1 <- length(x1)
+n2 <- length(x2)
+
+# Calculate t-stat
+t_stat <- ((mean1 - mean2) - 0) / (sqrt(var1/n1 + var2/n2))
+
+# Calculate p-value
+# Note you have to supply t_score and degrees of freedom to tnorm()
+1 - pt(t_stat, df = 13)
+
+```
+
+
+Let's compare that with R's built-in Student's t-test. Type `?t.test` to learn the syntax for calculating a $t$-test
+
+```{r}
+t.test(x1, x2, alternative = "greater")
+```
+
+**Exercise:**
+
+$$H_0 : \mu_1 - \mu_2   =  0$$
+$$H_1 : \mu_1 - \mu_2 \neq 0$$
+
+```{r}
+set.seed(14)
+
+# Random Sample of group 1 and 2
+x1 <- rnorm(24, mean = 10, sd = 5)
+x2 <- rnorm(15, mean = 11, sd = 5)
+
+t.test(x1, x2, alternative = "two.sided")
+```
+
+1. Holding fixed the means, what happens to the p-value when you increase the sample size of the two groups? 
+
+2. Holding fixed the sample size, what happens to the p-value as you move the two population means away from eachother?
+
+
+
+
+# t-test for car color
+
+Let's try to answer the following question:
+
+> Do red cars and black/white cars sell for the same price?
+
+$$ H_0: \mu_r - \mu_{bw} = 0$$ 
+$$ H_A : \mu_r - \mu_{bw} > 0$$
+
+To do so, let's use the USA Cars dataset
+
+```{r "Load Car Data", include = FALSE}
+df <- read.csv("USA_cars.csv")
+
+df
+```
+
+
+```{r, include = FALSE}
+
+is_red <- df$color == "red"
+is_bw <- df$color %in% c("black", "white")
+
+n_red <- sum(is_red)
+n_bw <- sum(is_bw)
+
+# df[rows you want, columns you want]
+cars_bw <- df[is_bw, ]
+cars_red <- df[is_red, ]
+
+```
+
+
+```{r}
+# 2 sample Z-test
+mu_bw <- mean(cars_bw$price)
+mu_red <- mean(cars_red$price)
+
+sd_bw <- sd(cars_bw$price)
+sd_red <- sd(cars_red$price)
+
+z_score <- (mu_red - mu_bw)/sqrt(sd_red^2/n_red + sd_bw^2/n_bw)
+
+1 - pnorm(z_score)
+
+```
+
+Since the p-value is larger than 0.05, with 95% confidence, I fail to reject that red cars and black cars sell for the same price.

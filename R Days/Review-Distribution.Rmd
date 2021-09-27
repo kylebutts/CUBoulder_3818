@@ -1,0 +1,180 @@
+---
+title: "Distribution Review"
+author: "Kyle F. Butts"
+date: "9/16/2020"
+output: pdf_document
+---
+
+# Generating Random Variables
+
+In R, `rxxxx` will denote generating random variables (r for random variable). The exact parameters depends on the distribution. We will look at 
+$$X \sim B(n, p) \text{ and } Y \sim N(\mu, \sigma^2)$$ 
+
+```{r Random Binomial}
+# n = Number of observations, size = Number of trials per observation, p = Probability of Success
+rbinom(n = 10, size = 10, p = 0.5)
+```
+
+```{r Random Normal}
+rnorm(n = 10, mean = 0, sd = 2^2)
+```
+
+## Visualizing Distributions
+
+```{r Binomial Histogram}
+x <- rbinom(n = 10, size = 10, p = 0.5)
+hist(x)
+```
+
+
+```{r Normal Histogram}
+y <- rnorm(n = 10, mean = 0, sd = 2^2)
+hist(y)
+```
+
+
+
+## Randomness in Draws
+
+As the number of observations increase, the distribution will better approximate the underlying population distribution. For example, we will create the same histograms with n = 1000 observations.
+
+```{r Binomial Histogram 2}
+x <- rbinom(n = 1000, size = 10, p = 0.5)
+hist(x)
+```
+
+
+```{r Normal Histogram 2}
+y <- rnorm(n = 1000, mean = 0, sd = 2^2)
+hist(y)
+```
+
+
+
+# Probability Mass/Density Function
+
+In R, `dxxxx` will return the probability mass/density function (d for density). If `xxxx` is a discrete random variable like a binomial random variable, it will return 
+$$p_X(x) = P(X = x).$$
+
+For a continuous random variable like the normal distribution, it will return the density 
+
+$$f_Y(y).$$
+
+```{r}
+# P(X = 5) with size = 10 trials and a probability of success of p = 0.3.
+dbinom(5, size = 10, p = 0.3)
+```
+
+```{r}
+# Density at 0. This is NOT the probability that P(Y = 0).
+dnorm(0, mean = 0, sd = 2^2)
+```
+
+
+
+# Cummulative Probabilities
+
+In R, `pxxxx` will return the left-tail probability of observing a value $\leq$ a specified value (p for cummulative probability).
+
+```{r, echo = FALSE}
+library(tidyverse)
+library(svglite)
+
+# Custom Fonts for ggplot2
+library(showtext)
+showtext_auto()
+## Loading Google fonts (https://fonts.google.com/)
+font_add_google("Fira Sans", "fira_sans")
+
+df <- tibble(
+	x = seq(-4, 4, by= 0.01), 
+	prob = dnorm(x, mean = 0, sd = 1^2),
+	less_than = x < -1
+)
+
+ggplot() + 
+	geom_line(data = df, mapping = aes(x = x, y = prob)) + 
+	geom_area(data = df %>% filter(less_than == 1), 
+		mapping = aes(x = x, y = prob), 
+		fill = "steelalice"
+	) +
+	geom_vline(xintercept = -1) + 
+	geom_text(
+		data = data.frame(x = -2, y = 0.2, label = "P(Z <= -1)"),
+		mapping = aes(x = x, y = y, label = label),
+		size = 6, alpha = 1, inherit.aes = FALSE
+	) + 
+	labs(
+		title = "Cummulative Probability that Z <= -1 ",
+		subtitle = "Z ~ N(0,1)",
+		x = "Z",
+		y = "Density"
+	) + 
+	theme_grey(
+		base_size = 14,
+		base_family = "fira_sans"	
+	) + 
+	theme(
+		legend.position="bottom", 
+		legend.title.align = 0.5,
+		# No Background Color
+		legend.background = element_rect(fill= NA), 
+		panel.background = element_rect(fill = NA, color = NA),
+		plot.background=element_rect(fill = "#ECECEC", color = NA),
+		# Center title
+		plot.title= element_text(hjust= 0.5),
+		plot.subtitle = element_text(hjust = 0.5, face = "italic")
+	) 
+
+
+```
+
+
+```{r}
+# Left Tail Probability, 
+# P(X <= 5) with size = 10 trials and a probability of success of p = 0.3
+pbinom(5, size = 10, p = 0.3)
+
+# Right Tail Probability
+# P(X >= 5) with size = 10 trials and a probability of success of p = 0.3
+pbinom(5, size = 10, p = 0.3, lower.tail = FALSE)
+```
+
+```{r}
+# P(Z <= 1)
+pnorm(1, mean = 0, sd = 1^2)
+
+# P(X <= 5) with mean = 10, sd = 2^2
+pnorm(5, mean = 10, sd = 2^2)
+```
+
+
+
+
+# Finding Critical Value
+
+In R, `qxxxx` is the inverse of the `pxxxx`. It asks the question, for what value, $z^*$, will $p\%$ of the observations obtain a value less than $z^*$.
+
+```{r}
+# P(X <= z^*) = 80%, i.e. how many successes such that 80% of the observations will have that or fewer successes
+qbinom(0.8, size = 10, prob = 0.3)
+```
+
+```{r}
+# P(Z <= z^*) = 95%, i.e. for what value z^* will 95% of the random draws from a standard normal distribution be less than or equal to z^*.
+qnorm(0.95, mean = 0, sd = 1)
+
+# What is the 95th percentile of an exam where the mean is 80 and standard deviation is 10
+qnorm(0.95, mean = 80, sd = 10)
+```
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,169 @@
+---
+title: "R Day 5 - Size and Power"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+
+# Size and Power
+
+## Size
+
+Let $X \sim N(10, 4^2)$
+
+Let's see how often we reject the null when the **null is the true population mean** (i.e. size of our test). We will use the level of confidence $\alpha = 0.05$.
+
+$$ H_0: \mu = 10$$ 
+$$ H_A: \mu \neq 10 $$
+Let's calculate the power to detect a true population mean of $\mu = 11$. To do so, we are going to do the following:
+
+1. Simulate data using the null mean of 10
+
+2. Calculate a z-score and a two-tailed $p$-value
+
+3. Track in a vector if we reject the null hyptohesis
+
+4. Repeat steps 1-3 `n_sims` times
+
+Then, we will count the number of times we (incorrectly!) reject null
+
+
+```{r title="Size"}
+# Can use normal z-score
+n <- 50
+true_mean <- 10
+null_mean <- 10
+true_sd <- 4
+alpha <- 0.10
+
+sample_means <- c()
+sample_rejects <- c()
+
+for(i in 1:10000){
+	
+	draws <- rnorm(n, mean = true_mean, sd = true_sd)
+	mean <- mean(draws)
+
+	# Standardize Mean
+	z_score <- (mean - null_mean)/(true_sd/sqrt(n))
+	
+	# p-value = 2 * P(z <= - |z-score|)
+	z_score <- -abs(z_score)
+	p_value <- 2 * pnorm(z_score)
+	
+	# reject if p_value < alpha
+	reject <- p_value < alpha
+
+	# Store results to vector
+	sample_rejects <- c(sample_rejects, reject)
+	sample_means <- c(sample_means, mean)
+}
+
+# hist(sample_means)
+
+# Rejection rate: # Rejections / # Trials
+sum(sample_rejects)/length(sample_rejects)
+
+# Tails are fatter
+# hist(sample_means)
+
+```
+
+**Exercise:**
+
+- Change the standard deviation. How does the size change?
+
+- Change the number of observations $n$. How does the size change? 
+  - Why not? I thought more observations gave us more precise estimates?
+
+
+## Power
+
+Let's see how often we reject the null when the true population mean is different from our null (i.e. power of our test). We will use the level of confidence $\alpha = 0.05$.
+$$ H_0: \mu = 10$$
+
+$$ H_A: \mu \neq 10 $$
+
+- To calculate the power, first we need to calculate the rejection region
+
+$$ 
+	P(\bar{X} \geq X^*) = .025 \implies P(Z \geq \frac{X^* - 10}{4/\sqrt{50}}) = .025
+$$ 
+
+This yields a critical $Z$-score of $1.96$
+
+$$ 
+	\frac{X^* - 10}{4/\sqrt{50}} = 1.96 \implies X^* = 11.11, \text{ and }
+$$ 
+
+$$ 
+	\frac{X^* - 10}{4/\sqrt{50}} = - 1.96 \implies X^* = 8.89
+$$ 
+
+Therefore, we reject the null whenever $X^* \geq 11.11$ or $X^* \leq 8.89$
+
+- Then, power is the probability of being in the rejection region, given a true population mean, in our case $\mu = 11$. 
+
+$$
+	P(\bar{X} \geq 11.11 \vert \mu = 11) + P(\bar{X} \leq 8.89 \vert \mu = 11)
+$$
+
+$$
+	P(Z \geq \frac{11.11 - 11}{4/\sqrt{50}}) = P(Z \geq 0.1944) = 0.422
+$$
+
+$$
+	P(Z \leq \frac{8.89 - 11}{4/\sqrt{50}}) = P(Z \leq -3.73) \approx 0
+$$
+
+Therefore our calculated power is: 
+$$
+	P(\bar{X} \geq 11.11 \vert \mu = 11) + P(\bar{X} \leq 8.89 \vert \mu = 11) = 0.422
+$$
+
+
+```{r title="Power"}
+
+# Set Parameters
+n <- 50
+alpha <- 0.05
+true_mean <- 11
+null_mean <- 10
+true_sd <- 4
+
+sample_means <- c()
+sample_rejects <- c()
+
+for(i in 1:10000){
+	
+	draws <- rnorm(n, mean = true_mean, sd = true_sd)
+	mean <- mean(draws)
+
+	# Standardize Mean given the null is true
+	z_score <- (mean - null_mean)/(true_sd/sqrt(n))
+	
+	# p-value = 2 * P(z <= - |z-score|)
+	z_score <- -abs(z_score)
+	p_value <- 2*pnorm(z_score)
+	
+	# reject if p_value < alpha
+	reject <- p_value < alpha
+	
+	# Store results to vector
+	sample_rejects <- c(sample_rejects, reject)
+	sample_means <- c(sample_means, mean)
+}
+
+# Rejection rate
+sum(sample_rejects)/length(sample_rejects)
+
+```
+
+**Exercise:**
+
+- Change the standard deviation. How does the power change?
+
+- Change the number of observations $n$. How does the power change?
+ 
+- Change the true population mean. How does the power change?

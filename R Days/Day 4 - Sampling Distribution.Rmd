@@ -1,0 +1,237 @@
+---
+title: "R Day 4 - Sampling Distribution"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+
+# For loops
+
+Loops in R allow you to repeat a task multiple times. For example, let's say you want to print out the numbers 1 through 10 on separate lines in the console. You could do this by brute force, but the point of programming is to make things EASIER!
+
+```{r}
+
+```
+
+A for loop is set up as 
+
+$$
+	\texttt{for}(\underbrace{\texttt{i}}_{\text{iterator}} \texttt{in } \underbrace{1:10}_{\text{values }\texttt{i}\text{ cycles through}}) \texttt{\{ }\text{Code goes here... } \texttt{\}}
+$$
+
+```{r}
+
+```
+
+
+
+
+# Binomial - prob = 0.3
+
+Let's generate 100 observations from the following distribution:
+
+$$ X \sim B(10, 0.3)$$
+
+```{r "Binomial p=0.3 - One Trial"}
+# 100 observations of Uniform Random Variable
+
+
+# Histogram of sample
+
+
+# True mean = 10 * 0.3 = 3
+# Calculate Sample mean
+
+```
+
+This sample of size $100$ had a sample mean number of succeses of `r mean(sample)`. Let's try this exercise many times:
+
+1. For sample $1$, generate 100 observations from $X \sim B(10, 0.3)$ and calculate the sample mean $\bar{X}_1$ for that sample
+
+2. Store this sample in a vector of sample_means
+
+3. Repeat steps 1 and 2, 1000 times to generate a sample distribution of the sample mean.
+
+Do this 1000 times. Ahha! Copying and Pasting can't even help here, but for loops can!
+
+```{r "Binomial p=0.3 - Sampling Distribution"}
+
+```
+
+
+**Exercise:**
+
+```{r "Binomial p=0.3 - Play around with n_obs and n_trials"}
+
+n_obs <- 100
+n_trials <- 1000
+
+sample_means <- c()
+
+for(i in 1:n_trials){
+	sample <- rbinom(n = n_obs, size = 10, prob = 0.3)
+	mean <- mean(sample)
+	
+	sample_means <- c(sample_means, mean)
+}
+
+hist(sample_means)
+
+```
+
+Play around with `n_obs` and `n_trials` and answer the following questions:
+
+- What happens to the distribution as `n_trials` increase for a fixed `n_obs`? From what we know from class, what is the sampling distribution for a fixed `n_obs`?
+
+- What happens to this distribution as `n_obs` increases for a fixed `n_trials`?
+
+
+
+# Confidence Intervals
+
+Let's find the middle 95% of our sample means:
+
+```{r "Binomial p=0.3 - Confidence Intervals"}
+
+# Calculate population mean and population sd
+
+
+# Critical value for normal distribution
+
+
+# Calculate margin of error
+
+
+# Calculate upper and lower confidence interval
+
+
+# Plot histogram for sample distribution and add vertical lines for confidence interval
+# abline will make vertical lines for us
+
+
+```
+
+## Confidence Interval Intuition
+
+Using a for loop, let's show that a 95% confidence interval around the sample mean will contain the population means 95% of the time. 
+
+That is $$P(\mu \in [X_{lower}, X_{upper}]) = 0.95$$
+
+
+```{r "Confidence Interval Example"}
+
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+# Binomial - prob = 0.9
+
+Let's now repeat this exercise for 
+
+$$X \sim B(10, 0.9)$$
+
+```{r "Binomial p=0.9 - One Trial"}
+
+```
+
+```{r "Binomial p=0.9 - Sampling Distribution"}
+
+```
+
+```{r "Binomial p=0.9 - Play around with n_obs and n_trials"}
+
+```
+
+- What happens to the distributino as `n_trials` increase for a fixed `n_obs`? From what we know from class, what is the sampling distribution for a fixed `n_obs`?
+
+- What happens to this distribution as `n_obs` increases for a fixed `n_trials`?
+
+
+
+
+
+
+
+# Uniform
+
+One thing I tried to emphasize in the course is that for almost any underlying variable $X$, the **sampling distribution** of $\bar{X}$ will be normally distributed. It does not matter the underlying distribution! Let's try this with the uniform distribution.
+
+$$ 
+X \sim U(0, 1)
+$$
+
+```{r "Uniform - One Trial"}
+# 100 observations of Uniform Random Variable
+sample <- runif(n = 100, min = 0, max = 1)
+
+# True mean = 0.5
+mean(sample)
+```
+
+```{r "Uniform - Sampling Distribution"}
+sample_means <- c()
+
+for(i in 1:1000){
+	sample <- runif(n = 100, min = 0, max = 1)
+	mean <- mean(sample)
+	
+	sample_means <- c(sample_means, mean)
+}
+
+hist(sample_means)
+```
+
+```{r "Uniform - Play around with n_obs and n_trials"}
+n_obs <- 100
+n_trials <- 1000
+
+sample_means <- c()
+
+for(i in 1:n_trials){
+	sample <- runif(n = n_obs, min = 0, max = 1)
+	mean <- mean(sample)
+	
+	sample_means <- c(sample_means, mean)
+}
+
+hist(sample_means)
+
+```
+
+
+# More Complex Distribution
+
+This will even work with weirder distributions! For example, let's try a distribution similar to income in the US.
+
+
+```{r "More Complex - One Trial"}
+sample <- 40 + 10 * rweibull(n = 1000, shape = 0.85)
+
+# Histogram of sample
+hist(sample, xlab = "Income ($1000)")
+```
+
+```{r "More Complex - Sampling Distribution"}
+sample_means <- c()
+
+for(i in 1:10000){
+	sample <- 40 + 10 * rweibull(n = 1000, shape = 0.85)
+	mean <- mean(sample)
+	
+	sample_means <- c(sample_means, mean)
+}
+
+hist(sample_means)
+```

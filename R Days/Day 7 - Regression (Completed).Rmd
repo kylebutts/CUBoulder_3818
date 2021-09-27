@@ -1,0 +1,136 @@
+---
+title: "R Day 7 - Regression"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+
+# Load Wage Data
+
+```{r, include = FALSE}
+library(wooldridge)
+data(wage1)
+
+head(wage1)
+```
+
+# Regression
+
+```{r}
+plot(wage1$educ, wage1$wage)
+```
+
+```{r}
+# Remove education outliers
+wage1 <- wage1[wage1$educ >= 6, ]
+
+plot(wage1$educ, wage1$wage)
+```
+
+
+# Regressions
+
+Regression is done by `lm()` function. Specifically the format looks like this:
+
+`reg <- lm(y_var ~ x_var, data = df)`
+
+To see the summary, you can type `summary(reg)`.
+
+```{r}
+# wage = a + b * educ
+reg <- lm(wage ~ educ, data = wage1)
+
+
+reg
+summary(reg)
+
+```
+
+```{r}
+plot(wage1$educ, wage1$wage, col= "black")
+abline(reg, col = "red")
+```
+
+
+**Exercise:**
+
+1. How do you interpret the coefficient on `educ`?
+
+2. Is the coefficient on education statistically significant? How do you know?
+
+
+
+
+# Regression with Indicator Variables
+
+```{r}
+# Create a high school dummy
+wage1$hs <- as.numeric(wage1$educ >= 12)
+
+reg <- lm(wage ~ hs, wage1)
+summary(reg)
+```
+
+**Exercise:**
+
+1. How do you interpret the coefficient on `hs`?
+
+2. Let's call this the "degree premium". Find a confidence interval using `confint` for the degree premium. Interpret this
+
+```{r}
+confint(reg)
+```
+
+
+
+# Simpson's Paradox
+
+```{r Load data}
+library(palmerpenguins)
+data(penguins)
+
+head(penguins)
+```
+
+```{r}
+# Scatter plot of Bill Depth (mm) and Body Mass (g)
+plot(penguins$bill_depth_mm, penguins$body_mass_g)
+
+# Regression
+reg1 <- lm(penguins$body_mass_g ~ penguins$bill_depth_mm)
+
+summary(reg1)
+
+plot(penguins$bill_depth_mm, penguins$body_mass_g)
+abline(reg1) 
+```
+
+
+
+```{r}
+# Seperately by penguin species
+library(ggplot2)
+
+ggplot(penguins, aes(x = bill_depth_mm, y = body_mass_g)) + 
+	geom_point(aes(color = species)) + 
+	geom_smooth(method = "lm", aes(color = species))
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

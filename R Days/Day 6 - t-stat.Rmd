@@ -1,0 +1,118 @@
+---
+title: "R Day 6 - t-stat"
+output:
+  html_document:
+    theme: spacelab
+    highlight: tango
+---
+
+
+# Two-sided t-test
+
+**Exercise:** fill in the missing code to calculate a two-sided t-test by hand.
+
+$$ 
+	H_0: \mu_1 - \mu_2 = 0 
+$$
+
+$$
+	H_A: \mu_1 - \mu_2 > 0
+$$
+
+Our z-stat in this case is 
+
+$$
+	Z\text{-stat} = \frac{(\bar{X}_1 - \bar{X}_2) - (\mu_1 - \mu_2)}{\sqrt{\sigma_1^2/n_1 + \sigma_2^2/n_2}}
+$$
+
+And our p-value is 
+$$
+	P (Z \geq Z\text{-stat}) 
+$$
+
+```{r "two-sided Z-test"}
+set.seed(390)
+
+# Random Sample of group 1 and 2
+x1 <- rnorm(50, mean = 10, sd = 5)
+x2 <- rnorm(35, mean = 11, sd = 5)
+
+# Calculate z-stat
+
+
+# Calculate p-value
+
+
+```
+
+
+```{r "two-sided t-test"}
+set.seed(14)
+
+# Random Sample of group 1 and 2
+x1 <- rnorm(24, mean = 10, sd = 5)
+x2 <- rnorm(15, mean = 11, sd = 5)
+
+# Calculate t-stat
+
+
+# Calculate p-value
+# Note you have to supply t_score and degrees of freedom to `pt()`
+
+```
+
+
+Let's compare that with R's built-in Student's t-test. Type `?t.test` to learn the syntax for calculating a $t$-test
+
+```{r}
+# ?t.test
+```
+
+
+
+**Exercise:**
+
+$$H_0 : \mu_1 - \mu_2   =  0$$
+$$H_1 : \mu_1 - \mu_2 \neq 0$$
+
+```{r}
+set.seed(14)
+
+# Random Sample of group 1 and 2
+x1 <- rnorm(24, mean = 10, sd = 5)
+x2 <- rnorm(15, mean = 11, sd = 5)
+
+t.test(x1, x2, alternative = "two.sided")
+```
+
+1. Holding fixed the means, what happens to the p-value when you increase the sample size of the two groups? 
+
+2. Holding fixed the sample size, what happens to the p-value as you move the two population means away from eachother?
+
+
+
+
+# t-test for car color
+
+Let's try to answer the following question:
+
+> Do red cars and black/white cars sell for the same price?
+
+$$ H_0: \mu_r - \mu_{bw} = 0$$ 
+$$ H_A : \mu_r - \mu_{bw} > 0$$
+
+To do so, let's use the USA Cars dataset
+
+```{r "Load Car Data"}
+# Load USA_cars.csv
+
+
+# Subset data
+
+
+# 2 sample Z-test
+
+
+```
+
+Since the p-value is larger than 0.05, with 95% confidence, I fail to reject that red cars and black cars sell for the same price.
