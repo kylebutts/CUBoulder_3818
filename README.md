@@ -1,3 +1,5 @@
+**N.B.**: Inspiration for a lot of this material and some graphics come directly from [Ed Rubin's wonderful slides](https://github.com/edrubin/EC421W20)
+
 # Economics 3818 (Fall 2021): Introduction to Statistics with Computer Applications 
 
 Econ 3818 is an introductory course in the theory and methods of statistics. Statistics allows datasets to be transformed into usable information, analyzed for patterns and trends, which improve decision-making.
