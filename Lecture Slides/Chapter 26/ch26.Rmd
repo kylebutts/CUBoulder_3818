@@ -213,9 +213,9 @@ pop_df <- tibble(
 )
 # Regressions
 lm0 <- lm(y ~ x, data = pop_df)
-lm1 <- lm(y ~ x, data = filter(pop_df, s1 == T))
-lm2 <- lm(y ~ x, data = filter(pop_df, s2 == T))
-lm3 <- lm(y ~ x, data = filter(pop_df, s3 == T))
+lm1 <- lm(y ~ x, data = pop_df[pop_df$s1, ])
+lm2 <- lm(y ~ x, data = pop_df[pop_df$s2, ])
+lm3 <- lm(y ~ x, data = pop_df[pop_df$s3, ])
 
 # Simulation
 set.seed(12468)
@@ -427,8 +427,8 @@ class: clear, center, middle
 ```{R, simulation scatter, echo = F, out.width = "80%"}
 # Reshape sim_df
 line_df <- tibble(
-  intercept = sim_df %>% filter(term != "x") %>% select(estimate) %>% unlist(),
-  slope = sim_df %>% filter(term == "x") %>% select(estimate) %>% unlist()
+  intercept = sim_df[sim_df$term != "x",][["estimate"]],
+  slope = sim_df[sim_df$term == "x",][["estimate"]]
 )
 ggplot() +
   geom_abline(data = line_df, aes(intercept = intercept, slope = slope), alpha = 0.05) +
@@ -549,7 +549,7 @@ What type of error would we have committed if it turned out there was no relatio
 # Additional Example -- Exam Style
 My budtender friend Eric did a study on marijuana consumption and hot cheeto consumption. He surveyed 25 of his friends and collected the following regression results. Assume $\alpha = 0.05$
 
-```{r}
+```{r, echo = F}
 cheeto <- tribble(
   ~"Cheeto Consumption", ~"Estimate", ~"Std. Error", ~"t-statistic", ~"p-value",
   "Intercept", 21, 12.3, "", "", 
@@ -618,7 +618,7 @@ $$
 ---
 # Regression Results
 
-```{r, echo = c(-1,-2)}
+```{r, echo = c(-1,-2), highlight.output = 5}
 library(wooldridge)
 data("wage1")
 # Hourly Earnings ($) on Years of Education
@@ -713,7 +713,7 @@ confint(lm(wage ~ educ, data = wage1))
 ```
 
 
-95% confident that an additional year of schooling increases average hourly earnings between \$0.44 and \$0.65
+95% confident that an additional year of schooling increases average hourly earnings between $0.44 and $0.65
 
 
 ---
