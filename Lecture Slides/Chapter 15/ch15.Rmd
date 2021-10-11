@@ -274,14 +274,14 @@ This is one of the most important concepts in the course. One .hi[trial] would c
 .hi.coral[Sampling Distribution] - Imagine repeatedly grabbing a different group of observations from the population and calculating the sample mean. This is performing many .hi[trials]. The sample means themselves will have a distribution.
 
 ---
-class: clear
+class: clear, center
 
 ```{r, echo=F, out.width="100%"}
 knitr::include_graphics("frame1.png")
 ```
 
 ---
-class: clear
+class: clear, center
 
 ```{r, echo=F, out.width="100%"}
 knitr::include_graphics("frame2.png")
@@ -289,7 +289,7 @@ knitr::include_graphics("frame2.png")
 
 
 ---
-class: clear 
+class: clear, center
 
 ```{r sample-dist-anim, eval = F, echo = F, results="hide"}
 
@@ -373,7 +373,7 @@ file.remove(png_paths)
 ]
 
 ---
-class: clear
+class: clear, middle, center
 
 ```{r, echo=F, out.width="100%"}
 knitr::include_graphics("frame1000.png")
@@ -384,7 +384,7 @@ knitr::include_graphics("frame1000.png")
 ---
 # Sample Size
 
-The variance of the .it.coral[sampling distribution] depends on the sample size. As $n$ gets larger, each individual .hi[trial] gives a better guess at the mean. Hence, the .coral[sampling distribution] gets more narrow
+The variance of the .it.coral[sampling distribution] depends on the sample size. As \(n\) gets larger, each individual .hi[trial] gives a better guess at the mean. Hence, the .coral[sampling distribution] gets more narrow
 
 
 ```{r dist-n-anim, eval = F, echo = F, results="hide"}
@@ -475,7 +475,7 @@ file.remove(png_paths)
 ---
 class: clear
 
-```{r, echo = F, out.width = "80%"}
+```{r, echo = F, out.width = "100%"}
 
 sample_dist <- function(n) {
 	means <- c()
@@ -498,10 +498,10 @@ df <- tibble(n = c(10, 25, 50, 100, 500, 1000)) %>%
 
 p <- ggplot(df) + 
 	geom_point(aes(x = n, y = means), color = "grey30", fill="black", alpha=0.8, size = 4) + 
-	kfbmisc::theme_kyle(base_size = 28) + 
+	kfbmisc::theme_kyle(base_size = 70) + 
 	labs(x = NULL, y = "Sample Means")
 
-ggsave(here("Lecture Slides", "Chapter 15", "sample_dist_diff_n.png"), p, width=8, height=6)
+ggsave(here("Lecture Slides", "Chapter 15", "sample_dist_diff_n.png"), p, width = 12, height = 7)
 
 knitr::include_graphics("sample_dist_diff_n.png")
 
@@ -589,14 +589,14 @@ file.remove(png_paths)
 ```
 
 .center[
-<img style="width:80%;" src="lln.gif"/>
+<img style="width: 90%;" src="lln.gif"/>
 ]
 
 
 ---
 # Law of Large Numbers
 
-```{r, echo=F, out.width="80%"}
+```{r, echo=F, out.width="100%"}
 knitr::include_graphics("sample_dist_diff_n.png")
 ```
 

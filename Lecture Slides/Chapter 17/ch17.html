@@ -4,7 +4,7 @@
     <title>ECON 3818</title>
     <meta charset="utf-8" />
     <meta name="author" content="Kyle Butts" />
-    <meta name="date" content="2021-09-27" />
+    <meta name="date" content="2021-10-11" />
     <script src="ch17_files/header-attrs-2.10/header-attrs.js"></script>
     <link href="ch17_files/remark-css-0.0.1/default.css" rel="stylesheet" />
   </head>
@@ -15,7 +15,7 @@ class: center, middle, inverse, title-slide
 # ECON 3818
 ## Chapter 17
 ### Kyle Butts
-### 27 September 2021
+### 11 October 2021
 
 ---
 
@@ -760,7 +760,12 @@ If we want to test the hypothesis
 
 We want to calculate the probability we got an `\(\bar{X}\)` as extreme as 0.3 if the true population `\(\mu=0\)`. Is it rare that we got 0.3 or is that quite common from the sampling distribution?
 
-This means we want to calculate `\(P(\bar{X}&gt;0.3)\)` if `\(\bar{X} \sim N(0,\frac{1}{10})\)`
+This means we want to calculate `\(P(\bar{X}&gt;0.3)\)` if `\(\bar{X} \sim N(0,\frac{1}{10})\)`. We will write that as:
+
+$$
+	P(\bar{X} &gt; 0.3 \ \vert\  \mu = 0)
+$$
+
 
 ---
 class: clear, middle
@@ -782,7 +787,9 @@ We want to calculate `\(P(\bar{X}&gt;0.3)\)` if `\(\bar{X} \sim N(0,\frac{1}{10}
 
 This says that if the *true* population mean is `\(\alice{\mu = 0}\)`, then 17% of the time we would expect to see a sample mean greater than 0.3, 17% of the time.
 
-  - This is not so rare (~ 1 out of 5), so this isn't strong evidence against the null. It doesn't prove it, but it does not rule it out.
+- This is not so rare (~ 1 out of 5), so this isn't strong evidence against the null. 
+  
+- It doesn't prove it, but it does not rule it out.
 
 ---
 # p-values
@@ -797,7 +804,7 @@ Suppose you calculate a test statistic `\(\hat{\theta}\)` (e.g. mean or standard
 
 --
 
-In general, the test statistic we calculate is `\(\bar{X}\)` and formulate a hypothesis about `\(\mu\)`
+Typically, the test statistic we calculate is `\(\bar{X}\)` and formulate a hypothesis about `\(\mu\)`
 
 - In this context, the p-value is the probability of getting an `\(\bar{X}\)` as or *more extreme*, if the true population mean is equal to `\(\mu\)`
 

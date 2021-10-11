@@ -143,14 +143,70 @@ plot_sd_rule(26.8, 7.5)
 
 
 ---
+# 95% Rule
+
+From the fact that $\bar{X}_n \sim N(\mu, \frac{\sigma}{\sqrt{n}})$, we have:
+
+\begin{align*}
+P(- z_{\alpha/2} \leq \frac{\bar{X}_n - \mu}{\sigma/\sqrt{n}} \leq z_{\alpha/2}) = 1-\alpha,
+\end{align*}
+
+where $- z_{\alpha/2}$ is the .emph[critical value] with a left-tail probability of 2.5%. With some math, we see:
+
+--
+
+\begin{align*}
+P(- z_{\alpha/2} \frac{\sigma}{\sqrt{n}} \leq \bar{X}_n - \mu \leq z_{\alpha/2} \frac{\sigma}{\sqrt{n}}) = 1-\alpha \\
+\end{align*}
+
+--
+
+\begin{align*}
+P(\mu - z_{\alpha/2} \frac{\sigma}{\sqrt{n}} \leq \bar{X}_n \leq \mu + z_{\alpha/2} \frac{\sigma}{\sqrt{n}}) = 1-\alpha \\
+\end{align*}
+
+--
+That is, $1-\alpha$% of the time, the sample mean falls between $\mu - z_{\alpha/2} \frac{\sigma}{\sqrt{n}}$ and $\mu + z_{\alpha/2} \frac{\sigma}{\sqrt{n}}$.
+
+---
+# Central Idea of Confidence Interval
+
+The interval we defined above involves $\mu$ which we .emph[do not know!] Instead, let's do the math slightly differently: 
+
+\begin{align*}
+P(- z_{\alpha/2} \frac{\sigma}{\sqrt{n}} \leq \bar{X}_n - \mu \leq z_{\alpha/2} \frac{\sigma}{\sqrt{n}}) = 1-\alpha \\
+\end{align*}
+
+--
+
+\begin{align*}
+P(- \bar{X}_n - z_{\alpha/2} \frac{\sigma}{\sqrt{n}} \leq - \mu \leq - \bar{X}_n  + z_{\alpha/2} \frac{\sigma}{\sqrt{n}}) = 1-\alpha \\
+\end{align*}
+
+--
+
+\begin{align*}
+P(\bar{X}_n - z_{\alpha/2} \frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{X}_n  + z_{\alpha/2} \frac{\sigma}{\sqrt{n}}) = 1-\alpha \\
+\end{align*}
+
+--
+Now we are able to categorize some uncertainty surrounding $\mu$. In particular, we have that in repeated sampling of $\bar{X}_n$ (many samples of size $n$), $\mu$ will be in the interval
+\begin{align*}
+	\left[\bar{X}_n - z_{\alpha/2} \frac{\sigma}{\sqrt{n}}, \bar{X}_n + z_{\alpha/2} \frac{\sigma}{\sqrt{n}}\right]
+\end{align*}
+$1 - \alpha$% of the time.
+
+
+
+
+---
 # Confidence Interval
 
-The 95 part of the 68-95-99.7 rule for Normal distributions says that $\bar{X}_{654}$ is within 2 standard deviations of the mean $\mu$ in 95% of samples. 
-
+The 95 part of the 68-95-99.7 rule for Normal distributions says that $\bar{X}_{654}$ is within 2 standard deviations of the mean $\mu$ in 95% of samples. Therefore $z_{\alpha/2} \approx 2$.
 
 Since $\sigma=7.5$, the standard deviation of our sampling distribution is $\frac{7.5}{\sqrt{654}}=0.3$ (from the Central Limit Theorem). 
 
-This means for .hi[95% of all samples of size 654], the sample mean $\bar{X}_{654}$ is within $0.6$ of the populatin mean (two std deviations).
+This means for .hi[95% of all samples of size 654], the sample mean $\bar{X}_{654}$ is within $0.6$ of the population mean (two std deviations).
 
 <br>
 
@@ -446,6 +502,5 @@ Based on this information we conclude that:
 	
 	<li> 99% of all samples of size n=25 will have an average age of horses with laminitis between 6.3 and 7.4 years old. </li>
 </ol>
-
 
 

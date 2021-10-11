@@ -23,8 +23,6 @@ output:
 library(icons)
 library(tidyverse)
 library(gt)
-
-output_format <- knitr::opts_knit$get("rmarkdown.pandoc.to")
 ```
 
 <h1 class="hi text-2xl center coral">ECON 3818: Introduction to Statistics</h1>
