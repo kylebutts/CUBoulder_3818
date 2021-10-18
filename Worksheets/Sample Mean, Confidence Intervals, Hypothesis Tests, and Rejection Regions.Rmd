@@ -1,0 +1,116 @@
+---
+title: "R Homework 1"
+subtitle: "Instructions"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default']
+    ## No title slide
+    seal: false
+    self_contained: true
+    nature:
+      ratio: '8.5:11'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r preamble, child=here::here("document-preamble.Rmd")}
+```
+
+
+```{r, echo = F}
+library(icons)
+library(tidyverse)
+library(gt)
+
+```
+
+## Sample Means
+
+Consider observing two years worth of sales at your company at a monthly interval (\\(n = 24\\)). Monthly sales have a mean of $1000 and a standard deviation of 100. 
+
+- What is the distribution of the sample mean? Sketch this distribution.
+
+<div style="margin-top: 160px"></div>
+- What is the probability that a given sample of 24 months has a sample mean of $990 or less?
+
+
+<div style="margin-top: 160px"></div>
+- Now, assume you have two more years of data (\\(n = 48\\)). What is the probability that a given sample of 24 months has a sample mean of $990 or less? Why is this probability different?
+
+
+---
+## Confidence Intervals
+
+Consider observing two years worth of sales at your company at a monthly interval (\\(n = 24\\)). Monthly sales have a mean of $1000 and a standard deviation of 100. 
+
+- Using the true population mean of $1000, find the middle 90% of sample means.
+
+
+
+<div style="margin-top: 160px"></div>
+Now, you don't know the population mean and instead just have that the sample mean is $1020. 
+
+- Create a confidence interval for this estimate and circle the margin of error. 
+
+- Is it true that 90% of sample means falls within your confidence interval? Why not?
+
+- Interpret the confidence interval correctly. 
+
+
+
+
+---
+## Hypothesis Testing
+
+Consider observing two years worth of sales at your company at a monthly interval (\\(n = 24\\)). Monthly sales have a standard deviation of 100. Our sample has a mean of $1020. Consider the following test:
+
+\begin{align*}
+	H_0: \mu &= 1000 \\
+	H_A: \mu &\neq 1000 \\
+\end{align*}
+
+- Sketch the sample distribution under the null and on the sketch, show what the p-value is
+
+
+<div style="margin-top: 160px"></div>
+- Test the hypothesis with a level of significance $\alpha = 0.10$. Do you reject the null?
+
+
+
+
+
+<div style="margin-top: 160px"></div>
+- Without redoing work (just think about it), how would the p-value you calculated above compare to the p-value from this test:
+
+\begin{align*}
+	H_0: \mu &= 1000 \\
+	H_A: \mu &> 1000 \\
+\end{align*}
+
+
+
+
+
+
+---
+## Rejection Region
+
+Consider observing two years worth of sales at your company at a monthly interval (\\(n = 24\\)). Monthly sales have a standard deviation of 100. Consider the following test:
+
+\begin{align*}
+	H_0: \mu &= 1000 \\
+	H_A: \mu &\neq 1000 \\
+\end{align*}
+
+- Calculate the rejection region with a level of significance $\alpha = 0.10$. Use this rejection region to determine whether you would reject the null with a sample mean of 1020.
+
+
+
+
+<div style="margin-top: 160px"></div>
+- Draw this rejection region. Compare this to the middle 90% of sample means with a population mean of 1000 that you calculated on the first page. They should be highly related!!
+
+
