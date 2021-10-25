@@ -1,0 +1,117 @@
+---
+title: "Syllabus"
+subtitle: "ECON 3818: Introduction to Statistics"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default']
+    ## No title slide
+    seal: false
+    self_contained: true
+    nature:
+      ratio: '8.5:11'
+    highlightStyle: github
+    highlightLines: true
+    countIncrementalSlides: false
+---
+
+```{r preamble, child=here::here("document-preamble.Rmd")}
+```
+
+```{r, include = F}
+
+library(tidyverse)
+library(svglite)
+library(glue)
+library(gt)
+
+source("https://raw.githubusercontent.com/kylebutts/templates/master/ggplot_theme/theme_kyle.R")
+
+# opts_chunk$set(dev = "svg")
+options(device = function(file, width, height) {
+	svg(tempfile(), width = width, height = height)
+})
+
+```
+
+```{r, echo = F, out.width = "60%", fig.align="center", fig.width=9, fig.height=5}
+
+dens <- tibble(
+	z = seq(-3, 3, by = 0.001),
+	dens = dt(z, df=10)
+)
+
+ggplot() +
+	geom_area(data = dens[dens$z > 1.2, ],
+			  mapping = aes(x = z, y = dens), fill = "#d2382c", alpha = 0.6) +
+	geom_line(data = dens,
+			  mapping = aes(x = z, y = dens), size = 1.5, color = "black") +
+	geom_hline(yintercept = 0, size = 1, color = "grey70") +
+	scale_y_continuous(limits = c(0, NA), expand = c(0,0.1)) +
+	theme_kyle(base_size = 20) +
+	theme(
+		axis.title.y = element_blank(),
+		axis.text.y = element_blank(),
+		axis.ticks.y = element_blank(),
+		axis.title.x = element_blank(),
+		axis.text.x = element_blank(),
+		axis.ticks.x = element_blank(),
+		axis.line = element_blank(),
+		panel.grid = element_blank()
+	) +
+	geom_text(data = data.frame(x = c(2.12), y = c(0.33),
+								label = c("Area under t distribution \n curve right of the t-score")),
+			  mapping = aes(x = x, y = y, label = label), size = 6,
+			  family = "fira_sans", fontface = 2, inherit.aes = FALSE) +
+	geom_text(data = data.frame(x = 1.43, y = 0.017, label = "z"),
+			  mapping = aes(x = x, y = y, label = label), size = 7,
+			  family = "fira_sans", fontface = 2, inherit.aes = FALSE) +
+	geom_curve(data = data.frame(x = 1.7, y = 0.27, xend = 1.6, yend = 0.16),
+			   mapping = aes(x = x, y = y, xend = xend, yend = yend),
+			   curvature = -0.2, arrow = arrow(30L, unit(0.1, "inches"), "last", "closed"),
+			   inherit.aes = FALSE)
+
+```
+
+```{r pos, echo = F}
+
+
+pos = tibble(
+	df = c(1:30, 10000),
+	name = c(1:30, "z"),
+	"\\(0.10\\)" = qt(0.9, df),
+	"\\(0.05\\)" = qt(0.95, df),
+	"\\(0.025\\)" = qt(0.975, df),
+	"\\(0.01\\)" = qt(0.99, df),
+	"\\(0.005\\)" = qt(0.995, df)
+) |> 
+	select(-df)
+
+gt(pos, rowname_col = "name") |>
+	tab_stubhead(label = "df/p") |>
+	fmt_number(
+		columns = starts_with("\\("), decimals = 4
+	) |>
+	tab_style(
+		style = cell_borders(
+			sides = c("top", "bottom"),
+			color = "#BBBBBB",
+			weight = px(0),
+			style = "solid"
+		),
+		locations = cells_body(
+			columns = everything(),
+			rows = everything()
+		)
+	) |>
+	opt_row_striping() |>
+	tab_options(
+		table.font.size = px(8),
+		table_body.border.bottom.width = px(0),
+		table_body.border.top.width = px(0),
+		data_row.padding = px(1)
+	)
+```
+
+
