@@ -4,7 +4,7 @@
     <title>R Homework 1</title>
     <meta charset="utf-8" />
     <meta name="author" content="Kyle Butts" />
-    <meta name="date" content="2021-10-18" />
+    <meta name="date" content="2021-10-28" />
     <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
     <link href="data:text/css,a%2C%20a%20%3E%20code%20%7B%0Acolor%3A%20rgb%28249%2C%2038%2C%20114%29%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Efootnote%20%7B%0Aposition%3A%20absolute%3B%0Abottom%3A%203em%3B%0Apadding%2Dright%3A%204em%3B%0Afont%2Dsize%3A%2090%25%3B%0A%7D%0A%2Eremark%2Dcode%2Dline%2Dhighlighted%20%7B%20background%2Dcolor%3A%20%23ffff88%3B%20%7D%0A%2Einverse%20%7B%0Abackground%2Dcolor%3A%20%23272822%3B%0Acolor%3A%20%23d6d6d6%3B%0Atext%2Dshadow%3A%200%200%2020px%20%23333%3B%0A%7D%0A%2Einverse%20h1%2C%20%2Einverse%20h2%2C%20%2Einverse%20h3%20%7B%0Acolor%3A%20%23f3f3f3%3B%0A%7D%0A%0A%2Eleft%2Dcolumn%20%7B%0Acolor%3A%20%23777%3B%0Awidth%3A%2020%25%3B%0Aheight%3A%2092%25%3B%0Afloat%3A%20left%3B%0A%7D%0A%2Eleft%2Dcolumn%20h2%3Alast%2Dof%2Dtype%2C%20%2Eleft%2Dcolumn%20h3%3Alast%2Dchild%20%7B%0Acolor%3A%20%23000%3B%0A%7D%0A%2Eright%2Dcolumn%20%7B%0Awidth%3A%2075%25%3B%0Afloat%3A%20right%3B%0Apadding%2Dtop%3A%201em%3B%0A%7D%0A%2Epull%2Dleft%20%7B%0Afloat%3A%20left%3B%0Awidth%3A%2047%25%3B%0A%7D%0A%2Epull%2Dright%20%7B%0Afloat%3A%20right%3B%0Awidth%3A%2047%25%3B%0A%7D%0A%2Epull%2Dright%20%2B%20%2A%20%7B%0Aclear%3A%20both%3B%0A%7D%0Aimg%2C%20video%2C%20iframe%20%7B%0Amax%2Dwidth%3A%20100%25%3B%0A%7D%0Ablockquote%20%7B%0Aborder%2Dleft%3A%20solid%205px%20lightgray%3B%0Apadding%2Dleft%3A%201em%3B%0A%7D%0A%2Eremark%2Dslide%20table%20%7B%0Amargin%3A%20auto%3B%0Aborder%2Dtop%3A%201px%20solid%20%23666%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23666%3B%0A%7D%0A%2Eremark%2Dslide%20table%20thead%20th%20%7B%20border%2Dbottom%3A%201px%20solid%20%23ddd%3B%20%7D%0Ath%2C%20td%20%7B%20padding%3A%205px%3B%20%7D%0A%2Eremark%2Dslide%20thead%2C%20%2Eremark%2Dslide%20tfoot%2C%20%2Eremark%2Dslide%20tr%3Anth%2Dchild%28even%29%20%7B%20background%3A%20%23eee%20%7D%0A%40page%20%7B%20margin%3A%200%3B%20%7D%0A%40media%20print%20%7B%0A%2Eremark%2Dslide%2Dscaler%20%7B%0Awidth%3A%20100%25%20%21important%3B%0Aheight%3A%20100%25%20%21important%3B%0Atransform%3A%20scale%281%29%20%21important%3B%0Atop%3A%200%20%21important%3B%0Aleft%3A%200%20%21important%3B%0A%7D%0A%7D%0A" rel="stylesheet" />
   </head>
@@ -670,7 +670,7 @@ Consider observing two years worth of sales at your company at a monthly interva
 
 
 &lt;div style=&quot;margin-top: 160px&quot;&gt;&lt;/div&gt;
-- Now assume you have two more years of data (\\(n = 48\\)). What is the probability that a given sample of 24 months has a sample mean of $990 or less? Why is this probability different?
+- Now, assume you have two more years of data (\\(n = 48\\)). What is the probability that a given sample of 24 months has a sample mean of $990 or less? Why is this probability different?
 
 
 ---
@@ -744,6 +744,35 @@ Consider observing two years worth of sales at your company at a monthly interva
 
 &lt;div style=&quot;margin-top: 160px&quot;&gt;&lt;/div&gt;
 - Draw this rejection region. Compare this to the middle 90% of sample means with a population mean of 1000 that you calculated on the first page. They should be highly related!!
+
+
+
+---
+## Size
+
+Consider observing two years worth of sales at your company at a monthly interval (\\(n = 24\\)). Monthly sales have a standard deviation of 100. Consider the following test:
+
+`\begin{align*}
+	H_0: \mu &amp;= 1000 \\
+	H_A: \mu &amp;\neq 1000 \\
+\end{align*}`
+
+- Using the rejection region from the previous page, calculate the probability, under the null, that we (incorrectly) reject the null. How is this related to \\(alpha\\)?
+
+
+
+---
+## Power
+
+Consider observing two years worth of sales at your company at a monthly interval (\\(n = 24\\)). Monthly sales have a standard deviation of 100. Consider the following test:
+
+`\begin{align*}
+	H_0: \mu &amp;= 1000 \\
+	H_A: \mu &amp;\neq 1000 \\
+\end{align*}`
+
+- Now consider that the true population mean is actually `\(\mu = 1010\)`. Calculate the power to be able to (correctly) reject the null. 
+
 
 
     </textarea>

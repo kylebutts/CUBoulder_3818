@@ -114,3 +114,32 @@ Consider observing two years worth of sales at your company at a monthly interva
 - Draw this rejection region. Compare this to the middle 90% of sample means with a population mean of 1000 that you calculated on the first page. They should be highly related!!
 
 
+
+---
+## Size
+
+Consider observing two years worth of sales at your company at a monthly interval (\\(n = 24\\)). Monthly sales have a standard deviation of 100. Consider the following test:
+
+\begin{align*}
+	H_0: \mu &= 1000 \\
+	H_A: \mu &\neq 1000 \\
+\end{align*}
+
+- Using the rejection region from the previous page, calculate the probability, under the null, that we (incorrectly) reject the null. How is this related to \\(\alpha\\)?
+
+
+
+---
+## Power
+
+Consider observing two years worth of sales at your company at a monthly interval (\\(n = 24\\)). Monthly sales have a standard deviation of 100. Consider the following test:
+
+\begin{align*}
+	H_0: \mu &= 1000 \\
+	H_A: \mu &\neq 1000 \\
+\end{align*}
+
+- Now consider that the true population mean is actually $\mu = 1010$. Calculate the power to be able to (correctly) reject the null. 
+
+
+
