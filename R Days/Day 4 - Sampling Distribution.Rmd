@@ -11,7 +11,10 @@ output:
 Loops in R allow you to repeat a task multiple times. For example, let's say you want to print out the numbers 1 through 10 on separate lines in the console. You could do this by brute force, but the point of programming is to make things EASIER!
 
 ```{r}
-
+max_n <- 15
+for(i in 1:10) {
+	print(i)
+}
 ```
 
 A for loop is set up as 
@@ -34,15 +37,15 @@ Let's generate 100 observations from the following distribution:
 $$ X \sim B(10, 0.3)$$
 
 ```{r "Binomial p=0.3 - One Trial"}
-# 100 observations of Uniform Random Variable
-
+# 100 observations of Binomial Random Variable
+sample <- rbinom(100, size = 10, prob = 0.3)
 
 # Histogram of sample
-
+hist(sample)
 
 # True mean = 10 * 0.3 = 3
 # Calculate Sample mean
-
+mean(sample)
 ```
 
 This sample of size $100$ had a sample mean number of succeses of `r mean(sample)`. Let's try this exercise many times:
@@ -57,6 +60,22 @@ Do this 1000 times. Ahha! Copying and Pasting can't even help here, but for loop
 
 ```{r "Binomial p=0.3 - Sampling Distribution"}
 
+# To store sample means
+sample_means <- c()
+
+for(i in 1:1000) {
+	sample <- rbinom(n = 100, size = 10, prob = 0.3)
+	sample_means <- c(sample_means, mean(sample))
+}
+
+# mu = 10 * 0.3
+mean(sample_means)
+
+# sd of sample distribution
+# = sqrt(10 * 0.3 * 0.7)/sqrt(100) = .1449138
+sd(sample_means)
+
+hist(sample_means, freq = FALSE)
 ```
 
 
@@ -95,21 +114,38 @@ Let's find the middle 95% of our sample means:
 ```{r "Binomial p=0.3 - Confidence Intervals"}
 
 # Calculate population mean and population sd
-
+pop_mean <- 0.3 * 10
+pop_sd <- sqrt(0.3 * 0.7 * 10)
+n_obs <- 100
 
 # Critical value for normal distribution
-
+# 95% confidence interval
+# 2.5% to the left, 2.5% to the right
+zstar <- qnorm(0.975)
 
 # Calculate margin of error
-
+# zstar * sd of sample distribution
+# 1.96 * 1.544 / sqrt(100)
+moe <- zstar * pop_sd/sqrt(n_obs)
 
 # Calculate upper and lower confidence interval
-
+ci_lower <- pop_mean - moe
+ci_upper <- pop_mean + moe
 
 # Plot histogram for sample distribution and add vertical lines for confidence interval
 # abline will make vertical lines for us
+sample_means <- c()
 
+for(i in 1:1000){
+	sample <- rbinom(n = n_obs, size = 10, prob = 0.3)
+	mean <- mean(sample)
+	
+	sample_means <- c(sample_means, mean)
+}
 
+hist(sample_means, breaks = 20)
+abline(v = ci_lower, col = "red")
+abline(v = ci_upper, col = "red")
 ```
 
 ## Confidence Interval Intuition
@@ -120,16 +156,32 @@ That is $$P(\mu \in [X_{lower}, X_{upper}]) = 0.95$$
 
 
 ```{r "Confidence Interval Example"}
+# Calculate population mean and population sd
+pop_mean <- 0.3 * 10
+pop_sd <- sqrt(0.3 * 0.7 * 10)
+n_obs <- 10000
+# 0.5% to the left, 0.5% to the right, middle 99%
+zstar <- qnorm(0.995)
+moe <- zstar * pop_sd/sqrt(n_obs)
 
+in_confidence_interval <- c()
 
+# Creating confidence interval and storing whether or not the population mean is within that confidence interval, 10000
+for(i in 1:1000) {
+	sample <- rbinom(n = n_obs, size = 10, prob = 0.3)
+	sample_mean <- mean(sample)
+	
+	# Calculate upper and lower confidence interval
+	ci_lower <- sample_mean - moe
+	ci_upper <- sample_mean + moe
+	
+	# Check if population mean, 3, is in CI
+	is_in <- (pop_mean < ci_upper) & (pop_mean > ci_lower)
+	in_confidence_interval <- c(in_confidence_interval, is_in)
+}
 
+mean(in_confidence_interval)
 ```
-
-
-
-
-
-
 
 
 
@@ -174,23 +226,24 @@ $$
 
 ```{r "Uniform - One Trial"}
 # 100 observations of Uniform Random Variable
-sample <- runif(n = 100, min = 0, max = 1)
+sample <- runif(n = 10000, min = 0, max = 1)
 
 # True mean = 0.5
+hist(sample)
 mean(sample)
 ```
 
 ```{r "Uniform - Sampling Distribution"}
 sample_means <- c()
 
-for(i in 1:1000){
+for(i in 1:25000){
 	sample <- runif(n = 100, min = 0, max = 1)
 	mean <- mean(sample)
 	
 	sample_means <- c(sample_means, mean)
 }
 
-hist(sample_means)
+hist(sample_means, breaks = 20)
 ```
 
 ```{r "Uniform - Play around with n_obs and n_trials"}
@@ -217,7 +270,7 @@ This will even work with weirder distributions! For example, let's try a distrib
 
 
 ```{r "More Complex - One Trial"}
-sample <- 40 + 10 * rweibull(n = 1000, shape = 0.85)
+sample <- 40 + 10 * rweibull(n = 10000, shape = 0.85)
 
 # Histogram of sample
 hist(sample, xlab = "Income ($1000)")
@@ -233,5 +286,5 @@ for(i in 1:10000){
 	sample_means <- c(sample_means, mean)
 }
 
-hist(sample_means)
+hist(sample_means, breaks = 20)
 ```

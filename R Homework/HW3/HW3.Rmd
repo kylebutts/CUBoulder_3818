@@ -1,0 +1,72 @@
+---
+title: "3818 R Homework 3"
+author: "*** Student Name ***"
+date: "8/20/2020"
+output: html_document
+---
+
+## Question 3 
+
+```{r Confidence Interval Program}
+# This makes sure we get the same random numbers every time
+set.seed(123)
+
+# Setting the parameters of the simulation
+sample_size <- 100
+num_samples <- 50
+ci_level <- 0.95
+
+# theoretical pop mean / standard deviation (sd) for standard normal
+pop_mean <- 0
+pop_sd <- 1
+
+
+# Uses `for` loop, draws `sample_size` from random normal and makes mean
+
+# What we will store sample means into 
+sample_means <- c()
+
+for(i in 1:num_samples){
+	# Draw normal random variable
+	sample <- rnorm(n= sample_size, mean= pop_mean, sd= pop_sd)
+	
+	# Mean 
+	sample_mean <- mean(sample)
+	
+	# Store result in position `i` from loop.
+	sample_means[i] <- sample_mean
+}
+
+# finding the margin of error
+moe <- qnorm(1 - (1-ci_level)/2) * pop_sd / sqrt(sample_size)
+
+# binding x\bar-moe and x\bar+moe as two columns
+CI <- data.frame(CI_lower= sample_means - moe, CI_upper= sample_means + moe)
+
+# to make the nice picture, you need the user written package ggplot2
+# you might need to type: install.packages("ggplot2") into the console if you get an error
+require(ggplot2)
+
+# a logical vector, TRUE if the confidence interval captures the population mean
+CI$is_mu_in_CI <- ((pop_mean > CI$CI_lower) & (pop_mean < CI$CI_upper))
+
+## making the plot
+ggplot() +
+  geom_linerange(
+    aes(x = 1:num_samples,
+        ymin = CI$CI_lower, 
+        ymax = CI$CI_upper, 
+        col = CI$is_mu_in_CI,
+        )
+    ) + 
+  scale_color_manual(values=c("TRUE"="alice","FALSE"="red")) +
+  guides(col= FALSE) +
+  labs(title= "Confidence Intervals", x= "Sample Number") +
+  geom_hline(yintercept= pop_mean, col= "red") +
+  coord_cartesian(ylim= c(pop_mean-pop_sd, pop_mean+pop_sd))
+
+
+# What percent of the confidence intervals capture the population mean?
+mean(CI$is_mu_in_CI)
+
+``` 

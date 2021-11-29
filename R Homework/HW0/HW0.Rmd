@@ -1,0 +1,23 @@
+---
+title: "3818 R Homework 0"
+author: "*** STUDENT NAME HERE ***"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: 
+  html_document: 
+    theme: flatly
+---
+
+# Checking that you read the Markdown Section
+
+1. Please provide a link to a song you like. If you don't know how, refer to [these notes](https://evalf21.classes.andrewheiss.com/resource/markdown/). Give the link a meaningful title (for example, the name of the song).
+
+
+
+
+
+2. Insert a code chunk with the content being `1 + 1`. If you don't know what a code chunk is, refer to [these notes](https://evalf21.classes.andrewheiss.com/resource/rmarkdown/). Your knitted document should have the results of the code displayed below, i.e. `# 2`.
+
+
+
+
+

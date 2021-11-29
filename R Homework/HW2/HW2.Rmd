@@ -1,0 +1,8 @@
+---
+title: "3818 R Homework 2"
+author: "*** Student Name ***"
+date: "8/20/2020"
+output: html_document
+---
+
+

@@ -189,7 +189,13 @@ $$ \kelly{\varepsilon_i} = Y_i - \coral{\hat{Y}_i} $$
 
   - In general,*the line of best-fit* means the line that minimizes the .kelly[sum of squared errors] (SSE):
 
-$$ \text{SSE} = \sum_{i = 1}^{n} \kelly{\varepsilon_i}^2 = \sum_{i=1}^n (y_i - \hat{a} - \hat{b} X_i) $$
+
+---
+# Sum of Squared Errors
+
+$$
+	SSE = \sum_{i=1}^n (y_i - \hat{a} - \hat{b} X_i)^2
+$$
 
 
 ---
@@ -512,8 +518,7 @@ tbl_reg_1 <- tribble(
     "Y", "GPA", "\\( \\bar{Y}=3.3 \\)", "\\( s_Y=0.45 \\)",
 )
 
-gt(tbl_reg_1) %>%
-    kfbmisc::gt_theme_kyle()
+gt(tbl_reg_1)
 ```
 
 
@@ -533,9 +538,9 @@ gt(tbl_reg_1) %>%
 
 Next we define a measure to evaluate how well the regression line fits:
 
-\[
-\cranberry{R^2} = \frac{\sum_{i=1}^n (\coral{\hat{Y}_i} - \bar{Y})^2}{\sum_{i=1}^n (Y_i - \bar{Y})^2}
-\]
+$$
+R^2 = \frac{\sum_{i=1}^n (\hat{Y}_i - \bar{Y})^2}{\sum_{i=1}^n (Y_i - \bar{Y})^2}
+$$
 
 
 ---

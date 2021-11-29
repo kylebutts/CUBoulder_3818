@@ -1,0 +1,21 @@
+---
+title: "3818 R Homework 4"
+author: '*** Student Name ***'
+date: "8/20/2020"
+output: html_document
+---
+
+
+## Question 2 
+
+```{r Question 2}
+# Code for Question 2 goes here
+
+n <- seq(10, 200, by= 5)
+z_scores <- (955-1000)/sqrt(220^2/n)
+p_values <- pnorm(z_scores)
+
+plot(n, p_values)
+
+```
+

@@ -1,0 +1,85 @@
+---
+title: "R Homework 2"
+subtitle: "Instructions"
+author: "Kyle Butts"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  xaringan::moon_reader:
+    css: ['default']
+    ## No title slide
+    seal: false
+    self_contained: true
+    nature:
+      ratio: '8.5:11'
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r preamble, child=here::here("document-preamble.Rmd")}
+```
+
+
+```{r, echo = F}
+library(icons)
+library(tidyverse)
+library(gt)
+
+output_format <- knitr::opts_knit$get('rmarkdown.pandoc.to')
+```
+
+<h1 class="hi text-2xl center coral">Instructions for R Homework 2*</h1>
+
+<div class="footnote"><sup>*</sup> For all HW assignments, I need to see all the code used</div>
+
+R has several functions built-in that can be used to calculate probabilities associated with known probability distributions. When in doubt, don’t forget that you can always type `help("function")` into the console for documentation! For example, `help(dbinom)` or `?dbinom` might help for problem 1.
+
+
+## Question 1 
+
+You flip an unbalanced coin 100 times. The probability that the coin lands on heads is 0.3. Using the `dbinom()` function in R, calculate the probability that the coin lands on the heads side exactly 30 times out of the possible 100.
+
+
+
+
+## Question 2 
+
+You are teaching a class of eighty students. From experience, you know the probability that any one student passes the course is 0.95. Further, you assume that one student passing is independent from any other student passing. What is the distribution of $X$? You can use the following latex with $n$ and $p$ replaced:
+
+```{=latex}
+$$X \sim B(n, p)$$
+```
+
+Using the `pbinom()` function in R, calculate the probability that the number of students (out of eighty) that fail the course is greater than or equal to five students:
+
+
+## Question 3 
+
+Use the `rbinom()` function to create a vector of 10 random observations from the binomial distribution with $n = 100$ and probability of success is equal to 0.4. In this situation, we’d like there to be 10 random draws from a binomial random variable that has 100 trials, meaning you flip a coin 100 times, 10 different times.
+
+- Calculate the mean and standard deviation statistics for this vector of random draws using the `mean()` and `sd()` commands.
+
+- How do these numbers compare with the population mean and standard deviation of the binomial distribution when $n = 100$ and $p = 0.4$? If they are different, why? Hint: if $X \sim B(n,p)$, then $\mu = np$ and $\sigma = \sqrt{np(1-p)}$.
+
+- Make a histogram of this vector using the `hist()` command. 
+
+
+## Question 4 
+
+Repeat question 3 but with 1,000 random draws. Comment on how the new sample mean compares to the population mean and the old sample mean. How does the histogram differ?
+
+
+---
+## Question 5 
+Use the `pnorm()` function in R to verify the empirical rule. Note that `pnorm(x)` calculates left tail probability of the standard normal distribution for $x$.
+
+- 68% of observations are within 1 standard deviation of the mean
+
+- 95% of observations are within 2 standard deviations of the mean
+
+- 99.7% of observations are within 3 standard deviations of the mean
+
+
+## Question 6 
+
+You and a friend take a statistics exam. The teacher tells you the exam grades were normally distributed with a mean of 72 and a standard deviation of 8. Your friend seems happy about their exam, but they won’t tell you their exact score. Instead they tell you that their grade is in the top 1% of all grades. Using the `qnorm()` function, calculate what their grade must be.
