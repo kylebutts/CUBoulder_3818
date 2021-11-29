@@ -51,7 +51,6 @@ fertility <- tribble(
   "Infant.Mortality",	"live births who live less than 1 year.",
 )
 gt::gt(fertility) %>% 
-  kfbmisc::gt_theme_kyle() %>% 
   gt::tab_options(table.font.size = px(10))
 
 ```
@@ -121,18 +120,9 @@ For each one of the estimated parameters reported in Question 5:
 
 - Report the results from testing the null hypothesis that the true parameter value is zero.
 
-
----
-
 ## Question 7 
 Recreate the figure in Question 4, and then add the line of best fit using the `abline()` function with the coefficients from `model_1`, `model_1$coefficients`.
 
-## Question 8 
-Plot Education with the residuals associated with the model, `model_1$residuals`. Do the residuals show any pattern?
-
-
-
-
-## Question 9 
+## Question 8
 
 Use the `mean()` command to show that the average of the residuals associated with model_1 is zero. 

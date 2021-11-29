@@ -4,7 +4,7 @@
     <title>R Homework 5</title>
     <meta charset="utf-8" />
     <meta name="author" content="Kyle Butts" />
-    <meta name="date" content="2021-08-21" />
+    <meta name="date" content="2021-11-29" />
     <script src="data:application/javascript;base64,Ly8gUGFuZG9jIDIuOSBhZGRzIGF0dHJpYnV0ZXMgb24gYm90aCBoZWFkZXIgYW5kIGRpdi4gV2UgcmVtb3ZlIHRoZSBmb3JtZXIgKHRvCi8vIGJlIGNvbXBhdGlibGUgd2l0aCB0aGUgYmVoYXZpb3Igb2YgUGFuZG9jIDwgMi44KS4KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGZ1bmN0aW9uKGUpIHsKICB2YXIgaHMgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJkaXYuc2VjdGlvbltjbGFzcyo9J2xldmVsJ10gPiA6Zmlyc3QtY2hpbGQiKTsKICB2YXIgaSwgaCwgYTsKICBmb3IgKGkgPSAwOyBpIDwgaHMubGVuZ3RoOyBpKyspIHsKICAgIGggPSBoc1tpXTsKICAgIGlmICghL15oWzEtNl0kL2kudGVzdChoLnRhZ05hbWUpKSBjb250aW51ZTsgIC8vIGl0IHNob3VsZCBiZSBhIGhlYWRlciBoMS1oNgogICAgYSA9IGguYXR0cmlidXRlczsKICAgIHdoaWxlIChhLmxlbmd0aCA+IDApIGgucmVtb3ZlQXR0cmlidXRlKGFbMF0ubmFtZSk7CiAgfQp9KTsK"></script>
     <link href="data:text/css,a%2C%20a%20%3E%20code%20%7B%0Acolor%3A%20rgb%28249%2C%2038%2C%20114%29%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0A%2Efootnote%20%7B%0Aposition%3A%20absolute%3B%0Abottom%3A%203em%3B%0Apadding%2Dright%3A%204em%3B%0Afont%2Dsize%3A%2090%25%3B%0A%7D%0A%2Eremark%2Dcode%2Dline%2Dhighlighted%20%7B%20background%2Dcolor%3A%20%23ffff88%3B%20%7D%0A%2Einverse%20%7B%0Abackground%2Dcolor%3A%20%23272822%3B%0Acolor%3A%20%23d6d6d6%3B%0Atext%2Dshadow%3A%200%200%2020px%20%23333%3B%0A%7D%0A%2Einverse%20h1%2C%20%2Einverse%20h2%2C%20%2Einverse%20h3%20%7B%0Acolor%3A%20%23f3f3f3%3B%0A%7D%0A%0A%2Eleft%2Dcolumn%20%7B%0Acolor%3A%20%23777%3B%0Awidth%3A%2020%25%3B%0Aheight%3A%2092%25%3B%0Afloat%3A%20left%3B%0A%7D%0A%2Eleft%2Dcolumn%20h2%3Alast%2Dof%2Dtype%2C%20%2Eleft%2Dcolumn%20h3%3Alast%2Dchild%20%7B%0Acolor%3A%20%23000%3B%0A%7D%0A%2Eright%2Dcolumn%20%7B%0Awidth%3A%2075%25%3B%0Afloat%3A%20right%3B%0Apadding%2Dtop%3A%201em%3B%0A%7D%0A%2Epull%2Dleft%20%7B%0Afloat%3A%20left%3B%0Awidth%3A%2047%25%3B%0A%7D%0A%2Epull%2Dright%20%7B%0Afloat%3A%20right%3B%0Awidth%3A%2047%25%3B%0A%7D%0A%2Epull%2Dright%20%2B%20%2A%20%7B%0Aclear%3A%20both%3B%0A%7D%0Aimg%2C%20video%2C%20iframe%20%7B%0Amax%2Dwidth%3A%20100%25%3B%0A%7D%0Ablockquote%20%7B%0Aborder%2Dleft%3A%20solid%205px%20lightgray%3B%0Apadding%2Dleft%3A%201em%3B%0A%7D%0A%2Eremark%2Dslide%20table%20%7B%0Amargin%3A%20auto%3B%0Aborder%2Dtop%3A%201px%20solid%20%23666%3B%0Aborder%2Dbottom%3A%201px%20solid%20%23666%3B%0A%7D%0A%2Eremark%2Dslide%20table%20thead%20th%20%7B%20border%2Dbottom%3A%201px%20solid%20%23ddd%3B%20%7D%0Ath%2C%20td%20%7B%20padding%3A%205px%3B%20%7D%0A%2Eremark%2Dslide%20thead%2C%20%2Eremark%2Dslide%20tfoot%2C%20%2Eremark%2Dslide%20tr%3Anth%2Dchild%28even%29%20%7B%20background%3A%20%23eee%20%7D%0A%40page%20%7B%20margin%3A%200%3B%20%7D%0A%40media%20print%20%7B%0A%2Eremark%2Dslide%2Dscaler%20%7B%0Awidth%3A%20100%25%20%21important%3B%0Aheight%3A%20100%25%20%21important%3B%0Atransform%3A%20scale%281%29%20%21important%3B%0Atop%3A%200%20%21important%3B%0Aleft%3A%200%20%21important%3B%0A%7D%0A%7D%0A" rel="stylesheet" />
   </head>
@@ -408,6 +408,7 @@ ol, ul {
 }
 li {
     margin-top: 4px;
+    line-height: 1.5rem;
 }
 
 /* Code Chunks */
@@ -418,7 +419,8 @@ li {
   font-size: 1rem;
   display: block;
   overflow-x: auto;
-  padding: 0.5rem 0.5rem !important;
+  padding: 0rem 0.5rem !important;
+  line-height: 2rem !important;
   background: var(--daisy-100) !important;
   border-left: var(--daisy-400) solid 2px;
 }
@@ -669,13 +671,12 @@ For this exercise we will run a regression using Swiss demographic data from aro
 
 The basic variable definitions are as follows:
 
-<div id="zmepkclmdd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>@import url("https://fonts.googleapis.com/css2?family=Fira+Code:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-html {
-  font-family: 'Fira Code', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<div id="zyksjpzcra" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#zmepkclmdd .gt_table {
+#zyksjpzcra .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -687,22 +688,22 @@ html {
   background-color: #FFFFFF;
   width: auto;
   border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: transparent;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
   border-right-style: none;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: transparent;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_heading {
+#zyksjpzcra .gt_heading {
   background-color: #FFFFFF;
-  text-align: left;
+  text-align: center;
   border-bottom-color: #FFFFFF;
   border-left-style: none;
   border-left-width: 1px;
@@ -712,7 +713,7 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_title {
+#zyksjpzcra .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -722,29 +723,29 @@ html {
   border-bottom-width: 0;
 }
 
-#zmepkclmdd .gt_subtitle {
+#zyksjpzcra .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#zmepkclmdd .gt_bottom_border {
+#zyksjpzcra .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_col_headings {
+#zyksjpzcra .gt_col_headings {
   border-top-style: solid;
-  border-top-width: 3px;
-  border-top-color: transparent;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: black;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -753,12 +754,12 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_col_heading {
+#zyksjpzcra .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
   border-left-style: none;
   border-left-width: 1px;
   border-left-color: #D3D3D3;
@@ -773,45 +774,45 @@ html {
   overflow-x: hidden;
 }
 
-#zmepkclmdd .gt_column_spanner_outer {
+#zyksjpzcra .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
   padding-top: 0;
   padding-bottom: 0;
   padding-left: 4px;
   padding-right: 4px;
 }
 
-#zmepkclmdd .gt_column_spanner_outer:first-child {
+#zyksjpzcra .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#zmepkclmdd .gt_column_spanner_outer:last-child {
+#zyksjpzcra .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#zmepkclmdd .gt_column_spanner {
+#zyksjpzcra .gt_column_spanner {
   border-bottom-style: solid;
-  border-bottom-width: 3px;
-  border-bottom-color: black;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
 }
 
-#zmepkclmdd .gt_group_heading {
+#zyksjpzcra .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -827,12 +828,12 @@ html {
   vertical-align: middle;
 }
 
-#zmepkclmdd .gt_empty_group_heading {
+#zyksjpzcra .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
+  font-size: 100%;
+  font-weight: initial;
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -842,17 +843,17 @@ html {
   vertical-align: middle;
 }
 
-#zmepkclmdd .gt_from_md > :first-child {
+#zyksjpzcra .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#zmepkclmdd .gt_from_md > :last-child {
+#zyksjpzcra .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#zmepkclmdd .gt_row {
-  padding-top: 5px;
-  padding-bottom: 5px;
+#zyksjpzcra .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
   padding-left: 5px;
   padding-right: 5px;
   margin: 10px;
@@ -869,19 +870,19 @@ html {
   overflow-x: hidden;
 }
 
-#zmepkclmdd .gt_stub {
+#zyksjpzcra .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
-  font-size: 80%;
-  font-weight: bolder;
-  text-transform: uppercase;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
   padding-left: 12px;
 }
 
-#zmepkclmdd .gt_summary_row {
+#zyksjpzcra .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -891,7 +892,7 @@ html {
   padding-right: 5px;
 }
 
-#zmepkclmdd .gt_first_summary_row {
+#zyksjpzcra .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -901,7 +902,7 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_grand_summary_row {
+#zyksjpzcra .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -911,7 +912,7 @@ html {
   padding-right: 5px;
 }
 
-#zmepkclmdd .gt_first_grand_summary_row {
+#zyksjpzcra .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -921,11 +922,11 @@ html {
   border-top-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_striped {
+#zyksjpzcra .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#zmepkclmdd .gt_table_body {
+#zyksjpzcra .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -934,7 +935,7 @@ html {
   border-bottom-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_footnotes {
+#zyksjpzcra .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -948,13 +949,13 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_footnote {
+#zyksjpzcra .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#zmepkclmdd .gt_sourcenotes {
+#zyksjpzcra .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -968,41 +969,41 @@ html {
   border-right-color: #D3D3D3;
 }
 
-#zmepkclmdd .gt_sourcenote {
-  font-size: 12px;
+#zyksjpzcra .gt_sourcenote {
+  font-size: 90%;
   padding: 4px;
 }
 
-#zmepkclmdd .gt_left {
+#zyksjpzcra .gt_left {
   text-align: left;
 }
 
-#zmepkclmdd .gt_center {
+#zyksjpzcra .gt_center {
   text-align: center;
 }
 
-#zmepkclmdd .gt_right {
+#zyksjpzcra .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#zmepkclmdd .gt_font_normal {
+#zyksjpzcra .gt_font_normal {
   font-weight: normal;
 }
 
-#zmepkclmdd .gt_font_bold {
+#zyksjpzcra .gt_font_bold {
   font-weight: bold;
 }
 
-#zmepkclmdd .gt_font_italic {
+#zyksjpzcra .gt_font_italic {
   font-style: italic;
 }
 
-#zmepkclmdd .gt_super {
+#zyksjpzcra .gt_super {
   font-size: 65%;
 }
 
-#zmepkclmdd .gt_footnote_marks {
+#zyksjpzcra .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;
@@ -1100,19 +1101,10 @@ For each one of the estimated parameters reported in Question 5:
 
 - Report the results from testing the null hypothesis that the true parameter value is zero.
 
-
----
-
 ## Question 7 
 Recreate the figure in Question 4, and then add the line of best fit using the `abline()` function with the coefficients from `model_1`, `model_1$coefficients`.
 
-## Question 8 
-Plot Education with the residuals associated with the model, `model_1$residuals`. Do the residuals show any pattern?
-
-
-
-
-## Question 9 
+## Question 8
 
 Use the `mean()` command to show that the average of the residuals associated with model_1 is zero. 
     </textarea>
